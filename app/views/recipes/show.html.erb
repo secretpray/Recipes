@@ -1,19 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h3><strong>Recipe</strong></h3>
+<div class='mt-4'>
   <strong>Title:</strong>
   <%= @recipe.title %>
-</p>
+</div>
 
-<p>
+<div class='mt-1'>
+  <strong>By:</strong>
+  <%= @recipe.user.email %>
+</div>
+
+<div class='mt-2'>
+  # TODO
+  ratings - 43; Rate; 93 comments; #
+</div>
+
+<div class='mt-2'>
   <strong>Description:</strong>
   <%= @recipe.description %>
-</p>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @recipe.user.email %>
-</p>
+<div class='mt-4'>
+  <h4><strong>Ingredients:</strong></h4>
+  <% if @recipe.ingredients.any? %>
+    <%= @recipe.ingredients.each do |ingredient| %>
+      </br>
+      <strong>Quantity: </strong> <%= ingredient.quantity %>
+      </br>
+      <strong>Content: </strong> <%= ingredient.content %>
+    <% end %>
+  <% else %>
+    Not specified.
+  <% end %>
+</div>
 
-<%= link_to 'Back', recipes_path, class: "btn btn-light" %>
-<%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-primary" %>
+<div class='mt-4'>
+  <h4><strong>Steps:</strong></h4>
+  <% if @recipe.steps.any? %>
+    <%= @recipe.steps.each do |step| %>
+      <%= step.method %>
+    <% end %>
+  <% else %>
+    Not specified.
+  <% end %>
+</div>
+
+<%= link_to 'Back', recipes_path, class: "btn btn-light mt-4" %>
+<%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-primary mt-4" %>

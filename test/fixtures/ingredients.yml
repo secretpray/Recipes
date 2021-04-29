@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  quantity: MyString
+  recipie: one
+
+two:
+  content: MyText
+  quantity: MyString
+  recipie: two
