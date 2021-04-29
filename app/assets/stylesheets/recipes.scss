@@ -1,0 +1,12 @@
+#navbarMain {  
+  display: flex;
+  flex-basis: auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.logo-img img {
+  position: relative;
+  top: -5px;
+}

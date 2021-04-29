@@ -8,9 +8,14 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
+  <body data-controller-name=<%= controller_name %> data-action-name=<%= action_name %> data-user-id=<%= current_user&.id %>>
+    <%= render 'shared/navigation' %>
+    <div class="container mt-3">
+        <%= yield %>
+    </div>
+
   </body>
 </html>
