@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-validates :email, presence: true
-has_many :recipes, dependent: :destroy
+  has_many :recipes, dependent: :destroy
+  validates :email, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

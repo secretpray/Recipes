@@ -1,29 +1,23 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy ]
 
-  # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.recent
   end
 
-  # GET /recipes/1 or /recipes/1.json
-  def show
-  end
+  def show; end
 
-  # GET /recipes/new
   def new
     @recipe = Recipe.new
+    @recipe.ingredients.build   # (has_many or has_many :through)
+    @recipe.steps.build   # (has_many or has_many :through)
   end
 
-  # GET /recipes/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /recipes or /recipes.json
   def create
-    # binding.pry
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
+    byebug
+    @recipe = current_user.recipes.build(recipe_params)
 
     respond_to do |format|
       if @recipe.save
@@ -36,7 +30,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipes/1 or /recipes/1.json
+  
   def update
     respond_to do |format|
       if @recipe.update(recipe_params)
@@ -49,7 +43,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @recipe.destroy
     respond_to do |format|
@@ -59,13 +52,13 @@ class RecipesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :user)
+      params.require(:recipe).permit(:title, :description, :user_id, 
+                                    ingredients_attributes: [:id, :content, :quantity, :_destroy],
+                                    steps_attributes: [:id, :method, :_destroy])
     end
 end
