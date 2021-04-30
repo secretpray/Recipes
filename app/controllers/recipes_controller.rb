@@ -10,13 +10,12 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.ingredients.build   # (has_many or has_many :through)
-    @recipe.steps.build   # (has_many or has_many :through)
+    @recipe.steps.build         # (has_many or has_many :through)
   end
 
   def edit; end
 
   def create
-    byebug
     @recipe = current_user.recipes.build(recipe_params)
 
     respond_to do |format|
@@ -53,11 +52,11 @@ class RecipesController < ApplicationController
 
   private
     def set_recipe
-      @recipe = Recipe.find(params[:id])
+      @recipe = Recipe.with_attached_step_images.find(params[:id])
     end
 
     def recipe_params
-      params.require(:recipe).permit(:title, :description, :user_id, 
+      params.require(:recipe).permit(:title, :description, :user_id, :recipe_image, { step_images: [] },
                                     ingredients_attributes: [:id, :content, :quantity, :_destroy],
                                     steps_attributes: [:id, :method, :_destroy])
     end
