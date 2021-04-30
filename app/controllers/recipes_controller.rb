@@ -13,7 +13,11 @@ class RecipesController < ApplicationController
     @recipe.steps.build         # (has_many or has_many :through)
   end
 
-  def edit; end
+  def edit
+    # binding.pry
+    @recipe.steps.any? ? @recipe.steps : @recipe.steps.build
+    @recipe.ingredients.any? ? @recipe.ingredients : @recipe.ingredients.build
+  end
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
