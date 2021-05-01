@@ -1,0 +1,38 @@
+<h3>Your Favorite recipes</h3>
+
+<% current_user.favorites.each do |favorite|%>
+  <%= link_to favorite.recipe.title, favorite.recipe, class: 'text-decoration-none text-reset' %>
+  (added: <%= favorite.recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>)
+<% end %>
+
+
+
+<h1 class='mt-5 mb-4'>Favorite recipes</h1>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col" class="col-1 text-center">Preview</th>
+      <th scope="col" class="col-3 text-center">Title</th>
+      <th scope="col" class="col-4 text-center">Description</th>
+      <th scope="col" class="col-2 text-center">User</th>
+      <th colspan="3" class='text-center col-2'>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td class="col-1"><%#= image_preview(recipe) %></td>
+        <td class="col-3"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></td>
+        <td class="col-4"><%= link_to recipe.description, recipe, class: 'text-decoration-none text-reset' %></td>
+        <td class="col-2 text-center"><%= recipe.user.email %></td>
+        <td class='col text-center'><%= link_to 'Show', recipe, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% if user_signed_in? %>
+          <td class='col text-center'><%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-outline-primary btn-sm" %></td>
+          <td class='col text-center'><%= link_to 'Destroy', recipe, class: "btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

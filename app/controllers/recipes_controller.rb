@@ -1,11 +1,14 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
     @recipes = Recipe.recent
   end
 
-  def show; end
+  def show
+    # binding.pry
+    @favorite_exists = Favorite.where(recipe: @recipe, user: current_user) == [] ? false : true
+  end
 
   def new
     @recipe = Recipe.new
@@ -52,6 +55,11 @@ class RecipesController < ApplicationController
       format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def favorites
+    binding.pry
+    @recipes = current_user.favorites
   end
 
   private

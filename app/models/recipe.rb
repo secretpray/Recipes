@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one_attached :recipe_image
   has_many_attached :step_images
 
@@ -11,7 +12,7 @@ class Recipe < ApplicationRecord
   validates :title, :description, presence: true
   validate :image_type
   
-  scope :by_add, -> { order(created_at: :desc) }
+  scope :by_add, -> { order(created_at: :desc) } # double
   scope :by_user, -> { order(user_id: :asc) }
 
   def self.recent
