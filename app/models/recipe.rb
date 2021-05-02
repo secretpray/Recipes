@@ -20,6 +20,10 @@ class Recipe < ApplicationRecord
     order('created_at desc')
   end
 
+  def self.best
+    left_joins(:favorites).group(:id).order('COUNT(favorites) DESC')
+  end
+
   def thumbnail input
     return self.step_images[input].variant(resize: '300x300!').processed
   end

@@ -1,9 +1,28 @@
 <h3>Your Favorite recipes</h3>
-<ol>
-<% current_user.favorites.each do |favorite|%>
-  <li>
-    <%= link_to favorite.recipe.title, favorite.recipe, class: 'text-decoration-none text-reset' %>
-    <span class="fw-lighter">(added: <%= favorite.recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>)</span>
-  </li>
-<% end %>
-</ol>
+<div class='row'>
+  <% current_user.favorites.each do |favorite|%>
+    <div class='card col-md-4 mx-2'>
+      <div class='card-body'>
+        <%# if @recipe.recipe_image.present? %>
+        <% if favorite.recipe.recipe_image.attached? %>
+          <%= image_tag favorite.recipe.recipe_image, class: 'recipe-favorite w-100' %>
+        <% else %>
+          <%= image_tag "Default_image.png", class: 'recipe-favorite' %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to favorite.recipe.title, favorite.recipe, class: 'text-decoration-none text-reset' %></h5>
+        <p class="card-text"><%= link_to favorite.recipe.description, favorite.recipe, class: 'text-decoration-none text-reset' %></p>
+        <div class='d-flex justify-content-between'>
+          <div class="fw-lighter"> [<%= favorite.recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
+          <div> 
+            <%= link_to 'Show', favorite.recipe, class: "text-decoration-none text-reset" %> |
+            <%= link_to 'Edit', edit_recipe_path(favorite.recipe), class: "text-decoration-none text-reset" %> |
+            <%= link_to 'Delete', favorite.recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none text-reset" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+  <%= link_to 'Back', recipes_path, class: "text-decoration-none text-reset mt-4 btn btn-light" %>
