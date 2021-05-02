@@ -1,5 +1,13 @@
-<h1>Best recipes</h1>
+<h1></h1>
 
-<p>Dashboard#index</p>
+<h3>Last recipes</h3>
+<div class='row' id='dashboard-container'>
+  <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @recent } %>
+</div>
+
+<h3 class='mt-4'>Best recipes</h3>
+<div class='row' id='dashboard-container'>
+  <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @best } %>
+</div>
 
 

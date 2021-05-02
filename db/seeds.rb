@@ -15,5 +15,9 @@ for a healthy weeknight dinner – with butternut squash, coconut milk, lentils 
 recipe2 = Recipe.create(title: 'Minestrone in minutes', description: 'Whip up a hearty bowl of soup in next to no time, 
 perfect for a quick lunch or warming supper', user_id: User.last.id )
 
+favorite1 = Favorite.create(recipe_id: recipe1.id, user_id: user1.id)
+favorite2 = Favorite.create(recipe: recipe2, user: user2)
+
 puts "Created #{User.count} users"
 puts "Created #{Recipe.count} recipes"
+puts "Created #{Favorite.count} favorites"

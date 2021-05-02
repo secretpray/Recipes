@@ -1,0 +1,6 @@
+var favoriteLink = {};
+favoriteLink = document.querySelector('#favorite_link');
+// console.log("<%= favorite_text %>");
+favoriteLink.innerText = '';
+favoriteLink.insertAdjacentHTML('beforeend', '<%= favorite_text %>');
+

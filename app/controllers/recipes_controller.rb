@@ -1,11 +1,13 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[ show edit update destroy ]
+  before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
     @recipes = Recipe.recent
   end
 
-  def show; end
+  def show
+    @favorite_exists = Favorite.where(recipe: @recipe, user: current_user) == [] ? false : true
+  end
 
   def new
     @recipe = Recipe.new
@@ -14,7 +16,6 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    # binding.pry
     @recipe.steps.any? ? @recipe.steps : @recipe.steps.build
     @recipe.ingredients.any? ? @recipe.ingredients : @recipe.ingredients.build
   end
@@ -25,10 +26,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to @recipe, notice: "Recipe was successfully created." }
-        format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,10 +37,8 @@ class RecipesController < ApplicationController
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to @recipe, notice: "Recipe was successfully updated." }
-        format.json { render :show, status: :ok, location: @recipe }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -50,8 +47,12 @@ class RecipesController < ApplicationController
     @recipe.destroy
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
-      format.json { head :no_content }
     end
+  end
+
+  def favorites
+    @recipes = current_user.favorites
+    # favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:recipe_id)
   end
 
   private
