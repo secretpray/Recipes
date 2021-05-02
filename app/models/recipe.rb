@@ -14,6 +14,7 @@ class Recipe < ApplicationRecord
   
   scope :by_add, -> { order(created_at: :desc) } # double
   scope :by_user, -> { order(user_id: :asc) }
+  scope :favorited_by, -> (email) { joins(:favorites).where(favorites: { user: User.where(email: email)}) }
 
   def self.recent
     order('created_at desc')
@@ -33,5 +34,9 @@ class Recipe < ApplicationRecord
         errors.add(:step_images, 'needs to be a JPEG or PNG') unless image.content_type.in?(%('image/jpeg image/png'))
       end
     end
+  end
+
+  def in_favorite? user
+    Favorite.where(recipe: self, user: user).any?
   end
 end

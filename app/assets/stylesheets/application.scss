@@ -54,6 +54,15 @@
 
 .recipe_image img {
   width: calc(100vw/6 - 30px);
-  // width: 300px;
   height: auto;
+}
+
+.index_data {
+  position: relative;
+}
+
+.fav-span {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }

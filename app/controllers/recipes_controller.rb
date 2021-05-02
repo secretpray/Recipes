@@ -17,7 +17,6 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    # binding.pry
     @recipe.steps.any? ? @recipe.steps : @recipe.steps.build
     @recipe.ingredients.any? ? @recipe.ingredients : @recipe.ingredients.build
   end
@@ -58,8 +57,10 @@ class RecipesController < ApplicationController
   end
 
   def favorites
-    binding.pry
+    # binding.pry
     @recipes = current_user.favorites
+    favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:recipe_id)
+
   end
 
   private

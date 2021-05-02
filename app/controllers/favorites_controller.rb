@@ -1,10 +1,13 @@
 class FavoritesController < ApplicationController
-  
+  before_action :set_recipe
+
   def update
-    favorite = Favorite.where(recipe: Recipe.find(params[:recipe]), user: current_user)
+    # unless current_user.favorites.find_by(recipe_id: @recipe.id).present?
+    # unless Favorite.where(recipe: @recipe, user: current_user).any?
+    favorite = Favorite.where(recipe: @recipe, user: current_user)
     
     if favorite == []
-      Favorite.create(recipe: Recipe.find(params[:recipe]), user: current_user) 
+      Favorite.create(recipe: @recipe, user: current_user) 
       @favorite_exists = true
     else
       favorite.destroy_all
@@ -15,5 +18,11 @@ class FavoritesController < ApplicationController
       format.html {}
       format.js {}
     end
+  end
+
+  private
+
+  def set_recipe
+    @recipe = Recipe.find(params[:recipe])
   end
 end

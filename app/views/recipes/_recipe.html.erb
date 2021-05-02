@@ -1,10 +1,13 @@
 <%# @recipes.each.with_index(1) do |recipe, index| %>
 <% @recipes.each do |recipe| %>
   <tr>
-    <td class="col-1"><%= image_preview(recipe) %></td>
+    <td class="col-1 index_data"><%= link_to image_preview(recipe), recipe %>
+    <% if recipe.in_favorite?(current_user) %>
+      <span class="fav-span">❤️</span></td>
+    <% end %>
     <td class="col-3"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></td>
     <td class="col-4"><%= link_to recipe.description, recipe, class: 'text-decoration-none text-reset' %></td>
-    <td class="col-2 text-center"><%= recipe.user.email %></td>
+    <td class="col-2 text-center"><%= link_to recipe.user.email, edit_user_registration_path, class: 'text-decoration-none text-reset' %></td>
     <td class='col text-center'><%= link_to 'Show', recipe, class: "btn btn-outline-secondary btn-sm" %></td>
     <% if user_signed_in? %>
       <td class='col text-center'><%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-outline-primary btn-sm" %></td>
