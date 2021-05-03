@@ -15,7 +15,7 @@
         <div class="fw-lighter"> [<%= recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
         <div> 
           <%= link_to 'Show', recipe, class: "text-decoration-none text-reset" %>
-          <% if user_signed_in? %>
+          <% if user_signed_in?  && current_user == recipe.user %>
             <%= link_to 'Edit', edit_recipe_path(recipe), class: "text-decoration-none text-reset mx-1" %>
             <%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none text-reset" %>
           <% end %>
