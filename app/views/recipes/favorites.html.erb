@@ -5,9 +5,9 @@
       <div class='card-body'>
         <%# if @recipe.recipe_image.present? %>
         <% if favorite.recipe.recipe_image.attached? %>
-          <%= image_tag favorite.recipe.recipe_image, class: 'recipe-favorite w-100' %>
+          <%= link_to image_tag(favorite.recipe.recipe_image, class: 'recipe-favorite w-100'), favorite.recipe %>
         <% else %>
-          <%= image_tag "Default_image.png", class: 'recipe-favorite' %>
+          <%= link_to image_tag("Default_image.png", class: 'recipe-favorite'), favorite.recipe %>
         <% end %>
       </div>
       <div class="card-body">
@@ -16,9 +16,11 @@
         <div class='d-flex justify-content-between'>
           <div class="fw-lighter"> [<%= favorite.recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
           <div> 
-            <%= link_to 'Show', favorite.recipe, class: "text-decoration-none text-reset" %> |
-            <%= link_to 'Edit', edit_recipe_path(favorite.recipe), class: "text-decoration-none text-reset" %> |
-            <%= link_to 'Delete', favorite.recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none text-reset" %>
+            <%#= link_to 'Show', favorite.recipe, class: "text-decoration-none text-reset" %>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_recipe_path(favorite.recipe), class: "text-decoration-none text-reset mx-1" %>
+              <%= link_to 'Delete', favorite.recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none text-reset" %>
+            <% end %>
           </div>
         </div>
       </div>

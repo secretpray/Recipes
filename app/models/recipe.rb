@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :recipe_image
   has_many_attached :step_images
 
