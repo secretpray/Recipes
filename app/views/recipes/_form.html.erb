@@ -1,6 +1,7 @@
 <%= form_with(model: recipe) do |form| %>
-  <%= errors_for(recipe) %>
-  <%#= render 'shared/errors', resource: recipe %>
+  <div id='errors-recipe'> 
+    <%= render 'shared/errors', resource: recipe %>
+  </div>
   
   <strong>Recipe:</strong>
   <div class="form-group field mt-3 mb-2">
