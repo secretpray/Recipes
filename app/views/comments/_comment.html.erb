@@ -1,0 +1,14 @@
+<div class='mt-2 offset-1' id="<%=dom_id(comment) %>"">
+  <%= comment.body %> 
+  </br> 
+  <span class="fw-lighter">
+    commented by: <%= comment.user.email %> 
+    [<%= comment.created_at.strftime('%H:%M  %d.%m.%Y') %>] 
+  </span>
+  <% if current_user == comment.user %>
+    <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
+      <span class='float-end'>&#x274C;</span>
+    <% end %>
+  <% end %>
+  <hr>
+</div>

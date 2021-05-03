@@ -19,7 +19,9 @@
       </div>
 
       <div class='mt-3 pb-2'>
-        # TODO # ratings - 43; Rate; 93 comments; #
+        Rate: #TODO#;
+        <%= @recipe.favorites.count %> favorited; 
+        <span class='comment_count'><%= @recipe.comments.count %> commented;</span>
       </div>
 
       Favorite: <%= link_to favorite_text, favorites_update_path(recipe: @recipe), id: 'favorite_link', class: 'text-decoration-none text-reset mt-3', remote: true %>
@@ -67,7 +69,36 @@
       <% end %>
     </div>
   </div>
-  
+  </br>
+
   <%= link_to 'Back', recipes_path, class: "btn btn-light mt-4" %>
-  <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-primary mt-4" %>
+  <% if user_signed_in? && current_user == @recipe.user %>
+    <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-primary mt-4" %>
+  <% end %>
+
+<!-- Comments -->
+  <div class='errors-comment my-2'></div>
+
+  <div class='field form-group mt-4 offset-1'>
+    <% if user_signed_in? %>
+      <%= form_with model: [@recipe, @comment], class: 'new_comment', local: false do |f| %>
+        <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...' %>
+        <%= f.submit 'Comment', class: "btn btn-secondary"  %>
+      <% end %>
+    <% else %>
+      <div>
+        To comment on the recipe, you must <%= link_to 'register', new_user_registration_path, class: "text-decoration-none" %> or 
+        <%= link_to 'log in', new_user_session_path, class: "text-decoration-none" %>
+      </div>
+    <% end%>
+  </div>
+</br>
+  <h4> <%= @recipe.comments.count %> comment(s) </h4> 
+  <div class='comment_list mt-2 mb-3'>
+    <% if @comments.any? %>
+      <% @comments.each do |comment| %>
+        <%= render 'comments/comment', comment: comment %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

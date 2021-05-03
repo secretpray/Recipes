@@ -1,0 +1,11 @@
+<% if @comment.errors.any? %>
+  document.querySelector('.errors-comment').innerText = '';
+  //document.querySelector('.errors-comment').insertAdjacentHTML('beforeend', '<%= errors_for(@comment) %>');
+  document.querySelector('.errors-comment').insertAdjacentHTML('beforeend', '<%= j render 'shared/errors', resource: @comment %>');
+<% else %>
+  <% return unless @comment.persisted? %>
+  document.querySelector('.errors-comment').innerText = '';
+  //document.querySelector('.comment_list').insertAdjacentHTML('beforeend', '<%= j render 'comments/comment', comment: @comment %>');
+  document.querySelector('.comment_list').insertAdjacentHTML('beforeend', '<%= j render 'shared/errors', resource: @comment %>');
+  document.querySelector('.new_comment').reset();
+<% end %>

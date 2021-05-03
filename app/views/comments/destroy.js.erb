@@ -1,0 +1,6 @@
+var commentCount = {}
+commentCount = document.querySelector('.comment_count');
+let comment_<%= @comment.id %> = document.querySelector('#comment_<%= @comment.id %>');
+
+comment_<%= @comment.id %>.remove();
+commentCount.innerText = '<%= @comment.recipe.comments.count %> commented;'

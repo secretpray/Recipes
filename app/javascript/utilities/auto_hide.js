@@ -21,10 +21,6 @@ document.addEventListener('turbolinks:load', function() {
   const deviseErrorExplanation = document.getElementById('error_explanation');
   if (deviseErrorExplanation) fadeOut(deviseErrorExplanation)
 
-  // Timeout for autohide errors message
-  const errors = document.getElementById('errors-content')
-  if (errors) fadeOut(errors)
-
   function fadeOut(object) {
     if (object) {
       object.classList.add('fadeout');
@@ -33,5 +29,21 @@ document.addEventListener('turbolinks:load', function() {
         object.remove();
       }, 7000);
     }
+  }
+   // For inline errors only
+  const commentObserver = document.querySelector(".errors-comment");
+  const recipeObserver = document.querySelector("#errors-recipe");
+
+  const observer = new MutationObserver(function() {
+    const inlineError = document.getElementById('errors-content')
+    fadeOut(inlineError)
+  });
+ 
+  if (commentObserver) {
+    observer.observe(commentObserver, {childList: true, subtree: true });
+   }
+
+   if (recipeObserver) {
+    observer.observe(recipeObserver, {childList: true, subtree: true });
   }
 })
