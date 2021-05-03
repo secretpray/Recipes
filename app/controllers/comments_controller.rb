@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_recipe
+  before_action :set_recipe, only: :create
+  before_action :find_comment, only: :destroy
+  before_action :authenticate_user!
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -14,6 +16,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.destroy
+
+    # redirect_to @comment.recipe, notice: "Comment was successfully deleted!" 
+    redirect_back fallback_location: @comment.recipe, notice: "Comment was successfully deleted!" 
+  end
+
   private
 
   def comment_params
@@ -22,5 +31,10 @@ class CommentsController < ApplicationController
 
   def set_recipe
     @recipe = Recipe.find(params[:recipe_id])
+  end
+
+  def find_comment
+    @recipe = Recipe.find(params[:recipe_id])
+    @comment = @recipe.comments.find(params[:id])
   end
 end

@@ -77,7 +77,6 @@
   <% end %>
 
 <!-- Comments -->
-  <hr>
   <div class='field form-group mt-4 offset-1'>
     <% if user_signed_in? %>
       <%= form_with model: [@recipe, @comment] do |f| %>
@@ -103,6 +102,12 @@
             commented by: <%= comment.user.email %> 
             [<%= comment.created_at.strftime('%H:%M  %d.%m.%Y') %>] 
           </span>
+          <% if current_user == comment.user %>
+            <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none" do %>
+              <span style='float: right;'>&#x274C;</span>
+            <% end %>
+          <% end %>
+          <hr>
         </div>
       <% end %>
     <% end %>

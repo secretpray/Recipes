@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :recipes do
-    post 'comments', to: 'comments#create'
+    resources 'comments', only: [:create, :destroy]
   end
 
   root to: 'dashboard#index'
