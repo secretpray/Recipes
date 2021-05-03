@@ -23,7 +23,7 @@ gem 'slim', '~> 4.1'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
-
+gem "pundit"
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
@@ -52,7 +52,3 @@ group :test do
   # It allows you to run your Capybara tests in the Chrome browser via CDP (no selenium or chromedriver needed)
   gem 'apparition'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-

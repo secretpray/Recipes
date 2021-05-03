@@ -1,3 +1,5 @@
 <h1>Editing Recipe</h1>
 
-<%= render 'form', recipe: @recipe %>
+<% if policy(@recipe).edit? %>
+  <%= render 'form', recipe: @recipe %>
+<% end %>

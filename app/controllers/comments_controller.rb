@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
+    authorize @comment
     @comment.recipe = @recipe
     # @comment.save
 
@@ -20,6 +21,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize @comment
     @comment.destroy
   end
 

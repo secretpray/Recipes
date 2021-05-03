@@ -4,7 +4,10 @@ Recipe.destroy_all if Recipe.any?
 
 user1 = User.create(email: 'nemov@mail.com', password: 'secretus2021')
 user2 = User.create(email: 'sss@mail.com', password: 'secretus2021')
-user2 = User.create(email: 'max@mail.com', password: 'secretus2021')
+user3 = User.create(email: 'max@mail.com', password: 'secretus2021')
+user4 = User.create!(email: 'neo@mail.com', password: 'secretus2021')
+user1.update(role: 'admin')
+user4.update(role: 'admin')
 
 recipe1 = Recipe.create( title: 'Chorizo & mozzarella gnocchi bake', description: 'Upgrade cheesy tomato pasta with g
 nocchi, chorizo and mozzarella for a comforting bake that makes an excellent midweek meal', user_id: User.first.id )

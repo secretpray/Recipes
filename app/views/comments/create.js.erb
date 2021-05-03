@@ -1,3 +1,9 @@
+var commentCount = {}
+commentCount = document.querySelector('.comment_count');
+
+var recipeCommentCount = {}
+recipeCommentCount = document.querySelector('.recipe-comment-count')
+
 <% if @comment.errors.any? %>
   document.querySelector('.errors-comment').innerText = '';
   //document.querySelector('.errors-comment').insertAdjacentHTML('beforeend', '<%= errors_for(@comment) %>');
@@ -5,7 +11,8 @@
 <% else %>
   <% return unless @comment.persisted? %>
   document.querySelector('.errors-comment').innerText = '';
-  //document.querySelector('.comment_list').insertAdjacentHTML('beforeend', '<%= j render 'comments/comment', comment: @comment %>');
-  document.querySelector('.comment_list').insertAdjacentHTML('beforeend', '<%= j render 'shared/errors', resource: @comment %>');
+  document.querySelector('.comment_list').insertAdjacentHTML('beforeend', '<%= j render 'comments/comment', comment: @comment %>');
   document.querySelector('.new_comment').reset();
+  commentCount.innerText = '<%= @comment.recipe.comments.count %> commented;'
+  recipeCommentCount.innerText = '<%= @comment.recipe.comments.count %> comment(s)'
 <% end %>

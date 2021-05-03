@@ -17,9 +17,11 @@
           <div class="fw-lighter"> [<%= favorite.recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
           <div> 
             <%#= link_to 'Show', favorite.recipe, class: "text-decoration-none text-reset" %>
-            <% if user_signed_in? && current_user == favorite.recipe.user %>
-              <%= link_to 'Edit', edit_recipe_path(favorite.recipe), class: "text-decoration-none text-reset mx-1" %>
-              <%= link_to 'Delete', favorite.recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none text-reset" %>
+            <% if user_signed_in?%>
+              <% if policy(favorite.recipe).edit? %>
+                <%= link_to 'Edit', edit_recipe_path(favorite.recipe), class: "text-decoration-none text-reset mx-1" %>
+                <%= link_to 'Delete', favorite.recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none text-reset" %>
+              <% end %>
             <% end %>
           </div>
         </div>
