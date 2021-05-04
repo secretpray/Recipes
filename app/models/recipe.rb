@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  extend FriendlyId
+  
   belongs_to :user
   has_many :ingredients, dependent: :destroy
   has_many :steps, dependent: :destroy
@@ -6,8 +8,9 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_one_attached :recipe_image
   has_many_attached :step_images
-  # has_rich_text :description
-
+  
+  friendly_id :title, use: :slugged
+  
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :steps, allow_destroy: true, reject_if: :all_blank
   

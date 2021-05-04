@@ -32,11 +32,11 @@ class CommentsController < ApplicationController
   end
 
   def set_recipe
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.friendly.find(params[:recipe_id])
   end
 
   def find_comment
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.friendly.find(params[:recipe_id])
     @comment = @recipe.comments.find(params[:id])
   end
 end

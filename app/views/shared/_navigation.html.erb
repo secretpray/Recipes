@@ -11,14 +11,14 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Recipes", recipes_path, class: "nav-link #{'active' if controller_name == 'recipes' && action_name == 'index'}" %>
+          <%= link_to "Recipes", recipes_path, class: "nav-link #{is_active('recipes','index')}" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to_if(user_signed_in?, "New Recipes", new_recipe_path, { class: "nav-link #{'active' if controller_name == 'recipes' && action_name == 'new'}"}) %>
+            <%= link_to_if(user_signed_in?, "New Recipes", new_recipe_path, { class: "nav-link #{is_active('recipes','new')}" }) %>
           </li>
           <li class="nav-item">
-            <%= link_to "Favorites", recipes_favorites_path, class: "nav-link" %>
+            <%= link_to "Favorites", recipes_favorites_path, class: "nav-link #{is_active('recipes','favorites')}" %>
           </li>
         <% end %>
       </ul>
