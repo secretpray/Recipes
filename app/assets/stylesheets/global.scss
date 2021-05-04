@@ -55,12 +55,14 @@ body, html * {
   box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
+#favorite_container,
 #dashboard-container {
   display: flex;
   flex-wrap: wrap;
   margin-left: -10px;
 }
 
+#favorite_card,
 #dashboard-card {
   width: calc((100% / 3) - (2rem / 3));
   margin-left: 10px;

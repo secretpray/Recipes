@@ -24,6 +24,8 @@ gem 'slim', '~> 4.1'
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
 gem "pundit"
+gem 'kaminari'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
