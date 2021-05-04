@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     authorize @recipe
     @recipe.ingredients.build   # (has_many or has_many :through)
-    @recipe.steps.build         # (has_many or has_many :through)
+    @recipe.steps.build         
   end
 
   def edit
@@ -57,17 +57,17 @@ class RecipesController < ApplicationController
 
   def favorites
     @recipes = current_user.favorites
-    # favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:recipe_id)
   end
 
   private
     def set_recipe
       @recipe = Recipe.with_attached_step_images.find(params[:id])
+      # @recipe = Recipe.with_rich_text_content_and_embeds.find(params[:id])
     end
 
     def recipe_params
       params.require(:recipe).permit(:title, :description, :user_id, :recipe_image, { step_images: [] },
-                                    ingredients_attributes: [:id, :content, :quantity, :_destroy],
+                                    ingredients_attributes: [:id, :content, :_destroy],
                                     steps_attributes: [:id, :method, :_destroy])
     end
 end

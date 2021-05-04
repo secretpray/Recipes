@@ -15,3 +15,6 @@ import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap/dist/css/bootstrap'
 
 require("utilities/auto_hide")
+
+require("trix")
+require("@rails/actiontext")

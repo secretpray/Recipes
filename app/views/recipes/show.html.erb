@@ -33,32 +33,29 @@
     </div>
   </div>
 
-  <div class='row'>
-    <div class='mt-4 col-md-12'>
-      <h4><strong>Ingredients:</strong></h4>
+  <div class='row mt-2'>
+    <div class='mt-4 col-md-4'>
+      <h4 class='text-center'><strong>Ingredients:</strong></h4>
       <% if @recipe.ingredients.any? %>
-        <%= @recipe.ingredients.each do |ingredient| %>
-          </br>
-          <strong>Quantity: </strong> <%= ingredient.quantity %>
-          </br>
-          <strong>Content: </strong> <%= ingredient.content %>
+        <% @recipe.ingredients.each do |ingredient| %>
+          <span class='mt-2 mb-1'><%= ingredient.content %></span>
         <% end %>
       <% else %>
         Not specified.
       <% end %>
     </div>
-  </div>
 
-  <div class='row'>
-    <div class='mt-4'>
-      <h4><strong>Steps:</strong></h4>
+    <div class='mt-4 offset-1 col-md-7'>
+      <h4 class='text-center'><strong>Steps:</strong></h4>
       <% if @recipe.steps.any? %>
-        <% if @recipe.step_images.present? %>
-          <% (0...@recipe.step_images.count).each do |image| %>
-            <%= image_tag @recipe.thumbnail(image) %>
-            <%#= image_tag @recipe.step_images(image) %>
+        <div class='d-flex flex-wrap justify-content-center'>
+          <% if @recipe.step_images.present? %>
+            <% (0...@recipe.step_images.count).each do |image| %>
+              <%= image_tag @recipe.thumbnail(image) %>
+              <%#= image_tag @recipe.step_images(image) %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
         <div class='mt-4'>
           <% @recipe.steps.each do |step| %>
             <%= step.method %>
@@ -79,9 +76,10 @@
   <% end %>
 
 <!-- Comments -->
-  <div class='errors-comment my-2'></div>
 
   <div class='field form-group mt-4 offset-1'>
+    <div class='errors-comment my-2'></div>
+    
     <% if user_signed_in? %>
       <%= form_with model: [@recipe, @comment], class: 'new_comment', local: false do |f| %>
         <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...' %>
