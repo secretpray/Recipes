@@ -61,7 +61,7 @@ class RecipesController < ApplicationController
 
   private
     def set_recipe
-      @recipe = Recipe.with_attached_step_images.find(params[:id])
+      @recipe = Recipe.with_attached_step_images.friendly.find(params[:id])
       # @recipe = Recipe.with_rich_text_content_and_embeds.find(params[:id])
     end
 

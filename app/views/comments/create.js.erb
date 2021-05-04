@@ -6,7 +6,6 @@ recipeCommentCount = document.querySelector('.recipe-comment-count')
 
 <% if @comment.errors.any? %>
   document.querySelector('.errors-comment').innerText = '';
-  //document.querySelector('.errors-comment').insertAdjacentHTML('beforeend', '<%= errors_for(@comment) %>');
   document.querySelector('.errors-comment').insertAdjacentHTML('beforeend', '<%= j render 'shared/errors', resource: @comment %>');
 <% else %>
   <% return unless @comment.persisted? %>

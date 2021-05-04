@@ -5,12 +5,12 @@
     commented by: <%= comment.user.email %> 
     [<%= comment.created_at.strftime('%H:%M  %d.%m.%Y') %>] 
   </span>
-  <% if current_user == comment.user || current_user&.admin? || current_user&.moderator? %>
-    <% if policy(comment).destroy? %>
-      <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
-        <span class='float-end'>&#x274C;</span>
-      <% end %>
+  <%# if current_user == comment.user || current_user&.admin? || current_user&.moderator? %>
+  <% if policy(comment).destroy? %>
+    <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
+      <span class='float-end'>&#x274C;</span>
     <% end %>
   <% end %>
+  <%# end %>
   <hr>
 </div>
