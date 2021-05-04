@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
-    @recipes = Recipe.recent
+    @recipes = Recipe.recent.page(params[:page]).per(12)
   end
 
   def show
@@ -56,7 +56,7 @@ class RecipesController < ApplicationController
   end
 
   def favorites
-    @recipes = current_user.favorites
+    @favorites = current_user.favorites.page(params[:page]).per(12)
   end
 
   private

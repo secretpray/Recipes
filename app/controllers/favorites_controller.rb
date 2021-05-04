@@ -2,8 +2,6 @@ class FavoritesController < ApplicationController
   before_action :set_recipe
 
   def update
-    # unless current_user.favorites.find_by(recipe_id: @recipe.id).present?
-    # unless Favorite.where(recipe: @recipe, user: current_user).any?
     favorite = Favorite.where(recipe: @recipe, user: current_user)
     
     if favorite == []
