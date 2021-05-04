@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Recipe Applications.
 
-Things you may want to cover:
+Used gem:
+* Devise
+* Pundit
+* FriendlyId
+* Kaminari
+* Active Text (InRails)
+* Active Storage (InRails)
+* Faker
+* Gravatar
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Feature:
+* Active Text
+* Active Storage
+* Vanila JS and AJAX
+* Paginate
+* Favorite
+* Nested Forms
+* Authentication with Devise
+* Authorize with Pundit
