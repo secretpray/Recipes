@@ -12,6 +12,8 @@ Used gem:
 * BootStrap
 * Faker
 * Gravatar
+* acts_as_votable
+* fontawesome
 
 Feature:
 * Active Text
@@ -22,13 +24,13 @@ Feature:
 * Nested Forms
 * Authentication with Devise
 * Authorize with Pundit
+* Voted comments with acts_as_votable gem
 * AutoHide and close Errors/Flash message with vanila JS
 * Inline update counter comments with JS
 * SEEDS create (Faker)
 
 TODO:
 * Tag + cloud tag
-* Rating
 * Category
 * User page (created recipe)
 * Follow User
@@ -42,3 +44,4 @@ TODO:
 * User page (created Recipe for quest, created Recipe and Comments for author)
 * RSS feed
 * Chat room
+* Forum
