@@ -1,0 +1,9 @@
+<%= content_tag "div", id: "downvote-#{comment.id}" do %>
+  <%= link_to downvote_recipe_comment_path(comment), method: :patch, remote: true, data: { disable_with: "voting..." } do %>
+    <% if current_user.voted_down_on? comment %>
+      <i class="text-muted far fa-thumbs-down"></i>
+    <% else %>
+      <i class="text-danger far fa-thumbs-down"></i>
+    <% end %>
+  <% end %>
+<% end %>

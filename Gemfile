@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'friendly_id', '~> 5.4.0'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

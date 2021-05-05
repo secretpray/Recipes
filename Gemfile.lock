@@ -75,6 +75,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    acts_as_votable (0.13.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     apparition (0.6.0)
@@ -302,6 +303,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_votable
   apparition
   bootsnap (>= 1.4.4)
   byebug

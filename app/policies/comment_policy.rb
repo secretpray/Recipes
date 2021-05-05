@@ -21,7 +21,7 @@ class CommentPolicy < ApplicationPolicy
     user
   end
 
-  def edit
+  def edit?
     user && user.id == record.user_id || user.admin? || user.moderator?
   end
 
@@ -33,7 +33,7 @@ class CommentPolicy < ApplicationPolicy
     user && user.id == record.user_id || user.admin? || user.moderator?
   end
 
-  # def voted?
-  #   user && user.id != record.user_id || user.admin?
-  # end
+  def voted?
+    user && user.id != record.user_id || user.admin?  || user.moderator?
+  end
 end

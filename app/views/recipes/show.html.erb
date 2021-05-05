@@ -2,7 +2,7 @@
   <div class='row'>
     <h3><strong>Recipe</strong></h3>
     
-    <div class='col-md-3 mt-4 recipe_image'>
+    <div class='col-md-3 mt-4 recipe_image <%= dom_id(@recipe) %>'>
       <% if @recipe.recipe_image.present? %>
         <%= image_tag @recipe.recipe_image %>
       <% else %>

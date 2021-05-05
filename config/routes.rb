@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :recipes do
-    resources 'comments', only: [:create, :destroy]
+    resources 'comments', only: [:create, :destroy] do 
+      member do
+        patch "upvote", to: "comments#upvote"
+        patch "downvote", to: "comments#downvote"
+      end
+    end
   end
 
   root to: 'dashboard#index'

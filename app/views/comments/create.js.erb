@@ -10,7 +10,7 @@ recipeCommentCount = document.querySelector('.recipe-comment-count')
 <% else %>
   <% return unless @comment.persisted? %>
   document.querySelector('.errors-comment').innerText = '';
-  document.querySelector('.comment_list').insertAdjacentHTML('beforeend', '<%= j render 'comments/comment', comment: @comment %>');
+  document.querySelector('.comment_list').insertAdjacentHTML('beforebegin', '<%= j render 'comments/comment', comment: @comment %>');
   document.querySelector('.new_comment').reset();
   commentCount.innerText = '<%= @comment.recipe.comments.count %> commented;'
   recipeCommentCount.innerText = '<%= @comment.recipe.comments.count %> comment(s)'
