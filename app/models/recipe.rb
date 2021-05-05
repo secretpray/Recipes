@@ -25,6 +25,10 @@ class Recipe < ApplicationRecord
     order('created_at desc')
   end
 
+  def to_s
+    title    
+  end
+
   def self.best
     left_joins(:favorites).group(:id).order('COUNT(favorites) DESC')
   end

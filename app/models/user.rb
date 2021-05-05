@@ -10,12 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :pwned_password
 
   enum role: %i(user moderator admin)
-  
-  after_initialize do
-    if self.new_record?
-      self.role ||= :user
-    end
-  end
+
+  acts_as_voter
 
   def username
     return email.split('@')[0].capitalize

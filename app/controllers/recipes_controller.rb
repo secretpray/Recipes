@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
@@ -54,20 +55,20 @@ class RecipesController < ApplicationController
       format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
     end
   end
-
+  
   def favorites
     @favorites = current_user.favorites.page(params[:page]).per(12)
   end
-
+  
   private
-    def set_recipe
-      @recipe = Recipe.with_attached_step_images.friendly.find(params[:id])
-      # @recipe = Recipe.with_rich_text_content_and_embeds.find(params[:id])
-    end
 
-    def recipe_params
-      params.require(:recipe).permit(:title, :description, :user_id, :recipe_image, { step_images: [] },
-                                    ingredients_attributes: [:id, :content, :_destroy],
-                                    steps_attributes: [:id, :method, :_destroy])
-    end
+  def set_recipe
+    @recipe = Recipe.with_attached_step_images.friendly.find(params[:id])
+  end
+  
+  def recipe_params
+    params.require(:recipe).permit(:title, :description, :user_id, :recipe_image, { step_images: [] },
+    ingredients_attributes: [:id, :content, :_destroy],
+    steps_attributes: [:id, :method, :_destroy])
+  end
 end

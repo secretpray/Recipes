@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_recipe, only: :create
-  before_action :find_comment, only: :destroy
+  before_action :find_comment, only: %i[destroy]
   before_action :authenticate_user!
 
   def create
@@ -11,13 +11,33 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        # format.html { redirect_to @comment.recipe, notice: "Comment was successfully created!" }
         format.js
       else
-        # format.html { redirect_to question_path(@question), alert: "Can`t create a Comment." }
         format.js
       end
     end
+  end
+
+  def upvote
+    # binding.pry
+    @comment = Comment.find(params[:recipe_id])
+    if current_user.voted_up_on? @comment
+      @comment.unvote_by current_user
+    else
+      @comment.upvote_by current_user
+    end
+    render "vote.js.erb"
+  end
+
+  def downvote
+    # binding.pry
+    @comment = Comment.find(params[:recipe_id])
+    if current_user.voted_down_on? @comment
+      @comment.unvote_by current_user
+    else
+      @comment.downvote_by current_user
+    end
+    render "vote.js.erb"
   end
 
   def destroy
