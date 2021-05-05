@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class='mt-5 mb-4'>Recipes</h1>
+<div class='d-flex justify-content-between'>
+  <h1 class='mt-5 mb-4'>Recipes</h1>
+  <% if user_signed_in? %>
+  <div class='d-flex align-items-center'>
+    <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary mt-3"  %>
+  </div>
+  <% end %>
+</div>
 
 <table class="table table-striped">
   <thead class="table-dark">
@@ -20,6 +27,4 @@
 
 <div class='d-flex justify-content-center'><%= paginate @recipes %></div>
 
-<% if user_signed_in? %>
-  <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary mt-3"  %>
-<% end %>
+
