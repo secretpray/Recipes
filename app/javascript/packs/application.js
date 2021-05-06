@@ -8,8 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
-import "../stylesheets/application"
 import "@fortawesome/fontawesome-free/css/all"
+import "../stylesheets/application"
 
 Rails.start()
 Turbolinks.start()
@@ -19,4 +19,12 @@ require("trix")
 require("@rails/actiontext")
 require("utilities/popover")
 require("utilities/auto_hide")
+require("utilities/reviews")
+
+// (function() {
+//   this.App || (this.App = {});
+
+//   App.cable = ActionCable.createConsumer();
+
+// }).call(this);
 

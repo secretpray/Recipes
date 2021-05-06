@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   
-  
   get 'favorites/update'
   get 'recipes/favorites'
   
   devise_for :users
   
   resources :recipes do
+    resources 'reviews', only: [:index, :new, :create]
     resources 'comments', only: [:create, :destroy] do 
       member do
         patch "upvote", to: "comments#upvote"

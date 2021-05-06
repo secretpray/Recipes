@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :steps, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   has_one_attached :recipe_image
   has_many_attached :step_images
   
@@ -27,6 +28,22 @@ class Recipe < ApplicationRecord
 
   def to_s
     title    
+  end
+
+  def avg_score
+    unless self.reviews.empty?
+      reviews.average(:score).round(1).to_f
+    else
+      0.0
+    end
+  end
+
+  def review_score_percentage
+    unless self.reviews.empty?
+      reviews.average(:score).round(1).to_f*100/5
+    else
+      0.0
+    end
   end
 
   def self.best

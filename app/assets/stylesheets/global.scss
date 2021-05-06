@@ -3,6 +3,7 @@
 body, html * {
   font-family: 'Roboto', sans-serif;
   /*overflow: hidden;*/
+  // background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
   box-sizing: border-box;
   margin: 0;
 }
@@ -181,4 +182,44 @@ footer {
   0%    { background-color: #F4F4F4; }
   50%   { background-color: #FFF9BE; }
   100%  { background-color: #F4F4F4; }
+}
+
+// 5 Star rating
+.rating-box .ratings .fa{
+  font-size: 24px;
+  color:#ffcc00;
+  cursor: pointer;
+}
+
+.main-rating {
+  display: flex;
+}
+
+.rating-value-display {
+  font-size: 20px;
+  margin: -2px 4px;
+}
+
+.star-rating {
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+.star-rating-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.star-rating-back {
+  color: #ccc;
+}
+
+.average-score {
+  display: flex;
+}
+.average-score-display {
+  font-size: 16px;
 }

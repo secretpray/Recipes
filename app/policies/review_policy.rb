@@ -1,4 +1,4 @@
-class RecipePolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   
   attr_reader :user, :record
 
@@ -14,14 +14,15 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def new?
-    user
+    Review.find_by(user: user, recipe_id: record.id).present? ? false : true
   end
-
+  
   def create?
-    user
+    return false if Review.find_by(user: user, recipe_id: record.id).present?
+    user && user.id != record.recipe.user_id || user&.admin? || user&.moderator?
   end
 
-  def edit
+  def edit?
     user && user.id == record.user_id || user&.admin? || user&.moderator?
   end
 
@@ -31,10 +32,5 @@ class RecipePolicy < ApplicationPolicy
 
   def destroy?
     user && user.id == record.user_id || user&.admin? || user&.moderator?
-  end
-
-  def review?
-    return false if Review.find_by(user: user, recipe_id: record.id).present?
-    user && user.id != record.user_id || user.admin?  || user.moderator?
   end
 end
