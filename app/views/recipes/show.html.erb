@@ -19,7 +19,10 @@
       </div>
 
       <div class='mt-3 pb-2'>
-        <span>Rate: <%= @recipe.avg_score %>（<%= @recipe.reviews.count %> Reviews);</span>
+        <span>Rate: <%= link_to recipe_reviews_path(@recipe), class: 'text-decoration-none' do %>
+           <%= @recipe.avg_score %>（<%= @recipe.reviews.count %> Reviews);
+        </span>
+        <% end %>
         <span><%= @recipe.favorites.count %> favorited;<span>
         <span class='comment_count'><%= @recipe.comments.count %> commented;</span>
       </div>
@@ -31,13 +34,13 @@
         <%= @recipe.description %>
       </div>
       
-      <div class='mt-4'>
-        <%= render 'reviews/form', review: @review, recipe: @recipe %>
-      </div>
+      <% if policy(@recipe).review? %>
+        <div class='mt-4'>
+          <%= render 'reviews/form', review: @review, recipe: @recipe %>
+        </div>
+      <% end %>
     </div>
   </div>
-  
-
   
   <div class='row mt-2'>
     <div class='mt-4 col-md-4'>
@@ -58,7 +61,6 @@
           <% if @recipe.step_images.present? %>
             <% (0...@recipe.step_images.count).each do |image| %>
               <%= image_tag @recipe.thumbnail(image) %>
-              <%#= image_tag @recipe.step_images(image) %>
             <% end %>
           <% end %>
         </div>

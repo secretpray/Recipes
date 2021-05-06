@@ -16,12 +16,14 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     authorize @recipe
+
     @recipe.ingredients.build   # (has_many or has_many :through)
     @recipe.steps.build         
   end
 
   def edit
     authorize @recipe
+
     @recipe.steps.any? ? @recipe.steps : @recipe.steps.build
     @recipe.ingredients.any? ? @recipe.ingredients : @recipe.ingredients.build
   end
@@ -29,6 +31,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.build(recipe_params)
     authorize @recipe
+
     respond_to do |format|
       if @recipe.save
         format.html { redirect_to @recipe, notice: "Recipe was successfully created." }
@@ -40,6 +43,7 @@ class RecipesController < ApplicationController
 
   def update
     authorize @recipe
+
     respond_to do |format|
       if @recipe.update(recipe_params)
         format.html { redirect_to @recipe, notice: "Recipe was successfully updated." }
@@ -51,6 +55,7 @@ class RecipesController < ApplicationController
 
   def destroy
     authorize @recipe
+
     @recipe.destroy
     respond_to do |format|
       format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
