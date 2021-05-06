@@ -1,26 +1,5 @@
 document.addEventListener('turbolinks:load', function() {
- 
-  // Dismiss alert flash (button close)
-  const flashList = document.querySelector('.alert')
-
-  if (flashList) {
-    flashList.addEventListener("click", (event) => {
-      flashList.remove()
-    });
-  }
-
-   // Timeout autohide flash notice
-  const notice = document.getElementById('flash-notice');
-  if (notice) fadeOut(notice)
-
-  // Timeout autohide flash alert
-  const alert = document.getElementById('flash-alert');
-  if (alert) fadeOut(alert)
-
-  // Timeout autohide Devise error
-  const deviseErrorExplanation = document.getElementById('error_explanation');
-  if (deviseErrorExplanation) fadeOut(deviseErrorExplanation)
-
+  
   function fadeOut(object) {
     if (object) {
       object.classList.add('fadeout');
@@ -30,20 +9,51 @@ document.addEventListener('turbolinks:load', function() {
       }, 7000);
     }
   }
+  // Dismiss alert flash (button close)
+  var flashModal = {};
+  flashModal = document.querySelector('.alert')
+
+  if (flashModal) {
+    fadeOut(flashModal)
+
+    flashModal.addEventListener("click", (event) => {
+      flashModal.remove()
+    });
+  }
+
+  // Dismiss errors modal (button close)
+  var errorModal = {};
+  errorModal = document.querySelector('.errors-modal')
+
+  if (errorModal) {
+    fadeOut(errorModal)
+
+    errorModal.addEventListener("click", (event) => {
+      errorModal.remove();
+    })
+  }
+  
+  // Timeout autohide Devise error
+  const deviseErrorExplanation = document.getElementById('error_explanation');
+  if (deviseErrorExplanation) fadeOut(deviseErrorExplanation)
+
+
    // For inline errors only
   const commentObserver = document.querySelector(".errors-comment");
-  const recipeObserver = document.querySelector("#errors-recipe");
 
   const observer = new MutationObserver(function() {
     const inlineError = document.getElementById('errors-content')
-    fadeOut(inlineError)
+    
+    if (inlineError) {
+      fadeOut(inlineError)
+      
+      inlineError.addEventListener("click", (event) => {
+        inlineError.remove();
+      })
+    }
   });
  
   if (commentObserver) {
     observer.observe(commentObserver, {childList: true, subtree: true });
    }
-
-   if (recipeObserver) {
-    observer.observe(recipeObserver, {childList: true, subtree: true });
-  }
 })

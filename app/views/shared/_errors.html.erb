@@ -1,5 +1,5 @@
 <% if resource.errors.present? %>
-  <div class="card border-danger" id="errors-content">
+  <div class="card border-danger errors-modal" id="errors-content">
     <div class="card-header bg-danger text-white">
     <%= pluralize(resource.errors.count, "error") %> prohibited this <%= resource&.class.name.downcase %> from being saved:
     <button aria-label="Close" class="btn-close" data-bs-dismiss="alert" type="button" style="position: absolute; top: 12px;"></button>
