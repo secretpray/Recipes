@@ -7,15 +7,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     authorize @comment
     @comment.recipe = @recipe
-    # @comment.save
-
-    respond_to do |format|
-      if @comment.save
-        format.js
-      else
-        format.js
-      end
-    end
+    @comment.save
   end
 
   def upvote
