@@ -4,7 +4,7 @@
   <h1 class='mt-5 mb-4'>Recipes</h1>
   <% if user_signed_in? %>
   <div class='d-flex align-items-center'>
-    <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary mt-3"  %>
+    <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary mt-3", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe..." %>
   </div>
   <% end %>
 </div>

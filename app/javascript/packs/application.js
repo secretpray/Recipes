@@ -17,4 +17,6 @@ ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
+require("utilities/popover")
 require("utilities/auto_hide")
+
