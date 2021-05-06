@@ -42,7 +42,7 @@ TODO:
 * inline Edit Recipe
 * Calories
 * Hotwire
-* Static Page "About"
+* Static Page "About", "Terms"
 * User page (created Recipe for quest, created Recipe and Comments for author)
 * RSS feed
 * Chat room
