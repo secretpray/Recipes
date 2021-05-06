@@ -21,10 +21,11 @@ Feature:
 * Vanila JS and AJAX
 * Paginate (+ BootStrap theme for Kaminari)
 * Favorite
+* Voted comments with acts_as_votable gem
+* 5 Star Rating and Review with JS 
 * Nested Forms
 * Authentication with Devise
 * Authorize with Pundit
-* Voted comments with acts_as_votable gem
 * AutoHide and close Errors/Flash message with vanila JS
 * Popover with vanila JS
 * Inline update counter comments with JS
