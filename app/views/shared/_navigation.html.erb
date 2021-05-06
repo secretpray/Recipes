@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md <%= background_select %>">
   <div class="container">
     <button aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarMain" data-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
@@ -21,6 +21,17 @@
             <%= link_to "Favorites", recipes_favorites_path, class: "nav-link #{is_active('recipes','favorites')}" %>
           </li>
         <% end %>
+        <li class="nav-item">
+          <% if cookies[:theme] == "light" %>
+            <%= link_to root_path(theme: "dark"), class: "nav-link" do %>
+              <i class="fas fa-toggle-on"><span class='fw-normal'> Theme Dark</span></i>
+            <% end %>
+          <% else %>
+            <%= link_to root_path(theme: "light"), class: "nav-link" do %>
+              <i class="opacity-75 fas fa-toggle-on"><span class='fw-normal'> Theme Light</span></i>
+            <% end %>
+          <% end %>
+        </li>
       </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>

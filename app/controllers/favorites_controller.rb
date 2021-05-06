@@ -22,6 +22,6 @@ class FavoritesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:recipe])
+    @recipe = Recipe.friendly.find(params[:recipe])
   end
 end
