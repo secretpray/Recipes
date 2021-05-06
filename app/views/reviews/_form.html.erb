@@ -1,0 +1,28 @@
+<h5>Write a review</h5>
+  <div id='errors-review'> 
+    <%= render 'shared/errors', resource: review %>
+  </div>
+
+  <div class='rating-box'>
+    <%= form_with model: @review, url: recipe_reviews_path(recipe), local: true do |f| %>
+      <div class='main-rating'>
+        <div class='ratings mb-3'>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+          <span class="fa fa-star-o" id="star"></span>
+        </div>
+        <div class='ml-3 rating-value-display'><span id='rating-value-display'>&nbsp;&nbsp;0</span>/5</div>
+      </div>
+      <%#= f.hidden_field :recipe, value: @recipe.id  %>
+      <%= f.hidden_field :score, id: 'rating-value' %>
+      <div class='form-group field'>
+        <%= f.text_area :content, class: 'form-control mt-2', placeholder: 'Add you review' %>
+      </div>
+      <div class="form-group actions mt-4 mb-2">
+        <%= link_to 'See more reviews', recipe_reviews_path(recipe), class: "btn btn-secondary mr-3" %>
+        <%= f.submit 'Create', class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>

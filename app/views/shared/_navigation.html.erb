@@ -37,8 +37,8 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <%= link_to "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", 'data-bs-toggle' => "dropdown", aria: { expanded: "false", haspopup: true }  do %>
+              Welcome, <%= current_user.username %>  
               <%=image_tag gravatar_image_url(current_user.email, size: 40, secure: true), height: 20, width: 20, class: "rounded" %>
-              <%= current_user.username %>  
             <% end %>
             <ul aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right" id="nav-account-dropdown">
               <li>

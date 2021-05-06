@@ -19,8 +19,8 @@
       </div>
 
       <div class='mt-3 pb-2'>
-        Rate: #TODO#;
-        <%= @recipe.favorites.count %> favorited; 
+        <span>Rate: <%= @recipe.avg_score %>（<%= @recipe.reviews.count %> Reviews);</span>
+        <span><%= @recipe.favorites.count %> favorited;<span>
         <span class='comment_count'><%= @recipe.comments.count %> commented;</span>
       </div>
 
@@ -30,9 +30,15 @@
         <strong>Description:</strong>
         <%= @recipe.description %>
       </div>
+      
+      <div class='mt-4'>
+        <%= render 'reviews/form', review: @review, recipe: @recipe %>
+      </div>
     </div>
   </div>
+  
 
+  
   <div class='row mt-2'>
     <div class='mt-4 col-md-4'>
       <h4 class='text-center'><strong>Ingredients:</strong></h4>

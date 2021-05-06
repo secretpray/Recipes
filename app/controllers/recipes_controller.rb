@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
 
   def show
     @favorite_exists = Favorite.where(recipe: @recipe, user: current_user) == [] ? false : true
+    @review = Review.new
     @comment = @recipe.comments.build
     @comments = @recipe.comments.by_add
   end
