@@ -23,7 +23,7 @@
         <% end %>
         <li class="nav-item">
           <% if cookies[:theme] == "light" %>
-            <%= link_to root_path(theme: "dark"), class: "nav-link" do %>
+            <%= link_to root_path(theme: "dark"), class: "nav-link", data: {'bs-toggle' => "tooltip", 'bs-placement' => "bottom"}, title: "Click to switch the color theme of the site" do %>
               <i class="fas fa-toggle-on"><span class='fw-normal'> Theme Dark</span></i>
             <% end %>
           <% else %>
