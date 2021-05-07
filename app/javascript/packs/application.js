@@ -20,6 +20,7 @@ require("@rails/actiontext")
 require("utilities/popover")
 require("utilities/auto_hide")
 require("utilities/reviews")
+require("utilities/add_reviews")
 
 // (function() {
 //   this.App || (this.App = {});
