@@ -1,9 +1,5 @@
 module RecipesHelper
 
-  def link_form(recipe)
-    recipe.persisted? ? 'Update' : 'Create'
-  end
-
   def image_preview(recipe)
     if recipe.recipe_image.attached? 
       image_tag recipe.recipe_image.variant(resize: '200x200!').processed

@@ -1,0 +1,8 @@
+<% Category %>
+
+<%= @category.name %> <span class='fw-lighter'>[<%= @category.created_at.strftime('%H:%M  %d.%m.%Y') %>]</span>
+
+  <% if current_user.admin? %>
+    <%= link_to "Edit", edit_category_path(@category), class: "btn btn-warning" %>
+    <%= link_to "Destroy", category_path(@category), method: :delete, class: "btn btn-warning" %>
+  <% end %>

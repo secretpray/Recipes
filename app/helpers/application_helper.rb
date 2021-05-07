@@ -4,6 +4,10 @@ module ApplicationHelper
     params[:action] == action && params[:controller] == controller ? "active" : nil        
   end
 
+  def link_form(object)
+    object.persisted? ? 'Update' : 'Create'
+  end
+
   def background_select       
     if cookies[:theme] == 'light'
       'navbar-light bg-light'

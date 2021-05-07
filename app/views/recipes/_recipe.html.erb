@@ -6,7 +6,14 @@
     <% end %>
     <td class="col-3"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></td>
     <td class="col-4"><%= link_to recipe.description, recipe, class: 'text-decoration-none text-reset' %></td>
-    <td class="col-2 text-center"><%= link_to recipe.user.email, edit_user_registration_path, class: 'text-decoration-none text-reset' %></td>
+    <% if recipe.category.present? %>
+      <td class="col-4 text-center"><%= link_to recipe.category.name, category_path(recipe.category), class: 'text-decoration-none text-reset'%> </td>
+    <% else %>
+      <td class="col-4 text-center">
+        <%= link_to "Add Category", edit_recipe_path(recipe), class: "btn btn-sm btn-outline-secondary" %>
+      </td>
+    <% end %>
+    <td class="col-2 text-center"><%= link_to recipe.user.username, edit_user_registration_path, class: 'text-decoration-none text-reset' %></td>
     <% if user_signed_in? && policy(recipe).edit?%>
       <td class='col text-center'><%= link_to 'Show', recipe, class: "btn btn-outline-secondary btn-sm" %></td>
       <td class='col text-center'><%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-outline-primary btn-sm" %></td>

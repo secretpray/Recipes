@@ -1,0 +1,26 @@
+<h1 class='offset-4'>Categories list</h1>
+
+<% if @categories.any? %>
+  <% @categories.each do |category| %>
+    <div class='d-flex col-md-6 mx-auto'>
+      <div class='col-6 mt-2 mb-1'>
+      <%= link_to category.name, category, class: 'text-decoration-none' %>
+      </div>
+      <div class='col-6 text-center'>
+        <%= link_to edit_category_path(category) do %>
+          <span class='text-warning'><i class="fas fa-edit"></i></span>
+        <% end %>
+        <%= link_to category_path(category), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span class='text-danger'><i class="fas fa-trash-alt"></i></span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  Not present now
+<% end %>
+
+<div class='offset-3 mt-3'>
+<% if current_user.admin? %>
+  <%= link_to "Create", new_category_path, class: "btn btn-primary" %>
+<% end %>
