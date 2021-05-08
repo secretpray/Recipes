@@ -25,10 +25,18 @@
                   <li>
                     <%= link_to "Category list", categories_path, class: "nav-link mx-1" %>
                   </li>
-                  <li class="dropdown-divider"></li>
                   <li>
                     <%= link_to "New Category", new_category_path, class: "nav-link mx-1" %>
                   </li>
+                  <li class="dropdown-divider"></li>
+                  <li>&nbsp;&nbsp;Parents Category:</li>
+                  <% Category.order(:name).roots.each do |category| %>
+                    <li>
+                      <%= link_to category, class: "nav-link mx-1" do %>
+                        <span>&rang; <span><%= category.name %>
+                      <% end %>
+                    </li>
+                  <% end %>
                 </ul>
               </li>
             </ul>

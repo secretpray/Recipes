@@ -1,6 +1,8 @@
+<%= render 'shared/breadcrumb', category: @category %>
+
 <div class='row'>
   <div class='col-md-9 jumbotron'>
-    <h3>Category: <%= %></h3>
+    <h3 class='text-center my-3'>Category: <%= @category.name %></h3>
     <div class='row' id='dashboard-container'>
       <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @recipes } %>
     </div>

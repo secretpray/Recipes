@@ -6,6 +6,9 @@ body.light {
   background-color: white;
 }
 body.dark {
-  color: white;
+  color: white !important;
   background-color: black;
+  .text-reset {
+    color: #ccc !important;
+  }
 }
