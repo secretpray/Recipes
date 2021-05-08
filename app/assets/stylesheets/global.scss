@@ -53,10 +53,16 @@ footer {
   position: relative;
 }
 
+.fav-span-category,
 .fav-span {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+ 
+.fav-span-category {
+  top: 24px;
+  left: 40px;
 }
 
 .card {
@@ -222,4 +228,9 @@ footer {
 }
 .average-score-display {
   font-size: 16px;
+}
+
+// Submenu Categories
+.nested_nav {
+  margin-left: 1.5em;
 }

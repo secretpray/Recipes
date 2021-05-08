@@ -1,8 +1,11 @@
-<% Category %>
-
-<%= @category.name %> <span class='fw-lighter'>[<%= @category.created_at.strftime('%H:%M  %d.%m.%Y') %>]</span>
-
-  <% if current_user.admin? %>
-    <%= link_to "Edit", edit_category_path(@category), class: "btn btn-warning" %>
-    <%= link_to "Destroy", category_path(@category), method: :delete, class: "btn btn-warning" %>
-  <% end %>
+<div class='row'>
+  <div class='col-md-9 jumbotron'>
+    <h3>Category: <%= %></h3>
+    <div class='row' id='dashboard-container'>
+      <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @recipes } %>
+    </div>
+  </div>
+  <div class='subnemu col-md-3'>
+    <%= render 'shared/submenu' %>
+  </div>
+</div>

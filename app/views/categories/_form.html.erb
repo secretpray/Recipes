@@ -9,6 +9,10 @@
     <%= f.text_field :name, class: "form-control", placeholder: 'Category name' %>
   </div>
 
+  <div class="form-group field mt-3 mb-2">
+    <%= f.collection_select :parent_id, category_select(category), :id, :name, { include_blank: true, prompt: 'Select Parent Category' }, class: "form-select" %>
+  </div>
+
   <div class="form-group actions mt-4 mb-2">
     <%= link_to 'Back', categories_path, class: "btn btn-light" %>
     <%= f.submit link_form(category), class: "btn btn-primary" %>

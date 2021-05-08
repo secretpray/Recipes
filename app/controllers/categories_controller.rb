@@ -7,7 +7,9 @@ class CategoriesController < ApplicationController
     @categories = Category.order(:name)
   end
 
-  def show; end
+  def show
+    @recipes = Recipe.where(category_id: [@category.subtree_ids])
+  end
 
   def new
     @category = Category.new
@@ -21,12 +23,13 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     # authorize @category
-
+    check_inig_parent_and_child
+  
     respond_to do |format|
-      if @category.save
+      if !@category.errors.any? && @category.save
         format.html { redirect_to categories_path, notice: "Category was successfully created." }
       else
-        flash[:danger] = 'Category not created'
+        # flash[:alert] = 'New Category not created'
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -39,7 +42,7 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         format.html { redirect_to categories_path, notice: "Category was successfully updated." }
       else
-        flash[:danger] = 'Category not updated'
+        flash[:alert] = 'Category not updated'
         format.html { render :edit, status: :unprocessable_entity }
       end
     end
@@ -62,6 +65,16 @@ class CategoriesController < ApplicationController
   end
   
   def category_params
-    params.require(:category).permit(:name)
+    params.require(:category).permit(:name, :parent_id)
+  end
+  
+  def check_inig_parent_and_child
+    return if params[:category][:parent_id].empty?
+
+    child_name = params[:category][:name]
+    parent_name = Category.find_by_id(params[:category][:parent_id]).name
+    if child_name == parent_name
+      @category.errors.add(:category, 'name and category parent are the same!') 
+    end
   end
 end
