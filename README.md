@@ -14,6 +14,7 @@ Used gem:
 * Gravatar
 * acts_as_votable
 * fontawesome
+* ancestry
 
 Feature:
 * Active Text
@@ -21,6 +22,7 @@ Feature:
 * Vanila JS and AJAX
 * Paginate (+ BootStrap theme for Kaminari)
 * Favorite
+* Category with Ancestry
 * Voted comments with acts_as_votable gem
 * 5 Star Rating and Review with JS 
 * Nested Forms
@@ -33,7 +35,6 @@ Feature:
 
 TODO:
 * Tag + cloud tag
-* Category
 * User page (created recipe)
 * Follow User
 * Full search with autocomplete
