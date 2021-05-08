@@ -78,6 +78,8 @@ GEM
     acts_as_votable (0.13.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ancestry (4.0.0)
+      activerecord (>= 5.2.4.5)
     apparition (0.6.0)
       capybara (~> 3.13, < 4)
       websocket-driver (>= 0.6.5)
@@ -304,6 +306,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable
+  ancestry
   apparition
   bootsnap (>= 1.4.4)
   byebug

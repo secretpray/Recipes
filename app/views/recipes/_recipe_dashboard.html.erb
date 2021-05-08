@@ -7,6 +7,9 @@
       <% else %>
         <%= link_to image_tag("Default_image.png", class: 'recipe-favorite w-100'), recipe %>
       <% end %>
+      <% if recipe.in_favorite?(current_user) %>
+        <span class="fav-span-category">❤️</span></td>
+      <% end %>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></h5>

@@ -1,0 +1,62 @@
+<div class='container col-md-9'>
+  <h1 class='text-center'>Categories list</h1>
+  <div class='buttons_panel d-flex justify-content-end mt-3 mb-2'>
+    <% if current_user.admin? %>
+      <%= link_to "New Category", new_category_path, class: "btn btn-primary ml-auto" %>
+    <% end %>
+  </div>
+
+  <section id='categories'>
+    <table class="table table-striped">
+      <thead class="table-dark">
+      <tr>
+        <th scope="col" class="col-1 text-center">#</th>
+        <th scope="col" class="col-3">Category name</th>
+        <th scope="col" class="col-3">Parent name</th>
+        <th scope="col" class='text-center col-1'>Action</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        <% if @categories.any? %>
+          <% @categories.each.with_index(1) do |category, index| %>
+            <tr>
+              <td class="col-1"><%= index %></td>
+              <td class="col-3"><%= link_to category.name, edit_category_path(category), class: "text-decoration-none #{category.has_children? ? 'link-dark' : 'link-secondary'}" %></td>
+              <%# if category.ancestry.present? %>
+              <% if category.has_parent? %>
+                <td class="col-3"><%= link_to category.parent.name, edit_category_path(category.parent), class: 'text-decoration-none text-reset' %></td>
+                <%#= Category.find_by_id(category.ancestry).name %>
+                <%#= category.root.name, class: 'text-decoration-none' %>
+              <% else %>
+                <td class="col-3">
+                  <%= link_to edit_category_path(category), class: 'text-decoration-none text-reset' do %>
+                    <% if category.has_children? %>
+                    
+                    <% else %>
+                      +
+                    <% end %>
+                  <% end %>
+                </td>
+              <% end %>
+              <% if user_signed_in? && current_user.admin? %>
+                <td class='col text-center'>
+                  <%= link_to edit_category_path(category), class: "" do %>
+                    <span class='text-center fs-4'><i class="fas fa-pencil-alt"></i></span>
+                  <% end %>
+                  <%= link_to category, class: "", method: :delete, data: { confirm: 'Are you sure?' } do %>
+                     <span class='text-center fs-3 mx-2' style='color: red;'><i class="fas fa-times"></i></span>
+                  <% end %>
+                </td>
+              <% else %>
+                <td colspan="2" class='col text-center'><%= link_to 'Show', category, class: "btn btn-outline-secondary btn-sm" %></td>
+              <% end %>
+            </tr>
+          <% end %>  
+        <% else %>
+          Categories are missing now
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</div>

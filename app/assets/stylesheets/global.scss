@@ -53,10 +53,16 @@ footer {
   position: relative;
 }
 
+.fav-span-category,
 .fav-span {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+ 
+.fav-span-category {
+  top: 24px;
+  left: 40px;
 }
 
 .card {
@@ -80,17 +86,6 @@ footer {
   margin-left: 10px;
   margin-bottom: 10px;
 }
-// .recipe-box {
-//   border: 1px solid black;
-//   height: 500px;
-//   overflow: hidden;
-// }
-
-// img.recipe-favorite {
-//   width: 100%;
-//   height: 55%;
-//   object-fit: cover;
-// }
 
 // Flash styled
 #flash-alert,
@@ -222,4 +217,15 @@ footer {
 }
 .average-score-display {
   font-size: 16px;
+}
+
+// Submenu Categories
+.nested_nav {
+  margin-left: 1.5em;
+}
+
+.nav-breadcrumbs {
+  background: whitesmoke;
+  padding: 8px;
+  border-radius: 7px;
 }

@@ -4,7 +4,10 @@
   <h1 class='mt-5 mb-4'>Recipes</h1>
   <% if user_signed_in? %>
   <div class='d-flex align-items-center'>
-    <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary mt-3", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe..." %>
+    <% if current_user.admin? %>
+      <%= link_to "New Category", new_category_path, class: "btn btn-warning mt-3", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Category" %>
+    <% end %>
+    <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary mt-3", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe" %>
   </div>
   <% end %>
 </div>
@@ -13,9 +16,10 @@
   <thead class="table-dark">
     <tr>
       <th scope="col" class="col-1 text-center">Preview</th>
-      <th scope="col" class="col-3 text-center">Title</th>
+      <th scope="col" class="col-3">Title</th>
       <th scope="col" class="col-4 text-center">Description</th>
-      <th scope="col" class="col-2 text-center">User</th>
+      <th scope="col" class="col-1 text-center">Category</th>
+      <th scope="col" class="col-1 text-center">User</th>
       <th colspan="3" class='text-center col-2'>Action</th>
     </tr>
   </thead>

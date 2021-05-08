@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_071207) do
+ActiveRecord::Schema.define(version: 2021_05_07_113125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,14 @@ ActiveRecord::Schema.define(version: 2021_05_06_071207) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -105,6 +113,8 @@ ActiveRecord::Schema.define(version: 2021_05_06_071207) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_recipes_on_category_id"
     t.index ["slug"], name: "index_recipes_on_slug", unique: true
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end

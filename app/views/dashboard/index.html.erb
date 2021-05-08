@@ -1,13 +1,18 @@
 <h1></h1>
 
-<h3>Last recipes</h3>
-<div class='row' id='dashboard-container'>
-  <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @recent } %>
+<div class='row'>
+  <div class='col-md-9 jumbotron'>
+    <h3>Last recipes</h3>
+    <div class='row' id='dashboard-container'>
+      <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @recent } %>
+    </div>
+
+    <h3 class='mt-4'>Best recipes</h3>
+    <div class='row' id='dashboard-container'>
+      <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @best } %>
+    </div>
+  </div>
+  <div class='subnemu col-md-3'>
+    <%= render 'shared/submenu' %>
+  </div>
 </div>
-
-<h3 class='mt-4'>Best recipes</h3>
-<div class='row' id='dashboard-container'>
-  <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @best } %>
-</div>
-
-

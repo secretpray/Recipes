@@ -29,6 +29,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'friendly_id', '~> 5.4.0'
 gem 'acts_as_votable'
+gem 'ancestry'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

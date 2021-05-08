@@ -18,7 +18,7 @@
       <%#= f.hidden_field :recipe, value: @recipe.id  %>
       <%= f.hidden_field :score, id: 'rating-value' %>
       <div class='form-group field'>
-        <%= f.text_area :content, class: 'form-control mt-2', placeholder: 'Add you review' %>
+        <%= f.rich_text_area :content, class: 'form-control mt-2', placeholder: 'Add you review' %>
       </div>
       <div class="form-group actions mt-4 mb-2">
         <%= link_to 'More reviews', recipe_reviews_path(@recipe), class: "btn btn-secondary mr-3" %>
