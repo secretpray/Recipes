@@ -3,19 +3,19 @@ document.addEventListener('turbolinks:load', function() {
   // Hide/Show review form
   document.body.addEventListener("click", function (event) {
     if (event.target.classList.contains('add-review-link')) {
-    const buttonComment = event.target
+    const buttonReview = event.target
+    const sectionCommentForm = document.querySelector('.review-form')
     const descriptionSection = document.querySelector('.section-description')
     event.preventDefault();
-    const sectionCommentForm = document.querySelector('.review-form')
     
     if (sectionCommentForm.classList.contains('d-none')) {
       descriptionSection.classList.add('hide')
       sectionCommentForm.classList.remove('d-none')
-      buttonComment.innerText = 'Hide comment'
+      buttonReview.innerText = 'Hide review'
       } else {
       descriptionSection.classList.remove('hide')
       sectionCommentForm.classList.add('d-none')
-      buttonComment.innerText = 'Add comment'
+      buttonReview.innerText = 'Add review'
       }
     }
   })
