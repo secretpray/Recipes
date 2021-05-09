@@ -1,0 +1,15 @@
+<div class='row'>
+  <div class='col-md-9 jumbotron'>
+    <h3 class='text-center my-3'>Recipes with tag: <span class='badge bg-primary p-3'><%= @tag.name.capitalize %></span></h3>
+    <div class='row' id='dashboard-container'>
+      <% if @tag.recipes.empty? %>
+        <h3>No recipes now <%= @tag.name.capitalize %></h3>
+      <% else %>
+        <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @recipes } %>
+      <% end %>
+    </div>
+  </div>
+  <div class='subnemu col-md-3'>
+    <%= render 'shared/submenu' %>
+  </div>
+</div>

@@ -73,7 +73,7 @@ class RecipesController < ApplicationController
   end
   
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :user_id, :category_id, :recipe_image, { step_images: [] },
+    params.require(:recipe).permit(:title, :description, :user_id, :category_id, :all_tags, :recipe_image, { step_images: [] },
     ingredients_attributes: [:id, :content, :_destroy],
     steps_attributes: [:id, :method, :_destroy])
   end
