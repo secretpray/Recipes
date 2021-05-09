@@ -35,16 +35,17 @@ Feature:
 * SEEDS (Faker)
 
 TODO:
-* User page (created recipe)
-* Follow User
-* Full search with autocomplete
+* User add attributes for Devise (First name, Last Name, username (uniq), avatar image select)
+* User page (created Recipe for quest, created Recipe and Comments for author)
+* Static Page "About", "Terms"
 * Action Cable (comment)
+* Calories
 * dynamic add/remove fields for Ingredients & Steps
 * inline Edit Recipe
-* Calories
+* Infinite scroll
 * Hotwire
-* Static Page "About", "Terms"
-* User page (created Recipe for quest, created Recipe and Comments for author)
+* Full search with autocomplete
+* Follow User
 * RSS feed
 * Chat room
 * Forum
