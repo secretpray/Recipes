@@ -32,7 +32,7 @@ Feature:
 * AutoHide and close Errors/Flash message with vanila JS
 * Popover with vanila JS
 * Inline update counter comments with JS
-* SEEDS create (Faker)
+* SEEDS (Faker)
 
 TODO:
 * User page (created recipe)
