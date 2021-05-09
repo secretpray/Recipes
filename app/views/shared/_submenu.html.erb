@@ -1,5 +1,5 @@
 <div>
-  <h2>Categories</h2>
+  <h2>Categories:</h2>
   <ul class='nav nav-pills flex-column'>
     <% Category.roots.each do |category| %>
       <li class='nav-item'>
@@ -8,4 +8,11 @@
       </li>
     <% end %>
   </ul>
+</div>
+
+<div class='mt-4 mb-2'>
+  <h2>Tags cloud:</h2>
+  <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
 </div>

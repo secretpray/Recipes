@@ -8,6 +8,8 @@ class Recipe < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :taggings
+  has_many :tags, through: :taggings
   has_one_attached :recipe_image
   has_many_attached :step_images
   
@@ -70,4 +72,24 @@ class Recipe < ApplicationRecord
   def in_favorite? user
     Favorite.where(recipe: self, user: user).any?
   end
+
+  def all_tags
+    self.tags.map(&:name).join(', ')
+  end
+
+  def all_tags=(names)
+    self.tags = names.split(',').map do |name|
+      Tag.where(name: name.strip).first_or_create!
+    end
+  end
+
+  # Recipe.tagged_with('barbecue').count
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).recipes
+  end
+
+  def self.tag_counts
+    Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
+  end
+
 end

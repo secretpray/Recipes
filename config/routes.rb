@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :categories
+  resources :tags, only: [:show]
   resources :recipes do
     resources 'reviews', only: [:index, :new, :create]
     resources 'comments', only: [:create, :destroy] do 

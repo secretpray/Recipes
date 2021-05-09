@@ -10,6 +10,11 @@
       <% if recipe.in_favorite?(current_user) %>
         <span class="fav-span-category">❤️</span></td>
       <% end %>
+      <section class="footer-tags-show">
+        <% if recipe.tags.any? %>
+          <%= raw recipe.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge bg-primary text-decoration-none' }.join(' ') %>
+        <% end %>
+      </section>
     </div>
     <div class="card-body">
       <h5 class="card-title"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></h5>
