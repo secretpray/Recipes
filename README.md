@@ -37,12 +37,19 @@ Feature:
 TODO:
 * User add attributes for Devise (First name, Last Name, username (uniq), avatar image select)
 * User page (created Recipe for quest, created Recipe and Comments for author)
+* Login by Google, Facebook, GitHub
 * Static Page "About", "Terms"
 * Action Cable (comment)
 * Calories
+* Badge: Gluten-free; Vegan; Vegetarian
+* feature: Prep: times; Easy: method; Serves count
+* Polymorh Trophy
 * dynamic add/remove fields for Ingredients & Steps
 * inline Edit Recipe
 * Infinite scroll
+* Save Recipe (+ PDF)
+* Print Recipe
+* Social share
 * Hotwire
 * Full search with autocomplete
 * Follow User
