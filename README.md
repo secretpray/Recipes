@@ -24,7 +24,8 @@ Feature:
 * Favorite
 * Category with Ancestry
 * Voted comments with acts_as_votable gem
-* 5 Star Rating and Review with JS 
+* 5 Star Rating and Review with JS
+* Tags for Recipe and tags cloud
 * Nested Forms
 * Authentication with Devise
 * Authorize with Pundit
@@ -34,7 +35,6 @@ Feature:
 * SEEDS create (Faker)
 
 TODO:
-* Tag + cloud tag
 * User page (created recipe)
 * Follow User
 * Full search with autocomplete
