@@ -27,15 +27,16 @@ Feature:
 * 5 Star Rating and Review with JS
 * Tags for Recipe and tags cloud
 * Nested Forms
-* Authentication with Devise
+* Authentication with Devise (email/username)
+* Avatar for User and more attributes: First name, Last Name, Username (uniq)
 * Authorize with Pundit
-* AutoHide and close Errors/Flash message with vanila JS
+* AutoHide & close Errors/Flash message with vanila JS
 * Popover with vanila JS
 * Inline update counter comments with JS
 * SEEDS (Faker)
 
 TODO:
-* User add attributes for Devise (First name, Last Name, username (uniq), avatar image select)
+
 * User page (created Recipe for quest, created Recipe and Comments for author)
 * Login by Google, Facebook, GitHub
 * Static Page "About", "Terms"
