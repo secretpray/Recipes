@@ -26,25 +26,28 @@ Feature:
 * Voted comments with acts_as_votable gem
 * 5 Star Rating and Review with JS
 * Tags for Recipe and tags cloud
+* Comments with avatar
 * Nested Forms
 * Authentication with Devise (email/username)
-* Avatar for User and more attributes: First name, Last Name, Username (uniq)
+* Avatar for User and more attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Authorize with Pundit
 * AutoHide & close Errors/Flash message with vanila JS
 * Popover with vanila JS
 * Inline update counter comments with JS
+* Personal user page (recent users Recipe, Favorite and Comments)
 * SEEDS (Faker)
 
 TODO:
 
-* User page (created Recipe for quest, created Recipe and Comments for author)
 * Login by Google, Facebook, GitHub
 * Static Page "About", "Terms"
+* Added Replies to comments
 * Action Cable (comment)
 * Calories
 * Badge: Gluten-free; Vegan; Vegetarian
 * feature: Prep: times; Easy: method; Serves count
 * Polymorh Trophy
+* Heroku
 * dynamic add/remove fields for Ingredients & Steps
 * inline Edit Recipe
 * Infinite scroll
