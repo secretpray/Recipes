@@ -39,7 +39,7 @@
           <tbody>
             <% @reviews.each do |review| %>
               <tr>
-                <td><%= link_to review.user.username, edit_user_registration_path, class: 'text-decoration-none' %></td>
+                <td><%= link_to full_name(review.user), edit_user_registration_path, class: 'text-decoration-none' %></td>
                 <td><%= review.score %></td>
                 <td><%= review.content %></td>
               </tr>

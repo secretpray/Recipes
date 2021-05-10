@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   def favorite_text
     return @favorite_exists ?  "&#x2764;&#xfe0f;".html_safe : "&#x2661;".html_safe
   end
-
+  
   # def after_sign_up_path_for(resource)
   #   recipes_path
   # end
@@ -32,8 +32,11 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+    added_attrs = [:first_name, :last_name, :username, :avatar]
+    devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
+    devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
   end
+
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || root_path)

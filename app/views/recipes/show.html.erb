@@ -10,28 +10,35 @@
       <% else %>
         <%= image_tag "Default_image.png" %>
       <% end %>
-      <div class="star-rating">
-        <div class="star-rating-front d-flex" style="width: <%= @recipe.review_score_percentage %>%">★★★★★</div>
-        <div class="star-rating-back">★★★★★</div>
-      </div>
+      <section class="footer-tags-show">
+        <% if @recipe.tags.any? %>
+          <%= raw @recipe.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge bg-primary text-decoration-none' }.join(' ') %>
+        <% end %>
+      </section>
     </div>  
 
     <div class='col-md-9 mt-4'>
       <strong>Title: </strong><%= @recipe.title %>
 
       <div class='mt-2'>
-        <strong>By:</strong>
-        <%= @recipe.user.username %>
+        <strong>by:</strong>
+        <%= link_to full_name(@recipe.user), edit_user_registration_path, class: "text-decoration-none" %>
       </div>
 
-      <div class='mt-3 pb-2'>
-        <span><%= @recipe.avg_score %>
-          <%= link_to recipe_reviews_path(@recipe), class: 'text-decoration-none' do %>
-            (<%= @recipe.reviews.count %> Reviews) 
-          <% end %><span class='fw-light'>rated;</span>
-        </span>
-        <span><%= @recipe.favorites.count %> <span class='fw-light'>favorited</span>;<span>
-        <span class='comment_count'><%= @recipe.comments.count %> <span class='fw-light'>commented</span>;</span>
+      <div class='mt-3 pb-2 d-flex'>
+        <div class="star-rating">
+          <div class="star-rating-front d-flex" style="width: <%= @recipe.review_score_percentage %>%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+        <div class='mx-2 mt-2'>
+          <span><%= @recipe.avg_score %>
+            rated <%= link_to recipe_reviews_path(@recipe), class: 'text-decoration-none' do %>
+              (<%= @recipe.reviews.count %> Reviews);
+            <% end %><span class='fw-light'></span>
+          </span>
+          <span><%= @recipe.favorites.count %> <span class='fw-light'>favorited</span>;<span>
+          <span class='comment_count'><%= @recipe.comments.count %> <span class='fw-light'>commented</span>;</span>
+        </div>
       </div>
       
       <div class=''>

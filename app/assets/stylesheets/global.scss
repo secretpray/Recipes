@@ -233,9 +233,15 @@ footer {
 // Tags footer for Recipe
 .footer-tags-index {
   padding: 7px 4px 4px 7px;
+  :hover {
+    color: lavender;
+  }
 }
 .footer-tags-show {
   margin: 12px 4px -16px 2px;
+  :hover {
+    color: lavender;
+  }
 }
 
 .tag1 {
