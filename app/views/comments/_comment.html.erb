@@ -1,28 +1,36 @@
-<div class='mt-2 offset-1' id="<%= dom_id(comment) %>">
-    <%= comment.body %>
-    <div class='d-flex mt-2'>
-      <div class="fw-lighter col-md-6">
-        commented by: <%= comment.user.email %>
-        [<%= comment.created_at.strftime('%H:%M  %d.%m.%Y') %>]
-      </div>
-
-      <% if policy(comment).voted? %>
-        <div class='col-md-1 d-flex'>
-          <%= render 'comments/upvote_link', comment: comment %>
-          <%= render 'comments/like_count', comment: comment %>
-          <%= render 'comments/downvote_link', comment: comment %>
-        </div>
-      <% else %>
-        <div class='col-md-1'></div>
-      <% end %>
-
-      <% if policy(comment).destroy? %>
-        <div class='col-md-5'>
-          <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
-            <span class='float-end'>&#x274C;</span>
-          <% end %>
-        </div>
-      <% end %>
+<div class='mt-4 offset-1' id="<%= dom_id(comment) %>">
+  <div class='row'>
+    <div class="col-md-1">
+      <%= image_tag user_avatar(comment.user, 50), class: "rounded-circle" %>
     </div>
-    <hr>
+    <div class='col'>
+      <%= comment.body %>
+      <div class='d-flex mt-2'>
+        <div class="fw-lighter col-md-6">
+          commented 
+          <strong><%= time_ago_in_words(comment.created_at) %></strong> ago&nbsp;
+          by: <strong><%= full_name(comment.user) %></strong>
+        </div>
+
+        <% if policy(comment).voted? %>
+          <div class='col-md-1 d-flex'>
+            <%= render 'comments/upvote_link', comment: comment %>
+            <%= render 'comments/like_count', comment: comment %>
+            <%= render 'comments/downvote_link', comment: comment %>
+          </div>
+        <% else %>
+          <div class='col-md-1'></div>
+        <% end %>
+
+        <% if policy(comment).destroy? %>
+          <div class='col-md-5'>
+            <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
+              <span class='float-end'>&#x274C;</span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <hr>
 </div>

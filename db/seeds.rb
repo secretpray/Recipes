@@ -62,6 +62,11 @@ end
 #     recipe_id: Recipe.all.sample.id, user_id: User.find(3).id
 #   )
 # end
+# Faker::Name.name             #=> "Tyshawn Johns Sr."
+# Faker::Name.first_name       #=> "Kaci"
+# Faker::Name.last_name        #=> "Ernser"
+# users = User.all.select { |user| user.username == nil }
+# users.each { |user| user.update(username: user.get_username) }
 
 puts "Created #{User.count} users"
 puts "Created #{Category.count} categories"
