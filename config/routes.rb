@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   
-  
   get 'favorites/update'
   get 'recipes/favorites'
+  # get 'recipes/user', to: 'users#recipes'
+  # get 'myrecipes', action: :recipes, controller: 'users'
   
   devise_for :users
-  
+  resources :users, only: [:show] do
+    member do 
+      get 'recipes', to: 'users#recipes'
+    end
+  end
   resources :categories
   resources :tags, only: [:show]
   resources :recipes do
