@@ -87,6 +87,12 @@ footer {
   margin-bottom: 10px;
 }
 
+#dashboard-card-user {
+  width: calc((100% / 2) - (2rem / 3));
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
 // Flash styled
 #flash-alert,
 #flash-notice {
@@ -269,5 +275,29 @@ footer {
   font-size: 1.6em;
   text-decoration: none;
   color: #778888;
+}
 
+// User page show
+.profile-header {
+  transform: translateY(5rem);
+}
+
+
+/*
+* User show page
+*/
+.profile-head {
+  transform: translateY(5rem)
+}
+
+.cover {
+  background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+  background-size: cover;
+  background-repeat: no-repeat
+}
+
+.show-body {
+  // background: #654ea3;
+  // background: linear-gradient(to right, #e96443, #904e95);
+  min-height: 100vh
 }

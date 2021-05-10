@@ -18,6 +18,8 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  scope :by_recipes_count, -> { User.left_joins(:recipes).group(:id).order('COUNT(recipes) DESC') } #.pluck(:id, :email) max -> first
+  
   attr_writer :login
 
   def login

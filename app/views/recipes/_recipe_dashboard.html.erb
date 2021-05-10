@@ -1,5 +1,6 @@
 <% recipes.each do |recipe|%>
-  <div class='card' id='dashboard-card'>
+  <% card_id = controller_name == 'users' && action_name == 'show' ? 'dashboard-card-user' : 'dashboard-card' %>
+  <div id=<%= card_id %> class='card' >
     <div class='card-body'>
       <%# if @recipe.recipe_image.present? %>
       <% if recipe.recipe_image.attached? %>
