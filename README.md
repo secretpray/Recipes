@@ -29,7 +29,7 @@ Feature:
 * Comments with avatar
 * Nested Forms
 * Authentication with Devise (email/username)
-* Avatar for User and more attributes: First name, Last Name, Username (uniq), Birthday, About 
+* Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Authorize with Pundit
 * AutoHide & close Errors/Flash message with vanila JS
 * Popover with vanila JS
