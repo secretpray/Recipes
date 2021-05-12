@@ -49,5 +49,12 @@ module ApplicationHelper
       gravatar_image_url(user&.email, size: size)
     end
   end
+
+  # Return original email for oauth
+  def original_email(email)
+    if email.match(/\[\w+-\d+\]/)
+      email.sub(/\[\w+-\d+\]/, '')
+    end
+  end
 end
 
