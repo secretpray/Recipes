@@ -15,6 +15,9 @@ Used gem:
 * acts_as_votable
 * fontawesome
 * ancestry
+* gem 'omniauth' (+ 'omniauth-facebook', 'omniauth-github', omniauth-google-oauth2')
+* gem 'activerecord-session_store'
+
 
 Feature:
 * Active Text
