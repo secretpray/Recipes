@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get 'recipes/user', to: 'users#recipes'
   # get 'myrecipes', action: :recipes, controller: 'users'
   
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth', registrations: 'registrations' }
   resources :users, only: [:show] do
     member do 
       get 'recipes', to: 'users#recipes'
