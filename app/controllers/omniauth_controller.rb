@@ -1,7 +1,9 @@
 class OmniauthController < Devise::OmniauthCallbacksController
+  # skip_before_action :verify_authenticity_token, only: :facebook
   
   def facebook
     @user = User.create_from_provider_data(request.env['omniauth.auth'])
+
     if @user.persisted?
       sign_in_and_redirect @user
     else
@@ -21,7 +23,6 @@ class OmniauthController < Devise::OmniauthCallbacksController
   end
 
   def google_oauth2
-    # binding.pry
     @user = User.create_from_provider_data(request.env['omniauth.auth'])
 
     if @user.persisted?

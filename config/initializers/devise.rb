@@ -271,11 +271,13 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
+  # callback_url: "CALLBACK_URL"
+  # Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile.email'
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
-  Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile.email'
+  Rails.application.credentials.dig(:facebook, :facebook_client_secret)
   config.omniauth :github, Rails.application.credentials.dig(:github, :github_client_id),
-  Rails.application.credentials.dig(:github, :github_client_secret), scope: 'user.public_repo'
+  Rails.application.credentials.dig(:github, :github_client_secret), scope: "user, public_repo, gist"
   config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :google_client_id),
   Rails.application.credentials.dig(:google, :google_client_secret), scope: 'userinfo.email, userinfo.profile' 
   # , userinfo.first_name, userinfo.last_name, userinfo.image

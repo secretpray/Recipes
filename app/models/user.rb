@@ -5,10 +5,11 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one_attached :avatar
 
-  validates :email, presence: true, uniqueness: true, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  # validates :username, uniqueness: { case_sensitive: false }
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validate :validate_username
+  validates :email, presence: true, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+  # validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :username, presence: true
+  # validate :uniq_email
+  # validate :uniq_username
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -28,9 +29,21 @@ class User < ApplicationRecord
     @login || username || email
   end
 
-  def validate_username
-    if User.where(email: username).exists?
-      errors.add(:username, :invalid)
+  def uniq_username
+    if provider.empty?
+      if User.where(email: username).exists?
+        binding.pry
+        errors.add(:username, :invalid)
+      end
+    end
+  end
+
+  def uniq_email
+    if provider.empty?
+      if User.where(email: email).exists?
+        binding.pry
+        errors.add(:email, :invalid)
+      end
     end
   end
 
@@ -46,11 +59,20 @@ class User < ApplicationRecord
   # Omniauth
   def self.create_from_provider_data(provider_data)
     where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|
-      # binding.pry
-      user.email = provider_data.info.email
-      user.first_name = provider_data.info.first_name unless provider_data.info.first_name.empty?
-      user.last_name = provider_data.info.last_name unless provider_data.info.last_name.empty?
-      user.username = provider_data.info.email.split('@')[0].capitalize
+      binding.pry
+      email_row = provider_data.info.email.split('@')
+      uniq_username = "#{email_row[0]}[#{provider_data.provider}-#{Time.now.to_i}]"
+      uniq_email = "#{uniq_username}@#{email_row[1]}"
+      user.username = uniq_username
+      # user.email = provider_data.info.email
+      user.email = uniq_email 
+      if provider_data.provider == 'facebook'
+        user.first_name = provider_data.info.name.split(' ')[0] unless provider_data.info.name.empty?
+        user.last_name = provider_data.info.name.split(' ')[1] unless provider_data.info.name.empty?
+      elsif  provider_data.provider != 'github'
+        user.first_name = provider_data.info.first_name unless provider_data.info.first_name.empty?
+        user.last_name = provider_data.info.last_name unless provider_data.info.last_name.empty?
+      end
       user.password = Devise.friendly_token[0, 20] #"XQ3UY34iCcKwL-73SLyL"
     end
   end
