@@ -29,6 +29,7 @@ Feature:
 * Comments with avatar
 * Nested Forms
 * Authentication with Devise (email/username)
+* Authentication with Google oauth2 with support User attributes update
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Authorize with Pundit
 * AutoHide & close Errors/Flash message with vanila JS
@@ -39,7 +40,7 @@ Feature:
 
 TODO:
 
-* Login by Google, Facebook, GitHub
+* Login by Facebook, GitHub
 * Static Page "About", "Terms"
 * Added Replies to comments
 * Action Cable (comment)
