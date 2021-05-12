@@ -29,7 +29,7 @@ Feature:
 * Comments with avatar
 * Nested Forms
 * Authentication with Devise (email/username)
-* Authentication with Google oauth2 with support User attributes update
+* Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Authorize with Pundit
 * AutoHide & close Errors/Flash message with vanila JS
@@ -40,23 +40,22 @@ Feature:
 
 TODO:
 
-* Login by Facebook, GitHub
 * Static Page "About", "Terms"
-* Added Replies to comments
-* Action Cable (comment)
-* Calories
+* Added Replies to comments (React?)
+* Action Cable (replay comment, create Recipe)
+* Add calories
 * Badge: Gluten-free; Vegan; Vegetarian
-* feature: Prep: times; Easy: method; Serves count
+* Add more feature: Prep: times; Easy: method; Serves count
 * Polymorh Trophy
 * Heroku
 * dynamic add/remove fields for Ingredients & Steps
 * inline Edit Recipe
 * Infinite scroll
+* Full search with autocomplete
 * Save Recipe (+ PDF)
 * Print Recipe
 * Social share
 * Hotwire
-* Full search with autocomplete
 * Follow User
 * RSS feed
 * Chat room
