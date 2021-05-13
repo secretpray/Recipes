@@ -2,10 +2,8 @@ Rails.application.routes.draw do
   
   get 'favorites/update'
   get 'recipes/favorites'
-  # get 'recipes/user', to: 'users#recipes'
-  # get 'myrecipes', action: :recipes, controller: 'users'
   
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth', registrations: 'registrations' }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
   resources :users, only: [:show] do
     member do 
       get 'recipes', to: 'users#recipes'

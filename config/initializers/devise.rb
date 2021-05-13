@@ -274,6 +274,7 @@ Devise.setup do |config|
   # callback_url: "CALLBACK_URL"
   # Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: 'public_profile.email'
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  # Rails.application.credentials.dig(:facebook, :facebook_client_secret), scope: [:email]
   config.omniauth :facebook, Rails.application.credentials.dig(:facebook, :facebook_client_id),
   Rails.application.credentials.dig(:facebook, :facebook_client_secret)
   config.omniauth :github, Rails.application.credentials.dig(:github, :github_client_id),
