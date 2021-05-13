@@ -24,6 +24,8 @@ require("utilities/reviews")
 require("utilities/add_reviews")
 require("utilities/add_personal")
 
+global.toastr = require("toastr")
+
 // (function() {
 //   this.App || (this.App = {});
 
