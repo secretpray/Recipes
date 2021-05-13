@@ -1,38 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <div class='d-flex justify-content-between'>
-  <h1 class='mt-5 mb-4'>Recipes</h1>
-  <% if user_signed_in? %>
-  <div class='d-flex align-items-center'>
-    <% if current_user.admin? %>
-      <%= link_to "New Category", new_category_path, class: "btn btn-warning mt-3", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Category" %>
+  <div class='fs-1 fw-bold mt-5 mb-2'>Recipes</div>
+  <div class='d-flex'>
+    <div class="form-inline d-flex align-items-center me-1 mt-3">
+      <%= form_tag(recipes_path, method: :get) do %>
+        <div class="input-group">
+          <%= text_field_tag :content, params[:content], autocomplete: 'off', placeholder: "Find a recipe...", class: 'form-control-sm' %>
+          <span class="input-group-append">
+            <button class="btn btn-secondary btn" type="submit">
+              <span aria-hidden="true" class="fa fa-search"></span>
+            </button>
+          </span>
+        </div>
+      <% end %>
+    </div>
+    <% if user_signed_in? %>
+      <div class='d-flex align-items-center mt-3'>
+        <% if current_user.admin? %>
+          <%= link_to "New Category", new_category_path, class: "btn btn-warning", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Category" %>
+        <% end %>
+        <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe" %>
+      </div>
     <% end %>
-    <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary mt-3", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe" %>
   </div>
-  <% end %>
 </div>
 
-<div class="search-container" data-controller="searchform">
-  <div class="search-form" >
-    <h5>Search</h5>
-    <form action=<%= search_query_path %> method="get">
-      <label for="sys-search">Search the  System</label>
-      <input name="search-term" type="search" tabindex="0"
-             id="sys-search" minlength=2 placeholder="Pizza, Pasta...."
-             aria-label="Search through site content" accesskey="s"
-             data-target="searchform.searchItem" autofocus
-             data-action="input->searchform#requestSearch"
-      >
-    </form>
-  </div>
-  <div class="sys-search-results" data-target="searchform.searchResults">
-    <ul>
-      <li class="searching-interim">
-        <span class="result-secondary">Searching....</span>
-      </li>
-    </ul>
-  </div>
-</div>
 
 <table class="table table-striped">
   <thead class="table-dark">
