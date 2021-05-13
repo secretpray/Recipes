@@ -61,4 +61,8 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+
+  def online?
+    updated_at > 10.minutes.ago
+  end
 end

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   
+  after_action :update_user_online, if: :user_signed_in?
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_theme
   
@@ -20,14 +21,6 @@ class ApplicationController < ActionController::Base
   def favorite_text
     return @favorite_exists ?  "&#x2764;&#xfe0f;".html_safe : "&#x2661;".html_safe
   end
-  
-  # def after_sign_up_path_for(resource)
-  #   recipes_path
-  # end
-  
-  # def after_sign_in_path_for(resource)
-  #   recipes_path
-  # end
 
   private
 
@@ -35,6 +28,10 @@ class ApplicationController < ActionController::Base
     added_attrs = [:first_name, :last_name, :username, :about, :birthday, :avatar]
     devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)
     devise_parameter_sanitizer.permit(:account_update, keys: added_attrs)
+  end
+
+  def update_user_online
+    current_user.try :touch
   end
 
   def user_not_authorized

@@ -7,6 +7,9 @@
             <div class="profile me-3">
               <div class=''>
                 <%= image_tag user_avatar(@user, 140), class: "rounded mb-2 img-thumbnail" %>
+                <% if @user.online?%>
+                  <span class="badge bg-info text-dark status-online">Online</span>
+                <% end %>
               </div>
               <div class='mt-1 d-flex'>
                 <div class="me-2">
