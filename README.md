@@ -37,8 +37,12 @@ Feature:
 * Authorize with Pundit
 * AutoHide & close Errors/Flash message with vanila JS
 * Popover with vanila JS
+* Simple search
+* User status in model (:active, :disabled, :banned);
+* User online status;
 * Inline update counter comments with JS
 * Personal user page (recent users Recipe, Favorite and Comments)
+* Custom static page (404/500)
 * SEEDS (Faker)
 
 TODO:
