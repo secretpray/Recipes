@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   get 'favorites/update'
   get 'recipes/favorites'
+  get 'search/query'
   
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
   resources :users, only: [:show] do

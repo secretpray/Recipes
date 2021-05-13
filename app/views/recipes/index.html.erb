@@ -12,6 +12,28 @@
   <% end %>
 </div>
 
+<div class="search-container" data-controller="searchform">
+  <div class="search-form" >
+    <h5>Search</h5>
+    <form action=<%= search_query_path %> method="get">
+      <label for="sys-search">Search the  System</label>
+      <input name="search-term" type="search" tabindex="0"
+             id="sys-search" minlength=2 placeholder="Pizza, Pasta...."
+             aria-label="Search through site content" accesskey="s"
+             data-target="searchform.searchItem" autofocus
+             data-action="input->searchform#requestSearch"
+      >
+    </form>
+  </div>
+  <div class="sys-search-results" data-target="searchform.searchResults">
+    <ul>
+      <li class="searching-interim">
+        <span class="result-secondary">Searching....</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>

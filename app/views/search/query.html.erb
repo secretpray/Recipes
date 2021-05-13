@@ -1,0 +1,16 @@
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col" class="col-1 text-center">Preview</th>
+      <th scope="col" class="col-3">Title</th>
+      <th scope="col" class="col-4 text-center">Description</th>
+      <th scope="col" class="col-1 text-center">Category</th>
+      <th scope="col" class="col-1 text-center">User</th>
+      <th colspan="3" class='text-center col-2'>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render 'recipes/recipe', locals: { recipes: @recipes } %>
+  </tbody>
+</table>
