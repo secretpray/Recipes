@@ -33,9 +33,7 @@ module ApplicationHelper
 
   # Create cloud tag: tag_cloud(tagssorted, ["tag1", "tag2", "tag3", "tag4", "tag5"])
   def tag_cloud(tags, classes)
-    # max = tags.sort_by(&:count).last
     tags.each do |tag|
-    #  index = tag.count.to_f / max.count * (classes.size - 1)
      index = tag.recipes.count.to_f / tags.last.recipes.count * (classes.size - 1)
      yield(tag, classes[index.round])
     end
@@ -54,6 +52,8 @@ module ApplicationHelper
   def original_email(email)
     if email.match(/\[\w+-\d+\]/)
       email.sub(/\[\w+-\d+\]/, '')
+    else
+      email
     end
   end
 end

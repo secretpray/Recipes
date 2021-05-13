@@ -56,7 +56,7 @@
       <div class="alert alert-warning">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <% if resource.provider != "google_oauth2" %>
+    <% if resource.authorizations(&:provider).blank? %>
       <div class="form-group mt-3">
         <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password'  %>
         <p class="form-text text-muted"><small>Leave password blank if you don't want to change it</small></p>
