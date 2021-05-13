@@ -9,6 +9,14 @@ class UsersController < ApplicationController
     @all_recipes = @user.recipes.page(params[:page]).per(9)
   end
 
+  def change_status
+    # @user = User.find(params[:id])
+    if params[:status].present? && User::STATUSES.include?(params[:status].to_sym)
+      @user.update(status: params[:status])
+    end
+    redirect_to @user, notice: "Status updated to #{@user.status}"
+  end
+
   private
 
   def set_user

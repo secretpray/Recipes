@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     member do 
       get 'recipes', to: 'users#recipes'
+      patch 'change_status', to: 'users#change_status' # patch :change_status
     end
   end
   resources :categories

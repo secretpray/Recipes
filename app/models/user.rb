@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :username, presence: true
   # validate :uniq_email
   # validate :uniq_username
+  validates :status, presence: true
+  STATUSES = [:active, :banned, :disabled]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

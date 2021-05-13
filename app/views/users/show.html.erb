@@ -9,20 +9,36 @@
                 <%= image_tag user_avatar(@user, 140), class: "rounded mb-2 img-thumbnail" %>
               </div>
               <div class='mt-1 d-flex'>
-                <% if current_user.id == @user.id %>
-                  <%= link_to "Edit profile", edit_user_registration_path, class: "btn btn-outline-dark btn-sm btn-block" %>
-                <% end %>
+                <div class="me-2">
+                  <% if current_user.id == @user.id %>
+                    <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-outline-dark btn-sm btn-block user-status"%>
+                  <% end %>
+                </div>
               </div>
             </div>
             <div class="p-3 mb-5 mx-4 text-white">
               <div class=''>
                 <h3><%= full_name(@user) %></h3>
               </div>
-              <div class="small mb-4">
+              <div class="small mb-3">
                 <i class="fas fa-envelope me-2 fw-light">
                   <span class='mx-1 fw-light'><%= original_email(@user.email) %><span>
                 </i>
+                <% if @user.status == 'banned' %>
+                  &nbsp;<span class="badge bg-warning text-dark"><%= @user.status %></span>
+                <% elsif @user.status == 'disabled'%>
+                  &nbsp;<span class="badge bg-danger"><%= @user.status %></span>
+                <% else %>
+                  &nbsp;<span class="badge bg-success"><%= @user.status %></span>
+                <% end %>
               </div>
+              <% if current_user.admin? %>
+                  <% User::STATUSES.each do |status| %>
+                    <%= link_to change_status_user_path(@user, status: status), method: :patch do %>
+                      <span class="btn btn-sm btn-block btn-outline-warning"><%= status %></span>
+                    <% end %>
+                  <% end %>
+                <% end %>
             </div>
         </div>
       </div>
