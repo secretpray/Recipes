@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'errors/not_found'
+  get 'errors/internal_server_error'
   get 'favorites/update'
   get 'recipes/favorites'
   
@@ -20,7 +22,10 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  
+  match "/404", via: :all, to: "errors#not_found"
+  match "/500", via: :all, to: "errors#internal_server_error"
+  
   root to: 'dashboard#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
