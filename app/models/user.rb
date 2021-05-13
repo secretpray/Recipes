@@ -13,6 +13,8 @@ class User < ApplicationRecord
   validates :username, presence: true
   # validate :uniq_email
   # validate :uniq_username
+  validates :status, presence: true
+  STATUSES = [:active, :banned, :disabled]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -58,5 +60,9 @@ class User < ApplicationRecord
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def online?
+    updated_at > 10.minutes.ago
   end
 end

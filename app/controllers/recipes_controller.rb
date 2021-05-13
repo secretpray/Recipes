@@ -3,7 +3,11 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
-    @recipes = Recipe.recent.page(params[:page]).per(12)
+    if params[:content]
+      @recipes = Recipe.where('title ILIKE ? OR description ILIKE ?', "%#{params[:content]}%", "%#{params[:content]}%").order(created_at: :desc).page(params[:page]).per(12) #case-insensitive
+    else
+      @recipes = Recipe.recent.page(params[:page]).per(12)
+    end
   end
 
   def show
