@@ -29,12 +29,14 @@ Feature:
 * Voted comments with acts_as_votable gem
 * 5 Star Rating and Review with JS
 * Tags for Recipe and tags cloud
+* Recipes, Favorites, Comments counter_cache for User model
 * Comments with avatar
 * Nested Forms
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Authorize with Pundit
+* Disappearing flash messages with toastr js
 * AutoHide & close Errors/Flash message with vanila JS
 * Popover with vanila JS
 * Simple search
