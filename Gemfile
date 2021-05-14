@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'friendly_id', '~> 5.4.0'
 gem 'acts_as_votable'
 gem 'ancestry'
+gem 'ransack'
 
 # OmniAuth
 gem 'omniauth'

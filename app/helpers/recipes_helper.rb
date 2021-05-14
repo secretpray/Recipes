@@ -15,4 +15,13 @@ module RecipesHelper
      user.username.blank? ? user.email.split('@')[0].capitalize : user.username
     end
   end
+
+  def parse_time(record)
+    unless record.nil?
+      unless record.strftime("%H:%M").split(':')[0] == '00'
+        record.strftime("%H:%M").split(':')[0] + ' hrs '
+      end
+      record.strftime("%H:%M").split(':')[1] + ' mins'
+    end
+  end
 end

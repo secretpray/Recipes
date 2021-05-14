@@ -41,7 +41,7 @@
         </div>
       </div>
       
-      <div class=''>
+      <div>
         <span>
           Favorite: <%= link_to favorite_text, favorites_update_path(recipe: @recipe), id: 'favorite_link', class: 'text-decoration-none text-reset mt-3', remote: true %>
         </span>
@@ -53,21 +53,152 @@
       </div>
 
   <!-- Review section-->
-      <div class='section-write-review'>
-        <% if policy(@recipe).review? %>
-          <div class='review-form d-none mt-2'>
-            <%= render 'reviews/form', review: @review, recipe: @recipe %>
-          </div>
-        <% end %>
-      </div>
+      <section>
+        <div class='section-write-review'>
+          <% if policy(@recipe).review? %>
+            <div class='review-form d-none mt-2'>
+              <%= render 'reviews/form', review: @review, recipe: @recipe %>
+            </div>
+          <% end %>
+        </div>
+      </section>
 
-      <div class='mt-4 section-description'>
-        <strong>Description:</strong>
-        <%= @recipe.description %>
-      </div>  
+      <!-- Start Badges attrs  -->
+      <section>
+        <div class='container mt-2'>
+          <div class="row">
+            <div class="first-column col-md-5">
+              <div class='d-flex mt-3'>
+                <div class="prep-time icon col-md-2 text-center">
+                  <i class="fas fa-clock col-md-10 fs-2 text-primary"></i>
+                </div>
+                <div class='prep-time-text col-md-10'>
+                  <strong>Prep:</strong> 
+                  <%= parse_time(@recipe.time_prep) %>
+                </div>
+              </div>
+              <div class='offset-2'>
+                <strong>Cook:</strong>
+                <%= parse_time(@recipe.time_cook) %>
+              </div>
+              <div class='offset-2 mt-2'>
+                <% unless @recipe.time_ps.nil? %>
+                  <%= @recipe.time_ps %>
+                <% end %>
+              </div>  
+            </div>
+            <div class="second-column col-md-2">
+              <div class="serves mt-3">
+                <i class="fas fa-utensils fs-4 text-primary me-3"></i>
+                <strong class=''>Serves:</strong> <%= @recipe.serves rescue nil%>
+              </div>
+            </div>
+            <div class="third-column container col-md-5 d-flex my-4 justify-content-center flex-wrap align-items-center">
+              <span class="mx-1 <%= @recipe.prep_easy? ? 'badge bg-secondary' : 'd-none' %>">Easy</span>
+              <span class="mx-1 <%= @recipe.gluten_free? ? 'badge bg-secondary' : 'd-none' %>">Gluten free</span>
+              <span class="mx-1 <%= @recipe.peanut_free? ? 'badge bg-secondary' : 'd-none' %>">Peanut free</span>
+              <span class="mx-1 <%= @recipe.sugar_free? ? 'badge bg-secondary' : 'd-none' %>">Sugar free</span>
+              <span class="mx-1 <%= @recipe.salt_free? ? 'badge bg-secondary' : 'd-none' %>">Salt free</span>
+              <span class="mx-1 <%= @recipe.kosher? ? 'badge bg-secondary' : 'd-none' %>">Kosher</span>
+              <span class="mx-1 <%= @recipe.vegan? ? 'badge bg-secondary' : 'd-none' %>">Vegan</span>
+              <span class="mx-1 <%= @recipe.vegetarin? ? 'badge bg-secondary' : 'd-none' %>">Vegetarin</span>            
+            </div>
+          </div> 
+        </div>
+      </section>
+      
+      <!-- Stert section Badge Nutrition-->
+      <div class='d-flex justify-content-around mt-2'>
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>kCal</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_kcal) %> kcal
+            </li>
+          </ul>  
+        </div>
+
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>fat</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_fat) %> g
+            </li>
+          </ul>  
+        </div>
+
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>saturates</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_saturates) %> g
+            </li>
+          </ul>  
+        </div>
+
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>carbs</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_carbs) %> g
+            </li>
+          </ul>  
+        </div>
+
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>sugars</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_sugar) %> g
+            </li>
+          </ul>  
+        </div>
+
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>fibre</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_fibre) %> g
+            </li>
+          </ul>  
+        </div>
+
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>protein</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_protein) %> g
+            </li>
+          </ul>  
+        </div>
+
+        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+          <div class="card-header text-center">
+            <strong>salt</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
+              <%= @recipe.try(:nutrion_ps_salt) %> g
+            </li>
+          </ul>  
+        </div>
+      </div> <!-- End section Badge Nutrition-->
     </div>
   </div>
-  
   <div class='row mt-2'>
     <div class='mt-4 col-md-4'>
       <h4 class='text-center'><strong>Ingredients:</strong></h4>
@@ -126,7 +257,7 @@
       </div>
     <% end%>
   </div>
-</br>
+  </br>
   <h4 class='recipe-comment-count'> <%= @recipe.comments.count %> comment(s) </h4> 
   <div class='comment_list mt-2 mb-3'>
     <% if @comments.any? %>

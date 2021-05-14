@@ -19,6 +19,8 @@ footer {
   flex-direction: column;
   height: 100%;
   background-color: #F8F9FA;
+  margin-top: 6rem;
+  padding: 20px;
 }
 
 #navbarMain {  
@@ -309,4 +311,15 @@ footer {
   position: absolute;
   top: 5px;
   left: 7px;  
+}
+
+// Badge Nutrition attrs
+.serves {
+  position: relative;
+}
+
+.fa-utensils {
+  position: absolute;
+  left: -2rem;
+  top: 2px;
 }

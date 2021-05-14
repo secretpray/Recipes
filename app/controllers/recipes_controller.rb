@@ -3,10 +3,11 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
-    if params[:content]
-      @recipes = Recipe.where('title ILIKE ? OR description ILIKE ?', "%#{params[:content]}%", "%#{params[:content]}%").order(created_at: :desc).page(params[:page]).per(12) #case-insensitive
+    @q = Recipe.ransack([params[:id]])
+    if params[:content]  
+      @recipes = @q.result.where('title ILIKE ? OR description ILIKE ?', "%#{params[:content]}%", "%#{params[:content]}%").order(created_at: :desc).page(params[:page]).per(12) #case-insensitive
     else
-      @recipes = Recipe.recent.page(params[:page]).per(12)
+      @recipes = @q.result.recent.page(params[:page]).per(12)
     end
   end
 
@@ -77,8 +78,22 @@ class RecipesController < ApplicationController
   end
   
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :user_id, :category_id, :all_tags, :recipe_image, { step_images: [] },
-    ingredients_attributes: [:id, :content, :_destroy],
-    steps_attributes: [:id, :method, :_destroy])
+    params.require(:recipe).permit(:title, :description, 
+                                    :serves, :time_prep, 
+                                    :time_cook, :time_ps,  
+                                    :nutrion_ps_kcal, :nutrion_ps_fat, 
+                                    :nutrion_ps_saturates, :nutrion_ps_carbs, 
+                                    :nutrion_ps_sugar, :nutrion_ps_fibre, 
+                                    :nutrion_ps_protein, :nutrion_ps_salt, 
+                                    :prep_easy, :gluten_free, 
+                                    :peanut_free, :sugar_free, 
+                                    :salt_free, :kosher, 
+                                    :vegan, :vegetarin, 
+                                    :user_id, :category_id, 
+                                    :all_tags, :recipe_image, 
+                                    { step_images: [] },
+            ingredients_attributes: [:id, :content, :_destroy],
+                  steps_attributes: [:id, :method, :_destroy])
   end
 end
+ 
