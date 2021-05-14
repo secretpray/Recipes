@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   belongs_to :recipe
   validates :body, presence: true, allow_blank: false
 
