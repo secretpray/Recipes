@@ -15,7 +15,10 @@ body {
 }
 
 footer {
-  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #F8F9FA;
 }
 
 #navbarMain {  

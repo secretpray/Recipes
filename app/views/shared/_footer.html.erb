@@ -1,0 +1,23 @@
+<footer class='mt-4'>
+  <div class='container d-flex'>
+    <div class='col-md-4'>
+      Copyright© Secretpray (<%= Time.now.year%>)
+      <div class='row'></div>
+      <div class='fa fa-envelope'>
+        <%= mail_to 'secretpray@outlook.com' %>
+      </div>
+      <div class='row'></div>
+    </div>
+    <div class='col-md-4 col-md-4 text-center'>
+      Privacy policy
+      <div class='row'></div>
+      Terms and conditions
+    </div>
+    <div class='col-md-4 text-end'>
+      About us
+      <div class='row'>
+        <%= link_to 'Github', "https://github.com/secretpray/Recipes" %>
+      </div>
+    </div>
+  </div>
+</footer>
