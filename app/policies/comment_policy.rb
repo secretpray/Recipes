@@ -22,18 +22,18 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def edit?
-    user && user.id == record.user_id || user.admin? || user.moderator?
+    user && user.id == record.user_id || user&.admin? || user&.moderator?
   end
 
   def update?
-    user && user.id == record.user_id || user.admin? || user.moderator?
+    user && user.id == record.user_id || user&.admin? || user&.moderator?
   end
 
   def destroy?
-    user && user.id == record.user_id || user.admin? || user.moderator?
+    user && user.id == record.user_id || user&.admin? || user&.moderator?
   end
 
   def voted?
-    user && user.id != record.user_id || user.admin?  || user.moderator?
+    user && user.id != record.user_id || user&.admin?  || user&.moderator?
   end
 end

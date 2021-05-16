@@ -7,5 +7,7 @@ recipeCommentCount = document.querySelector('.recipe-comment-count')
 let comment_<%= @comment.id %> = document.querySelector('#comment_<%= @comment.id %>');
 
 comment_<%= @comment.id %>.remove();
-commentCount.innerText = '<%= @comment.recipe.comments.count %> commented;'
-recipeCommentCount.innerText = '<%= @comment.recipe.comments.count %> comment(s)'
+commentCount.innerHTML = "<%= t('recipes.show.commented_html', count: @recipe.comments.count) %>"
+recipeCommentCount.innerHTML = "<%= t('recipes.show.comments_count', count: @recipe.comments.count)%>"
+
+// commentCount.insertAdjacentHTML('beforebegin', "1 <span class='fw-light'> комментарий;</span>");

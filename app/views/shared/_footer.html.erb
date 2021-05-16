@@ -1,0 +1,23 @@
+<footer class=''>
+  <div class='container d-flex'>
+    <div class='col-md-4'>
+      <%= t '.copyright' %> secretpray© (<%= Time.zone.now.year%>)
+      <div class='row'></div>
+      <div class='fa fa-envelope'>
+        <%= mail_to 'secretpray@outlook.com' %>
+      </div>
+      <div class='row'></div>
+    </div>
+    <div class='col-md-4 col-md-4 text-center'>
+      <%= t '.privacy' %>
+      <div class='row'></div>
+      <%= t '.terms' %>
+    </div>
+    <div class='col-md-4 text-end'>
+      <%= t '.about' %>
+      <div class='row'>
+        <%= link_to 'Github', "https://github.com/secretpray/Recipes", target: :blank %>
+      </div>
+    </div>
+  </div>
+</footer>

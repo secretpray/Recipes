@@ -1,0 +1,116 @@
+ru:
+  global:
+    back: 'Назад'
+    create: 'Создать'
+    update: 'Обновить'
+    show: 'Показать'
+    edit: 'Изменить'
+    delete: 'Удалить'
+  shared:
+    submenu:
+      categories: 'Категории:'
+      tags_cloud: 'Облако тегов:'
+    navigation:
+      recipes: 'Все рецепты'
+      new_recipes: 'Новый рецепт'
+      dark: ' Темная тема'
+      light: ' Светлая тема'
+      category: 'Категории'
+      category_list: 'Список'
+      new_category: 'Новая'
+      category_parent: 'Родительские'
+      favorites: 'Избранные'
+      welcome: 'Добро пожаловать, '
+      personal_page: 'Личная страница'
+      my_recipes: 'Мои рецепты'
+      settings: 'Настройки'
+      logout: 'Выйти'
+      sign_up: 'Создать аккаунт'
+      login: 'Войти'
+    footer:
+      about: 'Об авторе:'
+      terms: 'Пользовательское соглашение'
+      privacy: 'Политика конфиденциальности'
+      copyright: 'Разработчик:'
+  dashboard:
+    index: 
+      last: 'Новинки'
+      best: 'Лучшие'
+  recipes:
+    new:
+      new_recipe: 'Новый рецепт'
+    edit:
+      edit_recipe: 'Изменение рецепта'
+    form:
+      recipe_title: 'Название рецепта'
+      select_category: 'Выбрать категорию'
+      recipe_tags: 'Тэги (например, барбекю, семейный...)'
+      descriptions: 'Краткое описание'
+      ingredients: 'Ингредиенты:'
+      steps: 'Алгоритм:'
+    index:
+      welcome: "Добро пожаловать в "
+      recipes_title: 'Рецепты'
+      preview: 'Предпросмотр'
+      title: 'Название'
+      description: 'Описание'
+      category: 'Категория'
+      user: 'Автор'
+      action: 'Действия'
+      find_recipes: 'Найти рецепт...'
+    show:
+      recipe: 'Рецепт'
+      title: 'Название'
+      author: 'автор'
+      edit: 'Изменить'
+      new: 'Новый рецепт'
+      no_author: 'Автор не указан'
+      rated: 'рейтинг'
+      review:
+        one: '1 обзор'
+        few: '%{count} обзора'
+        many: '%{count} обзоров'
+        other: '%{count} обзор'
+      favorited_html: 
+        one: "1 <span class='fw-light'>фаворит;</span>"
+        few: "%{count} <span class='fw-light'>фаворита;</span>"
+        many: "%{count} <span class='fw-light'>фаворитов;</span>"
+        other: "%{count} <span class='fw-light'>фаворит;</span>"
+      commented_html: 
+        one: "1 <span class='fw-light'> комментарий;</span>"
+        few: "%{count} <span class='fw-light'> комментария;</span>"
+        many: "%{count} <span class='fw-light'> комментариев;</span>"
+        other: "%{count} <span class='fw-light'> комментарий;</span>"
+      favorie: 'Фаворит:'
+      write_review: 'Оценить'
+      prep: 'Подготовка:' 
+      cook: 'Готовка:'
+      serves: 'Порций:'
+      desc: 'Описание:'
+      nutrition: 'Питательность: на порцию'
+      kcal: 'кКал'
+      fat: 'жиры'
+      carbs: 'углеводы'
+      saturates: 'нас.жиры'
+      sugars: 'сахар'
+      fibre: 'клетчатка'
+      protein: 'протеин'
+      salt: 'соль'
+      ingredients: 'Ингредиенты:'
+      steps: 'Алгоритм:'
+      commnet: 'Комментировать'
+      need_to_comment: 'Чтобы оставить комментарий необходимо'
+      comments_count: 
+        one: '1 комментарий:'
+        few: '%{count} комментария:'
+        many: '%{count} комментариев:'
+        other: '%{count} комментарий:'
+  comments:
+    comment:
+      commented: 'оставлен'
+      author_comment: ': '
+      ago: 'назад'
+
+      
+        
+

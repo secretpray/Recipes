@@ -7,7 +7,7 @@ module ApplicationHelper
 
   # Form helper
   def link_form(object)
-    object.persisted? ? 'Update' : 'Create'
+    object.persisted? ? t('global.update') : t('global.create')
   end
 
   # Theme select

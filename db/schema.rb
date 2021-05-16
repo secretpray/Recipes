@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_14_045018) do
+ActiveRecord::Schema.define(version: 2021_05_15_083654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,26 @@ ActiveRecord::Schema.define(version: 2021_05_14_045018) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.integer "category_id"
+    t.integer "serves"
+    t.time "time_prep"
+    t.time "time_cook"
+    t.text "time_ps"
+    t.integer "nutrion_ps_kcal"
+    t.integer "nutrion_ps_fat"
+    t.integer "nutrion_ps_saturates"
+    t.integer "nutrion_ps_carbs"
+    t.integer "nutrion_ps_sugar"
+    t.integer "nutrion_ps_fibre"
+    t.integer "nutrion_ps_protein"
+    t.integer "nutrion_ps_salt"
+    t.boolean "prep_easy"
+    t.boolean "gluten_free"
+    t.boolean "peanut_free"
+    t.boolean "sugar_free"
+    t.boolean "salt_free"
+    t.boolean "kosher"
+    t.boolean "vegan"
+    t.boolean "vegetarin"
     t.index ["category_id"], name: "index_recipes_on_category_id"
     t.index ["slug"], name: "index_recipes_on_slug", unique: true
     t.index ["user_id"], name: "index_recipes_on_user_id"
@@ -189,6 +209,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_045018) do
     t.integer "recipes_count", default: 0, null: false
     t.integer "favorites_count", default: 0, null: false
     t.integer "comments_count", default: 0, null: false
+    t.string "language"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

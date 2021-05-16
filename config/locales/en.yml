@@ -1,33 +1,105 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  global:
+    back: 'Back'
+    create: 'Create'
+    update: 'Update'
+    show: 'Show'
+    edit: 'Edit'
+    delete: 'Delete'
+  shared:
+    submenu:
+      categories: 'Categories:'
+      tags_cloud: 'Tags cloud:'
+    navigation:
+      recipes: 'All recipes'
+      new_recipes: 'New recipe'
+      dark: ' Theme Dark'
+      light: ' Theme Light'
+      welcome: 'Welcome, '
+      personal_page: 'Personal page'
+      my_recipes: 'My recipes'
+      settings: 'Settings'
+      logout: 'Logout'
+      sign_up: 'Sign Up'
+      login: 'Login'
+      category: 'Categories'
+      category_list: 'Category List'
+      new_category: 'New Category'
+      category_parent: 'Parent'
+      favorites: 'Favorites'
+    footer:
+      about: 'About us:'
+      terms: 'Terms and conditions'
+      privacy: 'Privacy policy'
+      copyright: 'Copyright:'
+  dashboard:
+    index: 
+      last: 'Last recipes'
+      best: 'Best recipes'
+  recipes:
+    new:
+      new_recipe: 'New Recipe'
+    edit:
+      edit_recipe: 'Editing Recipe'
+    form:
+      recipe_title: 'Recipe title'
+      select_category: 'Select Category'
+      recipe_tags: 'Recipe tags (eg. helth, easy ...)'
+      descriptions: 'Descriptions'
+      ingredients: 'Ingredients:'
+      steps: 'Steps:'
+    index:
+      welcome: "Welcome to "
+      recipes_title: 'Recipes'
+      preview: 'Preview'
+      title: 'Title'
+      description: 'Description'
+      category: 'Category'
+      user: 'User'
+      action: 'Action'
+      services_html: "We provide some fancy services to <em>good people</em>."
+      find_recipes: 'Find a recipe...'
+    show:
+      recipe: 'Recipe'
+      title: 'Title'
+      author: 'by'
+      edit: 'Edit'
+      new: 'New recipe'
+      no_author: 'Author not specified'
+      rated: 'rated'
+      review:
+        one: '1 review'
+        other: '%{count} reviews'
+      favorited_html: 
+        one: "1 <span class='fw-light'>favorite;</span>"
+        other: "%{count} <span class='fw-light'>favorites;</span>"
+      commented_html: 
+        one: "1 <span class='fw-light'> comment;</span>"
+        other: "%{count} <span class='fw-light'> comments;</span>"
+      favorie: 'Favorite:'
+      write_review: 'Write review'
+      prep: 'Prep:'
+      cook: 'Cook:'
+      serves: 'Serves:'
+      desc: 'Description:'
+      nutrition: 'Nutrition: per serving'
+      kcal: 'kCal'
+      fat: 'fat'
+      saturates: 'saturates'
+      carbs: 'carbs'
+      sugars: 'sugars'
+      fibre: 'fibre'
+      protein: 'protein'
+      salt: 'salt'
+      ingredients: 'Ingredients:'
+      steps: 'Steps:'
+      commnet: 'Comment'
+      need_to_comment: 'To comment on the recipe, you must'
+      comments_count: 
+        one: '1 comment:'
+        other: '%{count} comments:'
+  comments:
+    comment:
+      commented: 'commented'
+      author_comment: 'by:'
+      ago: 'ago'

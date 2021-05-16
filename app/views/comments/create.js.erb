@@ -12,6 +12,6 @@ recipeCommentCount = document.querySelector('.recipe-comment-count')
   document.querySelector('.errors-comment').innerText = '';
   document.querySelector('.comment_list').insertAdjacentHTML('beforebegin', '<%= j render 'comments/comment', comment: @comment %>');
   document.querySelector('.new_comment').reset();
-  commentCount.innerText = '<%= @comment.recipe.comments.count %> commented;'
-  recipeCommentCount.innerText = '<%= @comment.recipe.comments.count %> comment(s)'
+  commentCount.innerHTML = "<%= t('recipes.show.commented_html', count: @comment.recipe.comments.count) %>"
+  recipeCommentCount.innerHTML = "<%= t('recipes.show.comments_count', count: @comment.recipe.comments.count)%>"
 <% end %>
