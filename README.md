@@ -35,6 +35,9 @@ Feature:
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
+* Recipes 10+ attributes (calories, prep/cook times; serves, fat, salt, sugar, protein, fibre ....)
+* Badge: Gluten-free; Vegan; Vegetarian, Easy, Kosher, Free: gluten, sugar, salt)
+* Add more feature: 
 * Authorize with Pundit
 * Localization Russin/English (+ User attribute language)
 * Disappearing flash messages with toastr js
@@ -53,9 +56,6 @@ TODO:
 * Static Page "About", "Terms"
 * Added Replies to comments (React?)
 * Action Cable (replay comment, create Recipe)
-* Add calories
-* Badge: Gluten-free; Vegan; Vegetarian
-* Add more feature: Prep: times; Easy: method; Serves count
 * Polymorh Trophy
 * Heroku
 * dynamic add/remove fields for Ingredients & Steps
