@@ -1,4 +1,4 @@
-<h1>New Recipe</h1>
+<h1><%= t('.new_recipe') %></h1>
 
 <% if policy(@recipe).new? %>
   <%= render 'form', recipe: @recipe %>

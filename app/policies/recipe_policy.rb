@@ -35,6 +35,6 @@ class RecipePolicy < ApplicationPolicy
 
   def review?
     return false if Review.find_by(user: user, recipe_id: record.id).present?
-    user && user.id != record.user_id || user.admin?  || user.moderator?
+    user && user&.id != record.user_id || user&.admin?  || user&.moderator?
   end
 end

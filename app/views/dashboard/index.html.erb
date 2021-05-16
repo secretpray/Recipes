@@ -2,12 +2,12 @@
 
 <div class='row'>
   <div class='col-md-9 jumbotron'>
-    <h3>Last recipes</h3>
+    <h3><%= t '.last' %></h3>
     <div class='row' id='dashboard-container'>
       <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @recent } %>
     </div>
 
-    <h3 class='mt-4'>Best recipes</h3>
+    <h3 class='mt-4'><%= t '.best' %></h3>
     <div class='row' id='dashboard-container'>
       <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: @best } %>
     </div>

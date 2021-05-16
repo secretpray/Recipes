@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <div class='d-flex justify-content-between'>
-  <div class='fs-1 fw-bold mt-5 mb-2'>Recipes</div>
+  <div class='fs-1 fw-bold mt-5 mb-2'><%= t '.welcome' %></h1><%= t '.recipes_title' %></div>
   <div class='d-flex'>
     <div class="form-inline d-flex align-items-center me-1 mt-3">
       <%= form_tag(recipes_path, method: :get) do %>
         <div class="input-group">
-          <%= text_field_tag :content, params[:content], autocomplete: 'off', placeholder: "Find a recipe...", class: 'form-control-sm' %>
+          <%= text_field_tag :content, params[:content], autocomplete: 'off', placeholder: t('.find_recipes'), class: 'form-control-sm' %>
           <span class="input-group-append">
             <button class="btn btn-secondary btn" type="submit">
               <span aria-hidden="true" class="fa fa-search"></span>
@@ -30,12 +30,12 @@
 <table class="table table-striped">
   <thead class="table-dark">
     <tr>
-      <th scope="col" class="col-1 text-center">Preview</th>
-      <th scope="col" class="col-3">Title</th>
-      <th scope="col" class="col-4 text-center">Description</th>
-      <th scope="col" class="col-1 text-center">Category</th>
-      <th scope="col" class="col-1 text-center">User</th>
-      <th colspan="3" class='text-center col-2'>Action</th>
+      <th scope="col" class="col-1 text-center"><%= t '.preview' %></th>
+      <th scope="col" class="col-3"><%= t '.title' %></th>
+      <th scope="col" class="col-4 text-center"><%= t '.description' %></th>
+      <th scope="col" class="col-1 text-center"><%= t '.category' %></th>
+      <th scope="col" class="col-1 text-center"><%= t '.user' %></th>
+      <th colspan="3" class='text-center col-2'><%= t '.action' %></th>
     </tr>
   </thead>
 

@@ -1,7 +1,7 @@
 <footer class=''>
   <div class='container d-flex'>
     <div class='col-md-4'>
-      Copyright© Secretpray (<%= Time.now.year%>)
+      <%= t '.copyright' %> secretpray© (<%= Time.zone.now.year%>)
       <div class='row'></div>
       <div class='fa fa-envelope'>
         <%= mail_to 'secretpray@outlook.com' %>
@@ -9,14 +9,14 @@
       <div class='row'></div>
     </div>
     <div class='col-md-4 col-md-4 text-center'>
-      Privacy policy
+      <%= t '.privacy' %>
       <div class='row'></div>
-      Terms and conditions
+      <%= t '.terms' %>
     </div>
     <div class='col-md-4 text-end'>
-      About us
+      <%= t '.about' %>
       <div class='row'>
-        <%= link_to 'Github', "https://github.com/secretpray/Recipes" %>
+        <%= link_to 'Github', "https://github.com/secretpray/Recipes", target: :blank %>
       </div>
     </div>
   </div>

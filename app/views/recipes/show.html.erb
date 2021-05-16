@@ -2,7 +2,7 @@
 
 <div class='container'>
   <div class='row'>
-    <h3><strong>Recipe</strong></h3>
+    <h3><strong><%= t '.recipe' %></strong></h3>
     
     <div class='col-md-3 mt-4 recipe_image <%= dom_id(@recipe) %>'>
       <% if @recipe.recipe_image.present? %>
@@ -18,11 +18,15 @@
     </div>  
 
     <div class='col-md-9 mt-4'>
-      <strong>Title: </strong><%= @recipe.title %>
+      <strong><%= t('.title')%>: </strong><%= @recipe.title %>
 
       <div class='mt-2'>
-        <strong>by:</strong>
-        <%= link_to full_name(@recipe.user), user_path(@recipe.user), class: "text-decoration-none" %>
+        <strong><%= t('.author')%>:</strong>
+        <% if @recipe.user.blank? %>
+          <span> t('.no_author') </span>
+        <% else %>
+          <%= link_to full_name(@recipe.user), user_path(@recipe.user), class: "text-decoration-none" %>
+        <% end %>
       </div>
 
       <div class='mt-3 pb-2 d-flex'>
@@ -32,36 +36,41 @@
         </div>
         <div class='mx-2 mt-2'>
           <span><%= @recipe.avg_score %>
-            rated <%= link_to recipe_reviews_path(@recipe), class: 'text-decoration-none' do %>
-              (<%= @recipe.reviews.count %> Reviews);
-            <% end %><span class='fw-light'></span>
+            <%= t('.rated') %> <%= link_to recipe_reviews_path(@recipe), class: 'text-decoration-none' do %>
+              (<%= t('.review', count: @recipe.reviews.count)%>)<span class='fw-light'>;</span>
+            <% end %>
           </span>
-          <span><%= @recipe.favorites.count %> <span class='fw-light'>favorited</span>;<span>
-          <span class='comment_count'><%= @recipe.comments.count %> <span class='fw-light'>commented</span>;</span>
+          <span><%= t('.favorited_html', count: @recipe.favorites.count)%><span>
+          <span class='comment_count'><%= t('.commented_html', count: @recipe.comments.count) %><span>
         </div>
       </div>
       
       <div>
-        <span>
-          Favorite: <%= link_to favorite_text, favorites_update_path(recipe: @recipe), id: 'favorite_link', class: 'text-decoration-none text-reset mt-3', remote: true %>
-        </span>
+        <% if user_signed_in? %>
+          <span>
+            <%= t('.favorie') %> <%= link_to favorite_text, favorites_update_path(recipe: @recipe), id: 'favorite_link', class: 'text-decoration-none text-reset mt-3', remote: true %>
+          </span>
+        <% else %>
+          <span>
+            <%= t('.favorie') %> <%= link_to "Login", new_user_session_path, class: 'text-decoration-none mt-3' %> to add favorite
+          </span>
+        <% end %>
+
         <% if policy(@recipe).review? %>
           <span>
-            <%= link_to 'Write review', '#', class: 'add-review-link text-decoration-none btn btn-link mx-3', style: 'background: ghostwhite;' %>
+            <%= link_to t('.write_review'), '#', class: 'add-review-link text-decoration-none btn btn-link mx-3', style: 'background: ghostwhite;' %>
           </span>
         <% end %>
       </div>
 
-  <!-- Review section-->
-      <section>
-        <div class='section-write-review'>
-          <% if policy(@recipe).review? %>
-            <div class='review-form d-none mt-2'>
-              <%= render 'reviews/form', review: @review, recipe: @recipe %>
-            </div>
-          <% end %>
-        </div>
-      </section>
+    <!-- Review section-->
+      <div class='section-write-review'>
+        <% if policy(@recipe).review? %>
+          <div class='review-form d-none mt-2'>
+            <%= render 'reviews/form', review: @review, recipe: @recipe %>
+          </div>
+        <% end %>
+      </div>
 
       <!-- Start Badges attrs  -->
       <section>
@@ -73,12 +82,12 @@
                   <i class="fas fa-clock col-md-10 fs-2 text-primary"></i>
                 </div>
                 <div class='prep-time-text col-md-10'>
-                  <strong>Prep:</strong> 
+                  <strong><%= t('.prep') %></strong> 
                   <%= parse_time(@recipe.time_prep) %>
                 </div>
               </div>
               <div class='offset-2'>
-                <strong>Cook:</strong>
+                <strong><%= t('.cook') %></strong>
                 <%= parse_time(@recipe.time_cook) %>
               </div>
               <div class='offset-2 mt-2'>
@@ -90,10 +99,10 @@
             <div class="second-column col-md-2">
               <div class="serves mt-3">
                 <i class="fas fa-utensils fs-4 text-primary me-3"></i>
-                <strong class=''>Serves:</strong> <%= @recipe.serves rescue nil%>
+                <strong class=''><%= t('.serves') %></strong> <%= @recipe.serves rescue nil%>
               </div>
             </div>
-            <div class="third-column container col-md-5 d-flex my-4 justify-content-center flex-wrap align-items-center">
+            <div class="third-column container col-md-5 d-flex my-3 justify-content-center flex-wrap align-items-center">
               <span class="mx-1 <%= @recipe.prep_easy? ? 'badge bg-secondary' : 'd-none' %>">Easy</span>
               <span class="mx-1 <%= @recipe.gluten_free? ? 'badge bg-secondary' : 'd-none' %>">Gluten free</span>
               <span class="mx-1 <%= @recipe.peanut_free? ? 'badge bg-secondary' : 'd-none' %>">Peanut free</span>
@@ -107,11 +116,18 @@
         </div>
       </section>
       
+      <div class='mt-4 section-description'>
+        <strong><%= t '.desc' %></strong>
+        <%= @recipe.description %>
+      </div>
+
+      <h6 class='mt-4'><%= t '.nutrition' %></h6>
+
       <!-- Stert section Badge Nutrition-->
-      <div class='d-flex justify-content-around mt-2'>
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+      <div class='d-flex justify-content-around'>
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>kCal</strong>
+            <strong><%= t '.kcal' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -120,9 +136,9 @@
           </ul>  
         </div>
 
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>fat</strong>
+            <strong><%= t '.fat' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -131,9 +147,9 @@
           </ul>  
         </div>
 
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>saturates</strong>
+            <strong><%= t '.saturates' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -142,9 +158,9 @@
           </ul>  
         </div>
 
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>carbs</strong>
+            <strong><%= t '.carbs' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -153,9 +169,9 @@
           </ul>  
         </div>
 
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>sugars</strong>
+            <strong><%= t '.sugars' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -164,9 +180,9 @@
           </ul>  
         </div>
 
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>fibre</strong>
+            <strong><%= t '.fibre' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -175,9 +191,9 @@
           </ul>  
         </div>
 
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>protein</strong>
+            <strong><%= t '.protein' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -186,9 +202,9 @@
           </ul>  
         </div>
 
-        <div class="card mt-4" style="width: calc(100%/9); font-size: 14px;">
+        <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
           <div class="card-header text-center">
-            <strong>salt</strong>
+            <strong><%= t '.salt' %></strong>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
@@ -197,11 +213,12 @@
           </ul>  
         </div>
       </div> <!-- End section Badge Nutrition-->
+      
     </div>
   </div>
   <div class='row mt-2'>
     <div class='mt-4 col-md-4'>
-      <h4 class='text-center'><strong>Ingredients:</strong></h4>
+      <h4 class='text-center'><strong><%= t '.ingredients' %></strong></h4>
       <% if @recipe.ingredients.any? %>
         <% @recipe.ingredients.each do |ingredient| %>
           <span class='mt-2 mb-1'><%= ingredient.content %></span>
@@ -212,7 +229,7 @@
     </div>
 
     <div class='mt-4 offset-1 col-md-7'>
-      <h4 class='text-center'><strong>Steps:</strong></h4>
+      <h4 class='text-center'><strong><%= t '.steps' %></strong></h4>
       <% if @recipe.steps.any? %>
         <div class='d-flex flex-wrap justify-content-center'>
           <% if @recipe.step_images.present? %>
@@ -233,12 +250,15 @@
   </div>
   </br>
 
-  <%= link_to 'Back', recipes_path, class: "btn btn-light mt-4" %>
+  <%= link_to t('global.back'), recipes_path, class: "btn btn-light mt-4" %>
   <% if user_signed_in?%>
+    <%= link_to t('.new'), new_recipe_path, class: "btn btn-primary mt-4", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe" %>
     <% if policy(@recipe).edit? %>
-      <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-primary mt-4" %>
+      <%= link_to t('.edit'), edit_recipe_path(@recipe), class: "btn btn-warning mt-4" %>
     <% end %>
   <% end %>
+      
+
 
 <!-- Comments -->
 
@@ -248,17 +268,19 @@
     <% if user_signed_in? %>
       <%= form_with model: [@recipe, @comment], class: 'new_comment', local: false do |f| %>
         <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...' %>
-        <%= f.submit 'Comment', class: "btn btn-secondary"  %>
+        <%= f.submit t('.commnet'), class: "btn btn-secondary"  %>
       <% end %>
     <% else %>
       <div>
-        To comment on the recipe, you must <%= link_to 'register', new_user_registration_path, class: "text-decoration-none" %> or 
+        <%= t '.need_to_comment' %> <%= link_to 'register', new_user_registration_path, class: "text-decoration-none" %> or 
         <%= link_to 'log in', new_user_session_path, class: "text-decoration-none" %>
       </div>
     <% end%>
   </div>
   </br>
-  <h4 class='recipe-comment-count'> <%= @recipe.comments.count %> comment(s) </h4> 
+  <h4 class='recipe-comment-count'> 
+    <%= t('.comments_count', count: @recipe.comments.count)%>
+  </h4> 
   <div class='comment_list mt-2 mb-3'>
     <% if @comments.any? %>
       <% @comments.each do |comment| %>

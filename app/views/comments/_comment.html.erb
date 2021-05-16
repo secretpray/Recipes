@@ -7,9 +7,9 @@
       <%= comment.body %>
       <div class='d-flex mt-2'>
         <div class="fw-lighter col-md-6">
-          commented 
-          <strong><%= time_ago_in_words(comment.created_at) %></strong> ago&nbsp;
-          by: <strong><%= full_name(comment.user) %></strong>
+          <%= t '.commented' %>
+          <strong><%= time_ago_in_words(comment.created_at) %></strong> <%= t '.ago' %>
+          <%= t '.author_comment' %><strong><%= full_name(comment.user) %></strong>
         </div>
 
         <% if policy(comment).voted? %>

@@ -47,6 +47,7 @@ class RecipesController < ApplicationController
   end
 
   def update
+    @recipe.user ||= current_user if current_user.admin? || current_user.moderator?
     authorize @recipe
 
     respond_to do |format|
