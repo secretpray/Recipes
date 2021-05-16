@@ -36,6 +36,7 @@ Feature:
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Authorize with Pundit
+* Localization Russin/English (+ User attribute language)
 * Disappearing flash messages with toastr js
 * AutoHide & close Errors/Flash message with vanila JS
 * Popover with vanila JS
