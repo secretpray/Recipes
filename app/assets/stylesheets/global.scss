@@ -407,3 +407,21 @@ input:checked:before {
   /*color: rgba(255, 25, 94, .5);*/
   transform: scale(0.97);
 }
+
+.clear-date-link {
+  position: relative;
+}
+
+.clear-date-input {
+  position: absolute;
+  top: 29px;
+  left: 339px
+}
+#lteg {
+  left: 356px
+}
+
+.b1 {
+  margin-left: 2px;
+  margin-right: 4px;
+}
