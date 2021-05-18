@@ -80,8 +80,8 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <%= link_to "#", class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", 'data-bs-toggle' => "dropdown", aria: { expanded: "false", haspopup: true }  do %>
-              <%= t'.welcome' %><%= full_name(current_user) %>&nbsp;
               <%= image_tag user_avatar(current_user), class: "rounded-circle" %>
+              &nbsp;<%= full_name(current_user) %>
             <% end %>
             <ul aria-labelledby="navbarDropdown" class="dropdown-menu dropdown-menu-right" id="nav-account-dropdown">
               <li>

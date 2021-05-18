@@ -3,11 +3,17 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
-    @q = Recipe.ransack([params[:id]])
-    if params[:content]  
-      @recipes = @q.result.where('title ILIKE ? OR description ILIKE ?', "%#{params[:content]}%", "%#{params[:content]}%").order(created_at: :desc).page(params[:page]).per(12) #case-insensitive
+    # binding.pry
+    @q = Recipe.ransack(params[:q])
+    if params[:content]
+      @recipes = @q.result.includes(:category, :user)
+                          .where('title ILIKE ? OR description ILIKE ?', "%#{params[:content]}%", "%#{params[:content]}%")
+                          .order(created_at: :desc)
+                          .page(params[:page]).per(12) #case-insensitive
     else
-      @recipes = @q.result.recent.page(params[:page]).per(12)
+      @recipes = @q.result.includes(:category, :user)
+                          .order(created_at: :desc)
+                          .page(params[:page]).per(12)
     end
   end
 

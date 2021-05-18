@@ -23,6 +23,8 @@ require("utilities/auto_hide")
 require("utilities/reviews")
 require("utilities/add_reviews")
 require("utilities/add_personal")
+require("utilities/clear_date_form")
+require("utilities/advanced_search")
 
 global.toastr = require("toastr")
 

@@ -91,5 +91,8 @@ class Recipe < ApplicationRecord
   def self.tag_counts
     Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
   end
-
+  
+  ransacker :created_at, type: :date do
+    Arel.sql("date(created_at at time zone 'utc' at time zone 'Europe/Amsterdam')")
+  end
 end

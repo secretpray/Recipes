@@ -13,6 +13,7 @@ module Recipes
     config.exceptions_app = self.routes # static errors page
     
     config.time_zone = "Kyiv" # 'Paris', 'Moscow' 
+    config.active_record.default_timezone = :local
     config.i18n.available_locales = %i(en ru)
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
