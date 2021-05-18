@@ -1,4 +1,3 @@
-<<<<<<< Stage_23
 =======
 # README
 
@@ -18,8 +17,8 @@ Used gem:
 * fontawesome
 * ancestry
 * gem 'omniauth' (+ 'omniauth-facebook', 'omniauth-github', omniauth-google-oauth2')
-* gem 'activerecord-session_store'
-
+* activerecord-session_store
+* gravatar
 
 Feature:
 * Active Text
@@ -52,3 +51,22 @@ Feature:
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Custom static page (404/500)
 * SEEDS (Faker)
+
+TODO:
+* Static Page "About", "Terms"
+* Added Replies to comments (React?)
+* Action Cable (replay comment, create Recipe)
+* Polymorh Trophy
+* Heroku
+* dynamic add/remove fields for Ingredients & Steps
+* inline Edit Recipe
+* Infinite scroll
+* Search with autocomplete
+* Save Recipe (+ PDF)
+* Print Recipe
+* Social share
+* Hotwire
+* Follow User
+* RSS feed
+* Chat room
+* Forum
