@@ -10,7 +10,7 @@
 # user4 = User.create!(email: 'neo@mail.com', password: 'secretus2021')
 # user1.update(role: 'admin')
 # user4.update(role: 'moderator')
-
+# find_or_create_by!
 CATEGORY_DATA = [
     "Barbecue", "Easy barbecue", "Chicken barbecue", "Picnic recipes", "Family picnic", "Healthy picnic", "Cheap eats", "Budget pasta dinners", 
     "Cheap and healthy", "Cakes & baking", "Easy baking", "Spring baking", "Family ideas", "Kids lunch recipes", "Kids party recipes", 

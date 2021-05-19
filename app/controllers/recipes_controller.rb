@@ -3,18 +3,8 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[ show edit update destroy]
 
   def index
-    # binding.pry
     @q = Recipe.ransack(params[:q])
-    if params[:content]
-      @recipes = @q.result.includes(:category, :user)
-                          .where('title ILIKE ? OR description ILIKE ?', "%#{params[:content]}%", "%#{params[:content]}%")
-                          .order(created_at: :desc)
-                          .page(params[:page]).per(12) #case-insensitive
-    else
-      @recipes = @q.result.includes(:category, :user)
-                          .order(created_at: :desc)
-                          .page(params[:page]).per(12)
-    end
+    @recipes = Recipe.parse_search_params(params, @q.result).order(created_at: :desc).page(params[:page]).per(12)
   end
 
   def show
@@ -28,7 +18,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     authorize @recipe
 
-    @recipe.ingredients.build   # (has_many or has_many :through)
+    @recipe.ingredients.build
     @recipe.steps.build         
   end
 
