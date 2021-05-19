@@ -6,6 +6,9 @@ en:
     show: 'Show'
     edit: 'Edit'
     delete: 'Delete'
+    yess: 'Yes'
+    noo: 'No'
+    select: 'Select'
   shared:
     submenu:
       categories: 'Categories:'
@@ -59,6 +62,26 @@ en:
       action: 'Action'
       services_html: "We provide some fancy services to <em>good people</em>."
       find_recipes: 'Find a recipe...'
+    search_form:
+      easy: 'Easy'
+      kosher: 'Kosher'
+      vegan: 'Vegan'
+      vegetarin: 'Vegetarin'
+      salt_free: 'Salt free'
+      sugar_free: 'Sugar free'
+      gluten_free: 'Gluten free'
+      peanut_free: 'Peanut free'
+      date-format: 'yyyy/mm/dd or yyyy-mm-dd' 
+      name_or_desc_contains: 'Name or Description contains:'
+      name_category_contains: 'Category name contains:'
+      select-category: 'Or select Category:'
+      created_exactly: "Created (exactly):"
+      created_early: 'Created earlier than the specified date'
+      created_later: 'Created later than the specified date:'
+      name_content: 'first or lastname of the author contains'
+      email_username_content: 'email or username of the author contains:'
+      find_recipes_ingredient: 'Search by ingredients'
+      find_recipes_step: 'Search by steps'
     show:
       recipe: 'Recipe'
       title: 'Title'

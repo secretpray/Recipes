@@ -6,6 +6,9 @@ ru:
     show: 'Показать'
     edit: 'Изменить'
     delete: 'Удалить'
+    yess: 'Да'
+    noo: 'Нет'
+    select: 'Выбрать'
   shared:
     submenu:
       categories: 'Категории:'
@@ -58,6 +61,26 @@ ru:
       user: 'Автор'
       action: 'Действия'
       find_recipes: 'Найти рецепт...'
+    search_form:
+      easy: 'Легкий'
+      kosher: 'Кошерный'
+      vegan: 'Веган'
+      vegetarin: 'Вегетариан'
+      salt_free: 'Без соли'
+      sugar_free: 'Без сахара'
+      gluten_free: 'Без глютена'
+      peanut_free: 'Без арах. масла'
+      date-format: 'гггг/мм/дд или гггг-мм-дд' 
+      name_or_desc_contains: 'Название или описание содержит:'
+      name_category_contains: 'Имя категории содержит:'
+      select-category: 'Или выберите категорию:'
+      created_exactly: "Создан (точно):"
+      created_early: 'Создан ранее указанной даты:'
+      created_later: 'Создан позднее указанной даты:'
+      name_content: 'Имя или Фамилия автора содержит:'
+      email_username_content: 'email или username автора содержит:'
+      find_recipes_ingredient: 'Поиск по ингредиентам'
+      find_recipes_step: 'Поиск по алгоритму'
     show:
       recipe: 'Рецепт'
       title: 'Название'

@@ -83,7 +83,6 @@ class Recipe < ApplicationRecord
     end
   end
 
-  # Recipe.tagged_with('barbecue').count
   def self.tagged_with(name)
     Tag.find_by!(name: name).recipes
   end
@@ -92,6 +91,24 @@ class Recipe < ApplicationRecord
     Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
   end
   
+  def self.parse_search_params(params, result)
+    case
+    when !params[:content].blank?
+      @recipes = result.includes(:category, :user)
+                    .where('title ILIKE ? OR description ILIKE ?', "%#{params[:content]}%", "%#{params[:content]}%")
+    when !params[:ingredient].blank?
+      @ingredients = Ingredient.joins(:action_text_rich_text)
+                          .where("action_text_rich_texts.body LIKE ?", "%#{params[:ingredient]}%")
+      @recipes = Recipe.joins(:ingredients).where("ingredients.id" => @ingredients)
+    when !params[:step].blank?
+      @steps = Step.joins(:action_text_rich_text)
+                          .where("action_text_rich_texts.body LIKE ?", "%#{params[:step]}%")
+      @recipes = Recipe.joins(:steps).where("steps.id" => @steps)
+    else           
+      @recipes = result.includes(:category, :user)
+    end  
+  end
+
   ransacker :created_at, type: :date do
     Arel.sql("date(created_at at time zone 'utc' at time zone 'Europe/Amsterdam')")
   end

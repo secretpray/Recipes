@@ -408,20 +408,18 @@ input:checked:before {
   transform: scale(0.97);
 }
 
-.clear-date-link {
+.b1 {
+  margin-left: 2px;
+  margin-right: 4px;
+}
+
+.pos-relative {
   position: relative;
 }
 
 .clear-date-input {
+  top: 32px;
   position: absolute;
-  top: 29px;
-  left: 339px
-}
-#lteg {
-  left: 356px
-}
-
-.b1 {
-  margin-left: 2px;
-  margin-right: 4px;
+  right: 16px;
+  font-size: 20px;
 }
