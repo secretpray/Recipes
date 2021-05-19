@@ -1,7 +1,7 @@
 =======
 # README
 
-Recipe Applications.
+Application Recipe.
 
 Used gem:
 * Devise
@@ -16,38 +16,40 @@ Used gem:
 * acts_as_votable
 * fontawesome
 * ancestry
-* gem 'omniauth' (+ 'omniauth-facebook', 'omniauth-github', omniauth-google-oauth2')
+* omniauth, 'omniauth-facebook', 'omniauth-github', omniauth-google-oauth2'
 * activerecord-session_store
-* gravatar
+* Gravatar
+* Ransack
+* I18n
 
 Feature:
 * Active Text
 * Active Storage
-* Vanila JS and AJAX
 * Paginate (+ BootStrap theme for Kaminari)
-* Favorite
+* Favorite (AJAX)
 * Category with Ancestry
 * Voted comments with acts_as_votable gem
 * 5 Star Rating and Review with JS
 * Tags for Recipe and tags cloud
 * Recipes, Favorites, Comments counter_cache for User model
-* Comments with avatar
+* Comments with avatar (AJAX)
 * Nested Forms
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Recipes 10+ attributes (calories, prep/cook times; serves, fat, salt, sugar, protein, fibre ....)
 * Badge: Gluten-free; Vegan; Vegetarian, Easy, Kosher, Free: gluten, sugar, salt)
-* Add more feature: 
 * Authorize with Pundit
 * Localization Russin/English (+ User attribute language)
 * Disappearing flash messages with toastr js
 * AutoHide & close Errors/Flash message with vanila JS
 * Popover with vanila JS
 * Simple search
+* Advanced search with ransack
+* Sort recipes by Title, Cteated, Category with ransack
 * User status in model (:active, :disabled, :banned);
 * User online status;
-* Inline update counter comments with JS
+* Inline update counter comments (AJAX)
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Custom static page (404/500)
 * SEEDS (Faker)
