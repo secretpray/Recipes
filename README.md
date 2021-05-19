@@ -21,10 +21,12 @@ Used gem:
 * Gravatar
 * Ransack
 * I18n
+* aws-sdk-s3
+
 
 Feature:
 * Active Text
-* Active Storage
+* Active Storage (Amazon S3)
 * Paginate (+ BootStrap theme for Kaminari)
 * Favorite (AJAX)
 * Category with Ancestry
