@@ -4,12 +4,13 @@
 # Recipe.destroy_all if Recipe.any?
 # User.destroy_all if User.any?
 
-# user1 = User.create(email: 'nemov@mail.com', password: 'secretus2021')
-# user2 = User.create(email: 'sss@mail.com', password: 'secretus2021')
-# user3 = User.create(email: 'max@mail.com', password: 'secretus2021')
-# user4 = User.create!(email: 'neo@mail.com', password: 'secretus2021')
-# user1.update(role: 'admin')
-# user4.update(role: 'moderator')
+user1 = User.create!(email: 'nemov@mail.com', username: 'Nemov', password: 'secretus2021')
+user2 = User.create!(email: 'sss@mail.com', username: 'Sss', password: 'secretus2021')
+user3 = User.create!(email: 'max@mail.com', username: 'Max', password: 'secretus2021')
+user4 = User.create!(email: 'neo@mail.com', username: 'Neo', password: 'secretus2021')
+user5 = User.create!(email: 'dimon@mail.com', username: 'Dimon', password: 'secretus2021')
+user1.update(role: 'admin')
+user5.update(role: 'moderator')
 # find_or_create_by!
 CATEGORY_DATA = [
     "Barbecue", "Easy barbecue", "Chicken barbecue", "Picnic recipes", "Family picnic", "Healthy picnic", "Cheap eats", "Budget pasta dinners", 
@@ -22,14 +23,14 @@ CATEGORY_DATA.each do |category|
   Category.find_or_create_by!(name: category)
 end
 
-# recipe1 = Recipe.create( title: 'Chorizo & mozzarella gnocchi bake', description: 'Upgrade cheesy tomato pasta with g
-# nocchi, chorizo and mozzarella for a comforting bake that makes an excellent midweek meal', user_id: User.first.id )
+recipe1 = Category.first.recipes.create!( title: 'Chorizo & mozzarella gnocchi bake', description: 'Upgrade cheesy tomato pasta with g
+nocchi, chorizo and mozzarella for a comforting bake that makes an excellent midweek meal', user_id: User.first.id )
 
-# recipe2 = Recipe.create(title: 'Coconut & squash dhansak', description: 'This quick and easy vegetarian curry is perfect 
-# for a healthy weeknight dinner – with butternut squash, coconut milk, lentils and spinach', user_id: User.second.id )
+recipe2 = Category.second.recipes.create!(title: 'Coconut & squash dhansak', description: 'This quick and easy vegetarian curry is perfect 
+for a healthy weeknight dinner – with butternut squash, coconut milk, lentils and spinach', user_id: User.second.id )
 
-# recipe2 = Recipe.create(title: 'Minestrone in minutes', description: 'Whip up a hearty bowl of soup in next to no time, 
-# perfect for a quick lunch or warming supper', user_id: User.last.id )
+recipe3 = Category.last.recipes.create!(title: 'Minestrone in minutes', description: 'Whip up a hearty bowl of soup in next to no time, 
+perfect for a quick lunch or warming supper', user_id: User.last.id )
 
 # favorite1 = Favorite.create(recipe_id: recipe1.id, user_id: user1.id)
 # favorite2 = Favorite.create(recipe: recipe2, user: user2)
