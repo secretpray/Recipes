@@ -32,8 +32,8 @@ for a healthy weeknight dinner – with butternut squash, coconut milk, lentils 
 recipe3 = Category.last.recipes.create!(title: 'Minestrone in minutes', description: 'Whip up a hearty bowl of soup in next to no time, 
 perfect for a quick lunch or warming supper', user_id: User.last.id )
 
-# favorite1 = Favorite.create(recipe_id: recipe1.id, user_id: user1.id)
-# favorite2 = Favorite.create(recipe: recipe2, user: user2)
+favorite1 = Favorite.create!(recipe_id: recipe1.id, user_id: user1.id)
+favorite2 = Favorite.create!(recipe: recipe2, user: user2)
 
 # # For Pagination
 
