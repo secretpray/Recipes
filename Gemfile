@@ -31,7 +31,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'acts_as_votable'
 gem 'ancestry'
 gem 'ransack'
-gem 'rails-i18n' 
+gem 'rails-i18n'
 gem 'aws-sdk-s3', require: false
 
 # OmniAuth

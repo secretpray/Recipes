@@ -13,7 +13,7 @@
               </div>
               <div class='mt-1 d-flex'>
                 <div class="me-2">
-                  <% if current_user.id == @user.id %>
+                  <% if user_signed_in? && current_user.id == @user.id %>
                     <%= link_to 'Edit profile', edit_user_registration_path, class: "btn btn-outline-dark btn-sm btn-block user-status"%>
                   <% end %>
                 </div>
@@ -35,7 +35,7 @@
                   &nbsp;<span class="badge bg-success"><%= @user.status %></span>
                 <% end %>
               </div>
-              <% if current_user.admin? %>
+              <% if user_signed_in? && current_user.admin? %>
                   <% User::STATUSES.each do |status| %>
                     <%= link_to change_status_user_path(@user, status: status), method: :patch do %>
                       <span class="btn btn-sm btn-block btn-outline-warning"><%= status %></span>

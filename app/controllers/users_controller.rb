@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def change_status
-    # @user = User.find(params[:id])
     if params[:status].present? && User::STATUSES.include?(params[:status].to_sym)
       @user.update(status: params[:status])
     end

@@ -1,6 +1,6 @@
 <%= content_tag "div", id: "upvote-#{comment.id}" do %>
   <%= link_to upvote_recipe_comment_path(comment), method: :patch, remote: true, data: { disable_with: "voting..." } do %>
-    <% if current_user.voted_up_on? comment %>
+    <% if user_signed_in? && current_user.voted_up_on? comment %>
       <i class="text-muted far fa-thumbs-up"></i>
     <% else %>
       <i class="text-success far fa-thumbs-up"></i>

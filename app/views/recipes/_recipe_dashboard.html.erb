@@ -8,7 +8,7 @@
       <% else %>
         <%= link_to image_tag("Default_image.png", class: 'recipe-favorite w-100'), recipe %>
       <% end %>
-      <% if recipe.in_favorite?(current_user) %>
+      <% if user_signed_in? && recipe.in_favorite?(current_user) %>
         <span class="fav-span-category">❤️</span></td>
       <% end %>
       <section class="footer-tags-show">
@@ -22,7 +22,7 @@
       <p class="card-text"><%= link_to recipe.description, recipe, class: 'text-decoration-none text-reset' %></p>
       <div class='d-flex justify-content-between'>
         <div class="fw-lighter"> [<%= recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
-        <div> 
+        <div>
           <%= link_to 'Show', recipe, class: "text-decoration-none text-reset" %>
           <% if user_signed_in?%>
             <% if policy(recipe).edit? %>

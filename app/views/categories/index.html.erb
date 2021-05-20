@@ -1,7 +1,7 @@
 <div class='container col-md-9'>
   <h1 class='text-center'>Categories list</h1>
   <div class='buttons_panel d-flex justify-content-end mt-3 mb-2'>
-    <% if current_user.admin? %>
+    <% if user_signed_in? && current_user.admin? %>
       <%= link_to "New Category", new_category_path, class: "btn btn-primary ml-auto" %>
     <% end %>
   </div>
@@ -32,7 +32,7 @@
                 <td class="col-3">
                   <%= link_to edit_category_path(category), class: 'text-decoration-none text-reset' do %>
                     <% if category.has_children? %>
-                    
+
                     <% else %>
                       +
                     <% end %>
@@ -52,7 +52,7 @@
                 <td colspan="2" class='col text-center'><%= link_to 'Show', category, class: "btn btn-outline-secondary btn-sm" %></td>
               <% end %>
             </tr>
-          <% end %>  
+          <% end %>
         <% else %>
           Categories are missing now
         <% end %>

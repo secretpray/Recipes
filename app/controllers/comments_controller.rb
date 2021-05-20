@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
   end
 
   def upvote
-    # binding.pry
     @comment = Comment.find(params[:recipe_id])
     if current_user.voted_up_on? @comment
       @comment.unvote_by current_user
@@ -23,7 +22,6 @@ class CommentsController < ApplicationController
   end
 
   def downvote
-    # binding.pry
     @comment = Comment.find(params[:recipe_id])
     if current_user.voted_down_on? @comment
       @comment.unvote_by current_user
