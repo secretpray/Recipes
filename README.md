@@ -1,7 +1,7 @@
 =======
 # README
 
-Application Recipe.
+Application Recipe https://recipes-2021.herokuapp.com/
 
 Used gem:
 * Devise
@@ -54,6 +54,7 @@ Feature:
 * Inline update counter comments (AJAX)
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Custom static page (404/500)
+* Heroku
 * SEEDS (Faker)
 
 TODO:
@@ -61,7 +62,6 @@ TODO:
 * Added Replies to comments (React?)
 * Action Cable (replay comment, create Recipe)
 * Polymorh Trophy
-* Heroku
 * dynamic add/remove fields for Ingredients & Steps
 * inline Edit Recipe
 * Infinite scroll
