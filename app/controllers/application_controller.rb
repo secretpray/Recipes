@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-  
+
   before_action :set_locale
   before_action :set_theme
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :update_user_online, if: :user_signed_in?
-  
+
   helper_method :favorite_text
   # protect_from_forgery   # if enable -> not login with local email/username
 
@@ -33,15 +33,15 @@ class ApplicationController < ActionController::Base
     if user_signed_in? && !current_user.language.blank?
       I18n.locale = current_user.language
     else
-      cookies[:my_locale].clear unless !cookies[:my_locale].blank? && I18n.available_locales.include?(cookies[:my_locale].to_sym)
+      # cookies[:my_locale].clear unless !cookies[:my_locale].blank? && I18n.available_locales.include?(cookies[:my_locale].to_sym)
 
       I18n.locale =  params[:lang] || cookies[:my_locale] || locate_from_header || I18n.default_locale
       cookies.permanent[:my_locale] = I18n.locale
     end
   end
-  
+
   private
-  
+
   def locate_from_header
     request.env.fetch('HTTP_ACCEPT_LANGUAGE', '').scan(/[a-z]{2}/).first
   end
