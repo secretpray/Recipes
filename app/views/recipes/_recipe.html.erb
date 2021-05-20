@@ -2,7 +2,7 @@
   <tr>
     <td class="col-1 index_data">
       <%= link_to image_preview(recipe), recipe %>
-      <% if recipe.in_favorite?(current_user) %>
+      <% if user_signed_in? && recipe.in_favorite?(current_user) %>
         <span class="fav-span">❤️</span>
       <% end %>
       <section class="footer-tags-index">

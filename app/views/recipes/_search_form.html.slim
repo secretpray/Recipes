@@ -10,7 +10,7 @@
         .col-md-6.me-1
           = f.label :category_name_cont, t('.name_category_contains')
           = f.search_field :category_name_cont, class: 'form-control'
-        
+
         .col-md-6
           = f.label :category_id_eq, t('.select-category')
           = f.collection_select :category_id_eq, Category.all.map{ |category| [category.id, category.name.humanize] }, :first, :second, { include_blank: true, prompt: t('.select-category') }, class: "form-select"
@@ -20,7 +20,7 @@
         .col-md-12
           = f.label :created_at_date_equals, t('.created_exactly')
           = f.search_field :created_at_date_equals, class: 'daterange form-control', placeholder: t('.date-format')
-            
+
     row
       .col-md-12.mt-3.d-flex
         .col-md-6.me-1.pos-relative
@@ -40,7 +40,7 @@
           = f.label :user_first_name_or_user_last_name_cont, t('.name_content')
           = f.search_field :user_first_name_or_user_last_name_cont, class: 'form-control'
         .col-md-6
-          - if current_user.admin?
+          - if user_signed_in? && current_user.admin?
             = f.label :user_email_or_user_username_cont, t('.email_username_content')
             = f.search_field :user_email_or_user_username_cont, class: 'form-control'
 
@@ -48,32 +48,32 @@
       .check-options
         = f.label :prep_easy_eq, t('.easy')
         = f.collection_select :prep_easy_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
-      
+
       .check-options.mx-1
         = f.label :kosher_eq, t('.kosher')
         = f.collection_select :kosher_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
-    
+
       .check-options
         = f.label :vegan_eq, t('.vegan')
         = f.collection_select :vegan_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
-      
+
       .check-options.mx-1
         = f.label :vegetarin_eq, t('.vegetarin')
         = f.collection_select :vegetarin_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
-      
+
       .check-options
         = f.label :salt_free_eq, t('.salt_free')
         = f.collection_select :salt_free_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
-      
+
       .check-options.mx-1
         = f.label :sugar_free_eq, t('.sugar_free')
         = f.collection_select :sugar_free_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
-      
+
       .check-options
         = f.label :gluten_free_eq, t('.gluten_free')
         = f.collection_select :gluten_free_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
-      
-      .check-options.mx-1  
+
+      .check-options.mx-1
         = f.label :peanut_free_eq, t('.peanut_free')
         = f.collection_select :peanut_free_eq, [[true, t('global.yess')], [false, t('global.noo')]], :first, :second, { include_blank: true, prompt: t('global.select')}, class: "form-select"
 

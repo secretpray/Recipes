@@ -18,7 +18,7 @@
     </div>
     <% if user_signed_in? %>
       <div class='d-flex align-items-center mt-3'>
-        <% if current_user.admin? %>
+        <% if user_signed_in? && current_user.admin? %>
           <%= link_to "New Category", new_category_path, class: "btn btn-warning", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Category" %>
         <% end %>
         <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-primary ms-1", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe" %>
@@ -46,7 +46,7 @@
       </th>
       <th scope="col" class="col-4 text-center"><%= t '.description' %></th>
       <th scope="col" class="col-1 text-center">
-        <%= sort_link(@q, :category_name) do %> 
+        <%= sort_link(@q, :category_name) do %>
           <%= t '.category' %>
         <% end %>
       </th>
@@ -63,5 +63,3 @@
 </table>
 
 <div class='d-flex justify-content-center'><%= paginate @recipes %></div>
-
-

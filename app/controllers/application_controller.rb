@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def default_url_options
     return {} if I18n.locale == I18n.default_locale
 
-    { lang: I18n.locale } # { lang: ((I18n.locale == I18n.default_locale) ? nil : I18n.locale) }
+    { lang: I18n.locale }
   end
 
   def favorite_text
@@ -33,7 +33,9 @@ class ApplicationController < ActionController::Base
     if user_signed_in? && !current_user.language.blank?
       I18n.locale = current_user.language
     else
-      # cookies[:my_locale].clear unless !cookies[:my_locale].blank? && I18n.available_locales.include?(cookies[:my_locale].to_sym)
+      if !cookies[:my_locale].blank?
+        cookies[:my_locale].clear unless I18n.available_locales.include?(cookies[:my_locale].to_sym)
+      end
 
       I18n.locale =  params[:lang] || cookies[:my_locale] || locate_from_header || I18n.default_locale
       cookies.permanent[:my_locale] = I18n.locale
