@@ -33,6 +33,7 @@ gem 'ancestry'
 gem 'ransack'
 gem 'rails-i18n'
 gem 'aws-sdk-s3', require: false
+gem 'rails-social-share-button'
 
 # OmniAuth
 gem 'omniauth'
