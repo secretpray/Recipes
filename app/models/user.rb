@@ -27,7 +27,7 @@ class User < ApplicationRecord
   acts_as_voter
 
   scope :by_recipes_count, -> { User.left_joins(:recipes).group(:id).order('COUNT(recipes) DESC') } #.pluck(:id, :email) max -> first
-  
+
   attr_writer :login
 
   def login
@@ -35,7 +35,6 @@ class User < ApplicationRecord
   end
 
   def uniq_username
-    binding.pry
     if provider.empty?
       if User.where(email: username).exists?
         errors.add(:username, :invalid)
@@ -43,9 +42,7 @@ class User < ApplicationRecord
     end
   end
 
-  # ??? ref
   def uniq_email
-    binding.pry
     if provider.empty?
       if User.where(email: email).exists?
         errors.add(:email, :invalid)
