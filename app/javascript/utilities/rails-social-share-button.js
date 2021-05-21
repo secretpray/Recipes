@@ -53,8 +53,9 @@
           RailsSocialShareButton.openUrl("http://shuo.douban.com/!service/share?href=" + url + "&name=" + title + "&image=" + img + "&sel=" + desc, 770, 470);
           break;
         case "facebook":
-          RailsSocialShareButton.openUrl("http://www.facebook.com/sharer/sharer.php?u=" + url + "&display=popup&quote=" + desc, 555, 400);
+          RailsSocialShareButton.openUrl("http://www.facebook.com/sharer/sharer.php?href=" + url + "&display=popup&quote=" + desc, 555, 400);
           break;
+          // RailsSocialShareButton.openUrl("http://www.facebook.com/sharer/sharer.php?u=" + url + "&display=popup&quote=" + desc, 555, 400);
         case "qq":
           RailsSocialShareButton.openUrl("http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=" + url + "&title=" + title + "&pics=" + img + "&summary=" + desc + "&site=" + appkey);
           break;
