@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 
 body, html * {
   font-family: 'Roboto', sans-serif;
@@ -21,6 +21,12 @@ footer {
   background-color: #F8F9FA;
   margin-top: 6rem;
   padding: 20px;
+}
+
+@media print {
+  footer, nav.navbar {
+    display: none;
+  }
 }
 
 #navbarMain {
