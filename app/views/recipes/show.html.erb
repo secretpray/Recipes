@@ -19,7 +19,7 @@
 
     <div class='col-md-9 mt-4'>
       <strong><%= t('.title')%>: </strong><%= @recipe.title %>
-      <div class='d-flex col-md-6 justify-content-between'>
+      <div class='d-flex col-md-9 justify-content-between'>
         <div class='mt-2'>
           <strong><%= t('.author')%>:</strong>
           <% if @recipe.user.blank? %>
@@ -33,7 +33,12 @@
             <%= rails_social_share_button_tag(@recipe.title) %>
           </div>
         <% end %>
-      </div>
+        <div class='mt-2 d-flex col-md-3'>
+          <%= link_to "#"  do %>
+            <%= image_tag("print.png", size: "32x32", alt: "Print recipe", class: 'print-page') %>
+          <% end %>
+        </div>
+    </div>
 
       <div class='mt-3 pb-2 d-flex'>
         <div class="star-rating">
@@ -254,25 +259,24 @@
       <% end %>
     </div>
   </div>
-  </br>
 
-  <%= link_to t('global.back'), recipes_path, class: "btn btn-light mt-4" %>
-  <% if user_signed_in?%>
-    <%= link_to t('.new'), new_recipe_path, class: "btn btn-primary mt-4", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe" %>
-    <% if policy(@recipe).edit? %>
-      <%= link_to t('.edit'), edit_recipe_path(@recipe), class: "btn btn-warning mt-4" %>
+  <div class="mt-3 btn-group noPrint">
+    <%= link_to t('global.back'), recipes_path, class: "btn btn-light mt-4" %>
+    <% if user_signed_in?%>
+      <%= link_to t('.new'), new_recipe_path, class: "btn btn-primary mt-4", data: {'bs-toggle' => "tooltip", 'bs-placement' => "top"}, title: "Create new Recipe" %>
+      <% if policy(@recipe).edit? %>
+        <%= link_to t('.edit'), edit_recipe_path(@recipe), class: "btn btn-warning mt-4" %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
 
-
-<!-- Comments -->
-
-  <div class='field form-group mt-4 offset-1'>
+  <!-- Comments -->
+  <div class='field form-group mt-4 offset-1 noPrint'>
     <div class='errors-comment my-2'></div>
 
     <% if user_signed_in? %>
-      <%= form_with model: [@recipe, @comment], class: 'new_comment', local: false do |f| %>
+      <%= form_with model: [@recipe, @comment], class: 'new_comment ', local: false do |f| %>
         <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...' %>
         <%= f.submit t('.commnet'), class: "btn btn-secondary"  %>
       <% end %>
@@ -283,15 +287,17 @@
       </div>
     <% end%>
   </div>
-  </br>
-  <h4 class='recipe-comment-count'>
-    <%= t('.comments_count', count: @recipe.comments.count)%>
-  </h4>
-  <div class='comment_list mt-2 mb-3'>
-    <% if @comments.any? %>
-      <% @comments.each do |comment| %>
-        <%= render 'comments/comment', comment: comment %>
+
+  <div class='comments-section mt-3 noPrint'>
+    <h4>
+      <%= t('.comments_count', count: @recipe.comments.count)%>
+    </h4>
+    <div class='comment_list mt-2 mb-3'>
+      <% if @comments.any? %>
+        <% @comments.each do |comment| %>
+          <%= render 'comments/comment', comment: comment %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

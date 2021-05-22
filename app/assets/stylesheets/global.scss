@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 
 body, html * {
   font-family: 'Roboto', sans-serif;
@@ -22,6 +22,21 @@ footer {
   margin-top: 6rem;
   padding: 20px;
 }
+
+@media print {
+  div.noPrint,
+  footer, nav.navbar {
+    display: none;
+  }
+  div.recipe_image img {
+    width: 80%;
+  }
+  @page{
+    size: A4;
+    margin: 0mm ;
+    orphans: 0!important;
+    widows: 0!important;
+}}
 
 #navbarMain {
   display: flex;
