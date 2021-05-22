@@ -24,10 +24,19 @@ footer {
 }
 
 @media print {
+  div.noPrint,
   footer, nav.navbar {
     display: none;
   }
-}
+  div.recipe_image img {
+    width: 80%;
+  }
+  @page{
+    size: A4;
+    margin: 0mm ;
+    orphans: 0!important;
+    widows: 0!important;
+}}
 
 #navbarMain {
   display: flex;

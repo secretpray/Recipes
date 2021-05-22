@@ -1,12 +1,12 @@
 class CommentPolicy < ApplicationPolicy
-  
+
   attr_reader :user, :record
 
   def initialize(user, record)
     @user = user
     @record = record
   end
-  
+
   class Scope < Scope
     def resolve
       scope.all
@@ -34,6 +34,6 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def voted?
-    user && user.id != record.user_id || user&.admin?  || user&.moderator?
+    user && user.id != record.user_id
   end
 end

@@ -7,7 +7,7 @@ document.addEventListener('turbolinks:load', function() {
     const sectionCommentForm = document.querySelector('.review-form')
     const descriptionSection = document.querySelector('.section-description')
     event.preventDefault();
-    
+
     if (sectionCommentForm.classList.contains('d-none')) {
       descriptionSection.classList.add('hide')
       sectionCommentForm.classList.remove('d-none')
@@ -19,4 +19,13 @@ document.addEventListener('turbolinks:load', function() {
       }
     }
   })
-}) 
+
+  document.body.addEventListener("click", function (event) {
+    if (event.target.classList.contains('print-page')) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.print();
+      return false;
+    }
+  })
+})
