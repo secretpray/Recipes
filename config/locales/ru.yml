@@ -9,6 +9,15 @@ ru:
     yess: 'Да'
     noo: 'Нет'
     select: 'Выбрать'
+  social_share_button:
+    share_to: 'Поделиться '
+    email: 'Email'
+    google_bookmark: 'Google Bookmark'
+    facebook: 'Facebook'
+    twitter: 'twitter'
+    pinterest: 'Pinterest'
+    telegram: 'Telegram'
+    whatsapp_web: 'Whatsapp Web'
   shared:
     submenu:
       categories: 'Категории:'
@@ -36,7 +45,7 @@ ru:
       privacy: 'Политика конфиденциальности'
       copyright: 'Разработчик:'
   dashboard:
-    index: 
+    index:
       last: 'Новинки'
       best: 'Лучшие'
   recipes:
@@ -70,7 +79,7 @@ ru:
       sugar_free: 'Без сахара'
       gluten_free: 'Без глютена'
       peanut_free: 'Без арах. масла'
-      date-format: 'гггг/мм/дд или гггг-мм-дд' 
+      date-format: 'гггг/мм/дд или гггг-мм-дд'
       name_or_desc_contains: 'Название или описание содержит:'
       name_category_contains: 'Имя категории содержит:'
       select-category: 'Или выберите категорию:'
@@ -94,19 +103,19 @@ ru:
         few: '%{count} обзора'
         many: '%{count} обзоров'
         other: '%{count} обзор'
-      favorited_html: 
+      favorited_html:
         one: "1 <span class='fw-light'>фаворит;</span>"
         few: "%{count} <span class='fw-light'>фаворита;</span>"
         many: "%{count} <span class='fw-light'>фаворитов;</span>"
         other: "%{count} <span class='fw-light'>фаворит;</span>"
-      commented_html: 
+      commented_html:
         one: "1 <span class='fw-light'> комментарий;</span>"
         few: "%{count} <span class='fw-light'> комментария;</span>"
         many: "%{count} <span class='fw-light'> комментариев;</span>"
         other: "%{count} <span class='fw-light'> комментарий;</span>"
       favorie: 'Фаворит:'
       write_review: 'Оценить'
-      prep: 'Подготовка:' 
+      prep: 'Подготовка:'
       cook: 'Готовка:'
       serves: 'Порций:'
       desc: 'Описание:'
@@ -123,7 +132,7 @@ ru:
       steps: 'Алгоритм:'
       commnet: 'Комментировать'
       need_to_comment: 'Чтобы оставить комментарий необходимо'
-      comments_count: 
+      comments_count:
         one: '1 комментарий:'
         few: '%{count} комментария:'
         many: '%{count} комментариев:'
@@ -133,7 +142,3 @@ ru:
       commented: 'оставлен'
       author_comment: ': '
       ago: 'назад'
-
-      
-        
-

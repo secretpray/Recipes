@@ -3,7 +3,7 @@
 <div class='container'>
   <div class='row'>
     <h3><strong><%= t '.recipe' %></strong></h3>
-    
+
     <div class='col-md-3 mt-4 recipe_image <%= dom_id(@recipe) %>'>
       <% if @recipe.recipe_image.present? %>
         <%= image_tag @recipe.recipe_image %>
@@ -15,17 +15,23 @@
           <%= raw @recipe.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge bg-primary text-decoration-none' }.join(' ') %>
         <% end %>
       </section>
-    </div>  
+    </div>
 
     <div class='col-md-9 mt-4'>
       <strong><%= t('.title')%>: </strong><%= @recipe.title %>
-
-      <div class='mt-2'>
-        <strong><%= t('.author')%>:</strong>
-        <% if @recipe.user.blank? %>
-          <span> t('.no_author') </span>
-        <% else %>
-          <%= link_to full_name(@recipe.user), user_path(@recipe.user), class: "text-decoration-none" %>
+      <div class='d-flex col-md-6 justify-content-between'>
+        <div class='mt-2'>
+          <strong><%= t('.author')%>:</strong>
+          <% if @recipe.user.blank? %>
+            <span> t('.no_author') </span>
+          <% else %>
+            <%= link_to full_name(@recipe.user), user_path(@recipe.user), class: "text-decoration-none" %>
+          <% end %>
+        </div>
+        <% if user_signed_in? %>
+          <div class='mt-2'>
+            <%= rails_social_share_button_tag(@recipe.title) %>
+          </div>
         <% end %>
       </div>
 
@@ -44,7 +50,7 @@
           <span class='comment_count'><%= t('.commented_html', count: @recipe.comments.count) %><span>
         </div>
       </div>
-      
+
       <div>
         <% if user_signed_in? %>
           <span>
@@ -82,7 +88,7 @@
                   <i class="fas fa-clock col-md-10 fs-2 text-primary"></i>
                 </div>
                 <div class='prep-time-text col-md-10'>
-                  <strong><%= t('.prep') %></strong> 
+                  <strong><%= t('.prep') %></strong>
                   <%= parse_time(@recipe.time_prep) %>
                 </div>
               </div>
@@ -94,7 +100,7 @@
                 <% unless @recipe.time_ps.nil? %>
                   <%= @recipe.time_ps %>
                 <% end %>
-              </div>  
+              </div>
             </div>
             <div class="second-column col-md-2">
               <div class="serves mt-3">
@@ -110,12 +116,12 @@
               <span class="mx-1 <%= @recipe.salt_free? ? 'badge bg-secondary' : 'd-none' %>">Salt free</span>
               <span class="mx-1 <%= @recipe.kosher? ? 'badge bg-secondary' : 'd-none' %>">Kosher</span>
               <span class="mx-1 <%= @recipe.vegan? ? 'badge bg-secondary' : 'd-none' %>">Vegan</span>
-              <span class="mx-1 <%= @recipe.vegetarin? ? 'badge bg-secondary' : 'd-none' %>">Vegetarin</span>            
+              <span class="mx-1 <%= @recipe.vegetarin? ? 'badge bg-secondary' : 'd-none' %>">Vegetarin</span>
             </div>
-          </div> 
+          </div>
         </div>
       </section>
-      
+
       <div class='mt-4 section-description'>
         <strong><%= t '.desc' %></strong>
         <%= @recipe.description %>
@@ -133,7 +139,7 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_kcal) %> kcal
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
@@ -144,7 +150,7 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_fat) %> g
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
@@ -155,7 +161,7 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_saturates) %> g
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
@@ -166,7 +172,7 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_carbs) %> g
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
@@ -177,7 +183,7 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_sugar) %> g
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
@@ -188,7 +194,7 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_fibre) %> g
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
@@ -199,7 +205,7 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_protein) %> g
             </li>
-          </ul>  
+          </ul>
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
@@ -210,10 +216,10 @@
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
               <%= @recipe.try(:nutrion_ps_salt) %> g
             </li>
-          </ul>  
+          </ul>
         </div>
       </div> <!-- End section Badge Nutrition-->
-      
+
     </div>
   </div>
   <div class='row mt-2'>
@@ -257,14 +263,14 @@
       <%= link_to t('.edit'), edit_recipe_path(@recipe), class: "btn btn-warning mt-4" %>
     <% end %>
   <% end %>
-      
+
 
 
 <!-- Comments -->
 
   <div class='field form-group mt-4 offset-1'>
     <div class='errors-comment my-2'></div>
-    
+
     <% if user_signed_in? %>
       <%= form_with model: [@recipe, @comment], class: 'new_comment', local: false do |f| %>
         <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...' %>
@@ -272,15 +278,15 @@
       <% end %>
     <% else %>
       <div>
-        <%= t '.need_to_comment' %> <%= link_to 'register', new_user_registration_path, class: "text-decoration-none" %> or 
+        <%= t '.need_to_comment' %> <%= link_to 'register', new_user_registration_path, class: "text-decoration-none" %> or
         <%= link_to 'log in', new_user_session_path, class: "text-decoration-none" %>
       </div>
     <% end%>
   </div>
   </br>
-  <h4 class='recipe-comment-count'> 
+  <h4 class='recipe-comment-count'>
     <%= t('.comments_count', count: @recipe.comments.count)%>
-  </h4> 
+  </h4>
   <div class='comment_list mt-2 mb-3'>
     <% if @comments.any? %>
       <% @comments.each do |comment| %>

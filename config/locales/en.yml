@@ -9,6 +9,15 @@ en:
     yess: 'Yes'
     noo: 'No'
     select: 'Select'
+  social_share_button:
+    share_to: 'Share to '
+    email: 'Email'
+    google_bookmark: 'Google Bookmark'
+    facebook: 'Facebook'
+    twitter: 'twitter'
+    pinterest: 'Pinterest'
+    telegram: 'Telegram'
+    whatsapp_web: 'Whatsapp Web'
   shared:
     submenu:
       categories: 'Categories:'
@@ -36,7 +45,7 @@ en:
       privacy: 'Privacy policy'
       copyright: 'Copyright:'
   dashboard:
-    index: 
+    index:
       last: 'Last recipes'
       best: 'Best recipes'
   recipes:
@@ -71,7 +80,7 @@ en:
       sugar_free: 'Sugar free'
       gluten_free: 'Gluten free'
       peanut_free: 'Peanut free'
-      date-format: 'yyyy/mm/dd or yyyy-mm-dd' 
+      date-format: 'yyyy/mm/dd or yyyy-mm-dd'
       name_or_desc_contains: 'Name or Description contains:'
       name_category_contains: 'Category name contains:'
       select-category: 'Or select Category:'
@@ -93,10 +102,10 @@ en:
       review:
         one: '1 review'
         other: '%{count} reviews'
-      favorited_html: 
+      favorited_html:
         one: "1 <span class='fw-light'>favorite;</span>"
         other: "%{count} <span class='fw-light'>favorites;</span>"
-      commented_html: 
+      commented_html:
         one: "1 <span class='fw-light'> comment;</span>"
         other: "%{count} <span class='fw-light'> comments;</span>"
       favorie: 'Favorite:'
@@ -118,7 +127,7 @@ en:
       steps: 'Steps:'
       commnet: 'Comment'
       need_to_comment: 'To comment on the recipe, you must'
-      comments_count: 
+      comments_count:
         one: '1 comment:'
         other: '%{count} comments:'
   comments:

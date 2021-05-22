@@ -1,6 +1,8 @@
 @import "global";
 @import "./actiontext.scss";
+@import "rails-social-share-button";
 
+// Theme switcher
 body.light {
   color: black;
   background-color: white;
@@ -10,5 +12,16 @@ body.dark {
   background-color: black;
   .text-reset {
     color: #ccc !important;
+  }
+}
+
+// Social Share Button
+$size: 24px;
+
+.rails-social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
   }
 }
