@@ -52,6 +52,7 @@ Feature:
 * User status in model (:active, :disabled, :banned);
 * User online status;
 * Social share button with share to Facebook fixed link; 
+* Print Recipe
 * Inline update counter comments (AJAX)
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Custom static page (404/500)
@@ -68,7 +69,6 @@ TODO:
 * Infinite scroll
 * Search with autocomplete
 * Save Recipe (+ PDF)
-* Print Recipe
 * Hotwire
 * Follow User
 * RSS feed
