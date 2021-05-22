@@ -22,7 +22,7 @@ Used gem:
 * Ransack
 * I18n
 * aws-sdk-s3
-
+* rails-social-share-button
 
 Feature:
 * Active Text
@@ -51,6 +51,7 @@ Feature:
 * Sort recipes by Title, Cteated, Category with ransack
 * User status in model (:active, :disabled, :banned);
 * User online status;
+* Social share button with share to Facebook fixed link; 
 * Inline update counter comments (AJAX)
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Custom static page (404/500)
@@ -68,7 +69,6 @@ TODO:
 * Search with autocomplete
 * Save Recipe (+ PDF)
 * Print Recipe
-* Social share
 * Hotwire
 * Follow User
 * RSS feed
