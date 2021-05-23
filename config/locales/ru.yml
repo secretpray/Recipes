@@ -130,7 +130,6 @@ ru:
       salt: 'соль'
       ingredients: 'Ингредиенты:'
       steps: 'Алгоритм:'
-      commnet: 'Комментировать'
       need_to_comment: 'Чтобы оставить комментарий необходимо'
       comments_count:
         one: '1 комментарий:'
@@ -142,3 +141,7 @@ ru:
       commented: 'оставлен'
       author_comment: ': '
       ago: 'назад'
+    edit:
+      edit_comment: 'Edit comment'
+    form:
+      commnet: 'Комментировать'

@@ -125,7 +125,6 @@ en:
       salt: 'salt'
       ingredients: 'Ingredients:'
       steps: 'Steps:'
-      commnet: 'Comment'
       need_to_comment: 'To comment on the recipe, you must'
       comments_count:
         one: '1 comment:'
@@ -135,3 +134,7 @@ en:
       commented: 'commented'
       author_comment: 'by:'
       ago: 'ago'
+    edit:
+      edit_comment: 'Edit comment'
+    form:
+      commnet: 'Комментировать'

@@ -276,10 +276,7 @@
     <div class='errors-comment my-2'></div>
 
     <% if user_signed_in? %>
-      <%= form_with model: [@recipe, @comment], class: 'new_comment ', local: false do |f| %>
-        <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...' %>
-        <%= f.submit t('.commnet'), class: "btn btn-secondary"  %>
-      <% end %>
+      <%= render 'comments/form', recipe: @recipe, comment: @comment %>
     <% else %>
       <div>
         <%= t '.need_to_comment' %> <%= link_to 'register', new_user_registration_path, class: "text-decoration-none" %> or
@@ -289,7 +286,7 @@
   </div>
 
   <div class='comments-section mt-3 noPrint'>
-    <h4>
+    <h4 class='recipe-comment-count'>
       <%= t('.comments_count', count: @recipe.comments.count)%>
     </h4>
     <div class='comment_list mt-2 mb-3'>
