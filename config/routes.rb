@@ -25,9 +25,9 @@ Rails.application.routes.draw do
   get '/privacy', to: 'dashboard#privacy'
   get '/terms', to: 'dashboard#terms'
   get '/limits', to: 'dashboard#limits'
-  match "/404", via: :all, to: "errors#not_found"
-  match "/500", via: :all, to: "errors#internal_server_error"
-  get 'errors/not_found', to: "errors#not_found"
+  # match "/404", via: :all, to: "errors#not_found"
+  # match "/500", via: :all, to: "errors#internal_server_error", code: "500"
+  get 'errors/not_found', to: "errors#not_found", code: "404"
   get 'errors/internal_server_error', to: "errors#internal_server_error"
 
   root to: 'dashboard#index'
