@@ -29,6 +29,7 @@ require("utilities/advanced_search")
 require("utilities/rails-social-share-button")
 
 global.toastr = require("toastr")
+window.Rails = Rails
 
 // (function() {
 //   this.App || (this.App = {});

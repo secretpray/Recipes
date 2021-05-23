@@ -1,4 +1,11 @@
 <footer>
+  <!--
+<footer>
+  <div class="debug-footer">
+    <%#= debug(params) if Rails.env.development? %> current page: <%= request.fullpath.downcase %>
+  </div>
+</footer>
+  -->
   <div class='container d-flex'>
     <div class='col-md-4'>
       <%= t '.copyright' %> secretpray© (<%= Time.zone.now.year%>)
