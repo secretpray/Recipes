@@ -1,3 +1,5 @@
 <h1><%= t('.edit_comment') %></h1>
 
-<%= render 'form', recipe: @recipe, comment: @comment %>
+<%= turbo_frame_tag 'comment' do %>
+  <%= render 'form', recipe: @recipe, comment: @comment %>
+<% end %>

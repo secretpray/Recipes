@@ -1,41 +1,45 @@
-<div class='mt-4 offset-1' id="<%= dom_id(comment) %>">
-  <div class='row'>
-    <div class="col-md-1">
-      <%= image_tag user_avatar(comment.user, 50), class: "rounded-circle" %>
-    </div>
-    <div class='col'>
-      <%= comment.body %>
-      <div class='d-flex mt-2'>
-        <div class="fw-lighter col-md-6">
-          <%= t '.commented' %>
-          <strong><%= time_ago_in_words(comment.created_at) %></strong> <%= t '.ago' %>
-          <%= t '.author_comment' %><strong><%= full_name(comment.user) %></strong>
+<%= turbo_frame_tag 'comment' do %>
+  <div class='mt-4 offset-1' id="<%= dom_id(comment) %>">
+    <blockquote>
+      <div class='row'>
+        <div class="col-md-1">
+          <%= image_tag user_avatar(comment.user, 50), class: "rounded-circle" %>
         </div>
-
-        <% if policy(comment).voted? %>
-          <div class='col-md-1 d-flex'>
-            <%= render 'comments/upvote_link', comment: comment %>
-            <%= render 'comments/like_count', comment: comment %>
-            <%= render 'comments/downvote_link', comment: comment %>
-          </div>
-        <% else %>
-          <div class='col-md-1'></div>
-        <% end %>
-
-        <% if policy(comment).destroy? %>
-          <div class='col-md-5 col-md-5 d-flex justify-content-end'>
-            <div>
-              <%= link_to edit_recipe_comment_path(@recipe, comment), class: "text-decoration-none me-1" do %>
-                <i class="fas fa-pencil-alt fs-5"></i>
-              <% end %>
-              <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
-                <span class=''>&#x274C;</span>
-              <% end %>
+        <div class='col'>
+          <%= comment.body %>
+          <div class='d-flex mt-2'>
+            <div class="fw-lighter col-md-6">
+              <%= t '.commented' %>
+              <strong><%= time_ago_in_words(comment.created_at) %></strong> <%= t '.ago' %>
+              <%= t '.author_comment' %><strong><%= full_name(comment.user) %></strong>
             </div>
+
+            <% if policy(comment).voted? %>
+              <div class='col-md-1 d-flex'>
+                <%= render 'comments/upvote_link', comment: comment %>
+                <%= render 'comments/like_count', comment: comment %>
+                <%= render 'comments/downvote_link', comment: comment %>
+              </div>
+            <% else %>
+              <div class='col-md-1'></div>
+            <% end %>
+
+            <% if policy(comment).destroy? %>
+              <div class='col-md-5 col-md-5 d-flex justify-content-end'>
+                <div>
+                  <%= link_to edit_recipe_comment_path(@recipe, comment), class: "text-decoration-none me-1" do %>
+                    <i class="fas fa-pencil-alt fs-5"></i>
+                  <% end %>
+                  <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
+                    <span class=''>&#x274C;</span>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    </blockquote>
+    <hr>
   </div>
-  <hr>
-</div>
+<% end %>
