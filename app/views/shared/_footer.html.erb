@@ -9,9 +9,9 @@
       <div class='row'></div>
     </div>
     <div class='col-md-4 col-md-4 text-center'>
-      <%= t '.privacy' %>
+      <%= link_to t('.privacy'), privacy_path, class: 'text-decoration-none text-reset' %>
       <div class='row'></div>
-      <%= t '.terms' %>
+      <%= link_to t('.terms'), terms_path, class: 'text-decoration-none text-reset' %>
     </div>
     <div class='col-md-4 text-end'>
       <%= t '.about' %>
