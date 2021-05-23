@@ -55,12 +55,12 @@ Feature:
 * Print Recipe
 * Inline update counter comments (AJAX)
 * Personal user page (recent users Recipe, Favorite and Comments)
-* Custom static page (404/500)
+* Static Page "About", "Terms", "Limits"
+* Custom static page (404/422/500)
 * Heroku
 * SEEDS (Faker)
 
 TODO:
-* Static Page "About", "Terms"
 * Added Replies to comments (React?)
 * Action Cable (replay comment, create Recipe)
 * Polymorh Trophy
