@@ -177,8 +177,8 @@ ActiveRecord::Schema.define(version: 2021_05_15_083654) do
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.bigint "recipe_id", null: false
     t.bigint "tag_id", null: false
+    t.bigint "recipe_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["recipe_id"], name: "index_taggings_on_recipe_id"
