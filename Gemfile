@@ -15,6 +15,7 @@ gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'boots
 gem 'devise-pwned_password'
 gem 'gravatar_image_tag'
 gem 'slim', '~> 4.1'
+gem "font-awesome-rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -35,6 +36,11 @@ gem 'rails-i18n'
 gem 'aws-sdk-s3', require: false
 gem 'rails-social-share-button'
 
+# PDF
+gem 'wicked_pdf'
+gem "wkhtmltopdf-binary", group: :development
+gem "wkhtmltopdf-heroku", group: :production
+
 # OmniAuth
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -42,7 +48,6 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem "omniauth-rails_csrf_protection"
-
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

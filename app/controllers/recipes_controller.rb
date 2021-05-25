@@ -12,6 +12,13 @@ class RecipesController < ApplicationController
     @review = Review.new
     @comment = @recipe.comments.build
     @comments = @recipe.comments.by_add
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render template: "recipes/show.html.erb", pdf: "Recipe ID: #{@recipe.id} - " + Time.zone.now.strftime('%v %H:%M:%S').to_s,
+                          viewport_size: '1280x1024', javascript_delay: 5000
+      end
+    end
   end
 
   def new
@@ -19,7 +26,7 @@ class RecipesController < ApplicationController
     authorize @recipe
 
     @recipe.ingredients.build
-    @recipe.steps.build         
+    @recipe.steps.build
   end
 
   def edit
@@ -63,34 +70,33 @@ class RecipesController < ApplicationController
       format.html { redirect_to recipes_url, notice: "Recipe was successfully destroyed." }
     end
   end
-  
+
   def favorites
     @favorites = current_user.favorites.page(params[:page]).per(12)
   end
-  
+
   private
 
   def set_recipe
     @recipe = Recipe.with_attached_step_images.friendly.find(params[:id])
   end
-  
+
   def recipe_params
-    params.require(:recipe).permit(:title, :description, 
-                                    :serves, :time_prep, 
-                                    :time_cook, :time_ps,  
-                                    :nutrion_ps_kcal, :nutrion_ps_fat, 
-                                    :nutrion_ps_saturates, :nutrion_ps_carbs, 
-                                    :nutrion_ps_sugar, :nutrion_ps_fibre, 
-                                    :nutrion_ps_protein, :nutrion_ps_salt, 
-                                    :prep_easy, :gluten_free, 
-                                    :peanut_free, :sugar_free, 
-                                    :salt_free, :kosher, 
-                                    :vegan, :vegetarin, 
-                                    :user_id, :category_id, 
-                                    :all_tags, :recipe_image, 
+    params.require(:recipe).permit(:title, :description,
+                                    :serves, :time_prep,
+                                    :time_cook, :time_ps,
+                                    :nutrion_ps_kcal, :nutrion_ps_fat,
+                                    :nutrion_ps_saturates, :nutrion_ps_carbs,
+                                    :nutrion_ps_sugar, :nutrion_ps_fibre,
+                                    :nutrion_ps_protein, :nutrion_ps_salt,
+                                    :prep_easy, :gluten_free,
+                                    :peanut_free, :sugar_free,
+                                    :salt_free, :kosher,
+                                    :vegan, :vegetarin,
+                                    :user_id, :category_id,
+                                    :all_tags, :recipe_image,
                                     { step_images: [] },
             ingredients_attributes: [:id, :content, :_destroy],
                   steps_attributes: [:id, :method, :_destroy])
   end
 end
- 
