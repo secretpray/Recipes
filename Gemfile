@@ -38,8 +38,6 @@ gem 'rails-social-share-button'
 
 # PDF
 gem 'wicked_pdf'
-gem "wkhtmltopdf-binary", group: :development
-gem "wkhtmltopdf-heroku", group: :production
 
 # OmniAuth
 gem 'omniauth'
@@ -48,6 +46,10 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem "omniauth-rails_csrf_protection"
+
+group :staging, :production do
+  gem "wkhtmltopdf-heroku"
+end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -63,6 +65,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "wkhtmltopdf-binary"
 end
 
 group :test do
