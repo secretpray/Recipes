@@ -49,8 +49,8 @@
 
       <div class='mt-3 pb-2 d-flex'>
         <div class="star-rating">
-          <div class="star-rating-front d-flex" style="width: <%= @recipe.review_score_percentage %>%">★★★★★</div>
-          <div class="star-rating-back">★★★★★</div>
+          <div class="star-rating-front d-flex noPDF" style="width: <%= @recipe.review_score_percentage %>%">★★★★★</div>
+          <div class="star-rating-back noPDF">★★★★★</div>
         </div>
         <div class='mx-2 mt-2'>
           <span><%= @recipe.avg_score %>
@@ -59,7 +59,7 @@
             <% end %>
           </span>
           <span><%= t('.favorited_html', count: @recipe.favorites.count)%><span>
-          <span class='comment_count'><%= t('.commented_html', count: @recipe.comments.count) %><span>
+          <span class='comment_count noPDF'><%= t('.commented_html', count: @recipe.comments.count) %><span>
         </div>
       </div>
 

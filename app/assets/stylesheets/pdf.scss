@@ -12,6 +12,9 @@ img {
 .d-flex {
   display: -webkit-box;
 }
-.noPrint {
+.d-none {
   display: none;
+}
+.noPrint, .noPDF {
+  visibility: hidden;
 }
