@@ -36,7 +36,7 @@ Feature:
 * Tags for Recipe and tags cloud
 * Recipes, Favorites, Comments counter_cache for User model
 * Comments with avatar (AJAX)
-* Comment inline edit/update with HotWire
+* Comment inline edit/update with HotWire (stage_28, later -> remove)
 * Comment AJAX delete  
 * Nested Forms
 * Authentication with Devise (email/username)
