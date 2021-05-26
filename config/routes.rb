@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       get "to_pdf", to: "recipes#to_pdf"
     end
     resources 'reviews', only: [:index, :new, :create]
-    resources 'comments', only: [:create, :destroy] do
+    resources 'comments', only: [:create, :edit, :update, :destroy] do
       member do
         patch "upvote", to: "comments#upvote"
         patch "downvote", to: "comments#downvote"
