@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in? && !current_user&.language.blank?
       I18n.locale = current_user.language
     else
-      extract_cookies_locale if !cookies[:my_locale].blank?
+      extract_cookies_locale unless cookies[:my_locale].blank?
 
       I18n.locale = extract_params_locale || extract_cookies_locale || locate_from_header || I18n.default_locale
       cookies.permanent[:my_locale] = I18n.locale
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
 
   def extract_cookies_locale
     cookies_locale = cookies[:my_locale]
-    I18n.available_locales.include?(cookies_locale.to_sym) ? cookies_locale : nil
+    I18n.available_locales.include?(cookies_locale&.to_sym) ? cookies_locale : nil
   end
 
   def configure_permitted_parameters
