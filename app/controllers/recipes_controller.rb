@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def to_pdf
     if params[:format] == 'pdf'
       url = request.url.remove("/to_pdf.pdf")
-      pdf = Grover.new(url, format: 'A3', emulate_media: 'screen', landscape: true ).to_pdf
+      pdf = Grover.new(url, format: 'A3', emulate_media: 'screen', landscape: true ).to_pdf rescue puts $!.backtrace; nil
 
       Tempfile.create do |tmp|
        tmp.binmode
