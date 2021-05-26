@@ -23,6 +23,7 @@ Used gem:
 * I18n
 * aws-sdk-s3
 * rails-social-share-button
+* gem 'grover'
 
 Feature:
 * Active Text
@@ -55,6 +56,7 @@ Feature:
 * User online status;
 * Social share button with share to Facebook fixed link; 
 * Print Recipe
+* Export Recipe to PDF (gem 'grover' + puppeteer.js)
 * Inline update counter comments (AJAX)
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Static Page "About", "Terms", "Limits"
@@ -70,7 +72,6 @@ TODO:
 * inline Edit Recipe
 * Infinite scroll
 * Search with autocomplete
-* Save Recipe (+ PDF)
 * Follow User
 * RSS feed
 * Chat room
