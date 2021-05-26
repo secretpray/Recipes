@@ -1,6 +1,9 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "global";
-@import "./actiontext.scss";
+@import "actiontext.scss";
 @import "rails-social-share-button";
+
 
 // Theme switcher
 body.light {

@@ -130,6 +130,8 @@ en:
         one: '1 comment:'
         other: '%{count} comments:'
   comments:
+    form:
+      commnet: 'Comment'
     comment:
       commented: 'commented'
       author_comment: 'by:'

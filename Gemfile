@@ -11,10 +11,12 @@ gem 'webpacker', '~> 5.0'
 
 gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.8'
+gem 'bootstrap', '5.0.0'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'devise-pwned_password'
 gem 'gravatar_image_tag'
 gem 'slim', '~> 4.1'
+gem 'font-awesome-sass', '~> 5.15'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -36,6 +38,10 @@ gem 'aws-sdk-s3', require: false
 gem 'rails-social-share-button'
 gem 'turbo-rails', '~> 0.5.9'
 
+# PDF
+gem 'wicked_pdf'
+gem 'grover'
+
 # OmniAuth
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -43,7 +49,6 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem "omniauth-rails_csrf_protection"
-
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -57,7 +62,6 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
