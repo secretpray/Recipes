@@ -23,7 +23,7 @@ Used gem:
 * I18n
 * aws-sdk-s3
 * rails-social-share-button
-* gem 'grover'
+* grover
 
 Feature:
 * Active Text
