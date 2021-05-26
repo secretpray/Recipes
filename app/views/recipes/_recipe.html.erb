@@ -20,7 +20,7 @@
         <%= link_to "Add Category", edit_recipe_path(recipe), class: "btn btn-sm btn-outline-secondary" %>
       </td>
     <% end %>
-    <% if recipe.user.nil? %>
+    <% if recipe.user.blank? %>
       <td class="col-2 text-center"> No author </td>
     <% else %>
       <td class="col-2 text-center"><%= link_to full_name(recipe.user), user_path(recipe.user), class: 'text-decoration-none text-reset' %></td>

@@ -138,6 +138,8 @@ ru:
         many: '%{count} комментариев:'
         other: '%{count} комментарий:'
   comments:
+    form: 
+      commnet: 'Комментировать'
     comment:
       commented: 'оставлен'
       author_comment: ': '

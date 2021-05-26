@@ -17,10 +17,10 @@
         <% end %>
       </section>
     </div>
-    <div class="card-body">
+    <div class="card-body d-flex flex-column">
       <h5 class="card-title"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></h5>
-      <p class="card-text"><%= link_to recipe.description, recipe, class: 'text-decoration-none text-reset' %></p>
-      <div class='d-flex justify-content-between'>
+      <p class="card-text"><%= link_to truncate(recipe.description, length: 100), recipe, class: 'text-decoration-none text-reset' %></p>
+      <div class='d-flex mt-auto justify-content-between'>
         <div class="fw-lighter"> [<%= recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
         <div>
           <%= link_to 'Show', recipe, class: "text-decoration-none text-reset" %>
