@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :tags, only: [:show]
   resources :recipes do
+    member do
+      get "to_pdf", to: "recipes#to_pdf"
+    end
     resources 'reviews', only: [:index, :new, :create]
     resources 'comments', only: [:create, :destroy] do
       member do

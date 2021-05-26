@@ -7,18 +7,35 @@ class RecipesController < ApplicationController
     @recipes = Recipe.parse_search_params(params, @q.result).order(created_at: :desc).page(params[:page]).per(12)
   end
 
+  def to_pdf
+    if params[:format] == 'pdf'
+      url = request.url.remove("/to_pdf.pdf")
+      pdf = Grover.new(url, format: 'A3', emulate_media: 'screen', landscape: true ).to_pdf
+
+      Tempfile.create do |tmp|
+       tmp.binmode
+       tmp.write(pdf)
+       tmp.rewind
+       tmp.close
+       send_data(
+         File.open(tmp.path, 'rb').read,
+         type: 'application/pdf',
+         filename: "test.pdf",
+         disposition: 'inline'
+        )
+      end
+    end
+  end
+
   def show
     @favorite_exists = Favorite.where(recipe: @recipe, user: current_user) == [] ? false : true
     @review = Review.new
     @comment = @recipe.comments.build
     @comments = @recipe.comments.by_add
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render template: "recipes/show.html.erb", pdf: "Recipe ID: #{@recipe.id} - " + Time.zone.now.strftime('%v %H:%M:%S').to_s,
-                          viewport_size: '1280x1024', javascript_delay: 5000
-      end
-    end
+    # format.pdf do
+      # render template: "recipes/show.html.erb", pdf: "Recipe ID: #{@recipe.id} - " + Time.zone.now.strftime('%v %H:%M:%S').to_s,
+                        # viewport_size: '1280x1024', javascript_delay: 5000
+    # end
   end
 
   def new

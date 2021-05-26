@@ -40,7 +40,7 @@
               <% end %>
           </div>
           <div>
-            <%= link_to recipe_path(@recipe, format: :pdf), target: '_blank', title: 'Click to Export as PDF', class: 'ms-2' do %>
+            <%= link_to to_pdf_recipe_path(@recipe, format: :pdf), target: '_blank', title: 'Click to Export as PDF', class: 'ms-2' do %>
               <%= image_tag("pdf.png", size: "32x32", alt: "Export as PDF", class: 'export-pdf') %>
             <% end %>
           </div>
