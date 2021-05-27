@@ -1,5 +1,5 @@
 <div class='mt-4 offset-1' id="<%= dom_id(comment) %>">
-  <div class='row'>
+  <div class='row' id="content_<%= dom_id(comment) %>">
     <div class="col-md-1">
       <%= image_tag user_avatar(comment.user, 50), class: "rounded-circle" %>
     </div>
@@ -23,10 +23,15 @@
         <% end %>
 
         <% if policy(comment).destroy? %>
-          <div class='col-md-5'>
-            <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
-              <span class='float-end'>&#x274C;</span>
-            <% end %>
+          <div class='col-md-5 col-md-5 d-flex justify-content-end'>
+            <div>
+              <%= link_to edit_recipe_comment_path(@recipe, comment), remote: true, class: "text-decoration-none me-1" do %>
+                <i class="fas fa-pencil-alt fs-5"></i>
+              <% end %>
+              <%= link_to recipe_comment_path(@recipe, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none", remote: true do %>
+                <span class=''>&#x274C;</span>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </div>

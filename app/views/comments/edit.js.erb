@@ -1,0 +1,13 @@
+var addCommentForm = {}
+addCommentForm = document.querySelector('.comment_new_form')
+var editedCommentSection = {}
+editedCommentSection = document.querySelector("#comment_<%= @comment.id %>")
+var editedCommentContent = {}
+editedCommentContent = document.querySelector("#content_comment_<%= @comment.id %>")
+
+addCommentForm.classList.add('d-none')
+editedCommentContent.classList.add('d-none')
+editedCommentSection.insertAdjacentHTML('beforeend', '<%= j render 'comments/form', comment: @comment, recipe: @comment.recipe %>');
+var buttonCancel = {}
+buttonCancel = document.querySelector("#cancel-comment_<%= @comment.id %>")
+buttonCancel.href += "#comment_<%= @comment.id %>"

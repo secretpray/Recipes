@@ -1,4 +1,7 @@
 <%= form_with model: [recipe, comment], class: 'new_comment', local: false do |f| %>
-  <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...' %>
-  <%= f.submit t('.commnet'), class: "btn btn-secondary"  %>
+  <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...', id: "form-input_#{dom_id(comment)}" %>
+  <%= f.submit t('.commnet'), class: "btn btn-secondary" %>
+  <% if f.object.persisted? %>
+    <%= link_to 'Cancel', :back, class: "btn btn-light", id: "cancel-comment_#{@comment.id}" %>
+  <% end %>
 <% end %>

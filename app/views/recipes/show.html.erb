@@ -59,7 +59,7 @@
             <% end %>
           </span>
           <span><%= t('.favorited_html', count: @recipe.favorites.count)%><span>
-          <span class='comment_count noPDF'><%= t('.commented_html', count: @recipe.comments.count) %><span>
+          <span class='comment_count'><%= t('.commented_html', count: @recipe.comments.count) %><span>
         </div>
       </div>
 
@@ -283,7 +283,9 @@
     <div class='errors-comment my-2'></div>
 
     <% if user_signed_in? %>
-      <%= render 'comments/form', recipe: @recipe, comment: @comment %>
+      <div class="comment_new_form">
+        <%= render 'comments/form', recipe: @recipe, comment: @comment %>
+      </div>
     <% else %>
       <div>
         <%= t '.need_to_comment' %> <%= link_to 'register', new_user_registration_path, class: "text-decoration-none" %> or
