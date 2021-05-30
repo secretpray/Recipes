@@ -35,9 +35,10 @@ Feature:
 * 5 Star Rating and Review with JS
 * Tags for Recipe and tags cloud
 * Recipes, Favorites, Comments counter_cache for User model
-* Comments with avatar (AJAX)
+* Comments with avatar and reply (AJAX)
 * Comment inline edit/update with HotWire (stage_28, later -> remove)
-* Comment AJAX delete  
+* Comment inline edit/update with AJAX (stage_29 +)
+* Comment and Reply full AJAX create/update/delete  
 * Nested Forms
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
