@@ -28,4 +28,17 @@ document.addEventListener('turbolinks:load', function() {
       return false;
     }
   })
+
+  document.body.addEventListener("click", function (event) {
+    if (event.target.classList.contains('show_hide_form')) {
+      const buttonAddComment = event.target;
+      const sectionNewComment = buttonAddComment.nextElementSibling;
+      if (sectionNewComment.classList.contains('d-none')) {
+        sectionNewComment.classList.remove('d-none')
+        buttonAddComment.classList.add('d-none')
+        event.preventDefault();
+      }
+    }
+  })
+
 })

@@ -12,15 +12,17 @@ class Recipe < ApplicationRecord
   has_many :tags, through: :taggings
   has_one_attached :recipe_image
   has_many_attached :step_images
-  
+
   friendly_id :title, use: :slugged
-  
+
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :steps, allow_destroy: true, reject_if: :all_blank
-  
+
   validates :title, :description, presence: true
+  validates :title, length: { maximum: 50 }
+  validates :description, length: { maximum: 300 }
   validate :image_type
-  
+
   scope :by_add, -> { order(created_at: :desc) } # double
   scope :by_user, -> { order(user_id: :asc) }
   scope :favorited_by, -> (email) { joins(:favorites).where(favorites: { user: User.where(email: email)}) }
@@ -30,7 +32,7 @@ class Recipe < ApplicationRecord
   end
 
   def to_s
-    title    
+    title
   end
 
   def avg_score
@@ -60,8 +62,8 @@ class Recipe < ApplicationRecord
   def image_type
     if recipe_image.present?
       errors.add(:recipe_image, 'needs to be a JPEG or PNG') unless recipe_image.content_type.in?(%('image/jpeg image/png'))
-    end 
-    
+    end
+
     if step_images.any?
       step_images.each do |image|
         errors.add(:step_images, 'needs to be a JPEG or PNG') unless image.content_type.in?(%('image/jpeg image/png'))
@@ -90,7 +92,15 @@ class Recipe < ApplicationRecord
   def self.tag_counts
     Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
   end
-  
+
+  def only_replies
+      self.comments.where("parent_id != 0")
+  end
+
+  def only_comments
+      self.comments.where("parent_id = 0")
+  end
+
   def self.parse_search_params(params, result)
     case
     when !params[:content].blank?
@@ -104,9 +114,9 @@ class Recipe < ApplicationRecord
       @steps = Step.joins(:action_text_rich_text)
                           .where("action_text_rich_texts.body LIKE ?", "%#{params[:step]}%")
       @recipes = Recipe.joins(:steps).where("steps.id" => @steps)
-    else           
+    else
       @recipes = result.includes(:category, :user)
-    end  
+    end
   end
 
   ransacker :created_at, type: :date do

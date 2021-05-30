@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
   def to_pdf
     if params[:format] == 'pdf'
       url = request.url.remove("/to_pdf.pdf")
-      begin 
+      begin
         pdf = Grover.new(url, format: 'A3', emulate_media: 'screen', landscape: true ).to_pdf
       rescue => e
         puts "Error during processing: #{$!}"
@@ -36,7 +36,9 @@ class RecipesController < ApplicationController
     @favorite_exists = Favorite.where(recipe: @recipe, user: current_user) == [] ? false : true
     @review = Review.new
     @comment = @recipe.comments.build
-    @comments = @recipe.comments.by_add
+    @comments = Comment.comments_for_recipe(@recipe.id)
+    @replies = Comment.replies_for_recipe(@recipe.id)
+    # @comments = @recipe.comments.by_add
     # format.pdf do
       # render template: "recipes/show.html.erb", pdf: "Recipe ID: #{@recipe.id} - " + Time.zone.now.strftime('%v %H:%M:%S').to_s,
                         # viewport_size: '1280x1024', javascript_delay: 5000

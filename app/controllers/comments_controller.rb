@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_recipe, only: %i[edit update create]
-  before_action :find_comment, only: %i[edit update destroy]
+  before_action :set_recipe, only: %i[create update]
+  before_action :find_comment, only: %i[destroy edit update]
   before_action :authenticate_user!
 
   def create
@@ -12,23 +12,15 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    # authorize @comment
+    authorize @comment
   end
 
   def update
-    # authorize @comment
-    @comment.user = current_user
-    # authorize @comment
+    authorize @comment
 
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment.recipe, notice: "Comment was successfully updated." }
-        format.js { redirect_to @comment.recipe, notice: "Comment was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.js
-      end
-    end
+    @comment.update(comment_params)
+    @comments = Comment.comments_for_recipe(@recipe.id)
+    @replies = Comment.replies_for_recipe(@recipe.id)
   end
 
   def upvote
@@ -59,7 +51,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :user_id, :recipe_id)
+    params.require(:comment).permit(:body, :user_id, :recipe_id, :parent_id)
   end
 
   def set_recipe

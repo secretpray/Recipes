@@ -1,2 +1,63 @@
+var valueInput;
+var commentCount;
+var hrTemp;
+var sectionComment;
+var recipeCommentCount;
+var commentList;
 
-<%= redirect_to recipe_path(@recipe) %>
+function fadeOut(object) {
+  if (object) {
+    object.classList.add('fadeout');
+    window.setTimeout(function() {
+      if (object) {
+        object.innerText = '';
+      }
+    }, 7000);
+  }
+}
+// clear old errors main Comment Form
+document.querySelector('.errors-comment').innerText = ''
+
+<% if @comment.errors.any? %>
+  commentErorsInlineSection = document.querySelector(".errors_inline_section_update_comment_<%= @comment.id %>")
+  commentErorsInlineSection.insertAdjacentHTML('beforeend', '<%= j render 'shared/errors', resource: @comment %>')
+  // autohide errors div
+  fadeOut(commentErorsInlineSection)
+  commentErorsInlineSection.addEventListener("click", (event) => {
+    if (commentErorsInlineSection) {
+      commentErorsInlineSection.innerText = ''
+    }
+  });
+  // restore original value
+  valueInput = document.querySelector("#form-input_update_comment_<%= @comment.id %>")
+  valueInput.value = valueInput.getAttribute('value')
+<% else %>
+  // remove created form for update & inline errors div (if existed)
+  if (commentErorsInlineSection) { commentErorsInlineSection.remove() }
+  if (commentInlineUpdateForm) { commentInlineUpdateForm.remove() }
+  commentContent = document.querySelector("#content_comment_<%= @comment.id %>")
+  commentContent.innerHTML = '';
+  // Update section
+  <% if @comment.reply? %>
+    //  Update reply
+    repliesSectionCommentList = document.querySelector(".replies-section-comment_<%= @comment.parent_id %>")
+    repliesSectionCommentList.insertAdjacentHTML('afterbegin', '<%= j render 'comments/reply', comment: @comment %>')
+  <% else %>
+  //  Update comment
+    // clear old content Comment & insert new content
+    commentList = document.querySelector('.comment_list')
+    buttonFormSection = document.querySelector(".add_reply_section_comment_<%= @comment.id %>")
+    if (buttonFormSection) { buttonFormSection.innerHTML = '' }
+    repliesSectionCommentList = document.querySelector(".replies-section-comment_<%= @comment.id %>")
+    if (repliesSectionCommentList) { repliesSectionCommentList.innerHTML = '' }
+    sectionComment = document.querySelector(".section-<%= @comment.id %>")
+    if (sectionComment) { sectionComment.remove() }
+    commentList.insertAdjacentHTML('afterbegin', '<%= j render 'comments/comment', comment: @comment %>')
+  <% end %>
+  // update counter
+  commentCount = document.querySelector('.comment_count')
+  commentCount.innerHTML = "<%= t('recipes.show.commented_html', count: @comment.recipe.comments.count) %>"
+  recipeCommentCount = document.querySelector('.recipe-comment-count')
+  recipeCommentCount.innerHTML = "<%= t('recipes.show.comments_count', count: @comment.recipe.comments.count)%>"
+<% end %>
+

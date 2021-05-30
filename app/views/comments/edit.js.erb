@@ -1,0 +1,48 @@
+var commentJumbo;
+var commentContent;
+var buttonFormSection;
+var commentErorsInlineSection;
+var repliesSectionCommentList;
+var commentInlineUpdateForm;
+var hrOriginalJumboComment;
+
+function prepareStage1() {
+  commentJumbo = document.querySelector("#comment_<%= @comment.id %>")
+  commentContent = document.querySelector("#content_comment_<%= @comment.id %>")
+  commentContent.classList.add('d-none')
+}
+
+function prepareStage2() {
+  // create errors inline
+  commentErorsInlineSection = document.createElement('div')
+  commentErorsInlineSection.className = "errors_inline_section_update_comment_<%= @comment.id %>"
+  commentJumbo.append(commentErorsInlineSection)
+  // create inline form
+  commentInlineUpdateForm = document.createElement('div')
+  commentInlineUpdateForm.className = "section_inline_update_comment_<%= @comment.id %>"
+}
+
+function prepareForUpdate() {
+  prepareStage1()
+  <% unless @comment.reply? %>
+    buttonFormSection = document.querySelector(".add_reply_section_comment_<%= @comment.id %>")
+    if (buttonFormSection) { buttonFormSection.remove() }
+    repliesSectionCommentList = document.querySelector(".replies-section-comment_<%= @comment.id %>")
+    if (repliesSectionCommentList) { repliesSectionCommentList.remove() }
+    hrOriginalJumboComment = document.querySelector(".hr_jumbo_comment_<%= @comment.id %>")
+    if (hrOriginalJumboComment) { hrOriginalJumboComment.remove() }
+  <% end %>
+  prepareStage2()
+}
+
+// debugger
+<% if @comment.reply? %>
+  prepareForUpdate()
+  commentInlineUpdateForm.innerHTML = '<%= j render 'comments/form_reply', recipe: @recipe, parent: @comment.get_parent, comment: @comment %>'
+  commentJumbo.append(commentInlineUpdateForm)
+<% else %>
+  prepareForUpdate()
+  commentInlineUpdateForm.innerHTML = '<%= j render 'comments/form', comment: @comment, recipe: @comment.recipe %>'
+  commentInlineUpdateForm.innerHTML += '<hr>'
+  commentJumbo.append(commentInlineUpdateForm)
+<% end %>

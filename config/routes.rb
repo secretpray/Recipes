@@ -4,20 +4,20 @@ Rails.application.routes.draw do
   get 'recipes/favorites'
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
-  resources :users, only: [:show] do
+  resources :users, only: :show do
     member do
       get 'recipes', to: 'users#recipes'
       patch 'change_status', to: 'users#change_status' # patch :change_status
     end
   end
   resources :categories
-  resources :tags, only: [:show]
+  resources :tags, only: :show
   resources :recipes do
     member do
       get "to_pdf", to: "recipes#to_pdf"
     end
-    resources 'reviews', only: [:index, :new, :create]
-    resources 'comments', only: [:create, :edit, :update, :destroy] do
+    resources 'reviews', only: %i[index new create]
+    resources 'comments', except: %i[show index] do
       member do
         patch "upvote", to: "comments#upvote"
         patch "downvote", to: "comments#downvote"
