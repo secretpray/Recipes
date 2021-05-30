@@ -9,6 +9,7 @@ ru:
     yess: 'Да'
     noo: 'Нет'
     select: 'Выбрать'
+    cancel: 'Отменить'
   social_share_button:
     share_to: 'Поделиться '
     email: 'Email'
@@ -132,15 +133,23 @@ ru:
       steps: 'Алгоритм:'
       commnet: 'Комментировать'
       need_to_comment: 'Чтобы оставить комментарий необходимо'
+      add_comment: 'Добавить комментарий'
       comments_count:
         one: '1 комментарий:'
         few: '%{count} комментария:'
         many: '%{count} комментариев:'
         other: '%{count} комментарий:'
   comments:
-    form: 
+    form:
       commnet: 'Комментировать'
+      create: 'Создание'
+      edit: 'Изменение'
+    form_reply:
+      commnet: 'Ответить'
+      create: 'Создание'
+      edit: 'Изменение'
     comment:
       commented: 'оставлен'
       author_comment: ': '
       ago: 'назад'
+      reply_comment: 'Ответить'

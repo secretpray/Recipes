@@ -1,5 +1,5 @@
-<div class="media mt-4 section-<%= comment.id %>">
-  <div class='mt-4' id="<%= dom_id(comment) %>">
+<div class="media mt-4">
+  <div class='mt-4 offset-1' id="<%= dom_id(comment) %>">
     <div class='row' id="content_<%= dom_id(comment) %>">
       <div class="col-md-1">
         <%= image_tag user_avatar(comment.user, 50), class: "rounded-circle" %>
@@ -35,22 +35,5 @@
         </div>
       </div>
     </div>
-    <div class="<%= dom_id(comment, :add_reply_section) %> add-reply-section offset-1 mt-1">
-      <div class="my-2 <%= dom_id(comment, :errors_inline_form) %>"></div>
-      <%= link_to t('.reply_comment'), '#', class: "btn btn-light mt-4 mb-3 show_hide_form", id: "#{dom_id(comment, :replay_form)}" %>
-      <div class='d-none'>
-      <%= render 'comments/form_reply', recipe: @recipe, parent: comment, comment: @recipe.comments.build %>
-      </div>
-    </div>
-    <div class="replies-section-<%= dom_id(comment) %>">
-      <% if @replies&.key?(comment.id) %>
-        <% @replies[comment.id].each do |reply| %>
-          <div class="media mt-4">
-            <%= render 'comments/reply', comment: reply %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <hr class="<%= dom_id(comment, :hr_jumbo) %>">
   </div>
 </div>

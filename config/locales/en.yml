@@ -9,6 +9,7 @@ en:
     yess: 'Yes'
     noo: 'No'
     select: 'Select'
+    cancel: 'Cancel'
   social_share_button:
     share_to: 'Share to '
     email: 'Email'
@@ -127,13 +128,21 @@ en:
       steps: 'Steps:'
       commnet: 'Comment'
       need_to_comment: 'To comment on the recipe, you must'
+      add_comment: 'Add comment'
       comments_count:
         one: '1 comment:'
         other: '%{count} comments:'
   comments:
     form:
       commnet: 'Comment'
+      create: 'Create'
+      edit: 'Edit'
+    form_reply:
+      commnet: 'Reply'
+      create: 'Create'
+      edit: 'Edit'
     comment:
       commented: 'commented'
       author_comment: 'by:'
       ago: 'ago'
+      reply_comment: 'Reply'

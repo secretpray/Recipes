@@ -1,7 +1,13 @@
-<%= form_with model: [recipe, comment], class: 'new_comment', local: false do |f| %>
-  <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...', id: "form-input_#{dom_id(comment)}" %>
-  <%= f.submit t('.commnet'), class: "btn btn-secondary" %>
-  <% if f.object.persisted? %>
-    <%= link_to 'Cancel', :back, class: "btn btn-light", id: "cancel-comment_#{@comment.id}" %>
-  <% end %>
-<% end %>
+<div class="card ml-5">
+  <div class="card-body">
+    <% model = local_assigns[:comment] %>
+    <%= form_with model: [recipe, comment], class: 'new_comment', id: dom_id_for_records(*model), local: false do |f| %>
+      <div class="form-group">
+        <%= f.label set_label(f.object), class: 'mb-2' %>
+        <%= f.text_field :body, class: "form-control mb-2", placeholder: 'Add comment...', id: "form-input#{'_update' if model.persisted?}_#{dom_id(comment)}" %>
+      </div>
+      <%= f.submit t('.commnet'), class: "btn btn-secondary" %>
+      <%= link_to t('global.cancel'), recipe_path(recipe, anchor: "anchor-recipe-comment"), class: 'btn btn-light' %>
+    <% end %>
+  </div>
+</div>

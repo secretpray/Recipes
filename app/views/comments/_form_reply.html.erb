@@ -1,0 +1,14 @@
+<div class="card ml-5">
+  <div class="card-body">
+    <% model = local_assigns[:comment] %>
+    <%= form_with model: [recipe, comment], class: 'new_reply', id: dom_id_for_records(*model), local: false do |f| %>
+      <%= f.hidden_field :parent_id, value: "#{parent.id}" %>
+      <div class="form-group">
+        <%= f.label set_label(f.object), class: 'mb-2' %>
+        <%= f.text_field :body, class: 'form-control mb-2', placeholder: 'Add reply...', id: "form-input#{'_update' if comment.persisted?}_#{dom_id(comment)}" %>
+      </div>
+      <%= f.submit t('.commnet'), class: 'btn btn-secondary' %>
+      <%= link_to t('global.cancel'), recipe_path(recipe, anchor: "comment_#{parent.id}"), class: 'btn btn-light' %>
+    <% end %>
+  </div>
+</div>
