@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_recipe, only: %i[ show edit update destroy]
+  after_action :register_visit, only: :show
+
+  attr_accessor :recipe
+  helper_method :recently_recipes
 
   def index
     @q = Recipe.ransack(params[:q])
@@ -38,11 +42,6 @@ class RecipesController < ApplicationController
     @comment = @recipe.comments.build
     @comments = Comment.comments_for_recipe(@recipe.id)
     @replies = Comment.replies_for_recipe(@recipe.id)
-    # @comments = @recipe.comments.by_add
-    # format.pdf do
-      # render template: "recipes/show.html.erb", pdf: "Recipe ID: #{@recipe.id} - " + Time.zone.now.strftime('%v %H:%M:%S').to_s,
-                        # viewport_size: '1280x1024', javascript_delay: 5000
-    # end
   end
 
   def new
@@ -99,6 +98,16 @@ class RecipesController < ApplicationController
     @favorites = current_user.favorites.page(params[:page]).per(12)
   end
 
+  def recently_recipes
+    return [] if recently.blank? # [] if recently.none?
+
+    Recipe.where(id: recently)
+  end
+
+  def recently
+    session[:viewed_recipes] ||= []
+  end
+
   private
 
   def set_recipe
@@ -122,5 +131,10 @@ class RecipesController < ApplicationController
                                     { step_images: [] },
             ingredients_attributes: [:id, :content, :_destroy],
                   steps_attributes: [:id, :method, :_destroy])
+  end
+
+  def register_visit
+    session[:viewed_recipes] ||= []
+    session[:viewed_recipes] = ([@recipe.id] + session[:viewed_recipes]).uniq.take(3)
   end
 end
