@@ -53,9 +53,10 @@ Feature:
 * Simple search
 * Advanced search with ransack
 * Sort recipes by Title, Cteated, Category with ransack
-* User status in model (:active, :disabled, :banned);
-* User online status;
-* Social share button with share to Facebook fixed link; 
+* Recently page viewed (last 3 page)
+* User status in model (:active, :disabled, :banned)
+* User online status
+* Social share button with share to Facebook fixed link
 * Print Recipe
 * Export Recipe to PDF (gem 'grover' + puppeteer.js)
 * Inline update counter comments (AJAX)
