@@ -157,7 +157,7 @@
       <!-- Stert section Badge Nutrition-->
       <div class='d-flex justify-content-around'>
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.kcal' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -168,7 +168,7 @@
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.fat' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -179,7 +179,7 @@
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.saturates' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -190,7 +190,7 @@
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.carbs' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -201,7 +201,7 @@
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.sugars' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -212,7 +212,7 @@
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.fibre' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -223,7 +223,7 @@
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.protein' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -234,7 +234,7 @@
         </div>
 
         <div class="card mt-2" style="width: calc(100%/9); font-size: 14px;">
-          <div class="card-header text-center">
+          <div class="card-header text-center ing-header">
             <strong><%= t '.salt' %></strong>
           </div>
           <ul class="list-group list-group-flush">
@@ -279,6 +279,17 @@
       <% end %>
     </div>
   </div>
+
+  <!-- Recently views-->
+  <% unless recently_recipes.none? %>
+    <h3 class='mt-5'><%= t '.recently' %></h3>
+    <div class='col-md-9 jumbotron my-3'>
+      <div class='row mt-3' id='dashboard-container'>
+        <%= render partial: 'recipes/recipe_dashboard', locals: { recipes: recently_recipes } %>
+      </div>
+    </div>
+  <% end %>
+
 
   <!-- Comments -->
   <h4 class='recipe-comment-count mt-4 mb-3' id='anchor-recipe-comment'><%= t('.comments_count', count: @recipe.comments.count)%></h4>

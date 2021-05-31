@@ -99,6 +99,7 @@ ru:
       new: 'Новый рецепт'
       no_author: 'Автор не указан'
       rated: 'рейтинг'
+      recently: 'Недавно проcмотренные'
       review:
         one: '1 обзор'
         few: '%{count} обзора'

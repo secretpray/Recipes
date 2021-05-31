@@ -100,6 +100,7 @@ en:
       new: 'New recipe'
       no_author: 'Author not specified'
       rated: 'rated'
+      recently: 'Recently viewed'
       review:
         one: '1 review'
         other: '%{count} reviews'
