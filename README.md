@@ -68,10 +68,10 @@ Feature:
 
 TODO:
 * Added Replies to comments (React?)
-* Action Cable (replay comment, create Recipe)
-* Polymorh Trophy
-* dynamic add/remove fields for Ingredients & Steps
-* inline Edit Recipe
+* Action Cable (replay comment, create new Recipe)
+* Trophy (Polymorphic Associations)
+* Dynamic add/remove fields (step and image/video) for Steps
+* Step by Step create Recipe
 * Infinite scroll
 * Search with autocomplete
 * Follow User
