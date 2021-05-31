@@ -67,14 +67,14 @@ Feature:
 * SEEDS (Faker)
 
 TODO:
-* Added Replies to comments (React?)
-* Action Cable (replay comment, create new Recipe)
-* Trophy (Polymorphic Associations)
 * Dynamic add/remove fields (step and image/video) for Steps
 * Step by Step create Recipe
-* Infinite scroll
+* Trophy (Polymorphic Associations)
 * Search with autocomplete
+* Infinite scroll
+* Added Replies to comments (React?)
+* Action Cable (replay comment, create new Recipe)
 * Follow User
-* RSS feed
 * Chat room
+* RSS feed
 * Forum
