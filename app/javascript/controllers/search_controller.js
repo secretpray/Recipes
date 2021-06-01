@@ -8,11 +8,16 @@ export default class extends Controller {
   }
 
   search() {
-    // wait for the user to stop typing before submitting the form
-    clearTimeout(this.timeout)
-    this.timeout = setTimeout(() => {
-      Rails.fire(this.formTarget, 'submit')
-    }, 200)
+    var inputAutocomplete = document.querySelector("#autocomplete-input")
+    inputAutocomplete.addEventListener('keyup', (event) => {
+      if (event.target.value.length > 1) {
+        // wait for the user to stop typing before submitting the form
+        clearTimeout(this.timeout)
+        this.timeout = setTimeout(() => {
+          Rails.fire(this.formTarget, 'submit')
+        }, 200)
+      }
+    })
   }
 
   handleResults() {

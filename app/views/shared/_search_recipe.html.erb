@@ -3,5 +3,8 @@
     <%= link_to image_preview(recipe, recipe), recipe %>
     &nbsp;
     <%= link_to recipe.title, recipe, class: 'text-decoration-none text-primary' %>
+    <%= link_to '#', class: 'autocomplete-close' do %>
+      <span style="position: absolute; top: 8px; font-size: 16px;">&times;</span>
+    <% end %>
   </li>
 </ul>

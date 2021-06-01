@@ -74,7 +74,7 @@
             <li class="nav-item d-flex ms-5 align-items-start">
               <div data-controller="search">
                 <%= render partial: "shared/search_form" %>
-                <div data-search-target="results">
+                <div data-search-target="results" id="results-dropdown" style="position: absolute;">
                   <% if @recipes&.any? %>
                     <% @recipes.each do |recipe| %>
                       <%= render partial: "shared/search_recipe", locals: { recipe: recipe } %>
