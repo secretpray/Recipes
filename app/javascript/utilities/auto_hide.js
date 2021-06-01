@@ -1,5 +1,5 @@
 document.addEventListener('turbolinks:load', function() {
-  
+
   function fadeOut(object) {
     if (object) {
       object.classList.add('fadeout');
@@ -21,6 +21,20 @@ document.addEventListener('turbolinks:load', function() {
     });
   }
 
+  // Dismiss dropdown search list (button close)
+  var butttonAutoComplete = {}
+  butttonAutoComplete = document.querySelector(".autocomplete-close")
+  var dropList = {}
+  dropList = document.querySelector("#results-dropdown")
+
+  if (butttonAutoComplete) {
+    butttonAutoComplete.addEventListener('click', () => {
+      dropList.innerText = '';
+    })
+  }
+
+
+
   // Dismiss errors modal (button close)
   var errorModal = {};
   errorModal = document.querySelector('.errors-modal')
@@ -32,7 +46,7 @@ document.addEventListener('turbolinks:load', function() {
       errorModal.remove();
     })
   }
-  
+
   // Timeout autohide Devise error
   const deviseErrorExplanation = document.getElementById('error_explanation');
   if (deviseErrorExplanation) fadeOut(deviseErrorExplanation)
@@ -43,16 +57,16 @@ document.addEventListener('turbolinks:load', function() {
 
   const observer = new MutationObserver(function() {
     const inlineError = document.getElementById('errors-content')
-    
+
     if (inlineError) {
       fadeOut(inlineError)
-      
+
       inlineError.addEventListener("click", (event) => {
         inlineError.remove();
       })
     }
   });
- 
+
   if (commentObserver) {
     observer.observe(commentObserver, {childList: true, subtree: true });
    }
