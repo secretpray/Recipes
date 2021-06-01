@@ -6,8 +6,9 @@ class DashboardController < ApplicationController
   end
 
   def search
-    # @recipes = Recipe.where('title ILIKE ? OR description ILIKE ?', "%#{params[:search]}%", "%#{params[:search]}%")
-    @recipes = Recipe.order(created_at: :desc).global_search(params[:search]).limit(5)
-    render layout: false
+    if params[:search].present? && params[:search].size > 1
+      @recipes = Recipe.order(created_at: :desc).global_search(params[:search]).limit(5)
+      render layout: false
+    end
   end
 end
