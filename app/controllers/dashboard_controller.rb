@@ -6,9 +6,9 @@ class DashboardController < ApplicationController
   end
 
   def search
-    if params[:search].present? && params[:search].size > 1
-      @recipes = Recipe.order(created_at: :desc).global_search(params[:search]).limit(5)
-      render layout: false
-    end
+    return unless params[:search].present? && params[:search].size > 1
+
+    @recipes = Recipe.order(created_at: :desc).global_search(params[:search]).limit(5)
+    render layout: false
   end
 end
