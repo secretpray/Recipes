@@ -1,10 +1,11 @@
 module RecipesHelper
 
-  def image_preview(recipe)
-    if recipe.recipe_image.attached? 
-      image_tag recipe.recipe_image.variant(resize: '200x200!').processed
+  def image_preview(recipe, small = nil)
+    sized = small.nil? ? '200x200!' : '75x75!'
+    if recipe.recipe_image.attached?
+      image_tag recipe.recipe_image.variant(resize: sized).processed
     else
-      image_tag("Default_image.png", size: '200x200')
+      image_tag("Default_image.png", size: sized)
     end
   end
 
