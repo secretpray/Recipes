@@ -1,0 +1,5 @@
+<% if @recipes&.any? %>
+  <% @recipes.each do |recipe| %>
+    <%= render partial: "shared/search_recipe", locals: { recipe: recipe } %>
+  <% end %>
+<% end %>

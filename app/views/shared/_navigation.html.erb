@@ -56,9 +56,6 @@
             <% end %>
           <% end %>
 
-          <!-- request.path + "?lang=ru" ? current_uri = request.env['PATH_INFO'] or request.path_info or request.url or request.path
-          or request.env['ORIGINAL_FULLPATH'] or request.env['REQUEST_URI']-->
-          <%# binding.pry %>
           <% unless user_signed_in? %>
             <% if I18n.locale == :ru %>
               <li class="nav-item"><%= link_to '?lang=en'.prepend(request.path), class: 'nav-link' do %>
@@ -72,10 +69,24 @@
               </li>
             <% end %>
           <% end %>
+
+          <% if is_active('dashboard','index') %>
+            <li class="nav-item d-flex ms-5 align-items-start">
+              <div data-controller="search">
+                <%= render partial: "shared/search_form" %>
+                <div data-search-target="results">
+                  <% if @recipes&.any? %>
+                    <% @recipes.each do |recipe| %>
+                      <%= render partial: "shared/search_recipe", locals: { recipe: recipe } %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </li>
       </ul>
 
-
-      </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">

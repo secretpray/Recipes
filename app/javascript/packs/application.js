@@ -10,6 +10,7 @@ import "channels"
 import 'bootstrap'
 import "toastr"
 import "trix/dist/trix"
+import "controllers"
 
 // import "@fortawesome/fontawesome-free/css/all"
 // import "../stylesheets/application"
@@ -32,10 +33,3 @@ require("utilities/rails-social-share-button")
 
 global.toastr = require("toastr")
 window.Rails = Rails
-
-// (function() {
-//   this.App || (this.App = {});
-
-//   App.cable = ActionCable.createConsumer();
-
-// }).call(this);

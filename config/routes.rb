@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/search', to: 'dashboard#search'
   get '/privacy', to: 'dashboard#privacy'
   get '/terms', to: 'dashboard#terms'
   get '/limits', to: 'dashboard#limits'

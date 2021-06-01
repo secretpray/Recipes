@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   extend FriendlyId
+  include PgSearch::Model
 
   belongs_to :user, counter_cache: true
   belongs_to :category
@@ -26,6 +27,7 @@ class Recipe < ApplicationRecord
   scope :by_add, -> { order(created_at: :desc) } # double
   scope :by_user, -> { order(user_id: :asc) }
   scope :favorited_by, -> (email) { joins(:favorites).where(favorites: { user: User.where(email: email)}) }
+  pg_search_scope :global_search, against: [:title, :description], using: { tsearch: { prefix: true } }
 
   def self.recent
     order('created_at desc')
