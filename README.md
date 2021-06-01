@@ -20,6 +20,7 @@ Used gem:
 * activerecord-session_store
 * Gravatar
 * Ransack
+* pg_search
 * I18n
 * aws-sdk-s3
 * rails-social-share-button
@@ -52,6 +53,7 @@ Feature:
 * Popover with vanila JS
 * Simple search
 * Advanced search with ransack
+* * Search with autocomplete (pg_search + Stimulus JS)
 * Sort recipes by Title, Cteated, Category with ransack
 * Recently page viewed (last 3 page)
 * User status in model (:active, :disabled, :banned)
@@ -70,7 +72,6 @@ TODO:
 * Dynamic add/remove fields (step and image/video) for Steps
 * Step by Step create Recipe
 * Trophy (Polymorphic Associations)
-* Search with autocomplete
 * Infinite scroll
 * Added Replies to comments (React?)
 * Action Cable (replay comment, create new Recipe)
