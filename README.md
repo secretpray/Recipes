@@ -53,7 +53,7 @@ Feature:
 * Popover with vanila JS
 * Simple search
 * Advanced search with ransack
-* * Search with autocomplete (pg_search + Stimulus JS)
+* Search with autocomplete (pg_search + Stimulus JS)
 * Sort recipes by Title, Cteated, Category with ransack
 * Recently page viewed (last 3 page)
 * User status in model (:active, :disabled, :banned)
