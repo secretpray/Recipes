@@ -17,6 +17,11 @@ export default class extends Controller {
           Rails.fire(this.formTarget, 'submit')
         }, 200)
       }
+      // clear droplist if input set to blank 
+      if (event.target.value.length == 0) {
+        var dropList = document.querySelector("#results-dropdown")
+        if (dropList.size != 0) { dropList.innerText = '' }
+      }
     })
   }
 

@@ -52,11 +52,13 @@
               <%= image_tag("print.png", size: "32x32", alt: "Print recipe", class: 'print-page') %>
               <% end %>
           </div>
-          <div>
-            <%= link_to to_pdf_recipe_path(@recipe, format: :pdf), target: '_blank', title: 'Click to Export as PDF', class: 'ms-2' do %>
-              <%= image_tag("pdf.png", size: "32x32", alt: "Export as PDF", class: 'export-pdf') %>
-            <% end %>
-          </div>
+          <% if user_signed_in? %>
+            <div>
+              <%= link_to to_pdf_recipe_path(@recipe, format: :pdf), target: '_blank', title: 'Click to Export as PDF', class: 'ms-2' do %>
+                <%= image_tag("pdf.png", size: "32x32", alt: "Export as PDF", class: 'export-pdf') %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
     </div>
 
