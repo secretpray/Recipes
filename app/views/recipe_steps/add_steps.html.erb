@@ -1,0 +1,23 @@
+<div class="progress">
+  <div class='progress-bar' style="width: <%= @progress %>%">
+  </div>
+</div>
+
+<h4 class='mt-4'>Stage 4. Steps:</h4>
+<%= form_for @recipe, url: wizard_path do |f| %>
+  <div class="form-group field mt-3 mb-2">
+    <%= f.fields_for :steps do |step_fields| %>
+      <%= step_fields.rich_text_area :method, class: "form-control mt-2 customized-min-height", placeholder: 'Method' %>
+      <%= step_fields.check_box :_destroy, class: "mt-3" %> Delete?
+    <% end %>
+  </div>
+
+  <div>
+    <%= f.file_field :step_images, multiple: true, class: "form-control form-control-sm w-50 mx-auto" %>
+  </div>
+
+  <div class="actions mt-4">
+    <%= f.submit t('global.finish'), class: 'btn btn-primary' %>
+    or <%= link_to t('global.skip'), next_wizard_path, class: 'text-decoration-none' %>
+  </div>
+<% end %>

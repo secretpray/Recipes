@@ -10,6 +10,13 @@ en:
     noo: 'No'
     select: 'Select'
     cancel: 'Cancel'
+    next: 'Continue'
+    skip: 'skip this step'
+    finish: 'Finish create'
+  wicked:
+    more_info: "More info"
+    create_ingredients: 'Ingredients'
+    create_steps: 'Steps'
   social_share_button:
     share_to: 'Share to '
     email: 'Email'

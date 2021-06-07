@@ -1,0 +1,167 @@
+<%= form_with(model: recipe) do |form| %>
+  <div id='errors-recipe'>
+    <%= render 'shared/errors', resource: recipe %>
+  </div>
+
+  <div class="form-group field mt-3 mb-2">
+    <%= form.text_field :title, class: "form-control", placeholder: t('.recipe_title') %>
+  </div>
+
+  <div class="form-group field mt-3 mb-2">
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, { include_blank: true, prompt: t('.select_category') }, class: "form-select" %>
+  </div>
+
+  <div class="form-group field mt-3 mb-2">
+    <%= form.text_field :all_tags, class: "form-control tags_form", placeholder: t('.recipe_tags') %>
+  </div>
+
+  <div class="form-group field mt-3 mb-2">
+    <%= form.text_area :description, class: "form-control", placeholder: t('.descriptions') %>
+  </div>
+
+  <div class="form-group field mt-3 mb-2">
+    <%= form.label :recipe_image, class: "form-control" %>
+    <%= form.file_field :recipe_image, class: "form-control" %>
+  </div>
+
+  <div class='mt-3'>
+    <div>
+      <%= link_to '⬇ More information', '#', class: 'add-more-recipe-info text-decoration-none text-reset btn btn-link', style: 'background: ghostwhite;' %>
+    </div>
+    <div class='more-recipe-info d-none'>
+      <div class='d-flex justify-content-around  mt-3'>
+        <div class="form-group col-1">
+          <%= form.label :serves, 'Serves' %>
+          <%= form.text_field :serves, autofocus: false, value: '4 servings', class: 'form-control', placeholder: "Serves" %>
+        </div>
+
+        <div class="form-group col-5">
+          <%= form.label :time_prep, 'Prep time' %>
+          <%= time_field(:recipe, :time_prep, value: "00:45", class: "form-control") %>
+        </div>
+
+        <div class="form-group col-5">
+          <%= form.label :time_cook, 'Cook time' %>
+          <%= time_field(:recipe, :time_cook, value: "01:30", class: "form-control") %>
+        </div>
+      </div>
+
+      <div class="form-group mt-3">
+        <%= form.text_area :time_ps, autofocus: false, class: 'form-control', placeholder: "Time notes ..." %>
+      </div>
+
+      <h5 class='mt-3'>Nutrition: per serving</h5>
+      <div class='d-flex justify-content-around mt-2'>
+        <div class="form-group">
+          <%= form.label :nutrion_ps_kcal, 'Kcal:' %>
+          <%= form.number_field :nutrion_ps_kcal, autofocus: false, class: 'form-control', placeholder: ".. kcal" %>
+        </div>
+
+        <div class="form-group mx-4">
+          <%= form.label :nutrion_ps_fat, 'Fat:' %>
+          <%= form.number_field :nutrion_ps_fat, autofocus: false, class: 'form-control', placeholder: ".. g" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :nutrion_ps_saturates, 'Saturates:' %>
+          <%= form.number_field :nutrion_ps_saturates, autofocus: false, class: 'form-control', placeholder: ".. g" %>
+        </div>
+
+        <div class="form-group mx-4">
+          <%= form.label :nutrion_ps_carbs, 'Carbs:' %>
+          <%= form.number_field :nutrion_ps_carbs, autofocus: false, class: 'form-control', placeholder: ".. g" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :nutrion_ps_sugar, 'Sugar:' %>
+          <%= form.number_field :nutrion_ps_sugar, autofocus: false, class: 'form-control', placeholder: ".. g" %>
+        </div>
+
+        <div class="form-group mx-4">
+          <%= form.label :nutrion_ps_fibre, 'Fibre:' %>
+          <%= form.number_field :nutrion_ps_fibre, autofocus: false, class: 'form-control', placeholder: ".. g" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :nutrion_ps_protein, 'Protein:' %>
+          <%= form.number_field :nutrion_ps_protein, autofocus: false, class: 'form-control', placeholder: ".. g" %>
+        </div>
+
+        <div class="form-group ms-4">
+          <%= form.label :nutrion_ps_salt, 'Salt:' %>
+          <%= form.number_field :nutrion_ps_salt, autofocus: false, class: 'form-control', placeholder: ".. g" %>
+        </div>
+      </div>
+
+      <div class='d-flex justify-content-around'>
+        <div class="form-check form-switch mt-3">
+          <%= form.label :prep_easy, class: "form-check-label" %>
+          <%= form.check_box :prep_easy, autofocus: false, class: 'form-check-input', placeholder: "Easy recipe" %>
+        </div>
+
+        <div class="form-check form-switch mt-3">
+          <%= form.label :gluten_free, class: "form-check-label" %>
+          <%= form.check_box :gluten_free, autofocus: false, class: 'form-check-input', placeholder: "Gluten free" %>
+        </div>
+
+        <div class="form-check form-switch mt-3">
+          <%= form.label :peanut_free, class: "form-check-label" %>
+          <%= form.check_box :peanut_free, autofocus: false, class: 'form-check-input', placeholder: "Peanut free" %>
+        </div>
+
+        <div class="form-check form-switch mt-3">
+          <%= form.label :sugar_free, class: "form-check-label" %>
+          <%= form.check_box :sugar_free, autofocus: false, class: 'form-check-input', placeholder: "Sugar free" %>
+        </div>
+
+        <div class="form-check form-switch mt-3">
+          <%= form.label :salt_free, class: "form-check-label" %>
+          <%= form.check_box :salt_free, autofocus: false, class: 'form-check-input', placeholder: "Salt free" %>
+        </div>
+
+        <div class="form-check form-switch mt-3">
+          <%= form.label :kosher, class: "form-check-label" %>
+          <%= form.check_box :kosher, autofocus: false, class: 'form-check-input', placeholder: "Kosher" %>
+        </div>
+
+        <div class="form-check form-switch mt-3">
+          <%= form.label :vegan, class: "form-check-label" %>
+          <%= form.check_box :vegan, autofocus: false, class: 'form-check-input', placeholder: "Vegan" %>
+        </div>
+
+        <div class="form-check form-switch mt-3">
+          <%= form.label :vegetarin, class: "form-check-label" %>
+          <%= form.check_box :vegetarin, autofocus: false, class: 'form-check-input', placeholder: "Vegetarin" %>
+        </div>
+      </div>
+    </div>
+
+  <h4 class='mt-4'><%= t('.ingredients') %></h4>
+  <div class="form-group field mt-3 mb-2">
+    <%= form.fields_for :ingredients do |ingredient_fields| %>
+      <%= ingredient_fields.rich_text_area :content, class: "form-control mt-2", placeholder: 'Content' %>
+      <%= ingredient_fields.check_box :_destroy, class: "mt-3" %> Delete?
+    <% end %>
+  </div>
+
+  <h4 class='mt-4'><%= t '.steps' %></h4>
+  <div class="form-group field mt-3 mb-2">
+    <%= form.fields_for :steps do |step_fields| %>
+      <%= step_fields.rich_text_area :method, class: "form-control mt-2", placeholder: 'Method' %>
+      <%= step_fields.check_box :_destroy, class: "mt-3" %> Delete?
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :step_images, class: "form-control mt-2" %>
+    <%= form.file_field :step_images, multiple: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group actions mt-4 mb-2">
+    <%= link_to t('global.back'), recipes_path, class: "btn btn-light" %>
+    <% if @recipe.persisted?%>
+      <%= link_to t('global.show'), @recipe, class: "btn btn-secondary" %>
+    <% end %>
+    <%= form.submit link_form(recipe), class: "btn btn-primary" %>
+  </div>
+<% end %>

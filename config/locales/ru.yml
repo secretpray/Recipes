@@ -10,6 +10,13 @@ ru:
     noo: 'Нет'
     select: 'Выбрать'
     cancel: 'Отменить'
+    next: 'Продолжить'
+    skip: 'пропустить этот шаг'
+    finish: 'Закончить создание'
+  wicked:
+    more_info: "Дополнительная информация"
+    create_ingredients: 'Ингредиенты'
+    create_steps: 'Алгоритм приготовления'
   social_share_button:
     share_to: 'Поделиться '
     email: 'Email'
