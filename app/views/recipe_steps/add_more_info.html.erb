@@ -4,7 +4,7 @@
 </div>
 
 <%= form_for @recipe, url: wizard_path do |form| %>
-  <h1 class='mt-3'>Stage 2. Add more recipe info:</h1>
+  <h1 class='mt-3'><%= t('.stage_2') %></h1>
   <div class='mt-3'>
     <div class='more-recipe-info'>
       <div class='d-flex justify-content-around mt-5'>
@@ -15,17 +15,13 @@
 
         <div class="form-inline d-flex align-items-center col-4 me-3">
           <%= form.label :time_prep, 'Prep time:', class: 'w-75' %>
-          <%#= form.time_field :time_prep, class: "form-select", prompt: {hour: 'Choose hour', minute: 'Choose minute'} %>
           <%= time_select(:recipe, :time_prep, { prompt: {hour: 'Choose hour', minute: 'Choose minute'}}, {class: 'form-select form-select-sm border mx-2'} ) %>
-          <%#= time_field(:recipe, :time_prep, value: "00:45", class: "form-control") %>
-          <%#= datetime_select(:recipe, :time_prep, { :discard_year => true, :discard_month => true, :discard_day => true }) %>
         </div>
 
 
         <div class="form-inline d-flex align-items-center col-4">
           <%= form.label :time_cook, 'Cook time:', class: 'w-75' %>
           <%= time_select(:recipe, :time_prep, { prompt: {hour: 'Choose hour', minute: 'Choose minute'}}, {class: 'form-select form-select-sm border mx-2'} ) %>
-          <%#= time_field(:recipe, :time_cook, value: "01:30", class: "form-control") %>
         </div>
       </div>
 

@@ -3,7 +3,7 @@
   </div>
 </div>
 
-<h4 class='mt-4'>Stage 4. Steps:</h4>
+<h4 class='mt-4'><%= t('.stage_4') %></h4>
 <%= form_for @recipe, url: wizard_path do |f| %>
   <div class="form-group field mt-3 mb-2">
     <%= f.fields_for :steps do |step_fields| %>

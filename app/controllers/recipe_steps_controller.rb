@@ -1,6 +1,6 @@
 class RecipeStepsController < ApplicationController
-  # include Wicked::Wizard::Translated
-  include Wicked::Wizard
+  include Wicked::Wizard::Translated
+  # include Wicked::Wizard
 
   before_action :set_progress, only: [:show, :update]
 
