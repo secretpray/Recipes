@@ -47,16 +47,13 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     authorize @recipe
-
-    @ingredients = @recipe.ingredients.build
-    @steps = @recipe.steps.build
   end
 
   def edit
     authorize @recipe
 
-    @recipe.steps.any? ? @recipe.steps : @recipe.steps.build
-    @recipe.ingredients.any? ? @recipe.ingredients : @recipe.ingredients.build
+    @recipe.steps&.any? ? @recipe.steps : @recipe.steps.build
+    @recipe.ingredients&.any? ? @recipe.ingredients : @recipe.ingredients.build
   end
 
   def create

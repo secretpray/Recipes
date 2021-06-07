@@ -164,7 +164,7 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item text-center" style='font-size: 14px; min-height: 2.5rem;'>
-              <%= @recipe.try(:nutrion_ps_kcal) %> kcal
+              <%= @recipe.nutrion_ps_kcal %> kcal
             </li>
           </ul>
         </div>
@@ -252,7 +252,7 @@
   <div class='row mt-2'>
     <div class='mt-4 col-md-4'>
       <h4 class='text-center'><strong><%= t '.ingredients' %></strong></h4>
-      <% if @recipe.ingredients.any? %>
+      <% if @recipe.ingredients&.any? %>
         <% @recipe.ingredients.each do |ingredient| %>
           <span class='mt-2 mb-1'><%= ingredient.content %></span>
         <% end %>
@@ -263,7 +263,7 @@
 
     <div class='mt-4 offset-1 col-md-7'>
       <h4 class='text-center'><strong><%= t '.steps' %></strong></h4>
-      <% if @recipe.steps.any? %>
+      <% if @recipe.steps&.any? %>
         <div class='d-flex flex-wrap justify-content-center'>
           <% if @recipe.step_images.present? %>
             <% (0...@recipe.step_images.count).each do |image| %>
