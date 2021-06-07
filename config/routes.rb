@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       patch 'change_status', to: 'users#change_status' # patch :change_status
     end
   end
+
+  scope "recipes/:recipe_id" do
+    resources :recipe_steps
+  end
   resources :categories
   resources :tags, only: :show
   resources :recipes do

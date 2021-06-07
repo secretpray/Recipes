@@ -48,8 +48,8 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     authorize @recipe
 
-    @recipe.ingredients.build
-    @recipe.steps.build
+    @ingredients = @recipe.ingredients.build
+    @steps = @recipe.steps.build
   end
 
   def edit
@@ -63,13 +63,13 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
     authorize @recipe
 
-    respond_to do |format|
-      if @recipe.save
-        format.html { redirect_to @recipe, notice: "Recipe was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @recipe.save
+      redirect_to recipe_steps_path(@recipe.id)
+      # redirect_to recipe_steps_path, notice: "The next step in creating a recipe..."
+    else
+      render :new, status: :unprocessable_entity
     end
+
   end
 
   def update
@@ -99,7 +99,7 @@ class RecipesController < ApplicationController
   end
 
   def recently_recipes
-    return [] if recently.blank? # [] if recently.none?
+    return [] if recently.blank?
 
     Recipe.where(id: recently)
   end

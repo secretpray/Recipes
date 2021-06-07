@@ -37,7 +37,8 @@ gem 'pg_search'
 gem 'rails-i18n'
 gem 'aws-sdk-s3', require: false
 gem 'rails-social-share-button'
-gem 'turbo-rails', '~> 0.5.9'
+gem 'wicked'
+
 
 # PDF
 gem 'wicked_pdf'
