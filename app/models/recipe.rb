@@ -29,6 +29,7 @@ class Recipe < ApplicationRecord
   scope :favorited_by, -> (email) { joins(:favorites).where(favorites: { user: User.where(email: email)}) }
   pg_search_scope :global_search, against: [:title, :description], using: { tsearch: { prefix: true } }
 
+
   def self.recent
     order('created_at desc')
   end

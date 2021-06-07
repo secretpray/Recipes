@@ -7,15 +7,16 @@ class RecipeStepsController < ApplicationController
   steps :add_more_info, :add_ingredients, :add_steps
 
   def show
-    @recipe = Recipe.find(params[:recipe_id])
-    @ingredients ||= @recipe.ingredients.build
-    @steps ||= @recipe.steps.build
+    @recipe = Recipe.friendly.find(params[:recipe_id])
+    @recipe.ingredients.build
+    @recipe.steps.build
 
     render_wizard
   end
 
   def update
-    @recipe = Recipe.find(params[:recipe_id])
+    @recipe = Recipe.friendly.find(params[:recipe_id])
+    @recipe.assign_attributes(recipe_params)
 
     render_wizard @recipe
   end
@@ -35,7 +36,7 @@ class RecipeStepsController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description,
+    params.require(:recipe).permit(:id, :title, :description,
                                     :serves, :time_prep,
                                     :time_cook, :time_ps,
                                     :nutrion_ps_kcal, :nutrion_ps_fat,
@@ -53,3 +54,4 @@ class RecipeStepsController < ApplicationController
                   steps_attributes: [:id, :method, :_destroy])
   end
 end
+# url_for(controller: controller_name, action: :new, id: current_user.id)
