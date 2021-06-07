@@ -1,7 +1,7 @@
 =======
 # README
 
-Application Recipe.
+Application Recipe https://recipes-2021.herokuapp.com/
 
 Used gem:
 * Devise
@@ -20,9 +20,11 @@ Used gem:
 * activerecord-session_store
 * Gravatar
 * Ransack
+* pg_search
 * I18n
 * aws-sdk-s3
-
+* rails-social-share-button
+* grover
 
 Feature:
 * Active Text
@@ -34,7 +36,10 @@ Feature:
 * 5 Star Rating and Review with JS
 * Tags for Recipe and tags cloud
 * Recipes, Favorites, Comments counter_cache for User model
-* Comments with avatar (AJAX)
+* Comments with avatar and reply (AJAX)
+* Comment inline edit/update with HotWire (stage_28, later -> remove)
+* Comment inline edit/update with AJAX (stage_29 +)
+* Comment and Reply full AJAX create/update/delete  
 * Nested Forms
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
@@ -45,32 +50,32 @@ Feature:
 * Localization Russin/English (+ User attribute language)
 * Disappearing flash messages with toastr js
 * AutoHide & close Errors/Flash message with vanila JS
-* Popover with vanila JS
+* Popover/Tooltip with vanila JS
 * Simple search
 * Advanced search with ransack
+* Search with autocomplete (pg_search + Stimulus JS)
 * Sort recipes by Title, Cteated, Category with ransack
-* User status in model (:active, :disabled, :banned);
-* User online status;
+* Recently page viewed (last 3 page)
+* User status in model (:active, :disabled, :banned)
+* User online status
+* Social share button with share to Facebook fixed link
+* Print Recipe
+* Export Recipe to PDF (gem 'grover' + puppeteer.js)
 * Inline update counter comments (AJAX)
 * Personal user page (recent users Recipe, Favorite and Comments)
-* Custom static page (404/500)
+* Static Page "About", "Terms", "Limits"
+* Custom static page (404/422/500)
+* Heroku
 * SEEDS (Faker)
 
 TODO:
-* Static Page "About", "Terms"
-* Added Replies to comments (React?)
-* Action Cable (replay comment, create Recipe)
-* Polymorh Trophy
-* Heroku
-* dynamic add/remove fields for Ingredients & Steps
-* inline Edit Recipe
+* Dynamic add/remove fields (step and image/video) for Steps
+* Step by Step create Recipe
+* Trophy (Polymorphic Associations)
 * Infinite scroll
-* Search with autocomplete
-* Save Recipe (+ PDF)
-* Print Recipe
-* Social share
-* Hotwire
+* Added Replies to comments (React?)
+* Action Cable (replay comment, create new Recipe)
 * Follow User
-* RSS feed
 * Chat room
+* RSS feed
 * Forum

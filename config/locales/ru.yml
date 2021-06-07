@@ -139,7 +139,6 @@ ru:
       salt: 'соль'
       ingredients: 'Ингредиенты:'
       steps: 'Алгоритм:'
-      commnet: 'Комментировать'
       need_to_comment: 'Чтобы оставить комментарий необходимо'
       add_comment: 'Добавить комментарий'
       comments_count:
