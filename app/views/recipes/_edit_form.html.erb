@@ -12,7 +12,8 @@
   </div>
 
   <div class="form-group field mt-3 mb-2">
-    <%= form.text_field :all_tags, class: "form-control tags_form", placeholder: t('.recipe_tags') %>
+    <%= form.text_field :all_tags, class: "form-control tags_form", id:'choices-multiple-remove-button',
+        multiple: true, placeholder: t('.recipe_tags') %>
   </div>
 
   <div class="form-group field mt-3 mb-2">

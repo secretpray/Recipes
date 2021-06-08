@@ -83,6 +83,8 @@ class Recipe < ApplicationRecord
   end
 
   def all_tags=(names)
+    names = names.join('') if names.is_a? Enumerable
+
     self.tags = names.split(',').map do |name|
       Tag.where(name: name.strip).first_or_create!
     end

@@ -13,10 +13,18 @@ ru:
     next: 'Продолжить'
     skip: 'пропустить этот шаг'
     finish: 'Закончить создание'
+    delete?: 'Удалить?'
   wicked:
-    more_info: "Дополнительная информация"
-    create_ingredients: 'Ингредиенты'
-    create_steps: 'Алгоритм приготовления'
+    add_more_info: "Дополнительная информация"
+    add_ingredients: 'Добавить ингредиенты'
+    add_steps: 'Добавить порядок приготовления'
+  recipe_steps:
+    add_more_info:
+      stage_2: 'Шаг 2. Больше информации:'
+    add_ingredients:
+      stage_3: 'Шаг 3. Ингридиенты:'
+    add_steps:
+      stage_4: 'Шаг 4. Последовательность приготовления:'
   social_share_button:
     share_to: 'Поделиться '
     email: 'Email'
@@ -68,6 +76,8 @@ ru:
       descriptions: 'Краткое описание'
       ingredients: 'Ингредиенты:'
       steps: 'Алгоритм:'
+    edit_form:
+      recipe_tags: 'Тэги (например, барбекю, семейный...)'
     index:
       welcome: "Добро пожаловать в "
       recipes_title: 'Рецепты'

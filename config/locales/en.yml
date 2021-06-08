@@ -13,10 +13,18 @@ en:
     next: 'Continue'
     skip: 'skip this step'
     finish: 'Finish create'
+    delete?: 'Delete?'
   wicked:
-    more_info: "More info"
-    create_ingredients: 'Ingredients'
-    create_steps: 'Steps'
+    add_more_info: "More info"
+    add_ingredients: 'Add ingredients'
+    add_steps: 'Add steps'
+  recipe_steps:
+    add_more_info:
+      stage_2: 'Stage 2. Add more info:'
+    add_ingredients:
+      stage_3: 'Stage 3. Ingredients:'
+    add_steps:
+      stage_4: 'Stage 4. Steps:'
   social_share_button:
     share_to: 'Share to '
     email: 'Email'
@@ -68,6 +76,8 @@ en:
       descriptions: 'Descriptions'
       ingredients: 'Ingredients:'
       steps: 'Steps:'
+    edit_form:
+      recipe_tags: 'Recipe tags (eg. helth, easy ...)'
     index:
       welcome: "Welcome to "
       recipes_title: 'Recipes'
