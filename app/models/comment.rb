@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id                      :bigint           not null, primary key
+#  body                    :text
+#  user_id                 :bigint           not null
+#  recipe_id               :bigint           not null
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  cached_votes_total      :integer          default(0)
+#  cached_votes_score      :integer          default(0)
+#  cached_votes_up         :integer          default(0)
+#  cached_votes_down       :integer          default(0)
+#  cached_weighted_score   :integer          default(0)
+#  cached_weighted_total   :integer          default(0)
+#  cached_weighted_average :float            default(0.0)
+#  parent_id               :integer          default(0)
+#
 class Comment < ApplicationRecord
   belongs_to :user, counter_cache: true
   belongs_to :recipe
@@ -12,15 +31,6 @@ class Comment < ApplicationRecord
   scope :replies_for_recipe,  -> (recipe_id) { where("recipe_id = ? and parent_id != 0", recipe_id)
                                   .order(["parent_id", "id"]).group_by { |comment| comment["parent_id"]} }
 
-  # def self.comments_for_recipe(recipe_id)
-    # SELECT "comments".* FROM "comments" WHERE (recipe_id = 20 and parent_id = 0) ORDER BY id
-    # Comment.where("recipe_id = ? and parent_id = 0", recipe_id).order("id")
-  # end
-
-  # def self.replies_for_recipe(recipe_id)
-    # SELECT "comments".* FROM "comments" WHERE (recipe_id = 20 and parent_id = 0) ORDER BY parent_id, id
-    # Comment.where("recipe_id = ? and parent_id != 0", recipe_id).order(["parent_id", "id"]).group_by { |comment| comment["parent_id"]}
-  # end
   def reply?
     parent_id != 0
   end
