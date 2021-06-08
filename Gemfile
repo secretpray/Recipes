@@ -57,6 +57,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails', '~> 4.0.1'
   gem 'factory_bot_rails'
+  gem "brakeman"
+  gem "standard"
 end
 
 group :development do

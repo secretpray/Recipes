@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def favorite_text
-    return @favorite_exists ?  "&#x2764;&#xfe0f;".html_safe : "&#x2661;".html_safe
+    return @favorite_exists ? "&#x2764;&#xfe0f;".html_safe : "&#x2661;".html_safe
   end
 
   def set_locale

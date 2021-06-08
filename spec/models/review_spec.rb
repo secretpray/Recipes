@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id         :bigint           not null, primary key
+#  user_id    :bigint           not null
+#  recipe_id  :bigint           not null
+#  content    :text
+#  score      :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Review, type: :model do
