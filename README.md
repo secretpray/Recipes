@@ -26,6 +26,8 @@ Used gem:
 * rails-social-share-button
 * grover
 * wicked
+* brakeman
+* standard
 
 Feature:
 * Active Text
