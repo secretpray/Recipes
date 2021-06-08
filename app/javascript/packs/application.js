@@ -13,9 +13,7 @@ import "trix/dist/trix"
 import "controllers"
 import './choices/init.js';
 import '../src/choices.scss'
-
-// import "@fortawesome/fontawesome-free/css/all"
-// import "../stylesheets/application"
+import flatpickr from "flatpickr";
 
 Rails.start()
 Turbolinks.start()
@@ -32,7 +30,9 @@ require("utilities/add_reviews")
 require("utilities/add_personal")
 require("utilities/clear_date_form")
 require("utilities/advanced_search")
+require("utilities/flatpicker")
 require("utilities/rails-social-share-button")
+require("flatpickr/dist/flatpickr.css")
 
 global.toastr = require("toastr")
 window.Rails = Rails

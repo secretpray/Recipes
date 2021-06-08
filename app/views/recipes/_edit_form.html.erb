@@ -38,12 +38,12 @@
 
         <div class="form-group col-5">
           <%= form.label :time_prep, 'Prep time' %>
-          <%= time_field(:recipe, :time_prep, value: "00:45", class: "form-control") %>
+          <%= time_field(:recipe, :time_prep, value: "00:45", class: "form-control", data: { behavior: "flatpickr"}) %>
         </div>
 
         <div class="form-group col-5">
           <%= form.label :time_cook, 'Cook time' %>
-          <%= time_field(:recipe, :time_cook, value: "01:30", class: "form-control") %>
+          <%= time_field(:recipe, :time_cook, value: "01:30", class: "form-control", data: { behavior: "flatpickr"}) %>
         </div>
       </div>
 
