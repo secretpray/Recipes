@@ -144,7 +144,6 @@ en:
       salt: 'salt'
       ingredients: 'Ingredients:'
       steps: 'Steps:'
-      commnet: 'Comment'
       need_to_comment: 'To comment on the recipe, you must'
       add_comment: 'Add comment'
       comments_count:
@@ -164,3 +163,4 @@ en:
       author_comment: 'by:'
       ago: 'ago'
       reply_comment: 'Reply'
+
