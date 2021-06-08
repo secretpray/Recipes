@@ -25,6 +25,7 @@ Used gem:
 * aws-sdk-s3
 * rails-social-share-button
 * grover
+* wicked
 
 Feature:
 * Active Text
@@ -41,6 +42,7 @@ Feature:
 * Comment inline edit/update with AJAX (stage_29 +)
 * Comment and Reply full AJAX create/update/delete  
 * Nested Forms
+* A wizard to create a recipe step by step (wicked gem)
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
@@ -70,7 +72,6 @@ Feature:
 
 TODO:
 * Dynamic add/remove fields (step and image/video) for Steps
-* Step by Step create Recipe
 * Trophy (Polymorphic Associations)
 * Infinite scroll
 * Added Replies to comments (React?)
