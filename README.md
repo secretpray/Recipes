@@ -36,6 +36,7 @@ Feature:
 * Voted comments with acts_as_votable gem
 * 5 Star Rating and Review with JS
 * Tags for Recipe and tags cloud
+* Tags aucomplete with vanila JS library: choices.js
 * Recipes, Favorites, Comments counter_cache for User model
 * Comments with avatar and reply (AJAX)
 * Comment inline edit/update with HotWire (stage_28, later -> remove)
