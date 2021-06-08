@@ -11,6 +11,8 @@ import 'bootstrap'
 import "toastr"
 import "trix/dist/trix"
 import "controllers"
+import './choices/init.js';
+import '../src/choices.scss'
 
 // import "@fortawesome/fontawesome-free/css/all"
 // import "../stylesheets/application"

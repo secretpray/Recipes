@@ -76,6 +76,8 @@ en:
       descriptions: 'Descriptions'
       ingredients: 'Ingredients:'
       steps: 'Steps:'
+    edit_form:
+      recipe_tags: 'Recipe tags (eg. helth, easy ...)'
     index:
       welcome: "Welcome to "
       recipes_title: 'Recipes'

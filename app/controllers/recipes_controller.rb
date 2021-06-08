@@ -52,8 +52,8 @@ class RecipesController < ApplicationController
   def edit
     authorize @recipe
 
-    @recipe.steps&.any? ? @recipe.steps : @recipe.steps.build
-    @recipe.ingredients&.any? ? @recipe.ingredients : @recipe.ingredients.build
+    @recipe.steps ||= @recipe.steps.build
+    @recipe.ingredients ||= @recipe.ingredients.build
   end
 
   def create
@@ -61,8 +61,7 @@ class RecipesController < ApplicationController
     authorize @recipe
 
     if @recipe.save
-      redirect_to recipe_steps_path(@recipe.id)
-      # redirect_to recipe_steps_path, notice: "The next step in creating a recipe..."
+      redirect_to recipe_steps_path(@recipe.id), notice: "The next step in creating a recipe..."
     else
       render :new, status: :unprocessable_entity
     end
@@ -72,6 +71,7 @@ class RecipesController < ApplicationController
   def update
     @recipe.user ||= current_user if current_user.admin? || current_user.moderator?
     authorize @recipe
+    # binding.pry
 
     respond_to do |format|
       if @recipe.update(recipe_params)
@@ -124,7 +124,8 @@ class RecipesController < ApplicationController
                                     :salt_free, :kosher,
                                     :vegan, :vegetarin,
                                     :user_id, :category_id,
-                                    :all_tags, :recipe_image,
+                                    { all_tags: [] },
+                                    :recipe_image,
                                     { step_images: [] },
             ingredients_attributes: [:id, :content, :_destroy],
                   steps_attributes: [:id, :method, :_destroy])
