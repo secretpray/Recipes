@@ -54,6 +54,7 @@ Feature:
 * Disappearing flash messages with toastr js
 * AutoHide & close Errors/Flash message with vanila JS
 * Popover/Tooltip with vanila JS
+* Datepicker with vanila JS (flatpickr)
 * Simple search
 * Advanced search with ransack
 * Search with autocomplete (pg_search + Stimulus JS)
