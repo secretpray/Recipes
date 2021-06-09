@@ -11,7 +11,7 @@
         class="<%= cookies[:theme] %>">
 
     <%= render 'shared/navigation' %>
-    <div class="container mx-auto mt-3">
+    <div class="container mx-auto mt-3 mb-3">
       <%= render 'shared/toastr_flash', flash: flash %>
       <%= yield %>
     </div>

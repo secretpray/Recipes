@@ -15,12 +15,13 @@ body {
 }
 
 footer {
-  display: flex;
-  flex-direction: column;
+  margin-top:auto;
+  // display: flex;
+  // flex-direction: column;
   height: 100%;
   background-color: #F8F9FA;
-  margin-top: 6rem;
-  padding: 20px;
+  // margin-top: 6rem;
+  // padding: 20px;
 }
 
 @media print {
@@ -102,9 +103,12 @@ footer {
 
 #favorite_card,
 #dashboard-card {
-  width: calc((100% / 3) - (2rem / 3));
   margin-left: 10px;
   margin-bottom: 10px;
+}
+
+#dashboard-card {
+  width: calc((100% / 3) - (2rem / 3));
 }
 
 #dashboard-card-user {

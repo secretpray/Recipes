@@ -89,6 +89,8 @@ en:
       action: 'Action'
       services_html: "We provide some fancy services to <em>good people</em>."
       find_recipes: 'Find a recipe...'
+    favorites:
+      favorite_page: 'Your Favorite recipes'
     search_form:
       easy: 'Easy'
       kosher: 'Kosher'

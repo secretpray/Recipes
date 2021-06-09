@@ -88,6 +88,8 @@ ru:
       user: 'Автор'
       action: 'Действия'
       find_recipes: 'Найти рецепт...'
+    favorites:
+      favorite_page: 'Рецепты в избранном'
     search_form:
       easy: 'Легкий'
       kosher: 'Кошерный'
