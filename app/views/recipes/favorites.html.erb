@@ -1,7 +1,7 @@
-<h3 class='text-center'>Your Favorite recipes</h3>
+<h3 class='text-center'><%= t('.favorite_page') %></h3>
 <div class='row justify-content-center mt-4' id='favorite_container'>
   <% @favorites.each do |favorite|%>
-    <div class='card' id='favorite_card'>
+    <div class='card col-md-3' id='favorite_card'>
       <div class='card-body'>
         <%# if @recipe.recipe_image.present? %>
         <% if favorite.recipe.recipe_image.attached? %>
@@ -10,12 +10,12 @@
           <%= link_to image_tag("Default_image.png", class: 'recipe-favorite'), favorite.recipe %>
         <% end %>
       </div>
-      <div class="card-body">
+      <div class="card-body d-flex flex-column">
         <h5 class="card-title"><%= link_to favorite.recipe.title, favorite.recipe, class: 'text-decoration-none text-reset' %></h5>
-        <p class="card-text"><%= link_to favorite.recipe.description, favorite.recipe, class: 'text-decoration-none text-reset' %></p>
-        <div class='d-flex justify-content-between'>
+        <p class="card-text"><%= link_to truncate(favorite.recipe.description, length: 100), favorite.recipe, class: 'text-decoration-none text-reset' %></p>
+        <div class='d-flex mt-auto justify-content-between'>
           <div class="fw-lighter"> [<%= favorite.recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
-          <div> 
+          <div>
             <%#= link_to 'Show', favorite.recipe, class: "text-decoration-none text-reset" %>
             <% if user_signed_in?%>
               <% if policy(favorite.recipe).edit? %>
@@ -30,4 +30,4 @@
   <% end %>
   <div class='d-flex justify-content-center mt-3'><%= paginate @favorites %></div>
 </div>
-<%= link_to 'Back', recipes_path, class: "text-decoration-none text-reset mt-4 btn btn-light" %>
+<%#= link_to 'Back', recipes_path, class: "text-decoration-none text-reset mt-4 btn btn-light" %>

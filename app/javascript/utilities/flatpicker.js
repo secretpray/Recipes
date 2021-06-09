@@ -1,11 +1,11 @@
 document.addEventListener("turbolinks:load", () => {
   flatpickr("[data-behavior='flatpickr']", {
-    altInput: true,
-    altFormat: "H :i",
     enableTime: true,
+    enableSeconds: false,
     noCalendar: true,
+    altInput: true,
     time_24hr: true,
-    // altFormat: "F j, Y",
-    // dateFormat: "d-m-Y",
+    altFormat: 'H:i',  // altFormat: 'h:i:S K' # with second
+    dateFormat:  'H:i' // 'H:i:S' # with second
   })
 })

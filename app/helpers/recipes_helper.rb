@@ -20,9 +20,9 @@ module RecipesHelper
   def parse_time(record)
     unless record.nil?
       unless record.strftime("%H:%M").split(':')[0] == '00'
-        record.strftime("%H:%M").split(':')[0] + ' hrs '
+        time_record = record.strftime("%H:%M").split(':')[0] + ' hrs '
       end
-      record.strftime("%H:%M").split(':')[1] + ' mins'
+      time_record = "#{time_record}".concat(record.strftime("%H:%M").split(':')[1] + ' mins')
     end
   end
 

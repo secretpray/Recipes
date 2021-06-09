@@ -1,29 +1,29 @@
 <footer>
   <!--
-<footer>
   <div class="debug-footer">
     <%#= debug(params) if Rails.env.development? %> current page: <%= request.fullpath.downcase %>
   </div>
-</footer>
   -->
-  <div class='container d-flex'>
-    <div class='col-md-4'>
-      <%= t '.copyright' %> secretpray© (<%= Time.zone.now.year%>)
-      <div class='row'></div>
-      <div class='fa fa-envelope'>
-        <%= mail_to 'secretpray@outlook.com' %>
+  <div class='footer'>
+    <div class='container d-flex p-3'>
+      <div class='col-md-4 text-muted'>
+        <%= t '.copyright' %> secretpray© (<%= Time.zone.now.year%>)
+        <div class='row'></div>
+        <div class='fa fa-envelope text-muted'>
+          <%= mail_to 'secretpray@outlook.com', name = nil, class: 'text-muted text-decoration-none' %>
+        </div>
+        <div class='row'></div>
       </div>
-      <div class='row'></div>
-    </div>
-    <div class='col-md-4 col-md-4 text-center'>
-      <%= link_to t('.privacy'), privacy_path, class: 'text-decoration-none text-reset' %>
-      <div class='row'></div>
-      <%= link_to t('.terms'), terms_path, class: 'text-decoration-none text-reset' %>
-    </div>
-    <div class='col-md-4 text-end'>
-      <%= t '.about' %>
-      <div class='row'>
-        <%= link_to 'Github', "https://github.com/secretpray/Recipes", target: :blank %>
+      <div class='col-md-4 col-md-4 text-center'>
+        <%= link_to t('.privacy'), privacy_path, class: 'text-decoration-none text-muted' %>
+        <div class='row'></div>
+        <%= link_to t('.terms'), terms_path, class: 'text-decoration-none text-muted' %>
+      </div>
+      <div class='col-md-4 text-muted text-end'>
+        <%= t '.about' %>
+        <div class='row'>
+          <%= link_to 'Github project', "https://github.com/secretpray/Recipes", target: :blank, class: 'text-decoration-none text-muted fw-bold' %>
+        </div>
       </div>
     </div>
   </div>
