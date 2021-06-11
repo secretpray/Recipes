@@ -26,11 +26,12 @@ Used gem:
 * rails-social-share-button
 * grover
 * wicked
+* redcarpet
 * brakeman
 * standard
 
 Feature:
-* Active Text
+* Active Text and Markdown
 * Active Storage (Amazon S3)
 * Paginate (+ BootStrap theme for Kaminari)
 * Favorite (AJAX)
