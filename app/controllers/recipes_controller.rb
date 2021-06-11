@@ -52,8 +52,8 @@ class RecipesController < ApplicationController
   def edit
     authorize @recipe
 
-    @recipe.steps ||= @recipe.steps.build
-    @recipe.ingredients ||= @recipe.ingredients.build
+    @recipe.steps.any? ? @recipe.steps : @recipe.steps.build
+    @recipe.ingredients.any? ? @recipe.ingredients : @recipe.ingredients.build
   end
 
   def create

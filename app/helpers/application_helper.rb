@@ -1,8 +1,8 @@
 module ApplicationHelper
-  
+
   # Navigation menu activa
-  def is_active(controller, action)       
-    params[:action] == action && params[:controller] == controller ? "active" : nil        
+  def is_active(controller, action)
+    params[:action] == action && params[:controller] == controller ? "active" : nil
   end
 
   # Form helper
@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   # Theme select
-  def background_select       
+  def background_select
     if cookies[:theme] == 'light'
       'navbar-light bg-light'
     else
@@ -38,7 +38,7 @@ module ApplicationHelper
      yield(tag, classes[index.round])
     end
   end
-  
+
   # Helpers for User avatar
   def user_avatar(user, size=40)
     if user.avatar.attached?
@@ -56,5 +56,12 @@ module ApplicationHelper
       email
     end
   end
-end
 
+  def markdown(text)
+    options = %i[ hard_wrap autolink no_intra_emphasis tables
+                  fenced_code_blocks disable_indented_code_blocks
+                  strikethrough lax_spacing space_after_headers
+                  quote footnotes highlight underline ]
+    Markdown.new(text, *options).to_html.html_safe
+  end
+end

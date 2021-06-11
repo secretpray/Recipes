@@ -152,7 +152,7 @@
 
       <div class='mt-4 section-description'>
         <strong><%= t '.desc' %></strong>
-        <%= @recipe.description %>
+        <%= markdown(@recipe.description) %>
       </div>
 
       <h6 class='mt-4'><%= t '.nutrition' %></h6>

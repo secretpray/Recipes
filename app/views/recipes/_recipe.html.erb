@@ -12,7 +12,7 @@
       </section>
     </td>
     <td class="col-3"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></td>
-    <td class="col-4"><%= link_to recipe.description, recipe, class: 'text-decoration-none text-reset' %></td> <!-- truncate(recipe.description, length: 50)-->
+    <td class="col-4"><%= link_to markdown(recipe.description), recipe, class: 'text-decoration-none text-reset' %></td> <!-- truncate(recipe.description, length: 50)-->
     <% if recipe.category.present? %>
       <td class="col-4 text-center"><%= link_to recipe.category.name, category_path(recipe.category), class: 'text-decoration-none text-reset'%> </td>
     <% else %>

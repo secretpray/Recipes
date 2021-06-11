@@ -37,7 +37,10 @@ gem 'pg_search'
 gem 'rails-i18n'
 gem 'aws-sdk-s3', require: false
 gem 'rails-social-share-button'
+# Add wizard
 gem 'wicked'
+# Add Markdown
+gem "redcarpet"
 
 
 # PDF
