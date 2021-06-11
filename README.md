@@ -31,7 +31,7 @@ Used gem:
 * standard
 
 Feature:
-* Active Text and Markdown
+* Aactiontext and Markdown
 * Active Storage (Amazon S3)
 * Paginate (+ BootStrap theme for Kaminari)
 * Favorite (AJAX)
