@@ -53,8 +53,8 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :steps, allow_destroy: true, reject_if: :all_blank
 
   validates :title, :description, presence: true
-  validates :title, length: { maximum: 50 }
-  validates :description, length: { maximum: 300 }
+  validates :title, length: { maximum: 100 }
+  validates :description, length: { maximum: 320 }
   validate :image_type
 
   scope :by_add, -> { order(created_at: :desc) } # double
