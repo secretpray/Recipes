@@ -21,20 +21,6 @@ document.addEventListener('turbolinks:load', function() {
     });
   }
 
-  // Dismiss dropdown search list (button close)
-  var butttonAutoComplete = {}
-  butttonAutoComplete = document.querySelector(".autocomplete-close")
-  var dropList = {}
-  dropList = document.querySelector("#results-dropdown")
-
-  if (butttonAutoComplete) {
-    butttonAutoComplete.addEventListener('click', () => {
-      dropList.innerText = '';
-    })
-  }
-
-
-
   // Dismiss errors modal (button close)
   var errorModal = {};
   errorModal = document.querySelector('.errors-modal')
