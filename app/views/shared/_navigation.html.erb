@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <%= link_to root_path, class: "logo-img nav-link #{'active' if controller_name == 'dashboard'}" do %>
             <%= image_tag("Logo_mini.png").html_safe %>
@@ -69,22 +69,23 @@
               </li>
             <% end %>
           <% end %>
+      </ul>
 
-          <% if is_active('dashboard','index') %>
-            <li class="nav-item d-flex ms-5 align-items-start">
-              <div data-controller="search">
-                <%= render partial: "shared/search_form" %>
-                <div data-search-target="results" id="results-dropdown" style="position: absolute;">
-                  <% if @recipes&.any? %>
-                    <% @recipes.each do |recipe| %>
-                      <%= render partial: "shared/search_recipe", locals: { recipe: recipe } %>
-                    <% end %>
+      <ul class="navbar-nav ms-auto">
+        <% if is_active('dashboard','index') %>
+          <li class="nav-item d-flex ms-5 align-items-start">
+            <div data-controller="search">
+              <%= render partial: "shared/search_form" %>
+              <div data-search-target="results" id="results-dropdown" style="position: absolute; z-index: 999;">
+                <% if @recipes&.any? %>
+                  <% @recipes.each do |recipe| %>
+                    <%= render partial: "shared/search_recipe", locals: { recipe: recipe } %>
                   <% end %>
-                </div>
+                <% end %>
               </div>
-            </li>
-          <% end %>
-        </li>
+            </div>
+          </li>
+        <% end %>
       </ul>
 
       <ul class="navbar-nav">
