@@ -175,7 +175,6 @@ GEM
       combine_pdf (~> 1.0)
       nokogiri (~> 1.0)
     hashie (4.1.0)
-    htmlrender (0.0.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -442,7 +441,6 @@ DEPENDENCIES
   friendly_id (~> 5.4.0)
   gravatar_image_tag
   grover
-  htmlrender
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   launchy (~> 2.4, >= 2.4.3)
