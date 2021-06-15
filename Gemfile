@@ -26,7 +26,6 @@ gem 'font-awesome-sass', '~> 5.15'
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
 gem "pundit"
-gem 'kaminari'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'friendly_id', '~> 5.4.0'
@@ -41,11 +40,11 @@ gem 'rails-social-share-button'
 gem 'wicked'
 # Add Markdown
 gem "redcarpet"
-
 # PDF
 gem 'wicked_pdf'
 gem 'grover'
-
+#pagination
+gem 'pagy'
 # OmniAuth
 gem 'omniauth'
 gem 'omniauth-facebook'

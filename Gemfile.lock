@@ -175,6 +175,7 @@ GEM
       combine_pdf (~> 1.0)
       nokogiri (~> 1.0)
     hashie (4.1.0)
+    htmlrender (0.0.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.1)
@@ -184,18 +185,6 @@ GEM
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
     jwt (2.2.3)
-    kaminari (1.2.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.1)
-      kaminari-activerecord (= 1.2.1)
-      kaminari-core (= 1.2.1)
-    kaminari-actionview (1.2.1)
-      actionview
-      kaminari-core (= 1.2.1)
-    kaminari-activerecord (1.2.1)
-      activerecord
-      kaminari-core (= 1.2.1)
-    kaminari-core (1.2.1)
     launchy (2.5.0)
       addressable (~> 2.7)
     listen (3.5.1)
@@ -247,6 +236,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
+    pagy (3.14.0)
     parallel (1.20.1)
     parser (3.0.1.1)
       ast (~> 2.4.1)
@@ -452,9 +442,9 @@ DEPENDENCIES
   friendly_id (~> 5.4.0)
   gravatar_image_tag
   grover
+  htmlrender
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
-  kaminari
   launchy (~> 2.4, >= 2.4.3)
   listen (~> 3.3)
   mini_magick
@@ -463,6 +453,7 @@ DEPENDENCIES
   omniauth-github
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
+  pagy
   pg (~> 1.1)
   pg_search
   pry (~> 0.13.1)

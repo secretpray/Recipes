@@ -25,9 +25,4 @@ module RecipesHelper
       time_record = "#{time_record}".concat(record.strftime("%H:%M").split(':')[1] + ' mins')
     end
   end
-
-  def validate_tag_path(tag)
-    return '#' if tag.nil?
-    tag.include?('javascript:') || tag.include?('xss!') ? '#' : tag_path(tag)
-  end
 end

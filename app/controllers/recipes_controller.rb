@@ -8,7 +8,11 @@ class RecipesController < ApplicationController
 
   def index
     @q = Recipe.ransack(params[:q])
-    @recipes = Recipe.parse_search_params(params, @q.result).order(created_at: :desc).page(params[:page]).per(12)
+    @pagy, @recipes = pagy(Recipe.parse_search_params(params, @q.result).order(created_at: :desc), items: 10)
+    respond_to do |format|
+      format.html
+      format.json { render json: { entries: render_to_string(partial: 'recipes/recipe', locals: { recipes: @recipes }, formats: [:html]), pagination: view_context.pagy_bootstrap_nav(@pagy)}}
+    end
   end
 
   def to_pdf
@@ -71,7 +75,6 @@ class RecipesController < ApplicationController
   def update
     @recipe.user ||= current_user if current_user.admin? || current_user.moderator?
     authorize @recipe
-    # binding.pry
 
     respond_to do |format|
       if @recipe.update(recipe_params)
@@ -92,7 +95,11 @@ class RecipesController < ApplicationController
   end
 
   def favorites
-    @favorites = current_user.favorites.page(params[:page]).per(12)
+    @pagy, @favorites = pagy(current_user.favorites, items: 6)
+    respond_to do |format|
+      format.html
+      format.json { render json: { entries: render_to_string(partial: 'recipes/favorite', locals: { favorites: @favorites }, formats: [:html]), pagination: view_context.pagy_bootstrap_nav(@pagy)}}
+    end
   end
 
   def recently_recipes
