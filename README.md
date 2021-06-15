@@ -8,6 +8,7 @@ Used gem:
 * Pundit
 * FriendlyId
 * Kaminari
+* Pagy (Stage_37+)
 * Active Text (InRails)
 * Active Storage (InRails)
 * BootStrap
@@ -33,7 +34,7 @@ Used gem:
 Feature:
 * Aactiontext and Markdown
 * Active Storage (Amazon S3)
-* Paginate (+ BootStrap theme for Kaminari)
+* Paginate (+ BootStrap theme) with Kaminari/Pagy (Stage_37+)
 * Favorite (AJAX)
 * Category with Ancestry
 * Voted comments with acts_as_votable gem
@@ -52,6 +53,7 @@ Feature:
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Recipes 10+ attributes (calories, prep/cook times; serves, fat, salt, sugar, protein, fibre ....)
 * Badge: Gluten-free; Vegan; Vegetarian, Easy, Kosher, Free: gluten, sugar, salt)
+* Infinity scroll Recipes#index/Favorites#lists with vanila JS;
 * Authorize with Pundit
 * Localization Russin/English (+ User attribute language)
 * Disappearing flash messages with toastr js
@@ -78,7 +80,6 @@ Feature:
 TODO:
 * Dynamic add/remove fields (step and image/video) for Steps
 * Trophy (Polymorphic Associations)
-* Infinite scroll
 * Added Replies to comments (React?)
 * Action Cable (replay comment, create new Recipe)
 * Follow User
