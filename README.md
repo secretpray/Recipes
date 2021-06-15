@@ -32,7 +32,7 @@ Used gem:
 * standard
 
 Feature:
-* Aactiontext and Markdown
+* Actiontext and Markdown
 * Active Storage (Amazon S3)
 * Paginate (+ BootStrap theme) with Kaminari/Pagy (Stage_37+)
 * Favorite (AJAX)
