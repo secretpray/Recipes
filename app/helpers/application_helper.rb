@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Pagy::Frontend
 
   # Navigation menu activa
   def is_active(controller, action)

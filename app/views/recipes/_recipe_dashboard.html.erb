@@ -14,7 +14,7 @@
       <section class="footer-tags-show">
         <% if recipe.tags.any? %>
           <%#= raw recipe.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'badge bg-primary text-decoration-none' }.join(' ') %>
-          <%= raw recipe.tags.map(&:name).map{ |t| link_to t, validate_tag_path(t), class: 'badge bg-primary text-decoration-none' }.join(' ') %>
+          <%= raw recipe.tags.map(&:name).map{ |t| sanitize link_to t, tag_path(t), class: 'badge bg-primary text-decoration-none' }.join(' ') %>
         <% end %>
       </section>
     </div>

@@ -32,6 +32,7 @@ require("utilities/advanced_search")
 require("utilities/flatpicker")
 require("utilities/rails-social-share-button")
 require("flatpickr/dist/flatpickr.css")
+require("utilities/infinite_scroll")
 
 global.toastr = require("toastr")
 window.Rails = Rails
