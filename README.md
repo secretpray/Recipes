@@ -7,7 +7,7 @@ Used gem:
 * Devise
 * Pundit
 * FriendlyId
-* Kaminari
+* Kaminari (> Satge_36)
 * Pagy (Stage_37+)
 * Active Text (InRails)
 * Active Storage (InRails)
@@ -39,7 +39,8 @@ Feature:
 * Category with Ancestry
 * Voted comments with acts_as_votable gem
 * 5 Star Rating and Review with JS
-* Tags for Recipe and tags cloud
+* Tags for Recipe 
+* Tags 3D cloud
 * Tags aucomplete with vanila JS library: choices.js
 * Recipes, Favorites, Comments counter_cache for User model
 * Comments with avatar and reply (AJAX)
