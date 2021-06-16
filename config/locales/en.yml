@@ -36,8 +36,8 @@ en:
     whatsapp_web: 'Whatsapp Web'
   shared:
     submenu:
-      categories: 'Categories:'
-      tags_cloud: 'Tags cloud:'
+      categories: 'CATEGORIES'
+      tags_cloud: 'POPULAR TAGS'
     navigation:
       recipes: 'All recipes'
       new_recipes: 'New recipe'
@@ -62,8 +62,8 @@ en:
       copyright: 'Copyright:'
   dashboard:
     index:
-      last: 'Last recipes'
-      best: 'Best recipes'
+      last: 'LAST'
+      best: 'BEST'
   recipes:
     new:
       new_recipe: 'New Recipe'

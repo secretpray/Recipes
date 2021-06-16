@@ -9,8 +9,8 @@
       <% end %>
     </div>
     <div class="card-body d-flex flex-column">
-      <h5 class="card-title"><%= link_to favorite.recipe.title, favorite.recipe, class: 'text-decoration-none text-reset' %></h5>
-      <p class="card-text"><%= link_to truncate(favorite.recipe.description, length: 100), favorite.recipe, class: 'text-decoration-none text-reset' %></p>
+      <h5 class="card-title fw-300"><%= link_to favorite.recipe.title, favorite.recipe, class: 'text-decoration-none text-reset' %></h5>
+      <p class="card-text fw-light"><%= link_to truncate(favorite.recipe.description, length: 100), favorite.recipe, class: 'text-decoration-none text-reset' %></p>
       <div class='d-flex mt-auto justify-content-between'>
         <div class="fw-lighter"> [<%= favorite.recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
         <div>

@@ -36,8 +36,8 @@ ru:
     whatsapp_web: 'Whatsapp Web'
   shared:
     submenu:
-      categories: 'Категории:'
-      tags_cloud: 'Облако тегов:'
+      categories: 'КАТЕГОРИИ'
+      tags_cloud: 'ПОПУЛЯРНЫЕ'
     navigation:
       recipes: 'Все рецепты'
       new_recipes: 'Новый рецепт'
@@ -62,8 +62,8 @@ ru:
       copyright: 'Разработчик:'
   dashboard:
     index:
-      last: 'Новинки'
-      best: 'Лучшие'
+      last: 'НОВИНКИ'
+      best: 'ЛУЧШИЕ'
   recipes:
     new:
       new_recipe: 'Новый рецепт'
