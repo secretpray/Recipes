@@ -11,7 +11,8 @@ import 'bootstrap'
 import "toastr"
 import "trix/dist/trix"
 import "controllers"
-import './choices/init.js';
+import './choices/init.js'
+import './cloud3d/init.js'
 import '../src/choices.scss'
 import flatpickr from "flatpickr";
 
@@ -34,6 +35,7 @@ require("utilities/flatpicker")
 require("utilities/rails-social-share-button")
 require("flatpickr/dist/flatpickr.css")
 require("utilities/infinite_scroll")
+require("utilities/tagcanvas.min")
 
 global.toastr = require("toastr")
 window.Rails = Rails
