@@ -33,7 +33,15 @@
     </div>
 
     <div class='col-md-9 mt-4'>
-      <strong><%= t('.title')%>: </strong><%= @recipe.title %>
+      <div class='title-editor'>
+        <strong data-controller="inplace-editing" data-action="dblclick->inplace-editing#doubleClick" data-inplace-editing-target="editable">
+          <%= t('.title')%>:
+        </strong>
+          <%= @recipe.title %>
+      </div>
+      <div class="form-inline-title d-none">
+        <%= render 'recipes/inline/form_title', recipe: @recipe %>
+      </div>
       <div class='d-flex col-md-9 justify-content-between'>
         <div class='mt-2'>
           <strong><%= t('.author')%>:</strong>
