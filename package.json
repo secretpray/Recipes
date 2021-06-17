@@ -14,6 +14,7 @@
     "expose-loader": "^3.0.0",
     "flatpickr": "^4.6.9",
     "local-time": "^2.1.0",
+    "marked": "^2.1.1",
     "puppeteer": "^9.1.1",
     "stimulus": "^2.0.0",
     "toastr": "^2.1.4",
