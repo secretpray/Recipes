@@ -1,0 +1,12 @@
+<%= form_with(model: recipe, class: "d-flex") do |form| %>
+  <div class="col-sm">
+    <%= form.label :title, t('recipes.show.title'), class: 'col-sm-2 col-form-label fw-bold' %>
+  </div>
+  <div class="col-sm-8 ms-3 me-4">
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  <div class="col-sm d-flex">
+    <%= button_to t('global.back'), recipe_path(recipe), class: "btn btn-light" %>
+    <%= form.submit t('global.next'), class: "btn btn-primary" %>
+  </div>
+<% end %>

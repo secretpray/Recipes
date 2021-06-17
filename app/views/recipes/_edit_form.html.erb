@@ -16,9 +16,20 @@
         multiple: true, placeholder: t('.recipe_tags') %>
   </div>
 
-  <div class="form-group field mt-3 mb-2">
-    <%= form.text_area :description, class: "form-control", placeholder: t('.descriptions') %>
+  <div class="form-group field mt-3 mb-2 editor" data-controller="markdown-editor">
+    <%= form.text_area :description,
+                        style: "width: 100%",
+                        maxlength: 320,
+                        placeholder: 'Use Markdown for formatting (optional)',
+                        data: { action: "input->markdown-editor#convertToMarkdown", controller: "textarea-autogrow" } %>
+    <%= link_to '#', class: 'text-decoration-none text-reset' do %>
+      <span class='markdown-preview'>⬇ Markdown preview:</span>
+    <% end %>
+    <div class='d-none mt-2 mb-4 markdown-preview-div' data-markdown-editor-target="viewer" style='border: 1px solid #EBF8E1; padding: 10px; min-height: 6rem;'></div>
   </div>
+  <!-- <div class="form-group field mt-3 mb-2">
+    <%#= form.text_area :description, class: "form-control", placeholder: t('.descriptions') %>
+  </div> -->
 
   <div class="form-group field mt-3 mb-2">
     <%= form.label :recipe_image, class: "form-control" %>

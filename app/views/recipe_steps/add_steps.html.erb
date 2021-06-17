@@ -7,7 +7,7 @@
 <%= form_for @recipe, url: wizard_path do |f| %>
   <div class="form-group field mt-3 mb-2">
     <%= f.fields_for :steps do |step_fields| %>
-      <%= step_fields.rich_text_area :method, class: "form-control mt-2 customized-min-height", placeholder: 'Method' %>
+      <%= step_fields.rich_text_area :method, class: "form-control mt-2", placeholder: 'Method', data: { controller: "textarea-autogrow" } %>
       <%= step_fields.check_box :_destroy, class: "mt-3" %> Delete?
     <% end %>
   </div>
