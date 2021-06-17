@@ -7,7 +7,7 @@
 <%= form_for @recipe, url: wizard_path do |form| %>
   <div class="form-group field mt-3 mb-2">
     <%= form.fields_for :ingredients do |ingredient_fields| %>
-      <%= ingredient_fields.rich_text_area :content, class: "form-control mt-2 customized-min-height", placeholder: 'Content' %>
+      <%= ingredient_fields.rich_text_area :content, class: "form-control mt-2", placeholder: 'Content', data: { controller: "textarea-autogrow" } %>
       <%= ingredient_fields.check_box :_destroy, class: "mt-3" %> <%= t('global.delete?') %>
     <% end %>
   </div>

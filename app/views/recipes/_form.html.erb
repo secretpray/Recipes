@@ -21,10 +21,9 @@
   <div class="form-group field mt-3 mb-2 editor" data-controller="markdown-editor">
     <%= form.text_area :description,
                         style: "width: 100%",
-                        rows: 4,
                         maxlength: 320,
                         placeholder: 'Use Markdown for formatting (optional)',
-                        data: { action: "input->markdown-editor#convertToMarkdown" } %>
+                        data: { action: "input->markdown-editor#convertToMarkdown", controller: "textarea-autogrow" } %>
     <%= link_to '#', class: 'text-decoration-none text-reset' do %>
       <span class='markdown-preview'>⬇ Markdown preview:</span>
     <% end %>
