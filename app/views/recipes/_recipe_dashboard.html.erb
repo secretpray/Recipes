@@ -20,7 +20,7 @@
     </div>
     <div class="card-body d-flex flex-column">
       <h5 class="card-title fw-300"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></h5>
-      <p class="card-text fw-light"><%= link_to truncate(recipe.description, length: 100), recipe, class: 'text-decoration-none text-reset' %></p>
+      <p class="card-text fw-light"><%= link_to truncate("#{markdown(recipe.description)}", length: 100, escape: false), recipe, class: 'text-decoration-none text-reset' %></p>
       <div class='d-flex mt-auto justify-content-between'>
         <div class="fw-lighter"> [<%= recipe.created_at.strftime('%H:%M  %d.%m.%Y') %>]</div>
         <div>

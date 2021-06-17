@@ -10,6 +10,25 @@ document.addEventListener('turbolinks:load', function() {
       }
   }
 
+  function toggleSectionMarkDown(section, button) {
+    if (section.classList.contains('d-none')) {
+      section.classList.remove('d-none')
+      button.innerText = '⬆ Markdown preview:'
+      } else {
+        section.classList.add('d-none')
+      button.innerText = '⬇ Markdown preview:'
+      }
+  }
+
+  // Hide/Show MarkDown preview ('.markdown-preview')
+  document.body.addEventListener("click", function (event) {
+    if (event.target.classList.contains('markdown-preview')) {
+    const buttonMarkdown = event.target
+    const sectionMarkdownDiv = document.querySelector('.markdown-preview-div')
+    event.preventDefault();
+    toggleSectionMarkDown(sectionMarkdownDiv, buttonMarkdown)
+    }
+  })
   // Hide/Show review form
   document.body.addEventListener("click", function (event) {
     if (event.target.classList.contains('add-personal-link')) {
@@ -29,5 +48,3 @@ document.addEventListener('turbolinks:load', function() {
     }
   })
 })
-
-
