@@ -48,6 +48,7 @@ Feature:
 * Comment inline edit/update with AJAX (stage_29 +)
 * Comment and Reply full AJAX create/update/delete  
 * Nested Forms
+* Simple inline edit fields (Recipe title)
 * A wizard to create a recipe step by step (wicked gem)
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
@@ -68,10 +69,11 @@ Feature:
 * Recently page viewed (last 3 page)
 * User status in model (:active, :disabled, :banned)
 * User online status
-* Social share button with share to Facebook fixed link
+* Social share button (Facebook, Google, Twitter ...) -* Facebook fixed link *-
 * Print Recipe
 * Export Recipe to PDF (gem 'grover' + puppeteer.js)
 * Inline update counter comments (AJAX)
+* autogrow text_area input (Stimulus js)
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Static Page "About", "Terms", "Limits"
 * Custom static page (404/422/500)
