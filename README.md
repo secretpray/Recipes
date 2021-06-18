@@ -48,6 +48,7 @@ Feature:
 * Comment inline edit/update with AJAX (stage_29 +)
 * Comment and Reply full AJAX create/update/delete  
 * Nested Forms
+* Dynamic add/remove fields for Steps
 * Simple inline edit fields (Recipe title)
 * A wizard to create a recipe step by step (wicked gem)
 * Authentication with Devise (email/username)
@@ -81,9 +82,9 @@ Feature:
 * SEEDS (Faker)
 
 TODO:
-* Dynamic add/remove fields (step and image/video) for Steps
 * Trophy (Polymorphic Associations)
-* Added Replies to comments (React?)
+* Add Replies to comments (React?)
+* Add video to Method Steps 
 * Action Cable (replay comment, create new Recipe)
 * Follow User
 * Chat room
