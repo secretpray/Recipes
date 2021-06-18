@@ -1,0 +1,15 @@
+
+<div class="nested-form-wrapper" data-new-record="<%= f.object.new_record? %>">
+  <%= f.hidden_field :_destroy %>
+  <%= f.label :method, 'Method' %>
+  <div class="mt-1 position-relative rounded-2 d-flex">
+    <div class="col">
+      <%= f.rich_text_area :method, class: "form-control mt-2 shadow-sm", placeholder: 'Add step number (like: Step 1:) and method information...', data: { controller: "textarea-autogrow" } %>
+    </div>
+    <div class="col-md-1 d-flex justify-content-center align-items-center">
+      <%= link_to '#', class: 'btn btn-secondary', data: { action: "nested-form#remove"} do %>
+        <span class=''>Delete</span>
+      <% end %>
+    <div>
+  </div>
+</div>
