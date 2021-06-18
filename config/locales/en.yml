@@ -25,6 +25,7 @@ en:
       stage_3: 'Stage 3. Ingredients:'
     add_steps:
       stage_4: 'Stage 4. Steps:'
+      add_step: 'Add one more step'
   social_share_button:
     share_to: 'Share to '
     email: 'Email'

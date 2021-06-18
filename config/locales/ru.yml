@@ -25,6 +25,7 @@ ru:
       stage_3: 'Шаг 3. Ингридиенты:'
     add_steps:
       stage_4: 'Шаг 4. Последовательность приготовления:'
+      add_step: 'Добавить еще один шаг'
   social_share_button:
     share_to: 'Поделиться '
     email: 'Email'
