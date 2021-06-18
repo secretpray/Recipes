@@ -160,6 +160,9 @@ ru:
         few: '%{count} комментария:'
         many: '%{count} комментариев:'
         other: '%{count} комментарий:'
+    recipe:
+      less: "Меньше"
+      more: "Больше"
   comments:
     form:
       commnet: 'Комментировать'
