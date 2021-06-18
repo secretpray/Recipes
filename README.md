@@ -51,6 +51,7 @@ Feature:
 * Dynamic add/remove fields for Steps
 * Simple inline edit fields (Recipe title)
 * A wizard to create a recipe step by step (wicked gem)
+* Read more/read less (description recipes#index)
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
