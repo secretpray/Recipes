@@ -1,7 +1,7 @@
 <% @recipes.each do |recipe| %>
   <tr>
     <td class="col-1 index_data">
-      <%= link_to image_preview(recipe), recipe %>
+      <%= link_to image_preview(recipe), recipe, style: "width: 100%;" %>
       <% if user_signed_in? && recipe.in_favorite?(current_user) %>
         <span class="fav-span">❤️</span>
       <% end %>
@@ -12,7 +12,23 @@
       </section>
     </td>
     <td class="col-3"><%= link_to recipe.title, recipe, class: 'text-decoration-none text-reset' %></td>
-    <td class="col-4"><%= link_to markdown(recipe.description), recipe, class: 'text-decoration-none text-reset' %></td> <!-- truncate(recipe.description, length: 50)-->
+    <td class="col-4">
+      <div data-controller="read-more" data-read-more-more-text-value=<%= t('.more') %> data-read-more-less-text-value=<%= t('.less') %> >
+        <div data-read-more-target="content">
+          <%= link_to truncate(markdown(recipe.description), length: 150, escape: false), recipe, class: 'text-decoration-none text-reset' %>
+        </div>
+        <% if recipe.description&.length > 150 %>
+          <button class='btn btn-sm btn-outline-grey' data-action="read-more#toggle">
+            <%= t('.more') %>
+          </button>
+        <% end %>
+        <template data-read-more-target="full">
+          <div class="new-ReadMore">
+          <%= link_to markdown(recipe.description), recipe, class: 'text-decoration-none text-reset' %>
+          </div>
+        </template>
+      </div>
+    </td>
     <% if recipe.category.present? %>
       <td class="col-4 text-center"><%= link_to recipe.category.name, category_path(recipe.category), class: 'text-decoration-none text-reset'%> </td>
     <% else %>

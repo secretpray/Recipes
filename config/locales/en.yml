@@ -152,6 +152,9 @@ en:
       comments_count:
         one: '1 comment:'
         other: '%{count} comments:'
+    recipe:
+      less: "Less"
+      more: "More"
   comments:
     form:
       commnet: 'Comment'

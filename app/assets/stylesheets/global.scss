@@ -463,3 +463,16 @@ input:checked:before {
     filter: brightness(100%);
   }
 }
+
+.index_data > a > img {
+  max-width: 200px;
+}
+
+.btn-outline-grey {
+  color: darkgrey !important;
+  transition: transform .5s ease-in-out;
+  &:hover {
+    color: grey !important;
+    transform: scale(1.1);
+  }
+}
