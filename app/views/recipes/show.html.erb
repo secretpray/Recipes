@@ -98,6 +98,7 @@
             <%= t('.favorie') %> <%= link_to "Login", new_user_session_path, class: 'text-decoration-none mt-3' %> to add favorite
           </span>
         <% end %>
+        &nbsp;<span class='favorites-count'><%= @recipe.favorites.count %></span>
 
         <% if policy(@recipe).review? %>
           <span>
