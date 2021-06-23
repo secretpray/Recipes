@@ -84,6 +84,8 @@ Feature:
 
 TODO:
 * Trophy (Polymorphic Associations)
+* Sortable list of Steps
+* Doorkeeper API
 * Add Replies to comments (React?)
 * Add video to Method Steps 
 * Action Cable (replay comment, create new Recipe)
