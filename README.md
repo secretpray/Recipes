@@ -9,8 +9,8 @@ Used gem:
 * FriendlyId
 * Kaminari (> Satge_36)
 * Pagy (Stage_37+)
-* Active Text (InRails)
-* Active Storage (InRails)
+* Active Text
+* Active Storage
 * BootStrap
 * Faker
 * Gravatar
@@ -30,6 +30,7 @@ Used gem:
 * redcarpet
 * brakeman
 * standard
+* letter_opener
 
 Feature:
 * Actiontext and Markdown (with preview)
@@ -43,7 +44,7 @@ Feature:
 * Tags 3D cloud
 * Tags aucomplete with vanila JS library: choices.js
 * Recipes, Favorites, Comments counter_cache for User model
-* Comments with avatar and reply (AJAX)
+* Comments and reply with avatar (AJAX)
 * Comment inline edit/update with HotWire (stage_28, later -> remove)
 * Comment inline edit/update with AJAX (stage_29 +)
 * Comment and Reply full AJAX create/update/delete  
@@ -55,6 +56,7 @@ Feature:
 * Authentication with Devise (email/username)
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
+* Avatar preview after selecting a picture in User settings
 * Recipes 10+ attributes (calories, prep/cook times; serves, fat, salt, sugar, protein, fibre ....)
 * Badge: Gluten-free; Vegan; Vegetarian, Easy, Kosher, Free: gluten, sugar, salt)
 * Infinity scroll Recipes#index/Favorites#lists with vanila JS;
@@ -74,8 +76,9 @@ Feature:
 * Social share button (Facebook, Google, Twitter ...) -* Facebook fixed link *-
 * Print Recipe
 * Export Recipe to PDF (gem 'grover' + puppeteer.js)
-* Inline update counter comments (AJAX)
-* autogrow text_area input (Stimulus js)
+* Inline update counter comments, favorites (AJAX)
+* Autogrow text_area input (Stimulus)
+* Words counter in create/edit form for Recipe title/description (Stimulus)
 * Personal user page (recent users Recipe, Favorite and Comments)
 * Static Page "About", "Terms", "Limits"
 * Custom static page (404/422/500)
@@ -83,8 +86,10 @@ Feature:
 * SEEDS (Faker)
 
 TODO:
-* Trophy (Polymorphic Associations)
+* Tabs in User edit profile
+* Autocomplete search in add Tags (with Selectjs)
 * Sortable list of Steps
+* Trophy (Polymorphic Associations)
 * Doorkeeper API
 * Add Replies to comments (React?)
 * Add video to Method Steps 
