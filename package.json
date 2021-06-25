@@ -20,6 +20,7 @@
     "stimulus-character-counter": "^3.0.1",
     "stimulus-rails-nested-form": "^3.0.0",
     "stimulus-read-more": "^2.0.0",
+    "stimulus-tabs": "^1.0.5",
     "stimulus-textarea-autogrow": "^3.0.0",
     "toastr": "^2.1.4",
     "trix": "^1.2.0",
