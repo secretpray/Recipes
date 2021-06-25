@@ -34,6 +34,7 @@ function fadeOut(object) {
 //  Reply
     document.querySelector('.errors_inline_form_comment_<%= @comment.parent_id %>').innerHTML = ''
     var replySection = document.querySelector('.replies-section-comment_<%= @comment.parent_id %>')
+    // newComment.classList.add("fade-in-left")
     replySection.insertAdjacentHTML('beforeend', '<%= j render 'comments/reply', comment: @comment %>');
     document.querySelector('#replay_form_comment_<%= @comment.parent_id %>').classList.remove('d-none')
     document.querySelector('#replay_form_comment_<%= @comment.parent_id %>').nextElementSibling.classList.add('d-none')
@@ -45,6 +46,7 @@ function fadeOut(object) {
     document.querySelector('.show_hide_form').classList.remove('d-none')
     document.querySelector('.show_hide_form').nextElementSibling.classList.add('d-none')
   <% end %>
+  // setTimeout(() => { newComment.classList.remove("fade-in-left") }, 900);
   document.querySelector('.comment_count').innerHTML = "<%= t('recipes.show.commented_html', count: @comment.recipe.comments.count) %>"
   document.querySelector('.recipe-comment-count').innerHTML = "<%= t('recipes.show.comments_count', count: @comment.recipe.comments.count)%>"
 <% end %>

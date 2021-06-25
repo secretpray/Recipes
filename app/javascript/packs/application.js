@@ -35,6 +35,7 @@ require("utilities/rails-social-share-button")
 require("flatpickr/dist/flatpickr.css")
 require("utilities/infinite_scroll")
 require("utilities/tagcanvas.min")
+require("utilities/preview_avatar")
 
 global.toastr = require("toastr")
 window.Rails = Rails

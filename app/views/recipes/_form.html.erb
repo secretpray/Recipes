@@ -3,8 +3,14 @@
     <%= render 'shared/errors', resource: recipe %>
   </div>
 
-  <div class="form-group field mt-3 mb-2">
-    <%= form.text_field :title, class: "form-control", placeholder: t('.recipe_title') %>
+  <div class="form-group field mt-3 mb-2" data-controller="character-counter">
+    <%= form.text_field :title,
+                        class: "form-control",
+                        maxlength: Recipe::MAX_TITLE_LENGTH,
+                        placeholder: t('.recipe_title'),
+                        data: { character_counter_target: "input" } %>
+    <span class='text-secondary'>There are <strong data-character-counter-target="counter"></strong>
+      (max: <%= Recipe::MAX_TITLE_LENGTH %>) characters in this title.</span>
   </div>
 
   <div class="d-flex justify-content-between">
@@ -18,23 +24,27 @@
     </div>
   </div>
 
-  <div class="form-group field mt-3 mb-2 editor" data-controller="markdown-editor">
+  <div class="form-group field mt-3 mb-2 editor" data-controller="markdown-editor character-counter" >
     <%= form.text_area :description,
                         style: "width: 100%",
-                        maxlength: 320,
+                        maxlength: Recipe::MAX_DESCRIPTION_LENGTH,
                         placeholder: 'Use Markdown for formatting (optional)',
-                        data: { action: "input->markdown-editor#convertToMarkdown", controller: "textarea-autogrow" } %>
+                        data: { action: "input->markdown-editor#convertToMarkdown",
+                                controller: "textarea-autogrow",
+                                character_counter_target: "input" } %>
     <%= link_to '#', class: 'text-decoration-none text-reset' do %>
-      <span class='markdown-preview'>⬇ Markdown preview:</span>
+      <span class='markdown-preview me-4'>⬇ Markdown preview:</span>
+      <span class='ms-4 text-secondary'>There are <strong data-character-counter-target="counter"></strong>
+        (max: <%= Recipe::MAX_DESCRIPTION_LENGTH %>) characters in this description.</span>
     <% end %>
     <div class='d-none mt-2 mb-4 markdown-preview-div' data-markdown-editor-target="viewer" style='border: 1px solid #EBF8E1; padding: 10px; min-height: 6rem;'></div>
   </div>
 
-  <div class="form-group field mt-3 mb-2">
-    <%= form.file_field :recipe_image, class: "form-control" %>
+  <div class="form-group field mt-5">
+    <%= form.file_field :recipe_image, class: "form-control w-50" %>
   </div>
 
-  <div class="form-group actions mt-4 mb-2">
+  <div class="form-group actions mt-4 pt-2 mb-2">
     <%= link_to t('global.back'), recipes_path, class: "btn btn-light" %>
     <% if @recipe.persisted?%>
       <%= link_to t('global.show'), @recipe, class: "btn btn-secondary" %>
