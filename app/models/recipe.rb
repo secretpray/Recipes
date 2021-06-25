@@ -52,15 +52,19 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :steps, allow_destroy: true, reject_if: :all_blank
 
+  MAX_TITLE_LENGTH = 120
+  MAX_DESCRIPTION_LENGTH = 320
+
   validates :title, :description, presence: true
-  validates :title, length: { maximum: 100 }
-  validates :description, length: { maximum: 320 }
+  validates :title, length: { maximum: MAX_TITLE_LENGTH }
+  validates :description, length: { maximum: MAX_DESCRIPTION_LENGTH }
   validate :image_type
 
   scope :by_add, -> { order(created_at: :desc) } # double
   scope :by_user, -> { order(user_id: :asc) }
   scope :favorited_by, -> (email) { joins(:favorites).where(favorites: { user: User.where(email: email)}) }
   pg_search_scope :global_search, against: [:title, :description], using: { tsearch: { prefix: true } }
+
 
 
   def self.recent

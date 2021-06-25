@@ -10,8 +10,14 @@ document.addEventListener("turbolinks:load", function() {
       removeItemButton: true,
       noChoicesText: 'Не выбран',
       itemSelectText: 'Пожалуйста выберите',
+      addItemText: (value) => {
+        return `Нажмите Enter чтобы добавить <b>"${value}"</b>`;
+      },
       maxItemText: (maxItemCount) => {
         return `Максимальное значение: ${maxItemCount}`;
+      },
+      valueComparer: (value1, value2) => {
+        return value1 === value2;
       },
     });
   }
