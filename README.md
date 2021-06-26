@@ -13,7 +13,7 @@ Used gem:
 * Active Storage
 * BootStrap
 * Faker
-* Gravatar
+* gravatar_image_tag (forked and edit!)
 * acts_as_votable
 * fontawesome
 * ancestry
@@ -57,6 +57,7 @@ Feature:
 * Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Avatar preview after selecting a picture in User settings
+* Tabs in User edit profile (html/css only!)
 * Recipes 10+ attributes (calories, prep/cook times; serves, fat, salt, sugar, protein, fibre ....)
 * Badge: Gluten-free; Vegan; Vegetarian, Easy, Kosher, Free: gluten, sugar, salt)
 * Infinity scroll Recipes#index/Favorites#lists with vanila JS;
@@ -86,7 +87,6 @@ Feature:
 * SEEDS (Faker)
 
 TODO:
-* Tabs in User edit profile
 * Autocomplete search in add Tags (with Selectjs)
 * Sortable list of Steps
 * Trophy (Polymorphic Associations)
