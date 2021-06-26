@@ -13,10 +13,10 @@ document.addEventListener('turbolinks:load', function() {
   function toggleSectionMarkDown(section, button) {
     if (section.classList.contains('d-none')) {
       section.classList.remove('d-none')
-      button.innerText = '⬆ Markdown preview:'
+      button.innerText = ' Markdown preview ⬆'
       } else {
         section.classList.add('d-none')
-      button.innerText = '⬇ Markdown preview:'
+      button.innerText = ' Markdown preview ⬇'
       }
   }
 
