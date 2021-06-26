@@ -33,31 +33,31 @@ Used gem:
 * letter_opener
 
 Feature:
-* Actiontext and Markdown (with preview)
+* Action Text & Markdown formatiing (with preview)
 * Active Storage (Amazon S3)
-* Paginate (+ BootStrap theme) with Kaminari/Pagy (Stage_37+)
-* Favorite (AJAX)
+* Paginate with Kaminari (>Stage_36), Pagy (Stage_37+) with BootStrap theme 
+* Favorite (AJAX only)
 * Category with Ancestry
 * Voted comments with acts_as_votable gem
 * 5 Star Rating and Review with JS
 * Tags for Recipe 
 * Tags 3D cloud
-* Tags aucomplete with vanila JS library: choices.js
+* Tags aucomplete with choices.js (vanila JS)
 * Recipes, Favorites, Comments counter_cache for User model
 * Comments and reply with avatar (AJAX)
-* Comment inline edit/update with HotWire (stage_28, later -> remove)
+* Comment inline edit/update with HotWire (stage_28, later - remove)
 * Comment inline edit/update with AJAX (stage_29 +)
 * Comment and Reply full AJAX create/update/delete  
 * Nested Forms
-* Dynamic add/remove fields for Steps
-* Simple inline edit fields (Recipe title)
-* A wizard to create a recipe step by step (wicked gem)
-* Read more/read less (description recipes#index)
-* Authentication with Devise (email/username)
-* Authentication with Facebook, Github omniauth and Google oauth2 (with support User attributes update)
+* Dynamic add/remove fields for Steps (Stimulus)
+* Simple inline edit Recipe title (Stimulus)
+* A wizard to create a recipe step by step (gem wicked)
+* Read more/read less in description recipes#index (Stimulus)
+* Authentication Devise with email/username
+* Authentication with Facebook, Github omniauth and Google oauth2 (support user attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Avatar preview after selecting a picture in User settings
-* Tabs in User edit profile (html/css only!)
+* Tabs in User edit profile (html/css only)
 * Recipes 10+ attributes (calories, prep/cook times; serves, fat, salt, sugar, protein, fibre ....)
 * Badge: Gluten-free; Vegan; Vegetarian, Easy, Kosher, Free: gluten, sugar, salt)
 * Infinity scroll Recipes#index/Favorites#lists with vanila JS;
