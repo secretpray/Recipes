@@ -14,7 +14,7 @@ gem 'devise', '~> 4.8'
 gem 'bootstrap', '5.0.0'
 gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped', branch: 'bootstrap4'
 gem 'devise-pwned_password'
-gem 'gravatar_image_tag'
+gem 'gravatar_image_tag', github: 'secretpray/gravatar_image_tag', branch: 'master'
 gem 'slim', '~> 4.1'
 gem 'font-awesome-sass', '~> 5.15'
 # Use Redis adapter to run Action Cable in production
@@ -26,7 +26,7 @@ gem 'redis', '~> 4.0'
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
 gem "pundit"
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', branch: 'master'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'friendly_id', '~> 5.4.0'
 gem 'acts_as_votable'
