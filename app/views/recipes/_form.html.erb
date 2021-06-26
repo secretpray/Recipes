@@ -33,7 +33,24 @@
                                 controller: "textarea-autogrow",
                                 character_counter_target: "input" } %>
     <%= link_to '#', class: 'text-decoration-none text-reset' do %>
-      <span class='markdown-preview me-4'>⬇ Markdown preview:</span>
+      <span>
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="28px" viewBox="0 0 512.000000 512.000000"
+         preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+          fill="#000000" stroke="none">
+          <path d="M710 3726 l0 -1394 456 -231 c251 -127 458 -231 460 -231 2 0 4 416
+          4 924 l0 925 465 -231 465 -230 465 230 465 231 0 -925 c0 -508 2 -924 4 -924
+          2 0 209 104 460 231 l456 231 0 1394 c0 767 -2 1394 -5 1394 -3 0 -419 -207
+          -925 -460 l-920 -460 -920 460 c-506 253 -922 460 -925 460 -3 0 -5 -627 -5
+          -1394z"/>
+          <path d="M710 1671 l0 -289 919 -691 c506 -380 925 -691 931 -691 6 0 425 311
+          931 691 l919 691 0 289 c0 159 -2 289 -5 289 -3 0 -417 -229 -921 -510 -503
+          -281 -919 -510 -924 -510 -5 0 -421 230 -924 510 -504 281 -918 510 -921 510
+          -3 0 -5 -130 -5 -289z"/>
+          </g>
+        </svg>
+      </span>
+      <span class='markdown-preview me-4'> Markdown preview ⬇</span>
       <span class='ms-4 text-secondary'>There are <strong data-character-counter-target="counter"></strong>
         (max: <%= Recipe::MAX_DESCRIPTION_LENGTH %>) characters in this description.</span>
     <% end %>
