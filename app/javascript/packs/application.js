@@ -37,6 +37,7 @@ require("flatpickr/dist/flatpickr.css")
 require("utilities/infinite_scroll")
 require("utilities/tagcanvas.min")
 require("utilities/preview_avatar")
+require("utilities/weather")
 
 global.toastr = require("toastr")
 window.Rails = Rails
