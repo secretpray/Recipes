@@ -39,7 +39,11 @@
     <% if recipe.user.blank? %>
       <td class="col-2 text-center"> No author </td>
     <% else %>
-      <td class="col-2 text-center"><%= link_to full_name(recipe.user), user_path(recipe.user), class: 'text-decoration-none text-reset' %></td>
+      <td data-controller="hovercard"
+          data-hovercard-url-value="<%= author_info_user_path(recipe.user) %>"
+          data-action="mouseenter->hovercard#show mouseleave->hovercard#hide">
+        <%= link_to full_name(recipe.user), user_path(recipe.user), class: 'text-decoration-none text-reset' %>
+      </td>
     <% end %>
     <% if user_signed_in? && policy(recipe).edit?%>
       <td class='col text-center'><%= link_to t('global.show'), recipe, class: "btn btn-outline-secondary btn-sm" %></td>

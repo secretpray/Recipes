@@ -7,7 +7,9 @@ document.addEventListener("turbolinks:load", () => {
   };
 
   const observer = new IntersectionObserver(handleIntersect, options);
-  observer.observe(document.querySelector("footer"));
+  if (document.querySelector("footer")) {
+    observer.observe(document.querySelector("footer"));
+  }
 });
 
 function handleIntersect(entries) {
@@ -29,7 +31,6 @@ function getData() {
    url: url,
    dataType: 'json',
    success: (data) => {
-     // recipesTarget.insertAdjacentHTML('beforeend', data.entries)
      recipesTarget.innerHTML += data.entries
      paginationTarget.innerHTML = data.pagination
    }
