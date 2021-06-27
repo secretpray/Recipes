@@ -1,0 +1,48 @@
+<div class="author_info_card" data-hovercard-target="card">
+  <div data-tooltip-arrow class="card-shadow">
+    <div class='content-tooltip' >
+      <%= image_tag user_avatar(@user), class: "tooltip-avatar", alt: @user.username %>
+      <div class=''>
+        <!-- <span style='font-weight: 600; font-size: 1.125rem; line-height: 1.75rem;'><%= @user.email %></span> -->
+        <div class='author_info_names'>
+          <% unless @user.first_name.blank? %>
+            <div>
+              <span class='author_info_span_names'><%= @user.first_name %></span>&nbsp;
+            </div>
+          <% end %>
+          <% unless @user.last_name.blank? %>
+            <div>
+              &nbsp;<span class='author_info_span_names'><%= @user.last_name %></span>
+            </div>
+          <% end %>
+        </div>
+        <div class='author_info_counters'>
+          <!-- <svg style='fill: currentColor; height: 1rem; width: 1rem;' class="text-warning" viewBox="0 0 20 20">...</svg> -->
+          <span class="author_info_counters_span_name">Recipes: </span>
+          <span class="author_info_counters_span_value"> <%= @user.recipes_count.blank? ? 0 : @user.recipes_count %></span>;
+
+          <span class="author_info_counters_span_name">Favorites: </span>
+          <span class="author_info_counters_span_value"> <%= @user.favorites_count.blank? ? 0 : @user.favorites_count %></span>;
+
+          <span class="author_info_counters_span_name">Comment: </span>
+          <span class="author_info_counters_span_value"><%= @user.comments_count.blank? ? 0 : @user.comments_count %></span>
+        </div>
+        <div class="author_info_since">
+          <span class="author_info_since_span">
+            Kickin' it since <%= @user.created_at.year %>
+          </span>&nbsp;
+          <% if @user.online? %>
+            <span class='badge_author_info_success'>
+              online
+            </span>
+          <% else %>
+            <span class='badge_author_info_secondary'>
+              offline
+            </span>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

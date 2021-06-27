@@ -1,0 +1,28 @@
+<div class="position-relative" data-hovercard-target="card">
+  <div data-tooltip-arrow style='z-index: 50, margin-bottom: 2rem; left: 0px; border-radius: 0.5rem; min-width: max-content; padding: 0.5rem;' class="position-absolute bg-white shadow-lg border-radius-lg">
+    <div class="d-flex ms-1 me-1 align-items-center p-1">
+      <%= image_tag user_avatar(@user), style: 'height: 4rem; width: 4rem; object-fit: cover; background-color: rgba(243, 244, 246); border-radius: 0.25rem;', class: "flex-shrink-0 box-shadow-inset", alt: @user.username %>
+      <div class="d-flex flex-col" style='flex: 1 1 0%; flex-direction: column;'>
+        email: <span class="fw-bolder" style='font-size: 1.125rem;line-height: 1.75rem;'><%= @user.email %></span>
+        <% unless @user.first_name.blank? %>
+          First name: <span class="fw-bolder" style='font-size: 1.125rem;line-height: 1.75rem;'><%= @user.first_name %></span>&nbsp;
+        <% end %>
+        <% unless @user.last_name.blank? %>
+          Last name: <span class="fw-bolder" style='font-size: 1.125rem;line-height: 1.75rem;'><%= @user.last_name %></span>
+        <% end %>
+        <div class="d-flex ms-1 me-1 align-items-center" style='font-size: 0.875rem; line-height: 1.25rem;'>
+          <svg style='fill: currentColor; height: 1rem; width: 1rem;' class="text-warning" viewBox="0 0 20 20">...</svg>
+          <% unless @user.about.blank? %>
+            About user: <span class="text-secondary opacity-50 fst-italic"><%= @user.about %></span>
+          <% end %>
+          Recipes: <span class="text-secondary opacity-50 fst-italic"><%= @user.recipes_count.blank? ? 0 : @user.recipes_count %></span>
+          Favorites: <span class="text-secondary opacity-50 fst-italic"><%= @user.favorites_count.blank? ? 0 : @user.favorites_count %></span>
+          Comment: <span class="text-secondary opacity-50 fst-italic"><%= @user.comments_count.blank? ? 0 : @user.comments_count %></span>
+        </div>
+        <span class="text-secondary opacity-25 fst-italic mt-1" style='font-size: 0.75rem; line-height: 1rem;'>
+          Kickin' it since <%= @user.created_at.year %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

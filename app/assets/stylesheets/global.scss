@@ -16,12 +16,8 @@ body {
 
 footer {
   margin-top:auto;
-  // display: flex;
-  // flex-direction: column;
   height: 100%;
   background-color: #F8F9FA;
-  // margin-top: 6rem;
-  // padding: 20px;
 }
 
 @media print {
@@ -615,4 +611,86 @@ section .content .title{
 }
 section .content p{
 text-align: justify;
+}
+
+// Tooltip js
+[data-tooltip-arrow]::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  border-width: 2rem;
+  border-color: white transparent transparent transparent;
+}
+
+.author_info_card {
+  position: relative;
+  background-color: #f8f9fa;
+  max-width: fit-content;
+}
+
+.card-shadow {
+  position: absolute;
+  width: max-content;
+  border-radius: .25rem;
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+.content-tooltip {
+  display: flex;
+  padding: 10px 15px;
+}
+.tooltip-avatar {
+  width: 100px;
+  border-radius: 18px;
+  padding: 5px 10px;
+}
+
+.author_info_names {
+  display: flex;
+  margin-top: .5rem;
+}
+
+.author_info_span_names {
+  font-weight: 600;
+}
+
+.author_info_since,
+.author_info_counters {
+  margin-top: .25rem;
+}
+
+.badge_author_info_success,
+.badge_author_info_secondary {
+  display: inline-block;
+  padding: .35em .65em;
+  font-size: .75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25rem;
+  margin-left: 1rem;
+}
+.badge_author_info_secondary {
+  background-color: #6c757d;
+}
+.badge_author_info_success {
+  background-color: #198754;
+}
+
+.author_info_since_span {
+  font-style: italic;
+  opacity: 25%;
+}
+
+.author_info_counters_span_value,
+.author_info_counters_span_name {
+  color: #6c757d;
+  font-style: italic;
+}
+
+.author_info_counters_span_name {
+  opacity: 75%;
 }

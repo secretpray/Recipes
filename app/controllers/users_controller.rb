@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     redirect_to @user, notice: "Status updated to #{@user.status}"
   end
 
+  def author_info
+    render layout: false
+  end
+
   private
 
   def set_user
