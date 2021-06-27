@@ -57,6 +57,7 @@ Feature:
 * Authentication with Facebook, Github omniauth and Google oauth2 (support user attributes update)
 * Avatar for User and more Devise attributes: First name, Last Name, Username (uniq), Birthday, About 
 * Avatar preview after selecting a picture in User settings
+* User data preview when you hover the mouse cursor over the author of the post (AJAX, Stimulus)
 * Tabs in User edit profile (html/css only)
 * Recipes 10+ attributes (calories, prep/cook times; serves, fat, salt, sugar, protein, fibre ....)
 * Badge: Gluten-free; Vegan; Vegetarian, Easy, Kosher, Free: gluten, sugar, salt)
