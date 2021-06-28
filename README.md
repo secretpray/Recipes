@@ -78,6 +78,7 @@ Feature:
 * Social share button (Facebook, Google, Twitter ...) -* Facebook fixed link *-
 * Print Recipe
 * Export Recipe to PDF (gem 'grover' + puppeteer.js)
+* Weather widjet (based on JS and openweathermap.org API)
 * Inline update counter comments, favorites (AJAX)
 * Autogrow text_area input (Stimulus)
 * Words counter in create/edit form for Recipe title/description (Stimulus)
