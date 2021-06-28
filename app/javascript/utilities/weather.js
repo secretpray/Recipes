@@ -66,7 +66,7 @@ document.addEventListener('turbolinks:load', function() {
   //Display Weather to UI
   function displayWeather() {
     // iconElement.innerHTML = `<img src="/assets/weather/${weather.iconId}.png"/>`;
-    iconElement.innerHTML = `<img src="${weather.iconId}.png"/>`;
+    iconElement.innerHTML = `<img src="/assets/${weather.iconId}.png"/>`;
   	tempElement.innerHTML = `${weather.temperature.value}° <span>C</span>`;
   	descElement.innerHTML = weather.description;
   	locationElement.innerHTML = `${weather.city}, ${weather.country}`;

@@ -1,3 +1,4 @@
+
 .container-weather {
 	width: 300px;
 	background-color: #fff;
@@ -7,20 +8,35 @@
 	border-radius: 10px;
 	padding-bottom: 50px;
 }
+.app-footer,
 .app-title {
+	background-color: #f4f9ff;
 	width: 300px;
 	height: 50px;
 	border-radius: 10px 10px 0 0;
 }
-
+.app-footer {
+	border-radius: 0 0 10px 10px;
+}
+.app-footer p,
 .app-title p {
-	text-transform: uppercase;
 	text-align: center;
-	padding: 15px;
 	margin: 0 auto;
-	font-size: 1.6em;
 	color: #293251;
 }
+
+.app-title p {
+	padding: 8px 15px 15px 15px;
+	font-size: 1.6em;
+	text-transform: uppercase;
+}
+.app-footer p {
+	padding: 15px;
+	font-size: .7em;
+	color: grey;
+	opacity: 80%;
+}
+
 .notification {
 	background-color: #f8d7da;
 	display: none;
@@ -37,7 +53,8 @@
 .weather-container {
 	width: 300px;
 	height: 260px;
-	background-color: #f4f9ff;
+	background-color: rgba(244, 249, 255, .2);
+	/* background-color: #f4f9ff; */
 }
 
 .weather-icon {
@@ -81,5 +98,5 @@
 	padding: 0;
 	color: #293251;
 	text-align: center;
-	font-size: .7em;
+	font-size: .9em;
 }
