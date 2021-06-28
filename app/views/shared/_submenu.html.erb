@@ -1,4 +1,8 @@
-<div class='mb-2 mt-2'>
+<div class='mb-4 mt-5'>
+  <%= render 'shared/weather' %>
+</div>
+
+<div class='mb-2 mt-2 ms-4'>
   <h3 class='fw-light' style='letter-spacing: 3px;'><%= t '.tags_cloud' %></h3>
   <div id="myCanvasContainer" class='mt-3'>
     <canvas width="250" height="250" id="myCanvas">
@@ -11,7 +15,7 @@
   </div>
 </div>
 
-<div class='mt-4'>
+<div class='mt-4 ms-4'>
   <h3 class='fw-light' style='letter-spacing: 3px;'><%= t '.categories' %></h3>
   <ul class='nav nav-pills flex-column'>
     <% Category.roots.each do |category| %>

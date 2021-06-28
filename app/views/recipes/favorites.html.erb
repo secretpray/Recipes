@@ -3,5 +3,5 @@
   <%= render 'recipes/favorite', favorites: @favorites %>
 </div>
 <div class='d-flex justify-content-center mt-3 pagination-link'>
-  <%== pagy_bootstrap_nav(@pagy).html_safe %>
+  <%== pagy_bootstrap_nav(@pagy).html_safe if @pagy.pages > 1 %>
 </div>

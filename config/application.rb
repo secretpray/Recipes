@@ -11,15 +11,16 @@ module Recipes
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.exceptions_app = self.routes # static errors page
-    
-    config.time_zone = "Kyiv" # 'Paris', 'Moscow' 
+
+    config.time_zone = "Kyiv" # 'Paris', 'Moscow'
     config.active_record.default_timezone = :local
     config.i18n.available_locales = %i(en ru)
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
-    
+
     config.active_record.belongs_to_required_by_default = true
     config.autoload_paths << "#{Rails.root}/lib/clients"
+    # config.force_ssl = true
 
     config.generators do |g|
       g.helper      false
