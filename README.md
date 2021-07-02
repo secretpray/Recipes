@@ -91,12 +91,16 @@ Feature:
 TODO:
 * Autocomplete search in add Tags (with Selectjs)
 * Sortable list of Steps
+* Auto-numbering of steps for creating a recipe.
+* Add crop function when adding recipe image or user avatar.
 * Trophy (Polymorphic Associations)
 * Doorkeeper API
-* Add Replies to comments (React?)
+* Move 'Write a review' to Modal
+* Add Replies to comments (React or Vue JS)
 * Add video to Method Steps 
 * Action Cable (replay comment, create new Recipe)
-* Follow User
-* Chat room
+* Notifications
+* Follow/Unfolow User
+* Chat room (cnannel)
 * RSS feed
 * Forum
