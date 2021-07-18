@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class DashboardsController < ApplicationController
 
   def index
     @recent = Recipe.recent.limit(6)

@@ -38,6 +38,7 @@ require("utilities/infinite_scroll")
 require("utilities/tagcanvas.min")
 require("utilities/preview_avatar")
 require("utilities/weather")
+require("utilities/switch_theme")
 
 global.toastr = require("toastr")
 window.Rails = Rails

@@ -13,11 +13,11 @@ module ApplicationHelper
 
   # Theme select
   def background_select
-    if cookies[:theme] == 'light'
-      'navbar-light bg-light'
-    else
-      'navbar-light bg-warning'
-    end
+    # if cookies[:moon].present?
+    #   'navbar-light bg-warning'
+    # else
+    #   'navbar-light bg-light'
+    # end
   end
 
   #  Breadcrumbs

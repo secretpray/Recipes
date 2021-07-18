@@ -69,6 +69,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
   gem "letter_opener"
+  gem 'puma-ngrok-tunnel'
 end
 
 group :test do

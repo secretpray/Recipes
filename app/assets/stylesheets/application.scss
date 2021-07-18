@@ -8,13 +8,9 @@
 
 
 // Theme switcher
-body.light {
-  color: black;
-  background-color: white;
-}
-body.dark {
+body.darkmode {
   color: white !important;
-  background-color: black;
+  background-color: black !important;
   .text-reset {
     color: #ccc !important;
   }

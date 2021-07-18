@@ -61,7 +61,7 @@ en:
       terms: 'Terms and conditions'
       privacy: 'Privacy policy'
       copyright: 'Copyright:'
-  dashboard:
+  dashboards:
     index:
       last: 'LAST'
       best: 'BEST'
@@ -169,4 +169,3 @@ en:
       author_comment: 'by:'
       ago: 'ago'
       reply_comment: 'Reply'
-

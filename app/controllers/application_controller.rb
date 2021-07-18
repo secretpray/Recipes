@@ -2,23 +2,11 @@ class ApplicationController < ActionController::Base
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   include Pagy::Backend
-
+  # protect_from_forgery   # if enable -> not login with local email/username
   before_action :set_locale
-  before_action :set_theme
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :update_user_online, if: :user_signed_in?
 
-  helper_method :favorite_text
-  # protect_from_forgery   # if enable -> not login with local email/username
-
-  def set_theme
-    if params[:theme].present?
-      theme = params[:theme].to_sym
-      # session[:theme] = theme
-      cookies[:theme] = theme
-      redirect_to(request.referrer || root_path)
-    end
-  end
 
   def default_url_options
     return {} if I18n.locale == I18n.default_locale
@@ -30,13 +18,15 @@ class ApplicationController < ActionController::Base
     return @favorite_exists ? "&#x2764;&#xfe0f;".html_safe : "&#x2661;".html_safe
   end
 
+  helper_method :favorite_text
+
   def set_locale
-    if user_signed_in? && !current_user&.language.blank?
+    unless current_user&.language.blank?
       I18n.locale = current_user.language
     else
       extract_cookies_locale unless cookies[:my_locale].blank?
 
-      I18n.locale = extract_params_locale || extract_cookies_locale || locate_from_header || I18n.default_locale
+      I18n.locale = extract_params_locale || extract_cookies_locale || locate_from_header || I18n.default_locale || set_from_yml
       cookies.permanent[:my_locale] = I18n.locale
     end
   end
@@ -45,6 +35,11 @@ class ApplicationController < ActionController::Base
 
   def locate_from_header
     request.env.fetch('HTTP_ACCEPT_LANGUAGE', '').scan(/[a-z]{2}/).first
+  end
+
+  def set_from_yml
+    # set default lang from config/settings.yml
+    Rails.application.config_for(:settings).dig(:languages, :default).to_sym
   end
 
   def extract_params_locale

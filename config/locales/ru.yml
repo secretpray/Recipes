@@ -61,7 +61,7 @@ ru:
       terms: 'Пользовательское соглашение'
       privacy: 'Политика конфиденциальности'
       copyright: 'Разработчик:'
-  dashboard:
+  dashboards:
     index:
       last: 'НОВИНКИ'
       best: 'ЛУЧШИЕ'
