@@ -30,15 +30,17 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/search', to: 'dashboard#search'
-  get '/privacy', to: 'dashboard#privacy'
-  get '/terms', to: 'dashboard#terms'
-  get '/limits', to: 'dashboard#limits'
+  get '/moon', to: 'application#moon', as: 'moon'
+  get '/sun', to: 'application#sun', as: 'sun'
+  get '/search', to: 'dashboards#search'
+  get '/privacy', to: 'dashboards#privacy'
+  get '/terms', to: 'dashboards#terms'
+  get '/limits', to: 'dashboards#limits'
   match "/404", via: :all, to: "errors#not_found"
   match '/422', via: :all, to: 'errors#unprocessable_entity'
   match "/500", via: :all, to: "errors#internal_server_error"
 
 
-  root to: 'dashboard#index'
+  root to: 'dashboards#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

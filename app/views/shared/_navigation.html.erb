@@ -46,14 +46,10 @@
           </li>
         <% end %>
         <li class="nav-item">
-          <% if cookies[:theme] == "light" %>
-            <%= link_to root_path(theme: "dark"), class: "nav-link", data: {'bs-toggle' => "tooltip", 'bs-placement' => "bottom"}, title: "Change color theme." do %>
-              <i class="fas fa-toggle-on"><span class='fw-normal'><%= t'.dark' %></span></i>
-            <% end %>
+          <% if cookies[:moon] %>
+            <%= link_to 'Light Mode', sun_path, class: 'nav-link' %>
           <% else %>
-            <%= link_to root_path(theme: "light"), class: "nav-link" do %>
-              <i class="opacity-75 fas fa-toggle-on"><span class='fw-normal'> <%= t'.light' %></span></i>
-            <% end %>
+            <%= link_to 'Dark Mode', moon_path, class: 'nav-link' %>
           <% end %>
 
           <% unless user_signed_in? %>

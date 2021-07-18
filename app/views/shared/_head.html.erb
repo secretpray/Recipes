@@ -1,13 +1,20 @@
 <title>Recipes</title>
 <%#= Rails.configuration.application_name %>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<% if Rails.env.production? %>
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<% end %>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <%= csrf_meta_tags %>
 <%= csp_meta_tag %>
 
 <script src="https://kit.fontawesome.com/484e6509e8.js" crossorigin="anonymous"></script>
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% if cookies[:moon] %>
+  <%= stylesheet_link_tag 'application_dark', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% else %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% end %>
+<%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>

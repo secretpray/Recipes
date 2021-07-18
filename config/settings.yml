@@ -1,0 +1,13 @@
+production:
+  default_theme: light
+
+development:
+  default_theme: light
+
+shared:
+  languages:
+    en: english
+    ru: russian
+    default: en
+  theme:
+    default_theme: light

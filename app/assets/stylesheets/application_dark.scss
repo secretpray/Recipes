@@ -9,8 +9,11 @@
 
 // Theme switcher
 body {
-  color: black !important;
-  background-color: white !important;
+  color: white !important;
+  background-color: black !important;
+  .text-reset {
+    color: #ccc !important;
+  }
 }
 
 // Social Share Button
