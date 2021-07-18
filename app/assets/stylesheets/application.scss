@@ -8,9 +8,12 @@
 
 
 // Theme switcher
-body {
-  color: black !important;
-  background-color: white !important;
+body.darkmode {
+  color: white !important;
+  background-color: black !important;
+  .text-reset {
+    color: #ccc !important;
+  }
 }
 
 // Social Share Button

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md <%= background_select %>">
+<nav class="navbar navbar-expand-md navbar-header">
   <div class="container">
     <button aria-controls="RecipeNavbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarMain" data-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
@@ -45,30 +45,10 @@
             <%= link_to t('.favorites'), recipes_favorites_path, class: "nav-link #{is_active('recipes','favorites')}" %>
           </li>
         <% end %>
-        <li class="nav-item">
-          <% if cookies[:moon] %>
-            <%= link_to 'Light Mode', sun_path, class: 'nav-link' %>
-          <% else %>
-            <%= link_to 'Dark Mode', moon_path, class: 'nav-link' %>
-          <% end %>
-
-          <% unless user_signed_in? %>
-            <% if I18n.locale == :ru %>
-              <li class="nav-item"><%= link_to '?lang=en'.prepend(request.path), class: 'nav-link' do %>
-                  <i class="fas fa-toggle-on"><span class='fw-normal'> English</span></i>
-                <% end %>
-              </li>
-            <% else %>
-              <li class="nav-item"><%= link_to '?lang=ru'.prepend(request.path), class: 'nav-link' do %>
-                  <i class="fas fa-toggle-on"><span class='fw-normal'> Русский</span></i>
-                <% end %>
-              </li>
-            <% end %>
-          <% end %>
       </ul>
 
       <ul class="navbar-nav ms-auto">
-        <% if is_active('dashboard','index') %>
+        <% if is_active('dashboards','index') %>
           <li class="nav-item d-flex ms-5 align-items-start">
             <div data-controller="search">
               <%= render partial: "shared/search_form" %>
@@ -83,7 +63,29 @@
           </li>
         <% end %>
       </ul>
+      <ul class="navbar-nav">
+        <div class='setting-nav d-flex me-3'>
+          <li class="nav-item">
+            <%= link_to '#', class: 'nav-link ms-2 theme-switcher' do %>
+              <%= image_tag('darkmode.png', size: "20x20") %>
+            <% end %>
 
+            <% unless user_signed_in? %>
+              <% if I18n.locale == :ru %>
+                <li class="nav-item"><%= link_to '?lang=en'.prepend(request.path), class: 'nav-link' do %>
+                    <%= image_tag('usa.png', size: "20x20") %>
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item"><%= link_to '?lang=ru'.prepend(request.path), class: 'nav-link' do %>
+                    <%= image_tag('rus.png', size: "20x20") %>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </li>
+        </div>
+      </ul>
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">

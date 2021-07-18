@@ -30,8 +30,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/moon', to: 'application#moon', as: 'moon'
-  get '/sun', to: 'application#sun', as: 'sun'
   get '/search', to: 'dashboards#search'
   get '/privacy', to: 'dashboards#privacy'
   get '/terms', to: 'dashboards#terms'

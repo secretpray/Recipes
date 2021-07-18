@@ -4,29 +4,9 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   # protect_from_forgery   # if enable -> not login with local email/username
   before_action :set_locale
-  # before_action :set_theme
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :update_user_online, if: :user_signed_in?
 
-
-  def moon
-    cookies[:moon] = { value: 'dark mode on' }
-    redirect_to(request.referrer || root_path)
-  end
-
-  def sun
-    cookies.delete(:moon)
-    redirect_to(request.referrer || root_path)
-  end
-
-  # def set_theme
-  #   if params[:theme].present?
-  #     theme = params[:theme]
-  #     # session[:theme] = theme # Rails.env.to_sym
-  #     cookies[:theme] = theme
-  #     redirect_to(request.referrer || root_path)
-  #   end
-  # end
 
   def default_url_options
     return {} if I18n.locale == I18n.default_locale
