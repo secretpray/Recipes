@@ -52,6 +52,16 @@ gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem "omniauth-rails_csrf_protection"
+# React
+gem 'react-rails'
+# Need index?
+# gem "lol_dba"
+# Allow you to pluck deeply into nested associations without loading a bunch of records
+# gem 'deep_pluck'
+gem "table_print"
+# fast JSON serialize
+gem 'jsonapi-serializer'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -69,7 +79,7 @@ group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
   gem "letter_opener"
-  gem 'puma-ngrok-tunnel'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :test do

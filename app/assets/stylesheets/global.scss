@@ -45,7 +45,8 @@ footer {
 
 .logo-img img {
   position: relative;
-  top: -5px;
+  top: 0px;
+  left: 8px
 }
 
 #navbarMain {
@@ -54,11 +55,6 @@ footer {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-}
-
-.logo-img img {
-  position: relative;
-  top: -5px;
 }
 
 .recipe_image img {
@@ -84,10 +80,19 @@ footer {
 
 .card {
   // box-shadow: 5px 10px #888888;
+  // border: 1px solid rgba(0, 0, 0, 0.125);
   background: #fafafa;
-  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
-  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  outline: none;
+  border: none !important;
+  transition: .4s;
+  &:hover {
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+    -moz-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+    // -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    // box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  }
 }
 
 #favorite_container,
@@ -451,12 +456,19 @@ input:checked:before {
 }
 
 .hover-zoom {
-  transition: transform 2.5s, filter 1.5s ease-in-out;
-  transform-origin: center center;
-  filter: brightness(80%);
+  // transition: transform 2.5s, filter 1.5s ease-in-out;
+  // transform-origin: center center;
+  // filter: brightness(80%);
+  opacity: 0.6;
+  transition: .4s;
   &:hover {
+    opacity: .9;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+    -moz-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
+    -webkit-box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);
     transform: scale(1.1);
-    filter: brightness(100%);
+    // transform: scale(1.1);
+    // filter: brightness(100%);
   }
 }
 
@@ -693,4 +705,37 @@ text-align: justify;
 
 .author_info_counters_span_name {
   opacity: 75%;
+}
+
+.bg-custom {
+  background-color: transparent;
+  border: 1px solid rgba(32,33,36,.16);
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #202124;
+  // color: cadetblue;
+  display: block;
+  font-size: 14px;
+  height: 32px;
+  line-height: 30px;
+  margin: 0 8px 12px 0;
+  overflow: hidden;
+  padding: 0 12px;
+  text-decoration: none;
+  transition: background-color .2s,border .2s;
+  /* background-color: #0d6efd !important; */
+  /* color: black; */
+  font-weight: 400;
+  display: inline-flex !important;
+  &:hover {
+    color: #202124;
+    background-color: rgba(32,33,36,.04);
+    border: 1px solid rgba(32,33,36,.2);
+  }
+}
+
+.nav-link {
+  color: #212529 !important;
+  letter-spacing: 1.1px;
+  font-weight: 300;
 }

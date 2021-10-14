@@ -40,7 +40,6 @@ class Comment < ApplicationRecord
   end
 
   def remove_replies
-    # binding.pry
     if self.parent_id == 0
       other = Comment.where("parent_id = ?", self.id)
       other.destroy_all if other

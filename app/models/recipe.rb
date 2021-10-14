@@ -63,7 +63,8 @@ class Recipe < ApplicationRecord
   scope :by_add, -> { order(created_at: :desc) } # double
   scope :by_user, -> { order(user_id: :asc) }
   scope :favorited_by, -> (email) { joins(:favorites).where(favorites: { user: User.where(email: email)}) }
-  pg_search_scope :global_search, against: [:title, :description], using: { tsearch: { prefix: true } }
+  # pg_search_scope :global_search, against: [:title, :description], using: { tsearch: { prefix: true } }
+  pg_search_scope :global_post_search, against: [:title, :description], using: { tsearch: { prefix: true } }
 
 
 
