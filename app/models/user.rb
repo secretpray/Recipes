@@ -24,6 +24,7 @@
 #
 class User < ApplicationRecord
   include UserOath
+  include PgSearch::Model
 
   has_many :recipes, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -51,6 +52,7 @@ class User < ApplicationRecord
   acts_as_voter
 
   scope :by_recipes_count, -> { User.left_joins(:recipes).group(:id).order('COUNT(recipes) DESC') } #.pluck(:id, :email) max -> first
+  pg_search_scope :global_user_search, against: [:email, :username, :first_name, :last_name, :about], using: { tsearch: { prefix: true } }
 
   attr_writer :login
 

@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     resources :recipe_steps
   end
   resources :categories
-  resources :tags, only: :show
+  resources :tags, only: :show do
+    member do
+      get 'autosearch', to: 'tags#autosearch'
+    end
+  end
   resources :recipes do
     member do
       get "to_pdf", to: "recipes#to_pdf"
@@ -30,7 +34,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/search', to: 'dashboards#search'
+  # get '/search', to: 'dashboards#search'
+  get '/react_autosearch', to: 'autosearch#autosearch', as: :autosearch
   get '/privacy', to: 'dashboards#privacy'
   get '/terms', to: 'dashboards#terms'
   get '/limits', to: 'dashboards#limits'

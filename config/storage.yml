@@ -14,21 +14,208 @@ amazon:
   region: us-east-1
   bucket: reciperails
 
-# Remember not to checkin your GCS keyfile to a repository
-# google:
-#   service: GCS
-#   project: your_project
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-#   bucket: your_own_bucket
+# require 'aws-sdk-s3'
+# s3
+# s3 = Aws::S3::Resource.new(access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
+#                            secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
+#                            region: 'us-east-1' )
+# client => s3.client
+# or
+# client = Aws::S3::Client.new(access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
+#                            secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
+#                            region: 'us-east-1' )
+# Create object
+# obj = Aws::S3::Object.new(access_key_id: Rails.application.credentials.dig(:aws, :access_key_id),
+#                           secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
+#                           region: 'us-east-1', bucket_name: 'reciperails', key: "Default_image.png"  )
+# or
+# s3.client.put_object(bucket: 'reciperails', key: 'noname.txt', body: 'check this text')
+#
+# list all buckets
+# s3.client.list_buckets
+# or
+# client.list_buckets
+# or
+# client.list_buckets.buckets.map(&:name)
+#
+# bucket = s3.bucket('reciperails')
+# =================================
+#
+# List all in bucket
+# list_all = bucket.objects.map(&:key)
+# Exists file
+# s3.bucket('reciperails').object('noname.txt').exists?
+# Delete image
+# s3.bucket('reciperails').object('noname.txt').delete
+# or
+# obj = bucket.object('noname.txt')
+# obj.delete
+# or
+# client (s3.client)
+# ==================
+# resp = client.delete_object({ bucket: "reciperails", key: "noname.txt", })
+# or
+# resp = client.delete_objects({
+#   bucket: 'reciperails',
+#   delete: {
+#     objects: [
+#       {
+#         key: 'noname.txt'
+#       },
+#     ],
+#     quiet: false,
+#   },
+# })
+#
+# resp = client.delete_objects({ bucket: 'reciperails', delete: { objects: [ { key: 'noname.txt' }, ], quiet: false, }, })
+# resp.errors.any?
+# resp.errors[0]&.message
+# resp.to_h
+#  => {:deleted=>[{:key=>"noname.txt"}]}
+# bucket.object('noname.txt').exists?
 
-# Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
-# microsoft:
-#   service: AzureStorage
-#   storage_account_name: your_account_name
-#   storage_access_key: <%= Rails.application.credentials.dig(:azure_storage, :storage_access_key) %>
-#   container: your_container_name
+# check content type
+# obj = s3.bucket('reciperails').object('099ayk302fs3tbmlct83goxo18ju')
+# obj.content_type
+# => "image/jpeg"
+# obj.get
+# obj.put
 
-# mirror:
-#   service: Mirror
-#   primary: local
-#   mirrors: [ amazon, google, microsoft ]
+# File (check file present)
+# img = Rails.root.join('tmp', 'Default_image.png')
+# File.exist?(img) && File.file?(img)
+# def file_exists_and_file?(file_name)
+#   return true if File.exist?(file_name) && File.file?(file_name)
+# end
+
+# bucket_exists?(s3.client, bucket.name)
+# bucket_exists?(client, 'reciperails')
+# def bucket_exists?(s3_client, bucket_name)
+#   response = s3_client.list_buckets
+#   response.buckets.each do |bucket|
+#     return true if bucket.name == bucket_name
+#   end
+# rescue StandardError => e
+#   puts "Error while checking whether the bucket '#{bucket_name}' " \
+#     "exists: #{e.message}"
+# end
+
+# def upload_file_to_folder?(s3_client, bucket_name, folder_name, file_name)
+#   s3_client.put_object(
+#     body: file_name,
+#     bucket: bucket_name,
+#     key: folder_name + file_name
+#   )
+#   return true
+# rescue StandardError => e
+#   puts "Error while uploading the file '#{file_name}' to the " \
+#     "folder '#{folder_name}' in the bucket '#{bucket_name}': #{e.message}"
+# end
+
+# Upload file to S3
+# s3.bucket('reciperails').object('Default_image.png').upload_file(Rails.root.join('tmp', 'Default_image.png'))
+# or    => return true!!!!
+# bucket.object('Default_image.png').upload_file(Rails.root.join('tmp', 'Default_image.png'))
+# or    => return true!!!!
+# obj.upload_file(Rails.root.join('tmp', 'Default_image.png'))
+# or    => return true!!!!
+# obj = bucket.object('Default_image.png')
+# obj.upload_file(Rails.root.join('tmp', 'Default_image.png'))
+# or
+# client.put_object(bucket: 'reciperails', key: 'Default_image.png', body: File.read(img))
+# client.put_object(bucket: 'reciperails', key: 'Default_image.png', body: IO.read(img))
+# s3.bucket('reciperails').object('Default_image.png').exists?
+# bucket.object('Default_image.png').exists?
+# bucket.object('Default_image.png').size
+# bucket.object('Default_image.png').delete
+
+# Download file from S3
+# obj = bucket.object('Default_image.png')
+# obj.download_file(Rails.root.join('tmp', 'Default_image_s3.png'))
+# # or
+# resp = s3.client.get_object(
+#                     response_target: Rails.root.join('tmp', 'Default_image_download.png'),
+#                     bucket: 'reciperails',
+#                     key: 'Default_image.png')
+
+# Get URL
+# obj = bucket.object('Default_image.png')
+# presigned_url = obj.presigned_url(:put, bucket: "reciperails", key: "Default_image.png", expires_in: 604800)
+#  => "https://reciperails.s3.amazonaws.com/Default_image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAR7PAEH7JIMY3IHXS%2F20210812%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210812T073720Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=97704010715edcea6ef7d2c4bdb3ec680997e238fd1ebe43a50826ae8b5f7675"
+# bucket.object('Default_image.png').public_url
+# => "https://reciperails.s3.amazonaws.com/Default_image.png"
+
+
+# https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Resource.html
+# https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Bucket.html
+# https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Client.html
+# https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/S3/Object.html
+
+
+
+# #!/usr/bin/env ruby
+# #
+#
+# require 'rubygems'
+# require 'aws-sdk'
+#
+# bucket_name = ARGV[0]
+# file_name = ARGV[1]
+#
+#
+# # Get an instance of the S3 interface.
+# s3 = Aws::S3::Client.new(region: 'us-east-1')
+#
+# key = File.basename(file_name)
+# resp = s3.list_buckets()
+# buckets = resp.data.buckets
+#
+# if buckets.select { |b| b.name == bucket_name }.length == 0
+#   puts 'creating bucket'
+#   s3.create_bucket(bucket: bucket_name)
+# end
+#
+# puts "Uploading file #{file_name} to bucket #{bucket_name}..."
+#
+# # Upload a file.
+# s3.put_object(
+#   :bucket => bucket_name,
+#   :key    => key,
+#   :body   => IO.read(file_name)
+# )
+
+# def user_download_url(s3_filename, download_filename=nil)
+#   s3_filename = s3_filename.to_s # converts pathnames to string
+#   download_filename ||= s3_filename.split('/').last
+#   url_options = {
+#     expires_in:                   60.minutes,
+#     response_content_disposition: "attachment; filename=\"#{download_filename}\""
+#   }
+#   object = bucket.object(s3_filename)
+#   object.exists? ? object.presigned_url(:get, url_options).to_s : nil
+# end
+#
+# def bucket
+#   @bucket ||= Aws::S3::Resource.new(region: ENV['AWS_REGION']).bucket(ENV['AWS_S3_BUCKET'])
+# end
+# Чтобы создать ссылку для загрузки, просто поместите redirect_to user_download_url(s3_file_path) в действие контроллера и создайте ссылку на это действие контроллера.
+
+
+# Это будет работать с использованием aws-sdk-s3 gem
+#
+# aws_client = Aws::S3::Client.new(
+#   region:               'us-west-2', #or any other region
+#   access_key_id:        AWS_ACCESS_KEY_ID,
+#   secret_access_key:    AWS_SECRET_ACCESS_KEY
+# )
+#
+#
+# s3 = Aws::S3::Resource.new(client: aws_client)
+# bucket = s3.bucket('bucket-name')
+# obj = bucket.object("${filename}-#{SecureRandom.uuid}")
+#
+# url = obj.presigned_url(:put)
+# дополнительные http глагола:
+# obj.presigned_url(:put)
+# obj.presigned_url(:head)
+# obj.presigned_url(:delete)

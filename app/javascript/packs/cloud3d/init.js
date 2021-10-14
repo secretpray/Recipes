@@ -2,7 +2,7 @@ document.addEventListener("turbolinks:load", function() {
   const controllerName = document.body.dataset.controllerName
   const actionName = document.body.dataset.actionName
 
-  if (controllerName == 'dashboard' && actionName == 'index') {
+  if (controllerName == 'dashboards' && actionName == 'index') {
     try {
       // TagCanvas.Start('myCanvas');
       TagCanvas.Start('myCanvas','tags',{

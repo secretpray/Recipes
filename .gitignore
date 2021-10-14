@@ -36,3 +36,7 @@ yarn-debug.log*
 .yarn-integrity
 .DS_Store
 /config/credentials/production.key
+# Fake ssl in development
+app.acme.com-key.pem
+app.acme.com.pem
+Caddyfile

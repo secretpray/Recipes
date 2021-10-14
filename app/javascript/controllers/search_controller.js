@@ -15,9 +15,9 @@ export default class extends Controller {
         clearTimeout(this.timeout)
         this.timeout = setTimeout(() => {
           Rails.fire(this.formTarget, 'submit')
-        }, 200)
+        }, 300)
       }
-      // clear droplist if input set to blank 
+      // clear droplist if input set to blank
       if (event.target.value.length == 0) {
         var dropList = document.querySelector("#results-dropdown")
         if (dropList.size != 0) { dropList.innerText = '' }

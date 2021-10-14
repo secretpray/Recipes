@@ -10,8 +10,8 @@
             <%= image_tag("Logo_mini.png").html_safe %>
           <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to t('.recipes'), recipes_path, class: "nav-link #{is_active('recipes','index')}" %>
+        <li class="nav-item nav-item d-flex align-items-center">
+          <%= link_to t('.recipes'), recipes_path, class: "nav-link text-uppercase #{is_active('recipes','index')}" %>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
@@ -49,17 +49,10 @@
 
       <ul class="navbar-nav ms-auto">
         <% if is_active('dashboards','index') %>
-          <li class="nav-item d-flex ms-5 align-items-start">
-            <div data-controller="search">
-              <%= render partial: "shared/search_form" %>
-              <div data-search-target="results" id="results-dropdown" style="position: absolute; z-index: 999;">
-                <% if @recipes&.any? %>
-                  <% @recipes.each do |recipe| %>
-                    <%= render partial: "shared/search_recipe", locals: { recipe: recipe } %>
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
+          <li class="react-searchbar">
+            <li class='main-searchbar' id='main-searchbar'>
+              <%= react_component("AutocompleteSearch") %>
+            </li>
           </li>
         <% end %>
       </ul>
