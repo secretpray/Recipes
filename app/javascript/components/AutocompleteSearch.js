@@ -10,14 +10,14 @@ const AutocompleteSearch = (props) => {
   const [users, setUsers] = useState([])
   const [tags, setTags] = useState([])
 
-  function getAttributes(response) {
+  const getAttributes = (response) => {
     const { data } = JSON.parse(response || 'false')
     if(Array.isArray(data)) {
       return data.map(o => o.attributes
     )}
   }
 
-  function search(term) {
+  const search = (term) => {
     setTerm(term)
 
     Rails.ajax({
@@ -32,37 +32,25 @@ const AutocompleteSearch = (props) => {
     })
   }
 
-  function setnowPreventHideDropdown() {
+  const setnowPreventHideDropdown = () => {
     setPreventHideDropdown(true)
   }
 
-  function resetPreventHideDropdown() {
+  const resetPreventHideDropdown = () => {
     setPreventHideDropdown(false)
   }
 
-  function hideDropdown() {
+  const hideDropdown = () => {
     if (!preventHideDropdown) {
       setShowDropdown(false)
     }
   }
 
-  function shownowDropdown() {
+  const shownowDropdown = () => {
     setShowDropdown(true)
   }
 
-  return (
-    <div>
-      <SearchBar
-        showDropdown={shownowDropdown}
-        hideDropdown={hideDropdown}
-        term={term}
-        onSearchTermChange={(term) => {search(term)}}
-      />
-      {renderSearchResults()}
-    </div>
-  );
-
-  function renderSearchResults() {
+  const renderSearchResults = () => {
     if(!showDropdown || (recipes?.length === 0 && users?.length === 0 && tags?.length === 0)) {
       return;
     }
@@ -76,8 +64,20 @@ const AutocompleteSearch = (props) => {
         users={users}
         tags={tags}
       />
-    );
+    )
   }
+
+  return (
+    <div>
+      <SearchBar
+        showDropdown={shownowDropdown}
+        hideDropdown={hideDropdown}
+        term={term}
+        onSearchTermChange={(term) => {search(term)}}
+      />
+      {renderSearchResults()}
+    </div>
+  )
 }
 
 export default AutocompleteSearch

@@ -1,6 +1,10 @@
 import React from "react"
 
 const SearchBar = (props) => {
+  const handleInputChange = (term) => {
+    props.onSearchTermChange(term)
+  }
+
   return (
     <form action="/autosearch" acceptCharset="UTF-8" method="get">
       <input name="utf8" type="hidden" value="√" />
@@ -20,10 +24,6 @@ const SearchBar = (props) => {
         id="search_q" />
     </form>
   )
-
-  function handleInputChange(term) {
-    props.onSearchTermChange(term)
-  }
 }
 
 export default SearchBar
