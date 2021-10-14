@@ -73,7 +73,7 @@ Feature:
 * Simple search
 * Advanced search with ransack
 * Search with autocomplete (pg_search + Stimulus JS) (stage_48, later - remove)
-* Search with autocomplete for Recipes, Users, Tags (pg_search + React class components) 
+* Search with autocomplete for Recipes, Users, Tags (pg_search + React [stage_49 - class, stage_50+ - func] components) 
 * Sort recipes by Title, Cteated, Category with ransack
 * Recently page viewed (last 3 page)
 * User status in model (:active, :disabled, :banned)
