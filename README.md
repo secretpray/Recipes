@@ -32,6 +32,7 @@ Used gem:
 * standard
 * letter_opener
 * jsonapi-serializer
+* react-rails
 
 Feature:
 * Action Text & Markdown formatiing (with preview)
