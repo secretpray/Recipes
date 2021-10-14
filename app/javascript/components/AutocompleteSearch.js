@@ -1,88 +1,83 @@
-import React from "react"
-// import PropTypes from "prop-types"
+import React, {useState} from 'react'
 import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 
-class AutocompleteSearch extends React.Component {
-  constructor(props) {
-    super(props)
+const AutocompleteSearch = (props) => {
+  const [preventHideDropdown, setPreventHideDropdown] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(true)
+  const [term, setTerm] = useState('')
+  const [recipes, setRecipes] = useState([])
+  const [users, setUsers] = useState([])
+  const [tags, setTags] = useState([])
 
-    this.state = { preventHideDropdown: false, showDropdown: true, term: '', recipes: [], users: [], tags: [] }
-    this.hideDropdown = this.hideDropdown.bind(this);
-    this.showDropdown = this.showDropdown.bind(this);
-    this.setPreventHideDropdown = this.setPreventHideDropdown.bind(this);
-    this.resetPreventHideDropdown = this.resetPreventHideDropdown.bind(this);
+  const getAttributes = (response) => {
+    const { data } = JSON.parse(response || 'false')
+    if(Array.isArray(data)) {
+      return data.map(o => o.attributes
+    )}
   }
 
-  getAttributes(response) {
-    const { data } = JSON.parse(response || 'false');
-    if(Array.isArray(data)) {return data.map(o => o.attributes)}
-  }
-
-  search(term) {
-    this.setState({ term });
+  const search = (term) => {
+    setTerm(term)
 
     Rails.ajax({
       type: "GET",
       url: `react_autosearch?term=${term}`,
       dataType: "json",
       success: ({ recipes, users, tags } ) => {
-        this.setState({
-        recipes: this.getAttributes(recipes),
-        users: this.getAttributes(users),
-        tags: this.getAttributes(tags),
-      });}
+        setRecipes(getAttributes(recipes)),
+        setUsers(getAttributes(users)),
+        setTags(getAttributes(tags))
+      }
     })
   }
 
-  setPreventHideDropdown() {
-    this.setState({ preventHideDropdown: true });
+  const setnowPreventHideDropdown = () => {
+    setPreventHideDropdown(true)
   }
 
-  resetPreventHideDropdown() {
-    this.setState({ preventHideDropdown: false });
+  const resetPreventHideDropdown = () => {
+    setPreventHideDropdown(false)
   }
 
-  hideDropdown() {
-    if (!this.state.preventHideDropdown) {
-      this.setState({ showDropdown: false });
+  const hideDropdown = () => {
+    if (!preventHideDropdown) {
+      setShowDropdown(false)
     }
   }
 
-  showDropdown() {
-    this.setState({ showDropdown: true });
+  const shownowDropdown = () => {
+    setShowDropdown(true)
   }
 
-  render () {
-    return (
-      <div>
-        <SearchBar
-          showDropdown={this.showDropdown}
-          hideDropdown={this.hideDropdown}
-          term={this.state.term}
-          onSearchTermChange={(term) => {this.search(term)}}
-        />
-        {this.renderSearchResults()}
-      </div>
-    );
-  }
-
-  renderSearchResults() {
-    if(!this.state.showDropdown || (this.state.recipes?.length === 0 && this.state.users?.length === 0 && this.state.tags?.length === 0)) {
+  const renderSearchResults = () => {
+    if(!showDropdown || (recipes?.length === 0 && users?.length === 0 && tags?.length === 0)) {
       return;
     }
 
     return (
       <SearchResultsList
-        setPreventHideDropdown={this.setPreventHideDropdown}
-        resetPreventHideDropdown={this.resetPreventHideDropdown}
-        term={this.state.term}
-        recipes={this.state.recipes}
-        users={this.state.users}
-        tags={this.state.tags}
+        setPreventHideDropdown={setnowPreventHideDropdown}
+        resetPreventHideDropdown={resetPreventHideDropdown}
+        term={term}
+        recipes={recipes}
+        users={users}
+        tags={tags}
       />
-    );
+    )
   }
+
+  return (
+    <div>
+      <SearchBar
+        showDropdown={shownowDropdown}
+        hideDropdown={hideDropdown}
+        term={term}
+        onSearchTermChange={(term) => {search(term)}}
+      />
+      {renderSearchResults()}
+    </div>
+  )
 }
 
 export default AutocompleteSearch
