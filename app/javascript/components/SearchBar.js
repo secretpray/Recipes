@@ -1,8 +1,9 @@
 import React from "react"
+import { ACTIONS } from "./AutocompleteSearch"
 
 const SearchBar = (props) => {
   const handleInputChange = (term) => {
-    props.dispatch({type: 'change-term', payload: term })
+    props.dispatch({type: ACTIONS.CHANGE_TERM, payload: term })
   }
 
   return (
@@ -12,8 +13,8 @@ const SearchBar = (props) => {
         <i className="fa fa-search" id='searchbar-icon'></i>
       </button>
       <input
-        onFocus={() => props.dispatch({type: 'show-dropdown'})}
-        onBlur={() => props.dispatch({type: 'hide-dropdown'})}
+        onFocus={() => props.dispatch({type: ACTIONS.SHOW_DROPDOWN})}
+        onBlur={() => props.dispatch({type: ACTIONS.HIDE_DROPDOWN})}
         value={props.term}
         onChange={(event) => {handleInputChange(event.target.value)}}
         placeholder="Search"
