@@ -11,15 +11,14 @@ class RecipeSerializer
     else
       recipe.title[0...32] + ' ... '
     end
-    # truncate(recipe.title, length: 32, omission: '...') if recipe.title.length > 36
   end
 
   attribute :recipe_image_url do |recipe|
-    if recipe.recipe_image.attached?
-      recipe.recipe_image.variant(resize: "75x75!").processed.url
-    else
-      url_for( "Default_thump_image.png")
+    unless recipe.recipe_image.attached?
+      recipe.recipe_image.attach(io: File.open("#{Rails.root}/app/assets/images/Default_thump_image.png"), filename: 'Default_thump_image.png', content_type: 'image/png')
     end
+    # always img processed
+    recipe.recipe_image.variant(resize: "75x75!").processed.url
   end
 
   attribute :recipe_url do |object, params|

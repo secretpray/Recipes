@@ -9,7 +9,7 @@ class UserSerializer
     unless user.avatar.attached?
       user.avatar.attach(io: File.open("#{Rails.root}/app/assets/images/Unknowns_user_avatar.png"), filename: 'Unknowns_user_avatar.png', content_type: 'image/png')
     end
-
+    # always img processed
     user.avatar.variant(resize: "75x75!").processed.url
   end
 
