@@ -1,80 +1,92 @@
-import React, {useState} from 'react'
+import React, {useEffect, useReducer} from 'react'
 import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 
-const AutocompleteSearch = (props) => {
-  const [preventHideDropdown, setPreventHideDropdown] = useState(false)
-  const [showDropdown, setShowDropdown] = useState(true)
-  const [term, setTerm] = useState('')
-  const [recipes, setRecipes] = useState([])
-  const [users, setUsers] = useState([])
-  const [tags, setTags] = useState([])
+const initialState = {
+  preventHideDropdown: false,
+  showDropdown: true,
+  term: '',
+  recipes: [],
+  users: [],
+  tags: []
+};
 
-  const getAttributes = (response) => {
-    const { data } = JSON.parse(response || 'false')
-    if(Array.isArray(data)) {
-      return data.map(o => o.attributes
-    )}
+const getAttributes = (response) => {
+  const { data } = JSON.parse(response || 'false')
+  if(Array.isArray(data)) {
+    return data.map(o => o.attributes
+  )}
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'change-term':
+      return { ...state,
+              term: action.payload }
+    case 'fetched':
+      const { recipes, users, tags } = action.payload
+      return { ...state,
+              recipes: getAttributes(recipes),
+              users: getAttributes(users),
+              tags: getAttributes(tags) }
+    case 'set-prevent-hide-dropdown':
+      return { ...state,
+               preventHideDropdown: true }
+    case 'unset-prevent-hide-dropdown':
+      return { ...state,
+               preventHideDropdown: false }
+    case 'show-dropdown':
+      return { ...state,
+              showDropdown: true }
+    case 'hide-dropdown':
+      if(!state.preventHideDropdown) {
+        return { ...state,
+                showDropdown: false }
+      }
+    default:
+      return state
   }
+}
+
+const AutocompleteSearch = (props) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const search = (term) => {
-    setTerm(term)
-
     Rails.ajax({
       type: "GET",
       url: `react_autosearch?term=${term}`,
       dataType: "json",
-      success: ({ recipes, users, tags } ) => {
-        setRecipes(getAttributes(recipes)),
-        setUsers(getAttributes(users)),
-        setTags(getAttributes(tags))
+      success: ({ recipes, users, tags }) => {
+        dispatch({type: 'fetched', payload: { recipes, users, tags}})
       }
     })
   }
 
-  const setnowPreventHideDropdown = () => {
-    setPreventHideDropdown(true)
-  }
-
-  const resetPreventHideDropdown = () => {
-    setPreventHideDropdown(false)
-  }
-
-  const hideDropdown = () => {
-    if (!preventHideDropdown) {
-      setShowDropdown(false)
-    }
-  }
-
-  const shownowDropdown = () => {
-    setShowDropdown(true)
-  }
+  useEffect(() => {
+    let term = state.term
+    if(term?.length > 1) { search(term) }
+    }, [state.term]
+  )
 
   const renderSearchResults = () => {
-    if(!showDropdown || (recipes?.length === 0 && users?.length === 0 && tags?.length === 0)) {
+    if(!state.showDropdown || (state.recipes?.length === 0 && state.users?.length === 0 && state.tags?.length === 0)) {
       return;
     }
 
     return (
       <SearchResultsList
-        setPreventHideDropdown={setnowPreventHideDropdown}
-        resetPreventHideDropdown={resetPreventHideDropdown}
-        term={term}
-        recipes={recipes}
-        users={users}
-        tags={tags}
+        term={state.term}
+        recipes={state.recipes}
+        users={state.users}
+        tags={state.tags}
+        dispatch={dispatch}
       />
     )
   }
 
   return (
     <div>
-      <SearchBar
-        showDropdown={shownowDropdown}
-        hideDropdown={hideDropdown}
-        term={term}
-        onSearchTermChange={(term) => {search(term)}}
-      />
+      <SearchBar term={state.term} dispatch={dispatch}/>
       {renderSearchResults()}
     </div>
   )

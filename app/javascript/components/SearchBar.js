@@ -2,7 +2,7 @@ import React from "react"
 
 const SearchBar = (props) => {
   const handleInputChange = (term) => {
-    props.onSearchTermChange(term)
+    props.dispatch({type: 'change-term', payload: term })
   }
 
   return (
@@ -12,8 +12,8 @@ const SearchBar = (props) => {
         <i className="fa fa-search" id='searchbar-icon'></i>
       </button>
       <input
-        onFocus={() => props.showDropdown()}
-        onBlur={() => props.hideDropdown()}
+        onFocus={() => props.dispatch({type: 'show-dropdown'})}
+        onBlur={() => props.dispatch({type: 'hide-dropdown'})}
         value={props.term}
         onChange={(event) => {handleInputChange(event.target.value)}}
         placeholder="Search"

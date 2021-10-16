@@ -41,7 +41,7 @@ const SearchResultsList = (props) => {
   }
 
   return (
-    <ul className="dropdown-menu" id="autocomplete-items" onMouseEnter={() => {props.setPreventHideDropdown()}} onMouseLeave={() => {props.resetPreventHideDropdown()}}>
+    <ul className="dropdown-menu" id="autocomplete-items" onMouseEnter={() => {props.dispatch({type: 'set-prevent-hide-dropdown'})}} onMouseLeave={() => {props.dispatch({type: 'unset-prevent-hide-dropdown'})}}>
       <span className="dropdown-arrow-top"></span>
       <span className="dropdown-arrow-bottom"></span>
       <li>
