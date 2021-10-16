@@ -70,7 +70,7 @@ const AutocompleteSearch = (props) => {
   )
 
   const renderSearchResults = () => {
-    if(!state.showDropdown || (state.recipes?.length === 0 && state.users?.length === 0 && state.tags?.length === 0)) {
+    if(!state.showDropdown || (!state.recipes?.length && !state.users?.length && !state.tags?.length)) {
       return;
     }
 
