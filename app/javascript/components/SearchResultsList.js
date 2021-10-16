@@ -1,4 +1,5 @@
 import React from "react"
+import { ACTIONS } from "./AutocompleteSearch"
 import SearchRecipeListItem from "./SearchRecipeListItem"
 import SearchUserListItem from "./SearchUserListItem"
 import SearchTagListItem from "./SearchTagListItem"
@@ -41,7 +42,7 @@ const SearchResultsList = (props) => {
   }
 
   return (
-    <ul className="dropdown-menu" id="autocomplete-items" onMouseEnter={() => {props.dispatch({type: 'set-prevent-hide-dropdown'})}} onMouseLeave={() => {props.dispatch({type: 'unset-prevent-hide-dropdown'})}}>
+    <ul className="dropdown-menu" id="autocomplete-items" onMouseEnter={() => {props.dispatch({type: ACTIONS.SET_PREVENT_HIDE_DROPDOWN})}} onMouseLeave={() => {props.dispatch({type: ACTIONS.UNSET_PREVENT_HIDE_DROPDOWN})}}>
       <span className="dropdown-arrow-top"></span>
       <span className="dropdown-arrow-bottom"></span>
       <li>

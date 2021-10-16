@@ -2,6 +2,15 @@ import React, {useEffect, useReducer} from 'react'
 import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 
+export const ACTIONS = {
+  CHANGE_TERM: 'change-term',
+  FETCHED: 'fetched',
+  SET_PREVENT_HIDE_DROPDOWN: 'set-prevent-hide-dropdown',
+  UNSET_PREVENT_HIDE_DROPDOWN: 'unset-prevent-hide-dropdown',
+  SHOW_DROPDOWN: 'show-dropdown',
+  HIDE_DROPDOWN: 'hide-dropdown'
+}
+
 const initialState = {
   preventHideDropdown: false,
   showDropdown: true,
@@ -20,25 +29,25 @@ const getAttributes = (response) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'change-term':
+    case ACTIONS.CHANGE_TERM:
       return { ...state,
               term: action.payload }
-    case 'fetched':
+    case ACTIONS.FETCHED:
       const { recipes, users, tags } = action.payload
       return { ...state,
               recipes: getAttributes(recipes),
               users: getAttributes(users),
               tags: getAttributes(tags) }
-    case 'set-prevent-hide-dropdown':
+    case ACTIONS.SET_PREVENT_HIDE_DROPDOWN:
       return { ...state,
                preventHideDropdown: true }
-    case 'unset-prevent-hide-dropdown':
+    case ACTIONS.UNSET_PREVENT_HIDE_DROPDOWN:
       return { ...state,
                preventHideDropdown: false }
-    case 'show-dropdown':
+    case ACTIONS.SHOW_DROPDOWN:
       return { ...state,
               showDropdown: true }
-    case 'hide-dropdown':
+    case ACTIONS.HIDE_DROPDOWN:
       if(!state.preventHideDropdown) {
         return { ...state,
                 showDropdown: false }
@@ -51,25 +60,33 @@ const reducer = (state, action) => {
 const AutocompleteSearch = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const search = (term) => {
-    Rails.ajax({
-      type: "GET",
-      url: `react_autosearch?term=${term}`,
-      dataType: "json",
-      success: ({ recipes, users, tags }) => {
-        dispatch({type: 'fetched', payload: { recipes, users, tags}})
+  const search = async (term) => {
+    const response = await fetch(`react_autosearch?term=${term}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       }
     })
+    const { recipes, users, tags } = await response.json()
+    dispatch({type: ACTIONS.FETCHED, payload: { recipes, users, tags}})
   }
 
   useEffect(() => {
     let term = state.term
-    if(term?.length > 1) { search(term) }
-    }, [state.term]
-  )
+
+    const debounceSearch = setTimeout(() => {
+      if(term?.length > 1) {
+        search(term)
+      }
+    }, 300)
+    return () => {
+      clearTimeout(debounceSearch);
+    }
+  }, [state.term])
 
   const renderSearchResults = () => {
-    if(!state.showDropdown || (state.recipes?.length === 0 && state.users?.length === 0 && state.tags?.length === 0)) {
+    if(!state.showDropdown || (!state.recipes?.length && !state.users?.length && !state.tags?.length)) {
       return;
     }
 
