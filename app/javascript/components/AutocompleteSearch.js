@@ -51,15 +51,16 @@ const reducer = (state, action) => {
 const AutocompleteSearch = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const search = (term) => {
-    Rails.ajax({
-      type: "GET",
-      url: `react_autosearch?term=${term}`,
-      dataType: "json",
-      success: ({ recipes, users, tags }) => {
-        dispatch({type: 'fetched', payload: { recipes, users, tags}})
+  const search = async (term) => {
+    const response = await fetch(`react_autosearch?term=${term}`, {
+      method: 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       }
     })
+    const { recipes, users, tags } = await response.json()
+    dispatch({type: 'fetched', payload: { recipes, users, tags}})
   }
 
   useEffect(() => {
