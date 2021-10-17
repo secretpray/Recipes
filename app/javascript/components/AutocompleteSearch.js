@@ -3,8 +3,6 @@ import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 import loader from '../../assets/images/loader/spinner6.gif'
 
-
-const baseURL = 'react_autosearch?term='
 const configFetch = {
   method: 'GET',
   headers: {
@@ -89,7 +87,7 @@ const AutocompleteSearch = () => {
     const search = async (term) => {
       dispatch({type: ACTIONS.LOADING, payload: true})
 
-      const response = await fetch(baseURL + `${term}`, configFetch)
+      const response = await fetch(`react_autosearch?term=${term}`, configFetch)
       const { recipes, users, tags } = await response.json()
 
       dispatch({type: ACTIONS.LOADING, payload: false})
