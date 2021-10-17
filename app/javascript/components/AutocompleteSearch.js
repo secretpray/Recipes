@@ -5,10 +5,8 @@ import SearchResultsList from "./SearchResultsList"
 export const ACTIONS = {
   CHANGE_TERM: 'change-term',
   FETCHED: 'fetched',
-  SET_PREVENT_HIDE_DROPDOWN: 'set-prevent-hide-dropdown',
-  UNSET_PREVENT_HIDE_DROPDOWN: 'unset-prevent-hide-dropdown',
-  SHOW_DROPDOWN: 'show-dropdown',
-  HIDE_DROPDOWN: 'hide-dropdown'
+  PREVENT_HIDE_DROPDOWN: 'prevent-hide-dropdown',
+  SHOW_DROPDOWN: 'show-dropdown'
 }
 
 const initialState = {
@@ -38,19 +36,16 @@ const reducer = (state, action) => {
               recipes: getAttributes(recipes),
               users: getAttributes(users),
               tags: getAttributes(tags) }
-    case ACTIONS.SET_PREVENT_HIDE_DROPDOWN:
+    case ACTIONS.PREVENT_HIDE_DROPDOWN:
       return { ...state,
-               preventHideDropdown: true }
-    case ACTIONS.UNSET_PREVENT_HIDE_DROPDOWN:
-      return { ...state,
-               preventHideDropdown: false }
+               preventHideDropdown: action.payload }
     case ACTIONS.SHOW_DROPDOWN:
-      return { ...state,
-              showDropdown: true }
-    case ACTIONS.HIDE_DROPDOWN:
-      if(!state.preventHideDropdown) {
+      if(action.payload) {
         return { ...state,
-                showDropdown: false }
+          showDropdown: action.payload }
+      } else if (!state.preventHideDropdown) {
+        return { ...state,
+          showDropdown: action.payload }
       }
     default:
       return state
