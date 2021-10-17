@@ -79,13 +79,7 @@ const AutocompleteSearch = () => {
     const search = async (term) => {
       dispatch({type: ACTIONS.LOADING, payload: true})
 
-      const response = await fetch(`/react_autosearch?term=${term}`, {
-        method: 'GET',
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        }
-      })
+      const response = await fetch(`/react_autosearch?term=${term}`)
       const { recipes, users, tags } = await response.json()
 
       dispatch({type: ACTIONS.LOADING, payload: false})
