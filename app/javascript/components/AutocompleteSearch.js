@@ -3,14 +3,6 @@ import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 import loader from '../../assets/images/loader/spinner6.gif'
 
-const configFetch = {
-  method: 'GET',
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  }
-}
-
 export const ACTIONS = {
   CHANGE_TERM: 'change-term',
   LOADING: 'is-loading',
@@ -87,7 +79,13 @@ const AutocompleteSearch = () => {
     const search = async (term) => {
       dispatch({type: ACTIONS.LOADING, payload: true})
 
-      const response = await fetch(`react_autosearch?term=${term}`, configFetch)
+      const response = await fetch(`/react_autosearch?term=${term}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }
+      })
       const { recipes, users, tags } = await response.json()
 
       dispatch({type: ACTIONS.LOADING, payload: false})
