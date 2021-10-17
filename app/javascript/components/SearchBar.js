@@ -25,6 +25,7 @@ const SearchBar = ({ term, dispatch }) => {
         className='ps-5 py-1 nav-link'
         id="search_q" />
     </form>
+
   )
 }
 
