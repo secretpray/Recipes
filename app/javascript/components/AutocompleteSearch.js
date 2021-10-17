@@ -1,10 +1,11 @@
-import React, {useEffect, useReducer} from 'react'
+import React, {useState, useEffect, useReducer} from 'react'
 import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 
 export const ACTIONS = {
   CHANGE_TERM: 'change-term',
   FETCHED: 'fetched',
+  LOADING: 'isloading',
   PREVENT_HIDE_DROPDOWN: 'prevent-hide-dropdown',
   SHOW_DROPDOWN: 'show-dropdown'
 }
@@ -12,6 +13,7 @@ export const ACTIONS = {
 const initialState = {
   preventHideDropdown: false,
   showDropdown: true,
+  isloading: false,
   term: '',
   recipes: [],
   users: [],
@@ -30,6 +32,8 @@ const reducer = (state, action) => {
     case ACTIONS.CHANGE_TERM:
       return { ...state,
               term: action.payload }
+    case ACTIONS.LOADING:
+      return { ...state, isloading: action.payload }
     case ACTIONS.FETCHED:
       const { recipes, users, tags } = action.payload
       return { ...state,
@@ -46,44 +50,42 @@ const reducer = (state, action) => {
       } else if (!state.preventHideDropdown) {
         return { ...state,
           showDropdown: action.payload }
+      } else {
+        return state
       }
     default:
-      return state
+      throw new Error(`${action.type} - not found!`)
   }
 }
 
 const AutocompleteSearch = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const search = async (term) => {
-    const response = await fetch(`react_autosearch?term=${term}`, {
-      method: 'GET',
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
-    })
-    const { recipes, users, tags } = await response.json()
-    dispatch({type: ACTIONS.FETCHED, payload: { recipes, users, tags}})
+  const search = (term) => {
+    fetch(`react_autosearch?term=${term}`)
+      .then(response => response.json())
+      .then(data => {
+        const { recipes, users, tags } = data
+        dispatch({type: ACTIONS.FETCHED, payload: { recipes, users, tags }})
+      })
   }
 
   useEffect(() => {
     let term = state.term
-
     const debounceSearch = setTimeout(() => {
       if(term?.length > 1) {
         search(term)
       }
     }, 300)
     return () => {
-      clearTimeout(debounceSearch);
+      clearTimeout(debounceSearch)
     }
   }, [state.term])
 
   const renderSearchResults = () => {
-    if(!state.showDropdown || (!state.recipes?.length && !state.users?.length && !state.tags?.length)) {
-      return;
-    }
+
+    const anyContentPresent = !state.recipes?.length && !state.users?.length && !state.tags?.length
+    if(!state.showDropdown || anyContentPresent) { return }
 
     return (
       <SearchResultsList
