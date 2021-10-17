@@ -15,6 +15,7 @@ const configFetch = {
 
 export const ACTIONS = {
   CHANGE_TERM: 'change-term',
+  LOADING: 'is-loading',
   FETCHED: 'fetched',
   PREVENT_HIDE_DROPDOWN: 'prevent-hide-dropdown',
   SHOW_DROPDOWN: 'show-dropdown'
@@ -23,6 +24,7 @@ export const ACTIONS = {
 const initialState = {
   preventHideDropdown: false,
   showDropdown: true,
+  isLoading: false,
   term: '',
   recipes: [],
   users: [],
@@ -49,6 +51,9 @@ const reducer = (state, action) => {
     case ACTIONS.CHANGE_TERM:
       return { ...state,
               term: action.payload }
+    case ACTIONS.LOADING:
+      return { ...state,
+              isLoading: action.payload }
     case ACTIONS.FETCHED:
       const { recipes, users, tags } = action.payload
       return { ...state,
@@ -75,19 +80,19 @@ const reducer = (state, action) => {
 
 const AutocompleteSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [isLoading, setIsLoading] = useState(false)
+  // const [isLoading, setIsLoading] = useState(false)
   // const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     let term = state.term
 
     const search = async (term) => {
-      setIsLoading(true)
+      dispatch({type: ACTIONS.LOADING, payload: true})
 
       const response = await fetch(baseURL + `${term}`, configFetch)
       const { recipes, users, tags } = await response.json()
 
-      setIsLoading(false)
+      dispatch({type: ACTIONS.LOADING, payload: false})
       dispatch({type: ACTIONS.FETCHED, payload: { recipes, users, tags}})
     }
 
@@ -102,7 +107,7 @@ const AutocompleteSearch = () => {
 
   const renderSearchResults = () => {
     // {isError && <div>Something went wrong ...</div>}
-    if(isLoading) {
+    if(state.isLoading) {
       return (
         <img src={loader} style={styleLoader} alt="loading..." />
       )
