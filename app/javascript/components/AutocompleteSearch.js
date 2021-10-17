@@ -76,22 +76,28 @@ const reducer = (state, action) => {
 const AutocompleteSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  // const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     let term = state.term
 
     const search = async (term) => {
       setIsLoading(true)
+
       const response = await fetch(baseURL + `${term}`, configFetch)
       const { recipes, users, tags } = await response.json()
-      dispatch({type: ACTIONS.FETCHED, payload: { recipes, users, tags}})
+
       setIsLoading(false)
+      dispatch({type: ACTIONS.FETCHED, payload: { recipes, users, tags}})
     }
 
     const debounceSearch = setTimeout(() => {
-      if(term?.length > 1) { search(term) }}, 300)
-    return () => {clearTimeout(debounceSearch)}
+      if(term?.length > 1) {
+        search(term)
+      }}, 300)
+    return () => {
+      clearTimeout(debounceSearch)
+    }
   }, [state.term])
 
   const renderSearchResults = () => {
