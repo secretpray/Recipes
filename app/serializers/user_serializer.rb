@@ -14,6 +14,7 @@ class UserSerializer
   end
 
   attribute :user_url do |object, params|
+    # if not worked in Heroku console (e.g. "/users/4") use this: "/users/#{object.id}"
     params[:context].user_path(object)
   end
 

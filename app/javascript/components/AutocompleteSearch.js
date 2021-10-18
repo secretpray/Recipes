@@ -3,18 +3,9 @@ import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 import loader from '../../assets/images/loader/spinner6.gif'
 
-
-const baseURL = 'react_autosearch?term='
-const configFetch = {
-  method: 'GET',
-  headers: {
-    "Content-Type": "application/json",
-    "Accept": "application/json"
-  }
-}
-
 export const ACTIONS = {
   CHANGE_TERM: 'change-term',
+  LOADING: 'is-loading',
   FETCHED: 'fetched',
   PREVENT_HIDE_DROPDOWN: 'prevent-hide-dropdown',
   SHOW_DROPDOWN: 'show-dropdown'
@@ -23,6 +14,7 @@ export const ACTIONS = {
 const initialState = {
   preventHideDropdown: false,
   showDropdown: true,
+  isLoading: false,
   term: '',
   recipes: [],
   users: [],
@@ -34,7 +26,7 @@ const styleLoader = { width: '25px',
                       position: 'absolute',
                       opacity:'0.4',
                       align: 'middle',
-                      left: '64%',
+                      left: '42%',
                       margin: '5px'}
 
 const getAttributes = (response) => {
@@ -49,6 +41,9 @@ const reducer = (state, action) => {
     case ACTIONS.CHANGE_TERM:
       return { ...state,
               term: action.payload }
+    case ACTIONS.LOADING:
+      return { ...state,
+              isLoading: action.payload }
     case ACTIONS.FETCHED:
       const { recipes, users, tags } = action.payload
       return { ...state,
@@ -75,28 +70,34 @@ const reducer = (state, action) => {
 
 const AutocompleteSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const [isLoading, setIsLoading] = useState(false)
-  const [isError, setIsError] = useState(false)
+  // const [isLoading, setIsLoading] = useState(false)
+  // const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     let term = state.term
 
     const search = async (term) => {
-      setIsLoading(true)
-      const response = await fetch(baseURL + `${term}`, configFetch)
+      dispatch({type: ACTIONS.LOADING, payload: true})
+
+      const response = await fetch(`/react_autosearch?term=${term}`)
       const { recipes, users, tags } = await response.json()
+
+      dispatch({type: ACTIONS.LOADING, payload: false})
       dispatch({type: ACTIONS.FETCHED, payload: { recipes, users, tags}})
-      setIsLoading(false)
     }
 
     const debounceSearch = setTimeout(() => {
-      if(term?.length > 1) { search(term) }}, 300)
-    return () => {clearTimeout(debounceSearch)}
+      if(term?.length > 1) {
+        search(term)
+      }}, 300)
+    return () => {
+      clearTimeout(debounceSearch)
+    }
   }, [state.term])
 
   const renderSearchResults = () => {
     // {isError && <div>Something went wrong ...</div>}
-    if(isLoading) {
+    if(state.isLoading) {
       return (
         <img src={loader} style={styleLoader} alt="loading..." />
       )
@@ -117,7 +118,7 @@ const AutocompleteSearch = () => {
   }
 
   return (
-    <div>
+    <div style={{position: 'relative'}}>
       <SearchBar term={state.term} dispatch={dispatch}/>
       {renderSearchResults()}
     </div>

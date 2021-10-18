@@ -10,11 +10,11 @@
             <%= image_tag("Logo_mini.png").html_safe %>
           <% end %>
         </li>
-        <li class="nav-item nav-item d-flex align-items-center">
+        <li class="nav-item d-flex align-items-center">
           <%= link_to t('.recipes'), recipes_path, class: "nav-link text-uppercase #{is_active('recipes','index')}" %>
         </li>
         <% if user_signed_in? %>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <%= link_to_if(user_signed_in?, t('.new_recipes'), new_recipe_path, { class: "nav-link #{is_active('recipes','new')}" }) %>
           </li>
           <% if user_signed_in? && current_user.admin? %>
@@ -41,7 +41,7 @@
               </li>
             </ul>
           <% end %>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <%= link_to t('.favorites'), recipes_favorites_path, class: "nav-link #{is_active('recipes','favorites')}" %>
           </li>
         <% end %>
@@ -65,12 +65,12 @@
 
             <% unless user_signed_in? %>
               <% if I18n.locale == :ru %>
-                <li class="nav-item"><%= link_to '?lang=en'.prepend(request.path), class: 'nav-link' do %>
+                <li class="nav-item d-flex align-items-center"><%= link_to '?lang=en'.prepend(request.path), class: 'nav-link' do %>
                     <%= image_tag('usa.png', size: "20x20") %>
                   <% end %>
                 </li>
               <% else %>
-                <li class="nav-item"><%= link_to '?lang=ru'.prepend(request.path), class: 'nav-link' do %>
+                <li class="nav-item d-flex align-items-center"><%= link_to '?lang=ru'.prepend(request.path), class: 'nav-link' do %>
                     <%= image_tag('rus.png', size: "20x20") %>
                   <% end %>
                 </li>
@@ -103,10 +103,10 @@
             </ul>
           </li>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <%= link_to t('.sign_up'), new_user_registration_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
             <%= link_to t('.login'), new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
