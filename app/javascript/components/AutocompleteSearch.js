@@ -26,7 +26,7 @@ const styleLoader = { width: '25px',
                       position: 'absolute',
                       opacity:'0.4',
                       align: 'middle',
-                      left: '64%',
+                      left: '60%',
                       margin: '5px'}
 
 const getAttributes = (response) => {
