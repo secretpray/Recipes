@@ -26,7 +26,7 @@ const styleLoader = { width: '25px',
                       position: 'absolute',
                       opacity:'0.4',
                       align: 'middle',
-                      left: '60%',
+                      left: '42%',
                       margin: '5px'}
 
 const getAttributes = (response) => {
@@ -118,7 +118,7 @@ const AutocompleteSearch = () => {
   }
 
   return (
-    <div>
+    <div style={{position: 'relative'}}>
       <SearchBar term={state.term} dispatch={dispatch}/>
       {renderSearchResults()}
     </div>
